@@ -11,7 +11,7 @@
 #+summary: Time evolution is a unitary \(U(t)\) with \(i\hbar\,\partial_tU=HU\); for time-independent \(H\), \(U=e^{-iHt/\hbar}\) and expanding in energy eigenkets \(\ket\psi(t)=\sum_E c_Ee^{-iEt/\hbar}\ket E\); in position space \(i\hbar\partial_t\psi=-\frac{\hbar^2}{2m}\nabla^2\psi+V\psi\) with conserved probability current.
 
 * Statement
-Requirements on \(U(t,t_0)\): unitarity (probability conserved), composition \(U(t_2,t_0)=U(t_2,t_1)U(t_1,t_0)\), continuity. Then \(U(t_0+\dd t,t_0)=1-iH\dd t/\hbar\) with \(H\) Hermitian, and
+Requirements on \(U(t,t_0)\): unitarity (probability conserved), composition \(U(t_2,t_0)=U(t_2,t_1)U(t_1,t_0)\), continuity [cite:@schrodinger1926d;@stone1932]. Then \(U(t_0+\dd t,t_0)=1-iH\dd t/\hbar\) with \(H\) Hermitian, and
 \[ i\hbar\frac{\partial}{\partial t}U(t,t_0)=H\,U(t,t_0),\qquad i\hbar\frac{\partial}{\partial t}\ket{\psi(t)}=H\ket{\psi(t)}. \]
 
 * Derivation of the solution
@@ -34,7 +34,3 @@ An electron prepared in \(\tfrac1{\sqrt2}(\ket1+\ket2)\) of a 10 nm infinite wel
 
 * Pitfall
 \(U=e^{-iHt/\hbar}\) holds only if \(H\) is time independent; for \([H(t_1),H(t_2)]\neq0\) one needs the time-ordered (Dyson) series, see [[id:time-dependent-perturbation-and-golden-rule][time-dependent perturbation]].
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation][Schrödinger equation]]
-- [[https://phet.colorado.edu/en/simulations/quantum-tunneling][PhET: wave packets and tunnelling]]

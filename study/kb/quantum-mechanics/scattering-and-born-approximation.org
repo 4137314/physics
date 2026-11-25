@@ -15,7 +15,7 @@
 \[ f(\mathbf k',\mathbf k)=-\frac{m}{2\pi\hbar^2}\bra{\mathbf k'}V\ket\psi,\qquad \frac{\dd\sigma}{\dd\Omega}=|f|^2. \]
 
 * Born approximation
-Replace \(\ket\psi\to\ket{\mathbf k}\) inside: \(f^{(1)}=-\frac{m}{2\pi\hbar^2}\tilde V(\mathbf q)\), \(\mathbf q=\mathbf k'-\mathbf k\). For a spherical \(V\): \(f^{(1)}=-\frac{2m}{\hbar^2q}\int_0^\infty rV(r)\sin(qr)\dd r\). The same result follows from the [[id:time-dependent-perturbation-and-golden-rule][golden rule]] with box-normalised plane waves.
+Replace \(\ket\psi\to\ket{\mathbf k}\) inside: \(f^{(1)}=-\frac{m}{2\pi\hbar^2}\tilde V(\mathbf q)\), \(\mathbf q=\mathbf k'-\mathbf k\) [cite:@born1926c]. For a spherical \(V\): \(f^{(1)}=-\frac{2m}{\hbar^2q}\int_0^\infty rV(r)\sin(qr)\dd r\) [cite:@rutherford1911]. The same result follows from the [[id:time-dependent-perturbation-and-golden-rule][golden rule]] with box-normalised plane waves.
 
 * Worked example: Yukawa → Rutherford
 \(V=V_0e^{-\mu r}/(\mu r)\): \(f=-\frac{2mV_0}{\mu\hbar^2}\frac{1}{q^2+\mu^2}\). Take \(\mu\to0\), \(V_0/\mu\to ZZ'e^2/4\pi\epsilon_0\):
@@ -30,7 +30,3 @@ Ionized-impurity scattering limits mobility in doped semiconductors (Brooks–He
 
 * Pitfall
 Born works when \(V\) is weak compared with the kinetic energy (fast particles); it fails for low-energy resonances and bound-state-supporting potentials.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Born_approximation][Born approximation]]
-- [[https://en.wikipedia.org/wiki/Optical_theorem][Optical theorem]]

@@ -21,7 +21,7 @@ Short diode (\(W_n\ll L_p\)): replace \(L_p\) by \(W_n\). Recombination in the d
 \(g_d=\frac{\dd I}{\dd V}=\frac{I}{nV_T}\): at 1 mA, \(r_d=26\) Ω. Stored minority charge \(Q=\tau I\) gives \(C_d=\tau g_d\), which dominates in forward bias and limits switching (reverse recovery).
 
 * Temperature
-\(I_s\propto n_i^2\propto T^3e^{-E_g/k_BT}\): at constant current \(\frac{\dd V}{\dd T}\approx-\frac{E_g/q-V}{T}\approx-2\) mV/K in Si.
+\(I_s\propto n_i^2\propto T^3e^{-E_g/k_BT}\): at constant current \(\frac{\dd V}{\dd T}\approx-\frac{E_g/q-V}{T}\approx-2\) mV/K in Si [cite:@shockley1949].
 
 * Worked example
 Si diode, \(A=10^{-4}\) cm², \(N_A=10^{18}\), \(N_D=10^{16}\), \(D_p=10\) cm²/s, \(L_p=10\) µm (one-sided, holes dominate): \(I_s=1.6\times10^{-19}\cdot10^{-4}\cdot10^{20}\cdot\frac{10}{10^{-3}\cdot10^{16}}=1.6\times10^{-15}\) A. For 1 mA: \(V=0.0259\ln(10^{-3}/1.6\times10^{-15})=0.70\) V.
@@ -31,6 +31,3 @@ Rectifiers, the [[id:diode-circuits-and-esd-protection][diode in circuits]] (pie
 
 * Pitfall
 \(I_s\) is not a constant of the diode: it changes by ~×2 every 5 K and with area; use \(V\approx0.6\)–0.7 V only as a rough rule for Si at mA currents.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Shockley_diode_equation][Shockley diode equation]]

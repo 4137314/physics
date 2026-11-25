@@ -20,7 +20,7 @@
 | BFOM (rel. to Si)     | 1    | ≈ 500  | ≈ 1000+     |
 
 * Why (derivation)
-From the [[id:power-mosfets-and-igbts][unipolar limit]] \(R_{on,sp}=\frac{4V_{BR}^2}{\epsilon\mu E_c^3}\): \(E_c\) enters cubed. 8× higher \(E_c\) → 512× lower drift resistance (mobility and permittivity similar). Higher \(E_g\) also reduces \(n_i\) by many orders ([[id:intrinsic-and-doped-semiconductors][intrinsic density]]), so the extrinsic range extends to high temperature.
+From the [[id:power-mosfets-and-igbts][unipolar limit]] \(R_{on,sp}=\frac{4V_{BR}^2}{\epsilon\mu E_c^3}\): \(E_c\) enters cubed [cite:@baliga1982b]. 8× higher \(E_c\) → 512× lower drift resistance (mobility and permittivity similar). Higher \(E_g\) also reduces \(n_i\) by many orders ([[id:intrinsic-and-doped-semiconductors][intrinsic density]]), so the extrinsic range extends to high temperature.
 
 * Device specifics
 - *SiC MOSFET*: gate-oxide interface traps lower channel mobility (channel resistance matters at 650 V), threshold drift; body diode with high \(V_F\) (~3 V) but negligible recovery.
@@ -34,7 +34,3 @@ EV traction inverters (SiC, 800 V batteries), on-board chargers, solar inverters
 
 * Pitfall
 Faster switching (\(\dd v/\dd t>50\) V/ns) moves the problem to the package and layout: parasitic inductance causes ringing and EMI; device gains are lost without low-inductance design.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Silicon_carbide][Silicon carbide]]
-- [[https://en.wikipedia.org/wiki/Gallium_nitride][Gallium nitride]]

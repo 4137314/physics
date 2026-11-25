@@ -11,7 +11,7 @@
 #+summary: A periodic signal is \(x(t)=\sum_nc_ne^{jn\omega_0t}\), \(c_n=\frac1T\int_Tx\,e^{-jn\omega_0t}\dd t\); an aperiodic one \(X(\omega)=\int x(t)e^{-j\omega t}\dd t\); through an LTI system each component is multiplied by \(H(j\omega)\) (convolution theorem), and energy is preserved (Parseval).
 
 * Series
-Orthogonality \(\frac1T\int_Te^{j(n-m)\omega_0t}\dd t=\delta_{nm}\) gives the coefficients. Real form: \(a_0+\sum(a_n\cos n\omega_0t+b_n\sin n\omega_0t)\). Square wave of amplitude ±A: \(x=\frac{4A}{\pi}\sum_{n\text{ odd}}\frac{\sin n\omega_0t}{n}\) — harmonics fall as \(1/n\) (jump discontinuity); a triangle wave as \(1/n^2\). Partial sums overshoot by 9% at jumps (Gibbs). Parseval: \(\frac1T\int|x|^2=\sum|c_n|^2\).
+Orthogonality \(\frac1T\int_Te^{j(n-m)\omega_0t}\dd t=\delta_{nm}\) gives the coefficients [cite:@fourier1822]. Real form: \(a_0+\sum(a_n\cos n\omega_0t+b_n\sin n\omega_0t)\). Square wave of amplitude ±A: \(x=\frac{4A}{\pi}\sum_{n\text{ odd}}\frac{\sin n\omega_0t}{n}\) — harmonics fall as \(1/n\) (jump discontinuity); a triangle wave as \(1/n^2\). Partial sums overshoot by 9% at jumps (Gibbs). Parseval: \(\frac1T\int|x|^2=\sum|c_n|^2\).
 
 * Transform and properties
 | property    | time          | frequency      |
@@ -35,7 +35,3 @@ Spectrum analysis and EMC (harmonics of clocks), THD of amplifiers, OFDM in Wi-F
 
 * Pitfall
 \(2\pi\) conventions: with \(f\) instead of \(\omega\), \(X(f)=\int xe^{-j2\pi ft}\dd t\) and the inverse has no \(1/2\pi\). Mixing conventions breaks Parseval by \(2\pi\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Fourier_transform][Fourier transform]]
-- [[https://www.youtube.com/watch?v=spUNpyF58BY][3Blue1Brown: But what is the Fourier transform?]]

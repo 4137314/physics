@@ -11,7 +11,7 @@
 #+summary: For \(V=-e^2/4\pi\epsilon_0r\), \(E_n=-\frac{m e^4}{2(4\pi\epsilon_0)^2\hbar^2n^2}=-\frac{13.6\text{ eV}}{n^2}\), degeneracy \(n^2\) (\(2n^2\) with spin), ground state \(\psi_{100}=e^{-r/a_0}/\sqrt{\pi a_0^3}\), \(a_0=0.529\) Å.
 
 * Statement
-With reduced mass \(\mu\) and \(\alpha=e^2/4\pi\epsilon_0\hbar c\approx1/137\):
+With reduced mass \(\mu\) and \(\alpha=e^2/4\pi\epsilon_0\hbar c\approx1/137\) [cite:@bohr1913;@schrodinger1926a]:
 \[ E_n=-\frac{\mu c^2\alpha^2}{2n^2},\qquad a_0=\frac{4\pi\epsilon_0\hbar^2}{\mu e^2},\qquad l=0,\dots,n-1,\quad m=-l..l. \]
 
 * Derivation
@@ -19,9 +19,10 @@ With reduced mass \(\mu\) and \(\alpha=e^2/4\pi\epsilon_0\hbar c\approx1/137\):
 2. Asymptotics: \(u\sim e^{-\rho/2}\) at infinity, \(u\sim\rho^{l+1}\) at the origin. Write \(u=\rho^{l+1}e^{-\rho/2}w(\rho)\).
 3. \(w\) satisfies the confluent hypergeometric (Laguerre) equation; its power series grows like \(e^{\rho}\) unless it terminates. Termination requires \(\lambda=n=n_r+l+1\), an integer.
 4. Then \(\kappa=1/(na_0)\) and \(E=-\hbar^2\kappa^2/2\mu=-\hbar^2/(2\mu a_0^2n^2)\).
-The "accidental" \(l\)-degeneracy comes from a hidden SO(4) symmetry (the conserved Runge–Lenz vector).
+The "accidental" \(l\)-degeneracy comes from a hidden SO(4) symmetry (the conserved Runge–Lenz vector) [cite:@pauli1926].
 
 * Picture
+#+CAPTION: Energy levels of hydrogen, \(E_n=-13.6\text{ eV}/n^2\), with the Lyman-\(\alpha\) (\(2\to1\)) and Balmer-\(\alpha\) (\(3\to2\)) transitions.
 \begin{tikzpicture}[yscale=0.6]
 \foreach \n/\c in {1/kbcyan,2/kbmagenta,3/kbamber,4/kbviolet}{\draw[\c,thick] (0,{-13.6/(\n*\n)}) -- (3,{-13.6/(\n*\n)}) node[right,black,font=\small]{$n=\n$};}
 \draw[thick] (0,0) -- (3,0) node[right,font=\small]{$0$};
@@ -38,7 +39,3 @@ Spectroscopy and gas sensing, hydrogen masers (21 cm hyperfine line), shallow do
 
 * Pitfall
 \(n\) counts radial nodes plus \(l\) plus one; the 2s state has one radial node, 2p none.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Hydrogen_atom][Hydrogen atom]]
-- [[http://hyperphysics.phy-astr.gsu.edu/hbase/hyde.html][HyperPhysics: hydrogen energies]]

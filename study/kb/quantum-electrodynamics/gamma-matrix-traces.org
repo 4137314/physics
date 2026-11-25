@@ -27,7 +27,3 @@ Contractions: \(\gamma^\mu\gamma_\mu=4\), \(\gamma^\mu\slashed a\gamma_\mu=-2\sl
 
 * Pitfall
 Mass terms survive only with an even number of remaining \(\gamma\)'s: expand \((\slashed p+m)\) products carefully and drop odd terms immediately.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Gamma_matrices#Trace_identities][Gamma matrices: trace identities]]
-- [[https://feyncalc.github.io/][FeynCalc: automatic Dirac algebra]]

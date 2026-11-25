@@ -147,7 +147,3 @@ LiNbO\(_3\) (\(n_e=2.2\), \(r_{33}=30.9\) pm/V) at 1064 nm. (a) Half-wave voltag
 
 * Pitfall
 Most wrong answers in this set come from units: ps/(nm km) with km and nm, cm\(^{-1}\) vs m\(^{-1}\) in gain and absorption, dB vs dBm, and the factor 2 between intensity and field coefficients.
-
-* Explore
-- [[https://www.rp-photonics.com/encyclopedia.html][RP Photonics Encyclopedia]]
-- [[https://en.wikipedia.org/wiki/Optoelectronics][Optoelectronics]]

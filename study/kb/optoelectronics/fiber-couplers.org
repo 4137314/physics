@@ -11,9 +11,10 @@
 #+summary: In a fused 2×2 coupler the evanescent fields of two cores overlap and power oscillates between them, \(P_2=P_0\sin^2(\kappa z)\); its quality is measured by splitting ratio \(\frac{P_2}{P_1+P_2}\), excess loss \(10\log\frac{P_0}{P_1+P_2}\), insertion loss \(10\log\frac{P_0}{P_{out}}\) and crosstalk (directivity) \(10\log\frac{P_3}{P_0}\); an \(N\times N\) star coupler has an unavoidable splitting loss \(10\log N\) per output plus its excess loss.
 
 * Model
-Two single-mode cores are fused and tapered: the modes spread out of the thinned cores and overlap. Coupled-mode theory ([[id:directional-couplers][directional couplers]]) with coupling coefficient \(\kappa\): \(P_1=P_0\cos^2\kappa z\), \(P_2=P_0\sin^2\kappa z\). Full transfer at the coupling length \(L_c=\frac{\pi}{2\kappa}\); a 3 dB (50:50) coupler stops at \(L_c/2\). \(\kappa\) depends on \(\lambda\): a long coupler that is 0:100 at 1550 nm and 100:0 at 980 nm is the WDM coupler that combines pump and signal in an [[id:optical-amplifiers][EDFA]].
+Two single-mode cores are fused and tapered: the modes spread out of the thinned cores and overlap [cite:@kawasaki1981]. Coupled-mode theory ([[id:directional-couplers][directional couplers]]) with coupling coefficient \(\kappa\): \(P_1=P_0\cos^2\kappa z\), \(P_2=P_0\sin^2\kappa z\). Full transfer at the coupling length \(L_c=\frac{\pi}{2\kappa}\); a 3 dB (50:50) coupler stops at \(L_c/2\). \(\kappa\) depends on \(\lambda\): a long coupler that is 0:100 at 1550 nm and 100:0 at 980 nm is the WDM coupler that combines pump and signal in an [[id:optical-amplifiers][EDFA]].
 
 * Picture
+#+CAPTION: A fused biconical 2×2 coupler: input power \(P_0\) splits into the throughput \(P_1\) and the coupled port \(P_2\); \(P_3\) is the back-reflected power.
 \begin{tikzpicture}
 \draw[thick] (0,1.2)--(1.5,1.2) .. controls (2.2,1.2) and (2.3,0.7) .. (3,0.7)--(4.5,0.7) .. controls (5.2,0.7) and (5.3,1.2) .. (6,1.2)--(7.5,1.2);
 \draw[thick] (0,-0.2)--(1.5,-0.2) .. controls (2.2,-0.2) and (2.3,0.3) .. (3,0.3)--(4.5,0.3) .. controls (5.2,0.3) and (5.3,-0.2) .. (6,-0.2)--(7.5,-0.2);
@@ -24,6 +25,7 @@ Two single-mode cores are fused and tapered: the modes spread out of the thinned
 \node[font=\scriptsize] at (3.75,1.05) {fused, tapered region};
 \end{tikzpicture}
 
+#+CAPTION: Throughput and coupled powers \(P_1\), \(P_2\) versus coupling length \(\kappa z\): power is exchanged periodically, split 3 dB at \(\kappa z=\pi/4\) and fully transferred at \(\pi/2\).
 \begin{tikzpicture}
 \begin{axis}[width=7.5cm,height=4.2cm,axis lines=left,xlabel={$\kappa z$},ylabel={$P/P_0$},xmin=0,xmax=3.2,ymin=0,ymax=1.05,xtick={0,0.785,1.571,3.1416},xticklabels={0,$\pi/4$,$\pi/2$,$\pi$}]
 \addplot+[no marks,thick,domain=0:3.2,samples=120]{cos(deg(x))^2}; \addlegendentry{$P_1$}
@@ -57,7 +59,3 @@ A 1×16 splitter has 1.2 dB excess loss and feeds 16 homes over 10 km of fibre (
 
 * Pitfall
 In dB everything adds, but the \(10\log N\) splitting loss is *not* excess loss: quoting a 1×32 splitter as "15 dB lossy" is correct for the budget, wrong as a quality figure.
-
-* Explore
-- [[https://www.rp-photonics.com/fiber_couplers.html][RP Photonics: fiber couplers]]
-- [[https://en.wikipedia.org/wiki/Passive_optical_network][Passive optical network]]

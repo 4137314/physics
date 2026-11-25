@@ -17,7 +17,7 @@
 Bit-rate rule (Gaussian pulses): \(B\approx\frac{0.25}{\sigma}\) for RZ and twice that for NRZ, with rms spread \(\sigma\approx0.425\,\Delta\tau_{1/2}\).
 
 * Attenuation
-\(\alpha_{dB}=\frac{10}{L}\log\frac{P_{in}}{P_{out}}=4.34\,\alpha\). Mechanisms: Rayleigh scattering \(\alpha_R\approx\frac{8\pi^3}{3\lambda^4}(n^2-1)^2\beta_Tk_BT_f\) (density fluctuations frozen at \(T_f\)), OH absorption at 1383 nm (removed in low-water-peak fibre), IR absorption of Si–O beyond 1.6 µm, micro- and macro-bending loss.
+\(\alpha_{dB}=\frac{10}{L}\log\frac{P_{in}}{P_{out}}=4.34\,\alpha\) [cite:@kao1966;@kapron1970;@miya1979]. Mechanisms: Rayleigh scattering \(\alpha_R\approx\frac{8\pi^3}{3\lambda^4}(n^2-1)^2\beta_Tk_BT_f\) (density fluctuations frozen at \(T_f\)), OH absorption at 1383 nm (removed in low-water-peak fibre), IR absorption of Si–O beyond 1.6 µm, micro- and macro-bending loss.
 
 * Worked example
 1550 nm, \(D=17\) ps/(nm km), DFB laser modulated at 10 Gb/s with \(\Delta\lambda\approx0.1\) nm (modulation-broadened): over 80 km, \(\Delta\tau=17\cdot80\cdot0.1=136\) ps, more than one bit period (100 ps): dispersion compensation (DCF, FBG, or digital coherent DSP) is needed. Loss over 80 km at 0.2 dB/km: 16 dB — amplified by an [[id:optical-amplifiers][EDFA]].
@@ -30,6 +30,7 @@ Numbers: 100 km with \(D_f=-18\) ps/(nm km), \(\Delta\lambda=0.5\) nm, 2.5 Gb/s:
 Periodic index change \(\Lambda\) written by UV: reflects \(\lambda_B=2n_{eff}\Lambda\). \(\lambda_B\) shifts ~1.2 pm/µε and ~10 pm/K: strain and temperature sensors; chirped FBGs compensate dispersion ([[id:bragg-gratings][Bragg gratings]]).
 
 * Picture: dispersion of standard single-mode fibre
+#+CAPTION: Chromatic dispersion \(D_{ch}\) of standard single-mode fibre as the sum of material dispersion \(D_m\) and waveguide dispersion \(D_w\), crossing zero near 1310 nm.
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$\lambda$ (nm)},ylabel={$D$ (ps nm$^{-1}$km$^{-1}$)},xmin=1200,xmax=1650,ymin=-12,ymax=30]
 \addplot+[no marks,thick,domain=1200:1650,samples=60]{0.092/4*(x-1310^4/x^3)}; \addlegendentry{$D_{ch}$}
@@ -49,7 +50,3 @@ G.652 fibre (\(S_0=0.092\), \(\lambda_0=1310\) nm). (a) \(D\) at 1550 and 1625 n
 
 * Pitfall
 \(D\) is in ps/(nm km): multiply by length in km and spectral width in nm. Using the laser linewidth instead of the *modulated* spectral width underestimates spread at high bit rates.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Dispersion_(optics)][Dispersion (optics)]]
-- [[https://en.wikipedia.org/wiki/Fiber_Bragg_grating][Fiber Bragg grating]]

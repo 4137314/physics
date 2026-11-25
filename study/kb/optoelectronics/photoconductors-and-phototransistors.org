@@ -11,9 +11,10 @@
 #+summary: Light raises the conductivity of a semiconductor slab by \(\Delta\sigma=e\Delta n(\mu_e+\mu_h)\) with \(\Delta n=\frac{\eta I\lambda\tau}{hcD}\); because a carrier leaving one electrode is replaced at the other until it recombines, the photoconductive gain is \(G=\frac{\tau}{\tau_t}\) with \(\tau_t=\frac{L^2}{\mu V}\) — high gain, low speed (gain × bandwidth ≈ const); a phototransistor amplifies its base photocurrent by \(\beta\); a Schottky photodiode avoids slow minority-carrier diffusion and detects below the gap by internal photoemission.
 
 * Photoconductor (derivation of the gain)
-A slab of thickness \(D\), length \(L\) between electrodes, absorbs intensity \(I\): generation rate per volume \(\frac{\eta I}{h\nu D}\), steady excess density \(\Delta n=\frac{\eta I\lambda\tau}{hcD}\) (\(\tau\) = carrier lifetime). With bias \(V\) an electron crosses in \(\tau_t=L/v=\frac{L^2}{\mu_eV}\). Charge neutrality: when it leaves at the anode another enters at the cathode, so each absorbed photon lets \(\tau/\tau_t\) electrons through the circuit before recombination: \(I_{ph}=e\,\frac{\eta P}{h\nu}\,\frac{\tau}{\tau_t}\). The response time is \(\tau\) itself, so \(G\cdot B\approx\frac{1}{2\pi\tau_t}\) is fixed by geometry and bias.
+A slab of thickness \(D\), length \(L\) between electrodes, absorbs intensity \(I\): generation rate per volume \(\frac{\eta I}{h\nu D}\), steady excess density \(\Delta n=\frac{\eta I\lambda\tau}{hcD}\) (\(\tau\) = carrier lifetime) [cite:@smith1873]. With bias \(V\) an electron crosses in \(\tau_t=L/v=\frac{L^2}{\mu_eV}\). Charge neutrality: when it leaves at the anode another enters at the cathode, so each absorbed photon lets \(\tau/\tau_t\) electrons through the circuit before recombination: \(I_{ph}=e\,\frac{\eta P}{h\nu}\,\frac{\tau}{\tau_t}\). The response time is \(\tau\) itself, so \(G\cdot B\approx\frac{1}{2\pi\tau_t}\) is fixed by geometry and bias.
 
 * Picture
+#+CAPTION: A photoconductor: light generates carriers in a semiconductor bar of length \(L\) between two contacts, and the bias \(V\) drives a photocurrent measured by the ammeter.
 \begin{tikzpicture}[scale=0.95]
 \fill[orange!20] (0,0) rectangle (5,0.6);
 \fill[gray!60] (-0.4,0) rectangle (0,0.9); \fill[gray!60] (5,0) rectangle (5.4,0.9);
@@ -48,7 +49,3 @@ An InSb photoconductor (\(\mu_e=7\) m²/(V s), \(\tau=10^{-7}\) s), electrodes 1
 
 * Pitfall
 Gain larger than 1 in a photoconductor does not mean more photons are absorbed: it is the same carrier circulating; noise (generation–recombination) is amplified too, and speed drops in proportion.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Photoresistor][Photoresistor]]
-- [[https://en.wikipedia.org/wiki/Phototransistor][Phototransistor]]

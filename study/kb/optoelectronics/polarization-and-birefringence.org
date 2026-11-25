@@ -11,7 +11,7 @@
 #+summary: Light polarised at \(\theta\) to a polariser transmits \(I=I_0\cos^2\theta\) (Malus); in a uniaxial crystal the ordinary and extraordinary waves see \(n_o\) and \(n_e(\theta)\), \(\frac{1}{n_e(\theta)^2}=\frac{\cos^2\theta}{n_o^2}+\frac{\sin^2\theta}{n_e^2}\), and acquire a relative phase \(\phi=\frac{2\pi}{\lambda}(n_e-n_o)L\): a quarter-wave plate (\(\phi=\pi/2\)) turns linear light at 45° into circular, a half-wave plate rotates linear light by \(2\alpha\).
 
 * Polarisation states
-Write the transverse field as \(\mathbf E=\left(E_{x0}\hat x+E_{y0}e^{j\delta}\hat y\right)e^{j(\omega t-kz)}\) (Jones vector \((E_{x0},E_{y0}e^{j\delta})\)). \(\delta=0,\pi\): linear; \(E_{x0}=E_{y0}\), \(\delta=\pm\pi/2\): circular; otherwise elliptical. Unpolarised light is a random mixture: an ideal polariser passes half of it.
+Write the transverse field as \(\mathbf E=\left(E_{x0}\hat x+E_{y0}e^{j\delta}\hat y\right)e^{j(\omega t-kz)}\) (Jones vector \((E_{x0},E_{y0}e^{j\delta})\)) [cite:@jones1941]. \(\delta=0,\pi\): linear; \(E_{x0}=E_{y0}\), \(\delta=\pm\pi/2\): circular; otherwise elliptical. Unpolarised light is a random mixture: an ideal polariser passes half of it.
 
 * Malus's law and polarisers
 A polariser projects the field onto its axis: \(E\cos\theta\), so \(I=I_0\cos^2\theta\). Polarisers: dichroic sheets (Polaroid, absorb one component), Brewster stacks (reflect s, transmit p), birefringent prisms (Glan–Thompson, Wollaston), wire grids.
@@ -20,6 +20,7 @@ A polariser projects the field onto its axis: \(E\cos\theta\), so \(I=I_0\cos^2\
 In an anisotropic crystal \(\epsilon\) is a tensor; in a uniaxial crystal (calcite, quartz, LiNbO\(_3\)) one axis (optic axis) differs. A wave with \(\mathbf E\perp\) optic axis sees \(n_o\) (ordinary); the orthogonal one sees \(n_e(\theta)\), with \(\theta\) the angle between \(\mathbf k\) and the optic axis (formula in the summary). Positive crystal \(n_e>n_o\) (quartz 1.553/1.544), negative \(n_e<n_o\) (calcite 1.486/1.658). Off-axis a single ray splits into two (double refraction).
 
 * Picture: a quarter-wave plate
+#+CAPTION: A quarter-wave plate: light polarised at 45° to the fast and slow axes leaves circularly polarised.
 \begin{tikzpicture}[scale=0.9]
 \draw[-{Latex},thick,red!70!black] (0,0)--(0.85,0.85); \draw[-{Latex},thick,red!70!black] (0,0)--(-0.85,-0.85);
 \draw[gray] (-1.1,0)--(1.1,0) node[below,font=\scriptsize]{fast}; \draw[gray] (0,-1.1)--(0,1.1) node[above,font=\scriptsize]{slow};
@@ -53,7 +54,3 @@ Linearly polarised light at 633 nm, at 30° to the fast axis, crosses a quartz p
 
 * Pitfall
 A half-wave plate rotates by *twice* the angle between the input and its axis, not by 90°; and a quarter-wave plate gives circular light only if the input is at exactly 45°, otherwise elliptical.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Waveplate][Waveplate]]
-- [[https://en.wikipedia.org/wiki/Optical_isolator][Optical isolator]]

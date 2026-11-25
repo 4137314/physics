@@ -13,7 +13,7 @@
 * Setup
 An atom with magnetic moment \(\boldsymbol{\mu}\) in a field \(\mathbf{B}\) has energy \(U=-\boldsymbol\mu\cdot\mathbf B\), so it feels the force
 \[ F_z=\frac{\partial}{\partial z}(\boldsymbol\mu\cdot\mathbf B)\simeq \mu_z\frac{\partial B_z}{\partial z}. \]
-For silver the moment comes from the single 5s electron, \(\boldsymbol\mu = -\frac{g e}{2m_e}\mathbf S\) with \(g\simeq2\). Classically \(\mu_z\) is continuous and the beam should smear; the experiment shows *two* spots: \(S_z\) takes only the values \(\pm\hbar/2\).
+For silver the moment comes from the single 5s electron, \(\boldsymbol\mu = -\frac{g e}{2m_e}\mathbf S\) with \(g\simeq2\) [cite:@gerlach1922]. Classically \(\mu_z\) is continuous and the beam should smear; the experiment shows *two* spots: \(S_z\) takes only the values \(\pm\hbar/2\).
 
 * Sequential experiments
 1. SG\(\hat z\) → keep \(S_z+\) → SG\(\hat z\): only \(S_z+\) comes out. Measurement is repeatable.
@@ -27,6 +27,7 @@ Write \(\ket{S_x;\pm}=\tfrac{1}{\sqrt2}(\ket{+}\pm\ket{-})\). The \(S_y\) states
 No real two-dimensional choice satisfies all three conditions: complex amplitudes are required, exactly as polarisation of light requires circular states.
 
 * Picture
+#+CAPTION: The Stern–Gerlach experiment: silver atoms from an oven split into two beams \(S_z+\) and \(S_z-\) in an inhomogeneous field; a second apparatus filters one beam.
 \begin{tikzpicture}[font=\small]
 \draw[fill=kbcyan!25] (0,0) rectangle (1.4,1) node[midway]{oven};
 \draw[-{Latex}] (1.4,0.5) -- (2.4,0.5);
@@ -43,7 +44,3 @@ Spin filtering is the principle of spin valves and GMR read heads, of atomic-bea
 
 * Pitfall
 The force needs an *inhomogeneous* field. A uniform \(\mathbf B\) only produces a torque (precession), no deflection.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Stern%E2%80%93Gerlach_experiment][Stern–Gerlach experiment]]
-- [[https://www.feynmanlectures.caltech.edu/III_05.html][Feynman III-5: Spin one]]

@@ -11,7 +11,7 @@
 #+summary: A Hermitian operator \(A=A^\dagger\) has real eigenvalues and orthogonal eigenkets that form a basis, so \(A=\sum_a a\ket a\bra a\); two such bases are connected by a unitary \(U\), and trace and eigenvalues are basis independent.
 
 * Theorem
-Let \(A=A^\dagger\) on a finite-dimensional \(\mathcal H\) (the infinite case is in [[id:self-adjoint-operators-and-spectral-theorem][the spectral theorem]]).
+Let \(A=A^\dagger\) on a finite-dimensional \(\mathcal H\) (the infinite case is in [[id:self-adjoint-operators-and-spectral-theorem][the spectral theorem]]) [cite:@neumann1932].
 1. Its eigenvalues are real.
 2. Eigenkets of distinct eigenvalues are orthogonal.
 3. The normalised eigenkets can be chosen to form an orthonormal basis and \(A=\sum_a a\,\ket a\bra a\).
@@ -34,7 +34,3 @@ Every measurable quantity of a device — qubit energy, spin, photon number, pol
 
 * Pitfall
 "Hermitian" in finite dimension is enough; in infinite dimension (position, momentum) one needs *self-adjoint* with the right domain, otherwise eigenvalues may be complex or the decomposition may fail.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Hermitian_matrix][Hermitian matrix]]
-- [[https://en.wikipedia.org/wiki/Spectral_theorem][Spectral theorem]]

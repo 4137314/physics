@@ -11,7 +11,7 @@
 #+summary: Switching an inverter discharges (charges) its load \(C\) through the NMOS (PMOS); modelling each device by \(R_{eq}=1.7R_{on}\), \(R_{on}=\frac{1}{K(V_{DD}-|V_T|)}\), gives \(t_{PHL}=0.69\cdot1.7R_{on,n}C=1.2R_{on,n}C\), fall time \(t_f=2.2\cdot1.7R_{on,n}C=3.7R_{on,n}C\), and the average \(\tau_P=\frac{t_{PHL}+t_{PLH}}{2}\); delay scales as \(C/K\), so wider transistors or smaller loads are faster.
 
 * Derivation
-Ideal step input: for \(t>0\) the NMOS is on and the PMOS off; \(C\) discharges from \(V_{DD}\). The NMOS starts saturated (constant current) and enters triode at \(v_O=V_{DD}-V_{TN}\); integrating \(C\dd v_O/\dd t=-i_D(v_O)\) to \(v_O=V_{DD}/2\) gives a time equal to that of an RC discharge with an effective resistance \(\approx1.7R_{on}\) (for \(V_{TN}\approx0.2\)–\(0.25V_{DD}\)). An RC reaches 50% in \(0.69RC\) and goes 90%→10% in \(2.2RC\) ([[id:lti-systems-and-convolution][first-order step response]]).
+Ideal step input: for \(t>0\) the NMOS is on and the PMOS off; \(C\) discharges from \(V_{DD}\). The NMOS starts saturated (constant current) and enters triode at \(v_O=V_{DD}-V_{TN}\); integrating \(C\dd v_O/\dd t=-i_D(v_O)\) to \(v_O=V_{DD}/2\) gives a time equal to that of an RC discharge with an effective resistance \(\approx1.7R_{on}\) (for \(V_{TN}\approx0.2\)–\(0.25V_{DD}\)) [cite:@elmore1948]. An RC reaches 50% in \(0.69RC\) and goes 90%→10% in \(2.2RC\) ([[id:lti-systems-and-convolution][first-order step response]]).
 
 * Sizing rules
 | goal                         | rule                                                |
@@ -29,7 +29,3 @@ Static timing analysis (gate delay ≈ intrinsic + \(R\cdot C_{load}\)), standar
 
 * Pitfall
 Using \(R_{on}\) (small-\(V_{DS}\) resistance) without the factor 1.7 underestimates delay by ~40%; and the input slope matters: a slow input adds delay and short-circuit power.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Propagation_delay][Propagation delay]]
-- [[https://en.wikipedia.org/wiki/Logical_effort][Logical effort]]

@@ -11,11 +11,11 @@
 #+summary: Parabolic bands have \(g_c(E)=\frac{1}{2\pi^2}\left(\frac{2m_n^*}{\hbar^2}\right)^{3/2}\sqrt{E-E_c}\); occupation is \(f(E)=1/(1+e^{(E-E_F)/k_BT})\); integrating gives \(n=N_ce^{-(E_c-E_F)/k_BT}\), \(p=N_ve^{-(E_F-E_v)/k_BT}\) with \(N_c=2\left(\frac{2\pi m_n^*k_BT}{h^2}\right)^{3/2}\).
 
 * Density of states (derivation)
-States in a box \(L^3\) with periodic conditions: one \(\mathbf k\) per \((2\pi/L)^3\), two spins. Number with energy \(<E\): \(N=2\frac{\frac43\pi k^3}{(2\pi/L)^3}\), \(k=\sqrt{2m^*(E-E_c)}/\hbar\). Differentiate per volume:
+States in a box \(L^3\) with periodic conditions: one \(\mathbf k\) per \((2\pi/L)^3\), two spins [cite:@dirac1926;@sommerfeld1928]. Number with energy \(<E\): \(N=2\frac{\frac43\pi k^3}{(2\pi/L)^3}\), \(k=\sqrt{2m^*(E-E_c)}/\hbar\). Differentiate per volume:
 \[ g_{3D}(E)=\frac{1}{2\pi^2}\left(\frac{2m^*}{\hbar^2}\right)^{3/2}\sqrt{E-E_c},\qquad g_{2D}=\frac{m^*}{\pi\hbar^2}\ \text{(per subband)},\qquad g_{1D}\propto\frac{1}{\sqrt{E-E_n}}. \]
 
 * Fermi–Dirac (derivation)
-Grand-canonical ensemble for a single-particle state that holds 0 or 1 fermion (Pauli): \(\braket n=\frac{e^{-(E-\mu)/k_BT}}{1+e^{-(E-\mu)/k_BT}}=f(E)\), \(\mu=E_F\). For \(E-E_F\gg k_BT\): Boltzmann \(f\approx e^{-(E-E_F)/k_BT}\) (non-degenerate semiconductor).
+Grand-canonical ensemble for a single-particle state that holds 0 or 1 fermion (Pauli): \(\braket n=\frac{e^{-(E-\mu)/k_BT}}{1+e^{-(E-\mu)/k_BT}}=f(E)\), \(\mu=E_F\) [cite:@fermi1926]. For \(E-E_F\gg k_BT\): Boltzmann \(f\approx e^{-(E-E_F)/k_BT}\) (non-degenerate semiconductor).
 
 * Carrier densities
 \(n=\int_{E_c}^\infty g_c(E)f(E)\dd E\). In the Boltzmann limit the Gaussian integral gives
@@ -23,6 +23,7 @@ Grand-canonical ensemble for a single-particle state that holds 0 or 1 fermion (
 Si at 300 K: \(N_c=2.8\times10^{19}\), \(N_v=1.04\times10^{19}\) cm\(^{-3}\). The *mass-action law* \(np=n_i^2\) does not depend on \(E_F\), hence not on doping.
 
 * Picture
+#+CAPTION: Fermi–Dirac occupation compared with the Boltzmann approximation: they agree a few \(kT\) above the Fermi level and differ strongly below.
 \begin{tikzpicture}
 \begin{axis}[width=7cm,height=4.2cm,axis lines=left,xlabel={$(E-E_F)/k_BT$},ylabel={$f(E)$},xmin=-8,xmax=8,ymin=0,ymax=1.05]
 \addplot+[no marks,domain=-8:8,samples=100]{1/(1+exp(x))}; \addlegendentry{Fermi--Dirac}
@@ -38,7 +39,3 @@ Temperature dependence of leakage and of the diode voltage (−2 mV/K, used in o
 
 * Pitfall
 The Boltzmann formulas fail when \(E_F\) is within \(\sim3k_BT\) of a band edge (heavily doped regions, inversion layers); then use Fermi–Dirac integrals.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Fermi%E2%80%93Dirac_statistics][Fermi–Dirac statistics]]
-- [[https://en.wikipedia.org/wiki/Density_of_states][Density of states]]

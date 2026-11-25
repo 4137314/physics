@@ -17,11 +17,11 @@
 Multiplying by \(\theta(t-t_0)\) gives the retarded Green's function: \(\left(i\hbar\partial_t-H\right)G=i\hbar\,\delta(x-x_0)\delta(t-t_0)\).
 
 * Derivation of the path integral
-Split \(t-t_0=N\varepsilon\) and insert \(N-1\) position completeness relations. For a short step \(\bra{x_{k+1}}e^{-iH\varepsilon/\hbar}\ket{x_k}\approx\sqrt{\frac{m}{2\pi i\hbar\varepsilon}}\exp\left[\frac{i\varepsilon}\hbar\left(\frac m2\frac{(x_{k+1}-x_k)^2}{\varepsilon^2}-V(x_k)\right)\right]\) (Trotter). The exponent is \(i/\hbar\) times the discretised action, so
+Split \(t-t_0=N\varepsilon\) and insert \(N-1\) position completeness relations [cite:@feynman1948]. For a short step \(\bra{x_{k+1}}e^{-iH\varepsilon/\hbar}\ket{x_k}\approx\sqrt{\frac{m}{2\pi i\hbar\varepsilon}}\exp\left[\frac{i\varepsilon}\hbar\left(\frac m2\frac{(x_{k+1}-x_k)^2}{\varepsilon^2}-V(x_k)\right)\right]\) (Trotter). The exponent is \(i/\hbar\) times the discretised action, so
 \[ K=\lim_{N\to\infty}\left(\frac{m}{2\pi i\hbar\varepsilon}\right)^{N/2}\int\prod_{k=1}^{N-1}\dd x_k\,e^{iS/\hbar}\equiv\int\mathcal Dx\,e^{iS[x(t)]/\hbar}. \]
 
 * Classical limit
-When \(S\gg\hbar\), the phases of neighbouring paths cancel except near the path with \(\delta S=0\): Hamilton's principle emerges by stationary phase. Semiclassical (WKB) propagators keep this path plus Gaussian fluctuations.
+When \(S\gg\hbar\), the phases of neighbouring paths cancel except near the path with \(\delta S=0\): Hamilton's principle emerges by stationary phase. Semiclassical (WKB) propagators keep this path plus Gaussian fluctuations [cite:@dirac1939].
 
 * Worked example
 Free propagator check: at \(t-t_0\to0\) the Gaussian \(\propto e^{im(x-x_0)^2/2\hbar\tau}\) has width \(\sqrt{\hbar\tau/m}\to0\) and unit integral, so \(K\to\delta\). For an electron and \(\tau=1\) fs, the spreading scale is \(\sqrt{\hbar\tau/m}\approx0.34\) nm.
@@ -31,7 +31,3 @@ Path integrals underpin the Feynman diagrams of [[id:feynman-rules-of-qed][QED]]
 
 * Pitfall
 The "measure" \(\mathcal Dx\) is not a true measure on paths in real time; the expression is defined as the limit of the time-sliced integrals (rigorous in imaginary time: Feynman–Kac).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Path_integral_formulation][Path integral formulation]]
-- [[https://www.feynmanlectures.caltech.edu/II_19.html][Feynman II-19: the principle of least action]]

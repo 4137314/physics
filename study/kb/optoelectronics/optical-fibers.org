@@ -11,8 +11,8 @@
 #+summary: A step-index fibre (core radius \(a\), indices \(n_1>n_2\), \(\Delta=\frac{n_1-n_2}{n_1}\)) accepts light within \(\mathrm{NA}=\sin\theta_{max}=\sqrt{n_1^2-n_2^2}\); its weakly guiding modes are LP\(_{lm}\), the number is \(M\approx V^2/2\) with \(V=\frac{2\pi a}{\lambda}\mathrm{NA}\), and it is single-mode for \(V<2.405\); the fundamental mode is nearly Gaussian with MFD \(2w\approx2a(0.65+1.619V^{-3/2}+2.879V^{-6})\).
 
 * Statement
-- *Acceptance*: TIR at the core/cladding interface for rays inside the cone \(n_0\sin\theta_a\le\mathrm{NA}\).
-- *Modes*: solving the wave equation in cylindrical coordinates, Bessel \(J_l\) in the core and \(K_l\) in the cladding; for \(\Delta\ll1\) (weak guidance) modes group into linearly polarised LP\(_{lm}\). LP\(_{01}\) has no cutoff; LP\(_{11}\) appears at \(V=2.405\), the first zero of \(J_0\).
+- *Acceptance*: TIR at the core/cladding interface for rays inside the cone \(n_0\sin\theta_a\le\mathrm{NA}\) [cite:@kao1966].
+- *Modes*: solving the wave equation in cylindrical coordinates, Bessel \(J_l\) in the core and \(K_l\) in the cladding; for \(\Delta\ll1\) (weak guidance) modes group into linearly polarised LP\(_{lm}\). LP\(_{01}\) has no cutoff; LP\(_{11}\) appears at \(V=2.405\), the first zero of \(J_0\) [cite:@snitzer1961].
 - *Cutoff wavelength* \(\lambda_c=\frac{2\pi a\,\mathrm{NA}}{2.405}\): single-mode above it.
 
 * Graded index
@@ -22,6 +22,7 @@
 SMF-28-like fibre: \(a=4.1\) µm, \(n_1=1.4504\), \(n_2=1.4447\): NA \(=\sqrt{2.10366-2.08716}=0.128\); at 1550 nm \(V=\frac{2\pi\cdot4.1}{1.55}\cdot0.128=2.13<2.405\) → single mode; \(\lambda_c=\frac{2\pi\cdot4.1\cdot0.128}{2.405}=1.37\) µm. MFD \(=8.2(0.65+1.619\cdot2.13^{-1.5}+2.879\cdot2.13^{-6})=8.2(0.65+0.521+0.031)=9.9\) µm. Multimode 50 µm core, NA 0.2 at 850 nm: \(V=37\), \(M\approx V^2/2\approx680\) (step) or ~340 (graded).
 
 * Picture: index profiles and acceptance cone
+#+CAPTION: Index profiles of step-index and graded-index fibres (left) and a ray guided by total internal reflection inside the acceptance cone (right).
 \begin{tikzpicture}[scale=0.9]
 \draw[-{Latex}] (0,0)--(0,2.4) node[above,font=\scriptsize]{$n$}; \draw[-{Latex}] (-1.8,0.2)--(1.8,0.2) node[right,font=\scriptsize]{$r$};
 \draw[thick,blue!70!black] (-1.7,1.0)--(-0.6,1.0)--(-0.6,1.8)--(0.6,1.8)--(0.6,1.0)--(1.7,1.0);
@@ -47,7 +48,3 @@ A step-index fibre has \(n_1=1.46\) and a measured full acceptance angle of 30°
 
 * Pitfall
 \(V<2.405\) assumes a step profile; bending raises the effective cutoff, and a fibre just below cutoff is very bend-sensitive (bending loss grows as the mode spreads into the cladding).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Optical_fiber][Optical fiber]]
-- [[https://www.rp-photonics.com/v_number.html][RP Photonics: V number]]

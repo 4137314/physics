@@ -17,7 +17,7 @@ Expand \(\ket\psi=\sum c_n\ket n\) in energy eigenkets: \(\bra\psi H\ket\psi=\su
 1. Choose a family \(\psi(\mathbf r;\alpha,\beta,\dots)\) with the right symmetry and boundary behaviour.
 2. Compute \(\bar H(\alpha)=\braket{H}/\braket{\psi|\psi}\).
 3. Minimise: \(\partial_\alpha\bar H=0\). The minimum is the best estimate in the family.
-Linear combinations \(\psi=\sum c_i\phi_i\) give the generalised eigenproblem \(Hc=ESc\) (Rayleigh–Ritz), the basis of quantum chemistry and of finite elements.
+Linear combinations \(\psi=\sum c_i\phi_i\) give the generalised eigenproblem \(Hc=ESc\) (Rayleigh–Ritz), the basis of quantum chemistry and of finite elements [cite:@ritz1909].
 
 * Worked example: helium
 Trial \(\psi=\frac{Z_e^3}{\pi a_0^3}e^{-Z_e(r_1+r_2)/a_0}\) with effective charge \(Z_e\). Kinetic \(2\cdot Z_e^2\,\mathrm{Ry}\), nuclear \(-2\cdot2\cdot2Z_e\,\mathrm{Ry}\), repulsion \(\frac54Z_e\,\mathrm{Ry}\) (Ry = 13.6 eV):
@@ -29,6 +29,3 @@ Density-functional theory (variational in the electron density) designs semicond
 
 * Pitfall
 The method bounds only the *lowest* energy of a given symmetry; excited states need trial functions orthogonal to the lower ones.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Variational_method_(quantum_mechanics)][Variational method]]

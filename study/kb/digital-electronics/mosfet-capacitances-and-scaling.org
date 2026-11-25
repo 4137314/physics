@@ -19,7 +19,7 @@
 Junctions \(C_{DB},C_{SB}=C_jA+C_{jsw}P\) (area and perimeter), voltage dependent ([[id:pn-junction-electrostatics][junction capacitance]]). \(C_{GD}\) between input and output of an inverter is multiplied by the Miller effect (\(\approx2C_{GD}\) for a full swing).
 
 * Scaling (derivation)
-Scale \(W,L,t_{ox},V_{DD},V_T\) by \(1/\alpha\), doping by \(\alpha\). Then \(C_{ox}\times\alpha\), \(C_G=C_{ox}WL\times1/\alpha\), current \(K_n(V)^2\propto\alpha\cdot\frac{1}{\alpha^2}=\frac1\alpha\), delay \(CV/I\propto\frac1\alpha\), power \(VI\propto\frac{1}{\alpha^2}\), area \(\frac1{\alpha^2}\): density \(\alpha^2\) and power density constant.
+Scale \(W,L,t_{ox},V_{DD},V_T\) by \(1/\alpha\), doping by \(\alpha\) [cite:@dennard1974]. Then \(C_{ox}\times\alpha\), \(C_G=C_{ox}WL\times1/\alpha\), current \(K_n(V)^2\propto\alpha\cdot\frac{1}{\alpha^2}=\frac1\alpha\), delay \(CV/I\propto\frac1\alpha\), power \(VI\propto\frac{1}{\alpha^2}\), area \(\frac1{\alpha^2}\): density \(\alpha^2\) and power density constant.
 Breakdown of Dennard scaling (~2005): \(V_T\) cannot shrink because subthreshold leakage \(I\propto10^{-V_T/S}\) with \(S\ge\frac{k_BT}{q}\ln10=60\) mV/dec at 300 K; so \(V_{DD}\) stalled near 0.7–1 V → power wall, multicore, FinFET/GAA for better electrostatic control.
 
 * Worked example
@@ -30,7 +30,3 @@ Gate sizing and fan-out (load = sum of gate capacitances), interconnect-dominate
 
 * Pitfall
 The gate capacitance of a switching inverter is not constant: it changes as the device moves through regions; delay formulas use an average effective \(C\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Dennard_scaling][Dennard scaling]]
-- [[https://en.wikipedia.org/wiki/Subthreshold_conduction][Subthreshold conduction]]

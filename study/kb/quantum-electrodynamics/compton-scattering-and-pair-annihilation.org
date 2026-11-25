@@ -15,7 +15,7 @@
 2. Gauge invariance: replacing \(\epsilon\to k\) gives zero, so \(\sum\epsilon\epsilon^*\to-g\) is allowed.
 3. Traces (eight gammas, simplified with contraction identities) give
 \[ \tfrac14\sum|\mathcal M|^2=2e^4\left[\frac{p\cdot k'}{p\cdot k}+\frac{p\cdot k}{p\cdot k'}+2m^2\left(\frac1{p\cdot k}-\frac1{p\cdot k'}\right)+m^4\left(\frac1{p\cdot k}-\frac1{p\cdot k'}\right)^2\right]. \]
-4. Lab frame: \(p\cdot k=m\omega\), \(p\cdot k'=m\omega'\), \(\omega'=\frac{\omega}{1+(\omega/m)(1-\cos\theta)}\); phase space gives the Klein–Nishina formula above.
+4. Lab frame: \(p\cdot k=m\omega\), \(p\cdot k'=m\omega'\), \(\omega'=\frac{\omega}{1+(\omega/m)(1-\cos\theta)}\); phase space gives the Klein–Nishina formula above [cite:@compton1923;@klein1929].
 
 * Limits
 - \(\omega\ll m\): \(\omega'\approx\omega\), \(\frac{\dd\sigma}{\dd\Omega}=\frac{r_e^2}2(1+\cos^2\theta)\), \(\sigma_T=0.665\) b (classical Thomson, \(r_e=2.82\) fm).
@@ -34,7 +34,3 @@ Cs-137 gamma (662 keV) scattered at 90°: \(\omega'=\frac{662}{1+662/511}=289\) 
 
 * Pitfall
 Thomson scattering is energy-independent; Klein–Nishina falls with energy because of recoil and spin: do not use \(\sigma_T\) for MeV photons.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Klein%E2%80%93Nishina_formula][Klein–Nishina formula]]
-- [[https://physics.nist.gov/PhysRefData/Xcom/html/xcom1.html][NIST XCOM photon cross sections]]

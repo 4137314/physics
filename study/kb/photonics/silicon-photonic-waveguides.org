@@ -17,7 +17,7 @@
 | rib   | 500 × 220, 90 nm slab   | lower loss, electrical contact (doping) |
 | slot  | two rails, 100 nm gap   | field in the gap: sensing, nonlinear    |
 | SiN   | 1 µm × 400 nm           | low loss, low contrast, visible light   |
-Compact model: \(\beta(\lambda)=\frac{2\pi}{\lambda}n_{eff}(\lambda)\), loss \(\alpha\) (field amplitude \(e^{-\alpha L/2}\) for power loss \(\alpha\)). \(n_g=n_1-\lambda_0n_2\).
+Compact model: \(\beta(\lambda)=\frac{2\pi}{\lambda}n_{eff}(\lambda)\), loss \(\alpha\) (field amplitude \(e^{-\alpha L/2}\) for power loss \(\alpha\)) [cite:@soref1986]. \(n_g=n_1-\lambda_0n_2\).
 
 * Loss mechanisms
 Sidewall roughness (σ ≈ 1–3 nm): scattering \(\alpha\propto\sigma^2(n_1^2-n_2^2)^2\)/width-dependent field at the wall — wider waveguides and rib geometry reduce it. Bending loss falls exponentially with radius. Two-photon absorption and free-carrier absorption at high power. Substrate leakage if the BOX is too thin.
@@ -30,7 +30,3 @@ Every PIC component; spiral delay lines; low-loss SiN for LiDAR and biophotonics
 
 * Pitfall
 \(n_g\), not \(n_{eff}\), sets delays and FSRs; \(n_{eff}\) sets phase and resonance positions. Confusing them is the most common error in PIC design exercises.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Waveguide_(optics)][Waveguide (optics)]]
-- [[https://en.wikipedia.org/wiki/Silicon_on_insulator][Silicon on insulator]]

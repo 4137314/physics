@@ -11,7 +11,7 @@
 #+summary: Free carriers change silicon's index and loss (Soref–Bennett at 1550 nm: \(\Delta n=-8.8\times10^{-22}\Delta N-8.5\times10^{-18}\Delta P^{0.8}\), \(\Delta\alpha=8.5\times10^{-18}\Delta N+6\times10^{-18}\Delta P\) cm\(^{-1}\)); a reverse-biased pn junction in a rib waveguide modulates them at tens of GHz with \(V_\pi L\approx1\)–2 V·cm in an MZI, or with a few volts in a compact ring.
 
 * Model
-Drude-like response of free carriers. Three ways to change the density:
+Drude-like response of free carriers [cite:@soref1987]. Three ways to change the density:
 | mechanism       | speed      | VπL         | note                          |
 |-----------------+------------+-------------+-------------------------------|
 | injection (pin) | ~ns (τ)    | ≈ 0.02 V·cm | high loss, needs pre-emphasis |
@@ -30,6 +30,3 @@ Ge (gap 0.66 eV, strained to absorb up to ~1.6 µm) grown on Si: waveguide pin p
 
 * Pitfall
 Carrier modulation always adds loss (free-carrier absorption) and chirp; the figure of merit is \(V_\pi\cdot\alpha\cdot L\), not \(V_\pi L\) alone.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Silicon_photonics][Silicon photonics]]

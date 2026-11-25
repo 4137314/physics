@@ -11,7 +11,7 @@
 #+summary: Photons with \(h\nu>E_g\) are absorbed across the gap; for direct gaps \(\alpha\propto\sqrt{h\nu-E_g}\) (golden rule × joint density of states), for indirect gaps \(\alpha\propto(h\nu-E_g\mp E_{ph})^2\) and much weaker; the cutoff \(\lambda_g=\frac{1.24}{E_g[\mathrm{eV}]}\) µm sets which materials detect or emit which wavelengths.
 
 * Statement
-Absorption \(I(x)=I_0e^{-\alpha x}\), penetration depth \(1/\alpha\). Vertical (\(k\)-conserving) transitions: the photon momentum is negligible, so in a direct gap \(E_c(k)-E_v(k)=h\nu\).
+Absorption \(I(x)=I_0e^{-\alpha x}\), penetration depth \(1/\alpha\) [cite:@roosbroeck1954]. Vertical (\(k\)-conserving) transitions: the photon momentum is negligible, so in a direct gap \(E_c(k)-E_v(k)=h\nu\).
 
 * Derivation (direct gap)
 [[id:time-dependent-perturbation-and-golden-rule][Fermi's golden rule]] with a constant momentum matrix element: \(\alpha(h\nu)\propto|p_{cv}|^2\rho_j(h\nu)\). Joint density of states with reduced mass \(\frac1{m_r}=\frac1{m_e}+\frac1{m_h}\): \(\rho_j=\frac{1}{2\pi^2}\left(\frac{2m_r}{\hbar^2}\right)^{3/2}\sqrt{h\nu-E_g}\). Indirect: a phonon of energy \(E_{ph}\) is absorbed or emitted (second order), giving the quadratic edge and \(\alpha\) values 10–100× lower near the edge.
@@ -30,6 +30,7 @@ Absorption \(I(x)=I_0e^{-\alpha x}\), penetration depth \(1/\alpha\). Vertical (
 Si at 850 nm: \(\alpha\approx535\) cm\(^{-1}\), \(1/\alpha=19\) µm — a Si photodiode needs a thick absorption region (slow). GaAs at 850 nm: \(\alpha\approx10^4\) cm\(^{-1}\), 1 µm suffices. Ge at 1550 nm: \(\alpha\approx460\) cm\(^{-1}\) (tensile strain raises it), hence Ge-on-Si waveguide photodiodes ([[id:photodetectors][photodetectors]]).
 
 * Picture: absorption coefficients (approximate, 300 K)
+#+CAPTION: Absorption coefficients of Si, Ge, GaAs and InGaAs at 300 K (approximate): the direct-gap materials absorb sharply above their band edge, silicon only gradually.
 \begin{tikzpicture}
 \begin{semilogyaxis}[width=7.8cm,height=4.8cm,xlabel={$\lambda$ (µm)},ylabel={$\alpha$ (cm$^{-1}$)},xmin=0.4,xmax=1.8,ymin=1,ymax=1e6]
 \addplot+[no marks,thick,smooth] coordinates {(0.4,1e5) (0.5,1.1e4) (0.6,4.1e3) (0.7,1.9e3) (0.8,850) (0.9,300) (1.0,64) (1.1,3.5)}; \addlegendentry{Si}
@@ -50,7 +51,3 @@ Choice of detector material for each wavelength band, transparency of Si at 1.3�
 
 * Pitfall
 Emission in indirect-gap Si is weak not because the gap is "wrong" but because the radiative rate requires a phonon; non-radiative recombination wins. Strained Ge and III-V integration are the workarounds.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Direct_and_indirect_band_gaps][Direct and indirect band gaps]]
-- [[https://www.pveducation.org/pvcdrom/materials/optical-properties-of-silicon][PVEducation: optical properties of silicon]]

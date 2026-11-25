@@ -20,6 +20,7 @@ RC driven by \(v_s\): \(RC\dot v_C+v_C=v_s\). Step of amplitude \(V\): \(v_C(t)=
 Series RLC: \(\ddot v_C+2\zeta\omega_0\dot v_C+\omega_0^2v_C=\omega_0^2v_s\). Roots \(s=-\zeta\omega_0\pm\omega_0\sqrt{\zeta^2-1}\): overdamped (\(\zeta>1\)), critically damped (\(\zeta=1\), fastest without overshoot), underdamped (\(\zeta<1\), oscillation at \(\omega_d=\omega_0\sqrt{1-\zeta^2}\), overshoot \(e^{-\pi\zeta/\sqrt{1-\zeta^2}}\)). \(Q=1/2\zeta\).
 
 * Picture
+#+CAPTION: Step responses of a first-order system and of a second-order system, underdamped (\(\zeta=0.2\)) and critically damped (\(\zeta=1\)).
 \begin{tikzpicture}
 \begin{axis}[width=7.5cm,height=4.3cm,axis lines=left,xlabel={$\omega_0t$},ylabel={$v_C/V$},xmin=0,xmax=12,ymin=0,ymax=1.6]
 \addplot+[no marks,domain=0:12,samples=200]{1-exp(-0.2*x)*(cos(deg(sqrt(1-0.04)*x))+0.2/sqrt(0.96)*sin(deg(sqrt(0.96)*x)))}; \addlegendentry{$\zeta=0.2$}
@@ -36,7 +37,3 @@ Timing circuits, debouncing, power-supply decoupling and resonance, interconnect
 
 * Pitfall
 Capacitor voltage and inductor current are continuous across a switching instant (finite energy); their derivatives are not. Initial conditions must use \(v_C(0^-)\) and \(i_L(0^-)\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Linear_time-invariant_system][Linear time-invariant system]]
-- [[https://en.wikipedia.org/wiki/RLC_circuit][RLC circuit]]

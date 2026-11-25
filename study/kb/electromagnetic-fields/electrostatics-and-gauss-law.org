@@ -22,7 +22,7 @@ In matter, bound charges \(\rho_b=-\nabla\cdot\mathbf P\); for linear media \(\m
 | infinite line, ρ_l             | ρ_l/(2πεr)          |
 | infinite sheet, ρ_s            | ρ_s/(2ε), each side |
 | uniform sphere, inside (r < a) | ρ r/(3ε)            |
-Each follows by choosing a Gaussian surface on which \(D\) is constant and normal.
+Each follows by choosing a Gaussian surface on which \(D\) is constant and normal. [cite:@maxwell1865]
 
 * Boundary conditions and energy
 Across an interface: \(E_{t1}=E_{t2}\), \(D_{n1}-D_{n2}=\rho_s\). Conductors: \(\mathbf E=0\) inside, surface field \(\rho_s/\epsilon\) normal. Energy \(W=\tfrac12\int\rho V\,\dd V=\tfrac12\int\epsilon E^2\,\dd V\); force by virtual work \(F=-\partial W/\partial x|_Q\).
@@ -35,7 +35,3 @@ Capacitive touch screens and MEMS accelerometers, ESD and high-voltage insulatio
 
 * Pitfall
 Gauss's law is always true but only *useful* with symmetry: for a finite line or a square plate the field is not constant on any simple surface.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Gauss%27s_law][Gauss's law]]
-- [[http://hyperphysics.phy-astr.gsu.edu/hbase/electric/gaulaw.html][HyperPhysics: Gauss's law]]

@@ -11,7 +11,7 @@
 #+summary: Two parallel waveguides exchange power through their evanescent fields: with coupling \(\kappa\), \(P_{cross}=\sin^2(\kappa z)\) for identical guides; equivalently the even and odd supermodes beat with \(\Delta n=n_{even}-n_{odd}\), giving cross-over length \(L_x=\frac{\lambda}{2\Delta n}\) and \(\kappa=\pi\Delta n/\lambda\); a 3 dB coupler has \(\kappa L=\pi/4\).
 
 * Coupled-mode equations
-\(\frac{\dd a_1}{\dd z}=-j\beta_1a_1-j\kappa a_2\), \(\frac{\dd a_2}{\dd z}=-j\beta_2a_2-j\kappa a_1\). With detuning \(\delta=(\beta_1-\beta_2)/2\) and \(a_1(0)=1\):
+\(\frac{\dd a_1}{\dd z}=-j\beta_1a_1-j\kappa a_2\), \(\frac{\dd a_2}{\dd z}=-j\beta_2a_2-j\kappa a_1\) [cite:@marcatili1969]. With detuning \(\delta=(\beta_1-\beta_2)/2\) and \(a_1(0)=1\):
 \[ P_2(z)=\frac{\kappa^2}{\kappa^2+\delta^2}\sin^2\left(\sqrt{\kappa^2+\delta^2}\,z\right). \]
 Complete transfer only for synchronous guides (\(\delta=0\)) — the same algebra as [[id:spin-precession-and-rabi-oscillations][Rabi oscillations]] with \(\kappa\leftrightarrow\Omega/2\), \(\delta\leftrightarrow\Delta/2\).
 
@@ -26,6 +26,3 @@ Power taps and splitters, ring-resonator bus coupling, MZI splitters, polarisati
 
 * Pitfall
 Fabrication changes the gap and width, so \(\kappa\) varies exponentially with gap: a ±10 nm gap error can change the splitting ratio by tens of percent.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Power_dividers_and_directional_couplers][Power dividers and directional couplers]]

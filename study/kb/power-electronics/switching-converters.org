@@ -11,12 +11,13 @@
 #+summary: A switch, a diode (or second switch) and an LC filter convert DC voltages with ideal efficiency 1: in steady state inductor volt-second balance gives \(V_o=DV_{in}\) (buck) and \(V_o=\frac{V_{in}}{1-D}\) (boost); ripple \(\Delta i_L=\frac{(V_{in}-V_o)D}{Lf_s}\) (buck); losses split into conduction (\(I^2R\)), switching (\(\tfrac12VI(t_r+t_f)f_s\)) and reverse recovery.
 
 * Method (volt-second balance)
-Steady state: average inductor voltage over a period is zero (otherwise \(i_L\) would grow without bound); average capacitor current is zero.
+Steady state: average inductor voltage over a period is zero (otherwise \(i_L\) would grow without bound); average capacitor current is zero [cite:@middlebrook1976].
 - *Buck*: switch on \((V_{in}-V_o)DT\); off \(-V_o(1-D)T\) → \(V_o=DV_{in}\).
 - *Boost*: on \(V_{in}DT\); off \((V_{in}-V_o)(1-D)T\) → \(V_o=V_{in}/(1-D)\).
 Continuous conduction if \(I_{load}>\Delta i_L/2\). Output ripple (buck) \(\Delta v=\frac{\Delta i_L}{8Cf_s}\).
 
 * Picture
+#+CAPTION: A buck converter: the switch \(S\) and diode chop the input, and the \(LC\) filter delivers the average \(DV_{in}\) to the load \(R\).
 \begin{tikzpicture}[scale=0.85, transform shape]
 \draw (0,0) to[V, l=$V_{in}$] (0,2) to[nos, l=$S$] (2,2) to[L, l=$L$] (4,2) -- (5,2) to[R, l=$R$] (5,0) -- (0,0);
 \draw (2,0) to[D] (2,2); \draw (4,2) to[C, l_=$C$] (4,0);
@@ -31,7 +32,3 @@ CPU/GPU voltage regulators (multiphase bucks), PFC boost stages, battery charger
 
 * Pitfall
 Ideal formulas ignore the diode drop and resistances: at low \(V_o\) a diode loses \(V_F(1-D)I\) (≈ 0.4·0.725·10 ≈ 3 W in the example) — synchronous rectification with a MOSFET is essential.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Buck_converter][Buck converter]]
-- [[https://en.wikipedia.org/wiki/Boost_converter][Boost converter]]

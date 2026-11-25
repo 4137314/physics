@@ -11,10 +11,10 @@
 #+summary: Quantising \(E^2=\mathbf p^2+m^2\) gives \((\Box+m^2)\phi=0\); its conserved density \(\rho=i(\phi^*\partial_t\phi-\phi\partial_t\phi^*)\) is not positive and solutions with \(E<0\) appear: a one-particle interpretation fails, and the equation describes charged spin-0 particles together with their antiparticles.
 
 * Derivation
-\(E\to i\partial_t\), \(\mathbf p\to-i\nabla\) in \(E^2=\mathbf p^2+m^2\):
+\(E\to i\partial_t\), \(\mathbf p\to-i\nabla\) in \(E^2=\mathbf p^2+m^2\) [cite:@klein1926]:
 \[ \left(\partial_t^2-\nabla^2+m^2\right)\phi=(\partial_\mu\partial^\mu+m^2)\phi=0. \]
 Plane waves \(e^{-ip\cdot x}\) with \(p^0=\pm\sqrt{\mathbf p^2+m^2}\): both signs.
-Current: multiply by \(\phi^*\), subtract the conjugate: \(\partial_\mu j^\mu=0\) with \(j^\mu=i(\phi^*\partial^\mu\phi-\phi\partial^\mu\phi^*)\). For \(e^{-iEt}\), \(\rho=2E|\phi|^2\): negative for \(E<0\). Interpreted as a *charge* density (\(\times e\)), negative-energy solutions describe antiparticles of opposite charge (Pauli–Weisskopf).
+Current: multiply by \(\phi^*\), subtract the conjugate: \(\partial_\mu j^\mu=0\) with \(j^\mu=i(\phi^*\partial^\mu\phi-\phi\partial^\mu\phi^*)\) [cite:@gordon1926]. For \(e^{-iEt}\), \(\rho=2E|\phi|^2\): negative for \(E<0\). Interpreted as a *charge* density (\(\times e\)), negative-energy solutions describe antiparticles of opposite charge (Pauli–Weisskopf).
 
 * Coupling and non-relativistic limit
 Minimal coupling \(\partial_\mu\to D_\mu=\partial_\mu+ieA_\mu\). Writing \(\phi=\varphi e^{-imt}\) and neglecting \(\ddot\varphi\) gives back the Schrödinger equation with rest energy removed.
@@ -27,6 +27,3 @@ Scalar fields model pions and the Higgs; the KG equation with an imaginary mass 
 
 * Pitfall
 \(\rho\) is not a probability density; trying to keep a one-particle interpretation leads to the Klein paradox. The resolution is field theory with particles and antiparticles.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Klein%E2%80%93Gordon_equation][Klein–Gordon equation]]

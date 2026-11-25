@@ -12,7 +12,7 @@
 
 * Definitions
 - An operator \(A\) with dense domain \(D(A)\subset\mathcal H\). Its adjoint: \(D(A^*)=\{\phi:\psi\mapsto\braket{\phi|A\psi}\text{ bounded}\}\), \(\braket{A^*\phi|\psi}=\braket{\phi|A\psi}\).
-- *Symmetric*: \(\braket{\phi|A\psi}=\braket{A\phi|\psi}\) on \(D(A)\), i.e. \(A\subset A^*\). *Self-adjoint*: \(A=A^*\) (same domain). *Essentially self-adjoint*: closure is self-adjoint.
+- *Symmetric*: \(\braket{\phi|A\psi}=\braket{A\phi|\psi}\) on \(D(A)\), i.e. \(A\subset A^*\). *Self-adjoint*: \(A=A^*\) (same domain) [cite:@neumann1930]. *Essentially self-adjoint*: closure is self-adjoint.
 - Hellinger–Toeplitz: a symmetric operator defined on all of \(\mathcal H\) is bounded. Hence \(x\) and \(p\) are necessarily defined on proper domains.
 
 * Theorem (spectral)
@@ -31,7 +31,3 @@ Numerical solvers discretise a self-adjoint problem into a Hermitian matrix: the
 
 * Pitfall
 "Hermitian" (symmetric) is not enough: only self-adjoint operators generate unitary dynamics ([[id:stone-and-stone-von-neumann-theorems][Stone]]) and have a spectral decomposition.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Self-adjoint_operator][Self-adjoint operator]]
-- [[https://en.wikipedia.org/wiki/Projection-valued_measure][Projection-valued measure]]

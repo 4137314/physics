@@ -29,7 +29,3 @@
 
 * Engineering applications
 MOSFETs and CMOS ([[id:digital-electronics][digital electronics]]), LEDs, lasers, photodiodes and solar cells ([[id:optoelectronics][optoelectronics]]), power devices ([[id:power-electronics][power electronics]]).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Semiconductor_device][Semiconductor device]]
-- [[https://www.pveducation.org/][PVEducation: semiconductor and solar-cell basics]]

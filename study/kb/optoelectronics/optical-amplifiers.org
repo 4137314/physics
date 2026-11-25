@@ -11,7 +11,7 @@
 #+summary: An erbium-doped fibre pumped at 980 or 1480 nm amplifies the whole C band (1530–1565 nm) with 20–40 dB gain; saturation output \(P_{sat}\) limits power, and amplified spontaneous emission sets a noise figure \(NF\approx2n_{sp}\ge3\) dB; SOAs are compact and electrically pumped but fast-saturating and polarisation dependent.
 
 * EDFA model
-Er\(^{3+}\) levels: \(^4I_{15/2}\) (ground), \(^4I_{13/2}\) (metastable, \(\tau\approx10\) ms), \(^4I_{11/2}\) (980 nm pump band, fast decay). Three-level system: the metastable level is inverted by the pump; long \(\tau\) makes gain dynamics slow (ms), so no inter-channel crosstalk at Gb/s. Gain \(G=\exp\int_0^L[\sigma_eN_2-\sigma_aN_1]\Gamma\,\dd z\).
+Er\(^{3+}\) levels: \(^4I_{15/2}\) (ground), \(^4I_{13/2}\) (metastable, \(\tau\approx10\) ms), \(^4I_{11/2}\) (980 nm pump band, fast decay) [cite:@mears1987]. Three-level system: the metastable level is inverted by the pump; long \(\tau\) makes gain dynamics slow (ms), so no inter-channel crosstalk at Gb/s [cite:@desurvire1987]. Gain \(G=\exp\int_0^L[\sigma_eN_2-\sigma_aN_1]\Gamma\,\dd z\).
 
 * Noise
 Each amplifier adds ASE with spectral density \(S_{ASE}=n_{sp}h\nu(G-1)\) per polarisation, \(n_{sp}=\frac{N_2}{N_2-N_1}\ge1\). Signal–ASE beat noise at the detector gives \(NF=\frac{\mathrm{SNR}_{in}}{\mathrm{SNR}_{out}}\approx2n_{sp}\) for large \(G\): quantum limit 3 dB. Chained amplifiers: OSNR \(\approx58+P_{ch}-\mathrm{span\ loss}-NF-10\log N\) dB (0.1 nm bandwidth, 1550 nm).
@@ -23,6 +23,7 @@ A laser diode without feedback (AR-coated facets). Gain recovery ~100 ps: patter
 80 km spans of 0.22 dB/km (17.6 dB loss) with EDFAs of NF 5 dB, 0 dBm per channel, 10 spans: OSNR \(\approx58+0-17.6-5-10=25.4\) dB, enough for 10 Gb/s OOK (needs ~15 dB) and for 100 Gb/s coherent QPSK (~12–15 dB).
 
 * Picture: Er\(^{3+}\) levels in silica
+#+CAPTION: Energy levels of Er\(^{3+}\) in silica: pumped at 980 nm or 1480 nm, the metastable level amplifies signals at 1530–1565 nm.
 \begin{tikzpicture}[scale=0.9]
 \fill[gray!20] (0,0) rectangle (3,0.25); \node[font=\scriptsize,anchor=west] at (3.1,0.12) {$^4I_{15/2}$ ground};
 \fill[gray!20] (0,2.2) rectangle (3,2.5); \node[font=\scriptsize,anchor=west] at (3.1,2.35) {$^4I_{13/2}$ metastable, $\tau\approx10$ ms};
@@ -44,7 +45,3 @@ An EDFA amplifies a −30 dBm signal at 1550 nm by 30 dB with a 980 nm pump. (a)
 
 * Pitfall
 The noise figure is defined against a shot-noise-limited input; an amplifier cannot improve SNR, it only overcomes the thermal noise of the receiver that follows.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Optical_amplifier][Optical amplifier]]
-- [[https://www.rp-photonics.com/erbium_doped_fiber_amplifiers.html][RP Photonics: erbium-doped fibre amplifiers]]

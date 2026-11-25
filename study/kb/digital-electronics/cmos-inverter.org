@@ -11,7 +11,7 @@
 #+summary: An NMOS pull-down and a PMOS pull-up with common gate: rail-to-rail outputs (\(V_{OH}=V_{DD}\), \(V_{OL}=0\)), no static current, and switching threshold \(V_M=\frac{V_{TN}+\sqrt{K_p/K_n}\,(V_{DD}+V_{TP})}{1+\sqrt{K_p/K_n}}\); a symmetric inverter (\(V_M=V_{DD}/2\), equal rise/fall) needs \(K_p=K_n\), i.e. \((W/L)_p=\frac{K'_n}{K'_p}(W/L)_n\approx2\)–\(2.5\times\).
 
 * Derivation of \(V_M\)
-At \(v_I=v_O=V_M\) both transistors are saturated; equate \(\frac{K_n}2(V_M-V_{TN})^2=\frac{K_p}2(V_{DD}-V_M+V_{TP})^2\) (\(V_{TP}<0\)). Taking square roots: \(\sqrt{K_n}(V_M-V_{TN})=\sqrt{K_p}(V_{DD}-V_M+V_{TP})\), which gives the formula above. Gain at \(V_M\) is infinite in the square-law model (finite with \(\lambda\)): a nearly ideal VTC.
+At \(v_I=v_O=V_M\) both transistors are saturated; equate \(\frac{K_n}2(V_M-V_{TN})^2=\frac{K_p}2(V_{DD}-V_M+V_{TP})^2\) (\(V_{TP}<0\)). Taking square roots: \(\sqrt{K_n}(V_M-V_{TN})=\sqrt{K_p}(V_{DD}-V_M+V_{TP})\), which gives the formula above. Gain at \(V_M\) is infinite in the square-law model (finite with \(\lambda\)): a nearly ideal VTC [cite:@wanlass1963].
 
 * Regions along the VTC
 | v_I range          | NMOS       | PMOS       | v_O           |
@@ -31,6 +31,3 @@ The universal building block: buffers, clock trees, ring oscillators (process mo
 
 * Pitfall
 Equal \(W/L\) for N and P does *not* give a symmetric inverter: holes are ~2–3 times less mobile ([[id:effective-mass-and-holes][hole effective mass]]).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Inverter_(logic_gate)][Inverter (logic gate)]]

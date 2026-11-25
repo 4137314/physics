@@ -35,7 +35,3 @@ Interconnect capacitance in ICs (dominant load for [[id:cmos-propagation-delay][
 
 * Pitfall
 Fringing fields make \(\epsilon A/d\) an underestimate when plate dimensions are not \(\gg d\) — important for narrow IC wires, where fringe capacitance can exceed the plate term.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Method_of_image_charges][Method of image charges]]
-- [[https://en.wikipedia.org/wiki/Laplace%27s_equation][Laplace's equation]]

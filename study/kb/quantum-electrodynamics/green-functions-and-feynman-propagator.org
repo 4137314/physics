@@ -14,7 +14,7 @@
 \(G^+(x,t;x',t')=-i\theta(t-t')\bra xe^{-iH(t-t')}\ket{x'}\) satisfies \((i\partial_t-H)G^+=\delta\delta\) and propagates the wave forward (Huygens). In energy space \(G^+(E)=\frac{1}{E-H+i\epsilon}\): the \(+i\epsilon\) picks retarded (causal) behaviour. Iterating \(\psi=\phi+\int G^+V\psi\) gives the Born series of [[id:scattering-and-born-approximation][scattering theory]].
 
 * Relativistic propagator (derivation)
-Fourier transform: \(S_F(x)=\int\frac{\dd^4p}{(2\pi)^4}e^{-ip\cdot x}\frac{\slashed p+m}{p^2-m^2+i\epsilon}\). Poles at \(p^0=\pm(E_p-i\epsilon)\). For \(t>0\) close the \(p^0\) contour below: only the positive-energy pole, giving \(-i\sum_s u\bar u\,e^{-ip\cdot x}/2E\); for \(t<0\) close above: negative energies, \(+i\sum v\bar v\,e^{+ip\cdot x}/2E\). Hence
+Fourier transform: \(S_F(x)=\int\frac{\dd^4p}{(2\pi)^4}e^{-ip\cdot x}\frac{\slashed p+m}{p^2-m^2+i\epsilon}\) [cite:@feynman1949b]. Poles at \(p^0=\pm(E_p-i\epsilon)\). For \(t>0\) close the \(p^0\) contour below: only the positive-energy pole, giving \(-i\sum_s u\bar u\,e^{-ip\cdot x}/2E\); for \(t<0\) close above: negative energies, \(+i\sum v\bar v\,e^{+ip\cdot x}/2E\). Hence
 \[ S_F(x'-x)=-i\theta(t'-t)\sum_{E>0}\psi_E(x')\bar\psi_E(x)+i\theta(t-t')\sum_{E<0}\psi_E(x')\bar\psi_E(x): \]
 electrons forward, positrons (negative energy backward) — Feynman's boundary conditions.
 
@@ -29,7 +29,3 @@ Green's functions are the universal tool of linear response: impedance and trans
 
 * Pitfall
 The \(i\epsilon\) is not a technicality: choosing \(-i\epsilon\) gives the advanced propagator and violates causality; choosing the retarded one for both poles loses antiparticles.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Propagator][Propagator]]
-- [[https://en.wikipedia.org/wiki/Green%27s_function][Green's function]]

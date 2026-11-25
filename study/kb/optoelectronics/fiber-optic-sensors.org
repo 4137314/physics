@@ -11,9 +11,10 @@
 #+summary: A fibre Bragg grating reflects \(\lambda_B=2\bar n\Lambda\) with peak reflectance \(\tanh^2(\kappa L)\), \(\kappa=\pi\Delta n/\lambda_B\); strain and temperature shift it, \(\frac{\delta\lambda_B}{\lambda_B}=(1-p_e)\epsilon+(\alpha_\Lambda+\xi)\delta T\) (≈ 1.2 pm/µε and ≈ 11 pm/K at 1550 nm); a fibre gyroscope measures rotation through the Sagnac phase \(\Delta\phi=\frac{4\pi LR}{\lambda c}\Omega\) between counter-propagating beams in a coil.
 
 * Fibre Bragg grating
-UV interference writes a periodic index change \(\Delta n\) with period \(\Lambda\) into a germanium-doped core. Each period reflects weakly; at \(\lambda_B=2\bar n\Lambda\) (first order) all reflections are in phase — the fibre version of a [[id:thin-film-optics-and-coatings][dielectric mirror]] ([[id:bragg-gratings][coupled-mode theory]]). Peak reflectance \(R=\tanh^2\kappa L\); bandwidth between the first zeros \(\Delta\lambda_0=\frac{\lambda_B^2}{\pi\bar nL}\sqrt{(\kappa L)^2+\pi^2}\): weak gratings (\(\kappa L\ll\pi\)) are narrow, \(\approx\lambda_B^2/\bar nL\); strong ones saturate at \(\approx\lambda_B^2\kappa/\pi\bar n\).
+UV interference writes a periodic index change \(\Delta n\) with period \(\Lambda\) into a germanium-doped core [cite:@hill1978;@meltz1989]. Each period reflects weakly; at \(\lambda_B=2\bar n\Lambda\) (first order) all reflections are in phase — the fibre version of a [[id:thin-film-optics-and-coatings][dielectric mirror]] ([[id:bragg-gratings][coupled-mode theory]]). Peak reflectance \(R=\tanh^2\kappa L\); bandwidth between the first zeros \(\Delta\lambda_0=\frac{\lambda_B^2}{\pi\bar nL}\sqrt{(\kappa L)^2+\pi^2}\): weak gratings (\(\kappa L\ll\pi\)) are narrow, \(\approx\lambda_B^2/\bar nL\); strong ones saturate at \(\approx\lambda_B^2\kappa/\pi\bar n\).
 
 * Picture: grating, reflected and transmitted spectra
+#+CAPTION: A fibre Bragg grating lit by a broadband source: it reflects a narrow line at the Bragg wavelength and leaves a notch in the transmitted spectrum.
 \begin{tikzpicture}[scale=0.95]
 \fill[gray!15] (0,0) rectangle (4.5,0.8);
 \foreach \x in {1.2,1.4,...,3.3} \fill[blue!40] (\x,0.2) rectangle (\x+0.08,0.6);
@@ -39,8 +40,9 @@ Strain stretches \(\Lambda\) and lowers \(\bar n\) through the photoelastic effe
 Two reflectors in or at the end of a fibre form a [[id:interference-and-fabry-perot][Fabry–Perot]] cavity whose fringe position measures the gap: pressure diaphragms, displacement, temperature. Tunable FP filters (piezo-driven gap) and thin-film filters select DWDM channels; their performance is described by FSR, finesse, insertion loss and adjacent-channel isolation.
 
 * Sagnac effect and gyroscopes (derivation)
-Light travels around a loop of radius \(R\) in both directions while the loop rotates at \(\Omega\). The co-rotating beam must travel further to reach the moving start point: the time difference is \(\Delta t=\frac{4A\Omega}{c^2}\) per turn (\(A=\pi R^2\)), independent of the refractive index. For a coil of \(N\) turns, length \(L=2\pi RN\): \(\Delta\phi=\omega\Delta t=\frac{8\pi NA\Omega}{\lambda c}=\frac{4\pi LR}{\lambda c}\Omega\). A fibre-optic gyroscope (FOG) splits light in a 3 dB [[id:fiber-couplers][coupler]] into the two ends of the coil and measures the interference; a ring laser gyro instead measures the beat between two counter-propagating laser modes, \(\Delta\nu=\frac{4A}{\lambda P}\Omega\) (perimeter \(P\)), and suffers lock-in at low rates.
+Light travels around a loop of radius \(R\) in both directions while the loop rotates at \(\Omega\). The co-rotating beam must travel further to reach the moving start point: the time difference is \(\Delta t=\frac{4A\Omega}{c^2}\) per turn (\(A=\pi R^2\)), independent of the refractive index. For a coil of \(N\) turns, length \(L=2\pi RN\): \(\Delta\phi=\omega\Delta t=\frac{8\pi NA\Omega}{\lambda c}=\frac{4\pi LR}{\lambda c}\Omega\). A fibre-optic gyroscope (FOG) splits light in a 3 dB [[id:fiber-couplers][coupler]] into the two ends of the coil and measures the interference; a ring laser gyro instead measures the beat between two counter-propagating laser modes, \(\Delta\nu=\frac{4A}{\lambda P}\Omega\) (perimeter \(P\)), and suffers lock-in at low rates [cite:@vali1976].
 
+#+CAPTION: The Sagnac effect: beams counter-propagating around a rotating loop return with a phase difference proportional to the rotation rate \(\Omega\).
 \begin{tikzpicture}[scale=0.9]
 \draw[thick] (3,0) circle (1.1); \draw[thick] (3,0) circle (1.0);
 \draw[-{Latex},red!70!black] (3,0) ++(200:1.35) arc (200:330:1.35);
@@ -68,7 +70,3 @@ An FBG at 1550 nm is bonded to a steel beam. The reflected peak moves from 1550.
 
 * Pitfall
 The Sagnac phase does not depend on the fibre index (it is a relativistic time difference), but the FBG shift does: \(\lambda_B=2\bar n\Lambda\) uses the *effective* index of the core mode.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Fiber_Bragg_grating][Fiber Bragg grating]]
-- [[https://en.wikipedia.org/wiki/Fibre-optic_gyroscope][Fibre-optic gyroscope]]

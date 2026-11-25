@@ -11,7 +11,7 @@
 #+summary: Strongly continuous unitary groups \(U(t)\) are exactly \(e^{-itA}\) with \(A\) self-adjoint (Stone), which justifies the Hamiltonian as generator of dynamics; irreducible representations of the Weyl form of \([x,p]=i\hbar\) are all unitarily equivalent to the Schrödinger representation (Stone–von Neumann), so wave mechanics is not a choice.
 
 * Stone's theorem
-Let \(U(t)\), \(t\in\mathbb R\), be unitary with \(U(t+s)=U(t)U(s)\) and \(t\mapsto U(t)\psi\) continuous for every \(\psi\). Then there is a unique self-adjoint \(A\) with \(U(t)=e^{-itA}\), defined by the spectral theorem, and
+Let \(U(t)\), \(t\in\mathbb R\), be unitary with \(U(t+s)=U(t)U(s)\) and \(t\mapsto U(t)\psi\) continuous for every \(\psi\) [cite:@stone1932]. Then there is a unique self-adjoint \(A\) with \(U(t)=e^{-itA}\), defined by the spectral theorem, and [cite:@neumann1931]
 \[ D(A)=\left\{\psi:\lim_{t\to0}\frac{U(t)\psi-\psi}{t}\text{ exists}\right\},\qquad A\psi=i\lim_{t\to0}\frac{U(t)\psi-\psi}{t}. \]
 Conversely each self-adjoint \(A\) generates such a group. Hence: unitary time evolution ⇔ self-adjoint \(H\); unitary translations ⇔ self-adjoint \(p\).
 
@@ -31,7 +31,3 @@ The theorem fails for infinitely many degrees of freedom: quantum fields admit i
 
 * Pitfall
 Formal commutators on a common domain do not imply the Weyl relations (Nelson's counterexamples); uniqueness needs the exponentiated form.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Stone%27s_theorem_on_one-parameter_unitary_groups][Stone's theorem]]
-- [[https://en.wikipedia.org/wiki/Stone%E2%80%93von_Neumann_theorem][Stone–von Neumann theorem]]

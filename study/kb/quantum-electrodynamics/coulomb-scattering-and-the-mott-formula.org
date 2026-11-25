@@ -15,9 +15,9 @@
 2. Energy conserved (static field), \(\mathbf q=\mathbf p_f-\mathbf p_i\), \(|\mathbf q|=2|\mathbf p|\sin\frac\theta2\).
 3. Cross section \(\frac{\dd\sigma}{\dd\Omega}=\frac{Z^2\alpha^2}{|\mathbf q|^4}\cdot4\cdot\frac12\sum_{s,s'}|\bar u_f\gamma^0u_i|^2\).
 4. Trace (see [[id:gamma-matrix-traces][traces]]): \(\tfrac12\Tr[\gamma^0(\slashed p_i+m)\gamma^0(\slashed p_f+m)]=2(E^2+\mathbf p_i\cdot\mathbf p_f+m^2)=4E^2\left(1-\beta^2\sin^2\frac\theta2\right)\).
-5. Combining:
+5. Combining [cite:@mott1929]:
 \[ \frac{\dd\sigma}{\dd\Omega}=\frac{Z^2\alpha^2E^2}{4|\mathbf p|^4\sin^4\frac\theta2}\left(1-\beta^2\sin^2\frac\theta2\right). \]
-Non-relativistic limit (\(\beta\to0\), \(E\to m\)): [[id:scattering-and-born-approximation][Rutherford]]. For \(\beta\to1\) backscattering vanishes: helicity conservation.
+Non-relativistic limit (\(\beta\to0\), \(E\to m\)): [[id:scattering-and-born-approximation][Rutherford]] [cite:@rutherford1911]. For \(\beta\to1\) backscattering vanishes: helicity conservation.
 
 * Form factors and recoil
 Extended charge \(\rho(\mathbf r)\): multiply by \(|F(\mathbf q)|^2\), \(F=\int\rho e^{i\mathbf q\cdot\mathbf r}\dd^3r\), \(F\approx1-q^2\braket{r^2}/6\): electron scattering measures nuclear radii (Hofstadter). Scattering off a proton with recoil and magnetic moment gives the Rosenbluth formula with \(G_E,G_M\).
@@ -30,7 +30,3 @@ Electron microscopy contrast (high-angle annular dark field ∝ \(Z^{\sim1.7}\))
 
 * Pitfall
 \(|\mathbf p|\) and \(E\) are both needed: the relativistic Mott formula has \(E^2/|\mathbf p|^4\), not \(1/E^2\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Mott_scattering][Mott scattering]]
-- [[https://en.wikipedia.org/wiki/Form_factor_(quantum_field_theory)][Form factor]]

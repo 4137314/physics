@@ -11,7 +11,7 @@
 #+summary: Gain requires population inversion \(N_2>\frac{g_2}{g_1}N_1\), with gain coefficient \(g(\nu)=\left(N_2-\frac{g_2}{g_1}N_1\right)\frac{\lambda^2}{8\pi n^2\tau_{sp}}\mathcal{L}(\nu)\); oscillation starts when gain balances losses, \(g_{th}=\alpha_s+\frac{1}{2L}\ln\frac{1}{R_1R_2}\), and above threshold the gain clamps while output grows linearly with pumping.
 
 * Gain (derivation)
-From the [[id:radiative-transitions-and-selection-rules][Einstein relations]], the net stimulated rate for a beam of intensity \(I\) in a line of shape \(\mathcal L(\nu)\) (\(\int\mathcal L=1\)) gives \(\frac{\dd I}{\dd z}=g(\nu)I\) with \(g\) as in the summary; the emission cross section is \(\sigma=\frac{\lambda^2}{8\pi n^2\tau_{sp}}\mathcal L(\nu)\). Inversion is impossible in a two-level system with optical pumping (saturation gives at most \(N_2=N_1\)): three-level (ruby) or four-level (Nd:YAG, He-Ne) schemes are needed; four-level lasers have a nearly empty lower level and low threshold.
+From the [[id:radiative-transitions-and-selection-rules][Einstein relations]], the net stimulated rate for a beam of intensity \(I\) in a line of shape \(\mathcal L(\nu)\) (\(\int\mathcal L=1\)) gives \(\frac{\dd I}{\dd z}=g(\nu)I\) with \(g\) as in the summary; the emission cross section is \(\sigma=\frac{\lambda^2}{8\pi n^2\tau_{sp}}\mathcal L(\nu)\) [cite:@einstein1917]. Inversion is impossible in a two-level system with optical pumping (saturation gives at most \(N_2=N_1\)): three-level (ruby) or four-level (Nd:YAG, He-Ne) schemes are needed; four-level lasers have a nearly empty lower level and low threshold [cite:@schawlow1958].
 
 * Threshold
 Round trip: \(R_1R_2e^{2(g-\alpha_s)L}=1\) (amplitude) and phase \(2kL=2\pi m\) (frequency, the [[id:interference-and-fabry-perot][cavity modes]]). Hence \(g_{th}=\alpha_s+\frac1{2L}\ln\frac1{R_1R_2}\). Photon lifetime \(\frac1{\tau_{ph}}=\frac{c}{n}g_{th}\).
@@ -29,6 +29,7 @@ He-Ne at 632.8 nm, \(T=400\) K, Ne mass 20 u: \(\Delta\nu_D=\frac{2\cdot4.74\tim
 *Q-switching*: hold the cavity loss high while pumping builds a large inversion, then switch the loss off: ns pulses of high peak power. *Mode-locking*: lock the phases of \(N\) longitudinal modes: pulses of duration \(\approx1/(N\Delta\nu_{FSR})\) (fs in Ti:sapphire), repetition \(c/2L\).
 
 * Picture: output and gain versus pump
+#+CAPTION: Laser output and gain versus pump: above threshold the gain clamps at the loss level and the output grows linearly with the pump.
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={pump rate (units of threshold)},ylabel={a.u.},xmin=0,xmax=3,ymin=0,ymax=2.2]
 \addplot+[no marks,thick,domain=0:3,samples=60]{(x<1)*0.02*x+(x>=1)*(0.02+1.0*(x-1))}; \addlegendentry{output power}
@@ -47,7 +48,3 @@ Laser machining (Q-switched Nd:YAG), surgery, LiDAR, metrology (stabilised He-Ne
 
 * Pitfall
 Above threshold the *gain* does not increase with pumping: extra pump goes into photons. Measuring gain to estimate pump level only works below threshold.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Laser][Laser]]
-- [[https://www.rp-photonics.com/q_switching.html][RP Photonics: Q-switching]]

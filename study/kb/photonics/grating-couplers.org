@@ -11,7 +11,7 @@
 #+summary: A shallow grating diffracts the guided mode out of plane when \(n_{eff}-n_c\sin\theta=\frac{\lambda}{\Lambda}\) (first order); efficiency = directionality × overlap of the emitted profile with the fibre's Gaussian mode; typical SOI couplers reach −2 to −5 dB with ~30–40 nm 1 dB bandwidth, whereas edge couplers with inverse tapers are broadband and lower loss.
 
 * Model
-Phase matching along the grating: \(\beta-\frac{2\pi}{\Lambda}=k_0n_c\sin\theta\) ([[id:diffraction-and-gratings][grating equation]]). Coupling efficiency \(\eta=\eta_{dir}\,\eta_{overlap}\): directionality (fraction going up rather than into the substrate, improved by BOX thickness choice or bottom mirrors), overlap \(\left|\int E_{grating}E_{fibre}^*\right|^2\) (exponential decay profile vs Gaussian: max ≈ 80%; apodisation shapes it Gaussian). Fibres are tilted 8–12° to avoid second-order back-reflection.
+Phase matching along the grating: \(\beta-\frac{2\pi}{\Lambda}=k_0n_c\sin\theta\) ([[id:diffraction-and-gratings][grating equation]]) [cite:@dakss1970]. Coupling efficiency \(\eta=\eta_{dir}\,\eta_{overlap}\): directionality (fraction going up rather than into the substrate, improved by BOX thickness choice or bottom mirrors), overlap \(\left|\int E_{grating}E_{fibre}^*\right|^2\) (exponential decay profile vs Gaussian: max ≈ 80%; apodisation shapes it Gaussian). Fibres are tilted 8–12° to avoid second-order back-reflection.
 
 * Worked example
 SOI, \(n_{eff}\approx2.85\) in the partially etched region (≈ 2.7 average), \(\lambda=1550\) nm, \(\theta=10^\circ\) in air: \(\Lambda=\frac{1.55}{2.7-\sin10^\circ}=\frac{1.55}{2.526}=614\) nm. Bandwidth: \(\frac{\dd\lambda}{\dd\theta}\) and \(n_g\) set ≈ 35 nm (1 dB) — a fibre-angle error of 1° shifts the peak by ≈ 15 nm.
@@ -21,6 +21,3 @@ Wafer-scale optical testing (no dicing), fibre arrays to transceiver chips, opti
 
 * Pitfall
 Grating couplers are polarisation selective (TE design rejects TM) and narrowband; edge couplers are preferred for broadband or polarisation-diverse products.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Photonic_integrated_circuit][Photonic integrated circuit]]

@@ -12,7 +12,7 @@
 
 * Method
 1. Write \(Y=\overline{F}\) with \(F\) in AND/OR form; pull-down: AND → series NMOS, OR → parallel NMOS.
-2. Pull-up: the dual (series ↔ parallel) with PMOS.
+2. Pull-up: the dual (series ↔ parallel) with PMOS [cite:@wanlass1963].
 3. Reference inverter \((W/L)_n=r_n\), \((W/L)_p=r_p\) gives the target delay ([[id:cmos-propagation-delay][delay]]).
 4. For each network find the longest series chain \(k\) in any conducting path: size those devices \(k\cdot r\). Parallel devices each get the single-device size (worst case = only one conducting).
 5. Delay estimate: equivalent inverter with \(C_L\) including internal diffusion capacitances.
@@ -34,6 +34,3 @@ Standard-cell libraries (NAND/NOR/AOI/OAI/XOR cells in several drive strengths),
 
 * Pitfall
 Internal node capacitances in series stacks add delay and can cause charge sharing; and the "worst case" for rise and fall are different input combinations.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/NAND_gate#Implementations][NAND gate implementations]]

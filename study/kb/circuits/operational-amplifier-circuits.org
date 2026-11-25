@@ -11,7 +11,7 @@
 #+summary: With negative feedback an ideal op-amp (infinite gain and input impedance) forces \(v_+=v_-\) and draws no input current; this gives inverting gain \(-R_f/R_1\), non-inverting \(1+R_f/R_1\), integrators \(-1/sRC\), transimpedance \(-R_f\); a real op-amp has finite gain–bandwidth product \(\mathrm{GBW}\), so closed-loop bandwidth \(\approx\mathrm{GBW}/(1+R_f/R_1)\).
 
 * Model
-Open-loop \(A(s)=\frac{A_0}{1+s/\omega_p}\), GBW \(=A_0\omega_p/2\pi\). Feedback fraction \(\beta\): closed-loop gain \(\frac{A}{1+A\beta}\to\frac1\beta\) when loop gain \(A\beta\gg1\). Golden rules (ideal): no input current, \(v_+=v_-\) (virtual short).
+Open-loop \(A(s)=\frac{A_0}{1+s/\omega_p}\), GBW \(=A_0\omega_p/2\pi\). Feedback fraction \(\beta\): closed-loop gain \(\frac{A}{1+A\beta}\to\frac1\beta\) when loop gain \(A\beta\gg1\) [cite:@black1934]. Golden rules (ideal): no input current, \(v_+=v_-\) (virtual short) [cite:@ragazzini1947].
 
 * Standard circuits
 | circuit        | transfer          | note                            |
@@ -35,7 +35,3 @@ Sensor conditioning, active filters (Sallen–Key), ADC drivers, precision refer
 
 * Pitfall
 The virtual short holds only with negative feedback and an op-amp not saturated or slew-limited; with positive feedback (comparators, Schmitt triggers) \(v_+\neq v_-\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Operational_amplifier_applications][Operational amplifier applications]]
-- [[https://artofelectronics.net/][The Art of Electronics companion site]]

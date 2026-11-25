@@ -20,6 +20,7 @@
 | radiation     | dipoles, antenna parameters, Friis link budget            |
 
 * Picture
+#+CAPTION: Map of electromagnetics: statics, Maxwell's equations with the time derivatives, plane waves, and from them guided waves (\(Z_0\), \(\Gamma\), cutoff) and radiation (gain, Friis).
 \begin{tikzpicture}[node distance=1.3cm, every node/.style={draw, rounded corners, font=\small, align=center}]
 \node (s) {statics\\$\nabla\cdot\mathbf D=\rho$, $\nabla\times\mathbf H=\mathbf J$};
 \node (m) [right=of s] {Maxwell\\$+\partial_t$ terms};
@@ -31,7 +32,3 @@
 
 * Engineering applications
 Capacitive sensors, motors and transformers, signal integrity on PCBs, RF front ends and antennas, microwave links, EMC, optical fibres and integrated photonics.
-
-* Explore
-- [[https://ocw.mit.edu/courses/6-013-electromagnetics-and-applications-spring-2009/][MIT 6.013 Electromagnetics and applications]]
-- [[https://www.feynmanlectures.caltech.edu/II_toc.html][The Feynman volume II online]]

@@ -17,6 +17,7 @@ For a Gaussian output pulse of rms width \(\sigma\), the FWHM is \(\Delta\tau_{1
 - Chromatic: \(\sigma_{intra}=|D|L\sigma_\lambda\) with \(\sigma_\lambda\) the rms source width (\(\Delta\lambda_{1/2}=2.355\sigma_\lambda\)).
 
 * Picture: RZ and NRZ, and why spreading closes the eye
+#+CAPTION: Return-to-zero and non-return-to-zero line codes for the same bit sequence: RZ needs twice the bandwidth.
 \begin{tikzpicture}[scale=0.85]
 \draw[-{Latex}] (0,0)--(8.4,0) node[right,font=\scriptsize]{$t$};
 \node[font=\small,anchor=east] at (-0.1,0.5) {NRZ};
@@ -27,6 +28,7 @@ For a Gaussian output pulse of rms width \(\sigma\), the FWHM is \(\Delta\tau_{1
 \draw[thick,red!70!black] (0,-2)--(0,-1)--(0.5,-1)--(0.5,-2)--(1,-2)--(1,-1)--(1.5,-1)--(1.5,-2)--(3,-2)--(3,-1)--(3.5,-1)--(3.5,-2)--(4,-2)--(4,-1)--(4.5,-1)--(4.5,-2)--(6,-2)--(6,-1)--(6.5,-1)--(6.5,-2)--(8,-2);
 \end{tikzpicture}
 
+#+CAPTION: Received NRZ pulses broadened by dispersion (\(\sigma=0.12T\), \(0.25T\), \(0.4T\)): as the pulses spread into the neighbouring slots, the eye closes.
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.2cm,axis lines=left,xlabel={$t/T$},ylabel={power},xmin=-1,xmax=2,ymin=0,ymax=1.3,ytick=\empty]
 \addplot+[no marks,thick,domain=-1:2,samples=200]{exp(-x^2/(2*0.12^2))+exp(-(x-1)^2/(2*0.12^2))}; \addlegendentry{$\sigma=0.12T$}
@@ -56,7 +58,3 @@ An 850 nm LED (\(\Delta\lambda_{1/2}=40\) nm) drives a graded-index fibre (\(n_1
 
 * Pitfall
 Use rms widths (\(\sigma\)) when adding in quadrature and FWHM only with the matching 0.59 factor; mixing them overestimates the bit rate by 2.35×. State RZ or NRZ: they differ by a factor 2.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Link_budget][Link budget]]
-- [[https://en.wikipedia.org/wiki/Shannon%E2%80%93Hartley_theorem][Shannon–Hartley theorem]]

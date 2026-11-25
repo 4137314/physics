@@ -11,23 +11,24 @@
 #+summary: Shot noise \(\overline{i_s^2}=2q(I_{ph}+I_d)B\) (times \(M^2F\) in an APD) and thermal noise \(\overline{i_t^2}=4k_BTB/R_L\) set \(\mathrm{SNR}=\frac{(\mathcal RP)^2}{\overline{i_s^2}+\overline{i_t^2}}\); bit error rate \(\mathrm{BER}=\tfrac12\mathrm{erfc}(Q/\sqrt2)\), \(Q=6\) for \(10^{-9}\); NEP is the power giving SNR = 1 in 1 Hz.
 
 * Shot noise (derivation)
-Photoelectrons arrive as a Poisson process (coherent light, [[id:coherent-states][Poisson photon statistics]]) of rate \(r=I/q\). Counting in time \(T\): variance \(rT\), so the current variance in bandwidth \(B=1/2T\) is \(\sigma_I^2=\frac{q^2rT}{T^2}=\frac{qI}{T}=2qIB\). With APD gain, each primary carrier yields a random number of secondaries: \(2qIM^2FB\).
+Photoelectrons arrive as a Poisson process (coherent light, [[id:coherent-states][Poisson photon statistics]]) of rate \(r=I/q\) [cite:@schottky1918]. Counting in time \(T\): variance \(rT\), so the current variance in bandwidth \(B=1/2T\) is \(\sigma_I^2=\frac{q^2rT}{T^2}=\frac{qI}{T}=2qIB\). With APD gain, each primary carrier yields a random number of secondaries: \(2qIM^2FB\).
 
 * SNR and regimes
 \[ \mathrm{SNR}=\frac{(M\mathcal RP)^2}{2q(\mathcal RP+I_d)M^2FB+4k_BTB/R_L}. \]
-Thermal-noise limited (pin with low power): SNR ∝ \(P^2\); shot-noise (quantum) limited: SNR \(=\eta P/2h\nu B\) ∝ \(P\). APDs help when thermal noise dominates; optimum \(M\) balances the two.
+Thermal-noise limited (pin with low power): SNR ∝ \(P^2\); shot-noise (quantum) limited: SNR \(=\eta P/2h\nu B\) ∝ \(P\). APDs help when thermal noise dominates; optimum \(M\) balances the two [cite:@johnson1928].
 
 * Digital receivers
 Gaussian noise, threshold midway: \(Q=\frac{I_1-I_0}{\sigma_1+\sigma_0}\), \(\mathrm{BER}=\frac12\mathrm{erfc}\frac{Q}{\sqrt2}\approx\frac{e^{-Q^2/2}}{Q\sqrt{2\pi}}\). Quantum limit for OOK: 10 photons per bit average (\(e^{-N}=10^{-9}\) with 20 photons per "1").
 
 * NEP and the minimum detectable power
-The noise-equivalent power is the optical power that gives SNR = 1 in a 1 Hz bandwidth, in W/√Hz: in a bandwidth \(B\) the minimum power is \(P_{min}=\mathrm{NEP}\sqrt B\), because noise currents grow as \(\sqrt B\). The detector alone (dark current) sets \(P_d=\frac{\sqrt{2qI_dB}}{\mathcal R}\); the load sets \(P_{th}=\frac{1}{\mathcal R}\sqrt{\frac{4k_BTB}{R_L}}\). Detectivity \(D=1/\mathrm{NEP}\), specific detectivity \(D^*=\sqrt A/\mathrm{NEP}\) (compares detectors of different area).
+The noise-equivalent power is the optical power that gives SNR = 1 in a 1 Hz bandwidth, in W/√Hz: in a bandwidth \(B\) the minimum power is \(P_{min}=\mathrm{NEP}\sqrt B\), because noise currents grow as \(\sqrt B\). The detector alone (dark current) sets \(P_d=\frac{\sqrt{2qI_dB}}{\mathcal R}\); the load sets \(P_{th}=\frac{1}{\mathcal R}\sqrt{\frac{4k_BTB}{R_L}}\) [cite:@nyquist1928]. Detectivity \(D=1/\mathrm{NEP}\), specific detectivity \(D^*=\sqrt A/\mathrm{NEP}\) (compares detectors of different area).
 Numbers: \(\mathcal R=0.95\) A/W, NEP \(2.66\times10^{-15}\) W/√Hz, \(I_d=2\) nA, \(B=10\) GHz, \(R_L=500\) Ω: \(P_{min}=0.27\) nW, \(P_d=2.7\) nW, \(P_{th}=0.61\) µW. The resistor is 2000 times worse than the detector's NEP: a 50–500 Ω load throws away the detector's sensitivity, which is the reason for transimpedance amplifiers and APDs ([[id:exam-basics-of-optoelectronics][solved exam papers]]).
 
 * Worked example
 pin receiver, \(\mathcal R=1\) A/W, \(R_L=1\) kΩ (TIA feedback), \(T=300\) K, \(B=7\) GHz (10 Gb/s): thermal \(\sigma_t=\sqrt{4\cdot4.14\times10^{-21}\cdot7\times10^9/1000}=0.34\) µA. For \(Q=6\) with \(\sigma_0\approx\sigma_1\approx0.34\) µA: \(I_1=2\cdot6\cdot0.34=4.1\) µA, i.e. average power ≈ 2 µA/1 A/W = 2 µW = −27 dBm sensitivity (shot noise at 4 µA is only 0.1 µA, negligible).
 
 * Picture: SNR versus received power (\(\mathcal R=1\) A/W, 1 GHz, 1 kΩ)
+#+CAPTION: Signal-to-noise ratio of a pin receiver versus received power (\(\mathcal R=1\) A/W, 1 GHz, 1 kΩ): thermal noise dominates at low power, shot noise at high power.
 \begin{tikzpicture}
 \begin{loglogaxis}[width=7.8cm,height=4.8cm,xlabel={$P$ (W)},ylabel={SNR},xmin=1e-8,xmax=1e-2,ymin=1e-3,ymax=1e8]
 \addplot+[no marks,thick,domain=-8:-2,samples=80] ({10^x},{(10^x)^2/(3.204e-10*10^x+1.657e-14)}); \addlegendentry{total}
@@ -47,7 +48,3 @@ A Si pin photodiode at 850 nm has \(\mathcal R=0.5\) A/W, dark current 5 nA, are
 
 * Pitfall
 Shot noise is white up to the detector bandwidth; using the bit rate instead of the noise bandwidth \(B\) (≈ 0.7× bit rate for NRZ) misestimates SNR.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Shot_noise][Shot noise]]
-- [[https://en.wikipedia.org/wiki/Noise-equivalent_power][Noise-equivalent power]]

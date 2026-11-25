@@ -20,6 +20,7 @@
 If \(|\dd v_O/\dd v_I|>1\) between \(V_{IL}\) and \(V_{IH}\), small disturbances grow there; outside, they are attenuated. Choosing the −1 points maximises the guaranteed margin for a chain of identical gates (regeneration).
 
 * Picture
+#+CAPTION: Voltage transfer characteristic of an inverter; its crossings with \(v_O=v_I\) and the unity-gain points define the switching threshold and the noise margins.
 \begin{tikzpicture}
 \begin{axis}[width=6.5cm,height=5cm,axis lines=left,xlabel={$v_I$ (V)},ylabel={$v_O$ (V)},xmin=0,xmax=5,ymin=0,ymax=5.3]
 \addplot+[no marks,domain=0:5,samples=200]{0.1+4.8/(1+exp(4*(x-2.5)))}; \addlegendentry{VTC}
@@ -35,6 +36,3 @@ Logic-family compatibility (TTL vs CMOS levels), signal integrity budgets (cross
 
 * Pitfall
 \(V_{OH}\) and \(V_{OL}\) are not \(V_{DD}\) and 0 in ratioed logic (NMOS, pseudo-NMOS): \(V_{OL}\) is set by a current balance and must be computed.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Noise_margin][Noise margin]]

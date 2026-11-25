@@ -13,9 +13,10 @@
 * Derivation (all-pass)
 Coupler: \(E_t=rE_i-j\kappa E_r\), \(E_{r,out}=-j\kappa E_i+rE_r\) (\(r^2+\kappa^2=1\)); round trip: \(E_r=ae^{-j\phi}E_{r,out}\), \(\phi=\beta L\), \(a\) = single-pass amplitude transmission. Eliminating:
 \[ \frac{E_t}{E_i}=\frac{r-ae^{-j\phi}}{1-rae^{-j\phi}}\;\Rightarrow\;T=\frac{a^2-2ra\cos\phi+r^2}{1-2ar\cos\phi+(ar)^2}. \]
-At resonance (\(\phi=2\pi m\)): \(T=\frac{(r-a)^2}{(1-ra)^2}\): zero for \(r=a\) (critical coupling: coupling loss equals round-trip loss). \(r<a\): over-coupled; \(r>a\): under-coupled. Add–drop rings route resonant light to a second bus.
+At resonance (\(\phi=2\pi m\)): \(T=\frac{(r-a)^2}{(1-ra)^2}\): zero for \(r=a\) (critical coupling: coupling loss equals round-trip loss) [cite:@yariv2000]. \(r<a\): over-coupled; \(r>a\): under-coupled. Add–drop rings route resonant light to a second bus [cite:@marcatili1969b].
 
 * Picture
+#+CAPTION: Through-port transmission \(T\) of an all-pass ring resonator versus round-trip phase: it reaches zero at critical coupling (\(r=a\)) and gives broader, shallower dips when over-coupled.
 \begin{tikzpicture}
 \begin{axis}[width=7.5cm,height=4.2cm,axis lines=left,xlabel={$\phi/2\pi$},ylabel={$T$},xmin=0.8,xmax=2.2,ymin=0,ymax=1.05]
 \addplot+[no marks,domain=0.8:2.2,samples=600]{(0.95^2-2*0.95*0.95*cos(deg(2*pi*x))+0.95^2)/(1-2*0.95*0.95*cos(deg(2*pi*x))+(0.95*0.95)^2)}; \addlegendentry{critical $r=a$}
@@ -31,6 +32,3 @@ Compact modulators (ring modulators, small capacitance), WDM filters and multipl
 
 * Pitfall
 High Q means extreme sensitivity to temperature: \(\dd\lambda/\dd T\approx\lambda\frac{\dd n/\dd T}{n_g}\approx70\) pm/K in Si, larger than the linewidth above — active thermal stabilisation is mandatory.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Optical_ring_resonators][Optical ring resonators]]

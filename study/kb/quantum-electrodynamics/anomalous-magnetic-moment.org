@@ -19,7 +19,7 @@ Most general vertex consistent with Lorentz invariance, parity and current conse
 One-loop vertex with Feynman parameters \(x,y,z\): \(F_2(q^2)=\frac{\alpha}{\pi}\int_0^1\dd x\dd y\dd z\,\delta(x+y+z-1)\frac{2m^2z(1-z)}{m^2(1-z)^2-q^2xy}\). At \(q^2=0\): \(F_2(0)=\frac\alpha\pi\int_0^1\dd z\int_0^{1-z}\dd y\frac{z}{1-z}=\frac{\alpha}{\pi}\int_0^1z\,\dd z=\frac\alpha{2\pi}\). UV finite: no counterterm needed — a genuine prediction.
 
 * Comparison with experiment
-\(a_e^{th}=\frac{\alpha}{2\pi}-0.328\left(\frac\alpha\pi\right)^2+1.18\left(\frac\alpha\pi\right)^3+\dots\); measured \(a_e=0.001\,159\,652\,180\,59(13)\) in a one-electron Penning trap. Comparing gives the most precise determination of \(\alpha\) (with atom-interferometry values agreeing at the \(10^{-10}\) level). For the muon, hadronic loops matter and \(a_\mu\) is a probe of new physics.
+\(a_e^{th}=\frac{\alpha}{2\pi}-0.328\left(\frac\alpha\pi\right)^2+1.18\left(\frac\alpha\pi\right)^3+\dots\); measured \(a_e=0.001\,159\,652\,180\,59(13)\) in a one-electron Penning trap [cite:@schwinger1948;@kusch1948]. Comparing gives the most precise determination of \(\alpha\) (with atom-interferometry values agreeing at the \(10^{-10}\) level). For the muon, hadronic loops matter and \(a_\mu\) is a probe of new physics.
 
 * Worked example
 Penning trap: cyclotron \(\nu_c=\frac{eB}{2\pi m}\) and spin precession \(\nu_s=\frac g2\nu_c\); the anomaly frequency \(\nu_a=\nu_s-\nu_c=a_e\nu_c\). At \(B=5.36\) T, \(\nu_c=150\) GHz, \(\nu_a=174\) MHz — measuring a ratio of two frequencies gives \(a_e\) directly.
@@ -29,7 +29,3 @@ Defines \(\alpha\) for the SI (via \(h\), \(e\) fixed, \(\alpha\) links electric
 
 * Pitfall
 \(g=2\) is not a prediction of spin alone but of the Dirac equation with minimal coupling; adding a Pauli term by hand could give any \(g\). QED fixes the corrections.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Anomalous_magnetic_dipole_moment][Anomalous magnetic dipole moment]]
-- [[https://physics.nist.gov/cuu/Constants/][NIST CODATA fundamental constants]]

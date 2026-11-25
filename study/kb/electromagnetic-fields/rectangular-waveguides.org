@@ -11,7 +11,7 @@
 #+summary: In an \(a\times b\) metal pipe fields are \(\mathrm{TE}_{mn}\) or \(\mathrm{TM}_{mn}\) modes with \(k_c^2=(m\pi/a)^2+(n\pi/b)^2\); they propagate only above cutoff \(f_c=\frac{c}{2\pi}k_c\), with \(\beta=\sqrt{k^2-k_c^2}\); the dominant \(\mathrm{TE}_{10}\) has \(f_c=c/2a\); closing the guide gives a cavity with \(f_{mnp}=\frac c2\sqrt{(m/a)^2+(n/b)^2+(p/d)^2}\).
 
 * Derivation
-Write \(\mathbf E,\mathbf H\propto e^{-j\beta z}\). Transverse fields follow from \(E_z,H_z\), which satisfy \((\nabla_t^2+k_c^2)\psi=0\), \(k_c^2=k^2-\beta^2\). For TE (\(E_z=0\)): \(H_z=A\cos\frac{m\pi x}a\cos\frac{n\pi y}b\) (Neumann conditions from \(E_t=0\) on the walls). For TM: \(E_z=B\sin\frac{m\pi x}a\sin\frac{n\pi y}b\) (\(m,n\ge1\)). Then
+Write \(\mathbf E,\mathbf H\propto e^{-j\beta z}\) [cite:@rayleigh1897]. Transverse fields follow from \(E_z,H_z\), which satisfy \((\nabla_t^2+k_c^2)\psi=0\), \(k_c^2=k^2-\beta^2\). For TE (\(E_z=0\)): \(H_z=A\cos\frac{m\pi x}a\cos\frac{n\pi y}b\) (Neumann conditions from \(E_t=0\) on the walls). For TM: \(E_z=B\sin\frac{m\pi x}a\sin\frac{n\pi y}b\) (\(m,n\ge1\)). Then
 \[ \beta=\sqrt{k^2-k_c^2},\quad f_c=\frac{1}{2\sqrt{\mu\epsilon}}\sqrt{\left(\frac ma\right)^2+\left(\frac nb\right)^2},\quad \lambda_g=\frac{\lambda}{\sqrt{1-(f_c/f)^2}},\quad Z_{TE}=\frac{\eta}{\sqrt{1-(f_c/f)^2}}. \]
 Below cutoff \(\beta\) is imaginary: evanescent attenuation \(\alpha=\sqrt{k_c^2-k^2}\) (used in waveguide-below-cutoff attenuators and in shielding vents).
 
@@ -26,6 +26,3 @@ Radar feeds and high-power microwave transmission (low loss, no centre conductor
 
 * Pitfall
 \(f_c\) of TE\(_{mn}\) and TM\(_{mn}\) coincide for \(m,n\ge1\), but TM\(_{m0}\) and TM\(_{0n}\) do not exist (\(E_z\) would vanish identically).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Waveguide_(radio_frequency)][Waveguide (radio frequency)]]

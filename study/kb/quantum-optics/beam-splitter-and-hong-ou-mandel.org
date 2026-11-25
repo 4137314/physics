@@ -14,11 +14,12 @@
 Unitarity of the mode transformation preserves \([b_i,b_j^\dagger]=\delta_{ij}\). The unused port carries vacuum, which is why splitting a beam adds partition noise. Symmetric 50:50 choice: \(t=1/\sqrt2\), \(r=i/\sqrt2\).
 
 * Derivation of HOM
-Invert: \(a_1^\dagger=\frac{1}{\sqrt2}(b_1^\dagger+ib_2^\dagger)\), \(a_2^\dagger=\frac{1}{\sqrt2}(ib_1^\dagger+b_2^\dagger)\). Then
+Invert: \(a_1^\dagger=\frac{1}{\sqrt2}(b_1^\dagger+ib_2^\dagger)\), \(a_2^\dagger=\frac{1}{\sqrt2}(ib_1^\dagger+b_2^\dagger)\) [cite:@hong1987]. Then
 \[ a_1^\dagger a_2^\dagger\ket0=\tfrac12\left(ib_1^{\dagger2}+ib_2^{\dagger2}+b_1^\dagger b_2^\dagger-b_2^\dagger b_1^\dagger\right)\ket0=\frac{i}{\sqrt2}\left(\ket{2,0}+\ket{0,2}\right). \]
 The two amplitudes for "one photon in each output" (both transmitted, both reflected) cancel: \(t^2+r^2=0\). Distinguishable photons (delay \(\tau\gg\tau_c\)) give 50% coincidences; the dip has the width of the photon wave packet.
 
 * Picture
+#+CAPTION: The Hong–Ou–Mandel dip: coincidence counts of two photons at a 50:50 beam splitter versus delay vanish when the photons arrive together.
 \begin{tikzpicture}
 \begin{axis}[width=7cm,height=4cm,axis lines=left,xlabel={delay $\tau/\tau_c$},ylabel={coincidences},ymin=0,ymax=0.6,xmin=-3,xmax=3]
 \addplot+[no marks,domain=-3:3,samples=120]{0.5*(1-exp(-x^2))}; \addlegendentry{HOM dip}
@@ -36,6 +37,3 @@ Linear-optical quantum computing and boson sampling (networks of beam splitters 
 
 * Pitfall
 In the classical description the input field of the dark port can be ignored; quantum mechanically its vacuum fluctuations are what makes the beam-splitter output noisy and the transformation unitary.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Hong%E2%80%93Ou%E2%80%93Mandel_effect][Hong–Ou–Mandel effect]]

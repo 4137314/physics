@@ -11,7 +11,7 @@
 #+summary: In the dipole approximation \(H'=e\mathbf r\cdot\mathbf E(t)\); transitions require \(\Delta l=\pm1\), \(\Delta m=0,\pm1\), \(\Delta s=0\); Einstein's relations \(A_{21}=\frac{\hbar\omega^3}{\pi^2c^3}B_{21}\), \(g_1B_{12}=g_2B_{21}\) and \(A_{21}=\frac{\omega^3|\mathbf d_{21}|^2}{3\pi\epsilon_0\hbar c^3}\) link absorption, stimulated and spontaneous emission.
 
 * Dipole approximation
-\(H'=-\frac{q}{m}\mathbf A\cdot\mathbf p\) with \(\mathbf A\propto\boldsymbol\epsilon e^{i\mathbf k\cdot\mathbf r}\). For atoms \(ka_0\sim10^{-3}\), so \(e^{i\mathbf k\cdot\mathbf r}\simeq1\). Using \(\mathbf p=\frac{im}\hbar[H_0,\mathbf r]\), \(\bra f\mathbf p\ket i=im\omega_{fi}\bra f\mathbf r\ket i\): equivalent to \(H'=-\mathbf d\cdot\mathbf E\), \(\mathbf d=q\mathbf r\).
+\(H'=-\frac{q}{m}\mathbf A\cdot\mathbf p\) with \(\mathbf A\propto\boldsymbol\epsilon e^{i\mathbf k\cdot\mathbf r}\) [cite:@dirac1927]. For atoms \(ka_0\sim10^{-3}\), so \(e^{i\mathbf k\cdot\mathbf r}\simeq1\). Using \(\mathbf p=\frac{im}\hbar[H_0,\mathbf r]\), \(\bra f\mathbf p\ket i=im\omega_{fi}\bra f\mathbf r\ket i\): equivalent to \(H'=-\mathbf d\cdot\mathbf E\), \(\mathbf d=q\mathbf r\).
 
 * Selection rules (proof sketch)
 - Parity: \(\mathbf r\) is odd, so initial and final states must have opposite parity: \(\Delta l\) odd.
@@ -20,7 +20,7 @@
 \(\Delta m=0\) couples to \(\pi\) (linear, along \(z\)) light, \(\Delta m=\pm1\) to \(\sigma^\pm\) circular light.
 
 * Einstein coefficients
-Rates per atom: absorption \(B_{12}u(\omega)\), stimulated emission \(B_{21}u(\omega)\), spontaneous \(A_{21}\). Equilibrium with blackbody \(u(\omega)\) and Boltzmann populations forces \(g_1B_{12}=g_2B_{21}\) and \(A_{21}/B_{21}=\hbar\omega^3/\pi^2c^3\). The quantum calculation ([[id:spontaneous-emission-and-purcell-effect][Weisskopf–Wigner]]) gives
+Rates per atom: absorption \(B_{12}u(\omega)\), stimulated emission \(B_{21}u(\omega)\), spontaneous \(A_{21}\) [cite:@einstein1917]. Equilibrium with blackbody \(u(\omega)\) and Boltzmann populations forces \(g_1B_{12}=g_2B_{21}\) and \(A_{21}/B_{21}=\hbar\omega^3/\pi^2c^3\). The quantum calculation ([[id:spontaneous-emission-and-purcell-effect][Weisskopf–Wigner]]) gives
 \[ A_{21}=\frac{\omega^3\,|\bra2\mathbf d\ket1|^2}{3\pi\epsilon_0\hbar c^3}. \]
 
 * Worked example
@@ -31,7 +31,3 @@ Hydrogen \(2p\to1s\): \(|\bra{1s}z\ket{2p_0}|=\frac{128\sqrt2}{243}a_0=0.745a_0\
 
 * Pitfall
 "Forbidden" means forbidden *in the dipole approximation*: magnetic dipole and quadrupole transitions still occur, \((ka)^2\sim10^{-6}\) times slower.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Einstein_coefficients][Einstein coefficients]]
-- [[https://en.wikipedia.org/wiki/Selection_rule][Selection rule]]

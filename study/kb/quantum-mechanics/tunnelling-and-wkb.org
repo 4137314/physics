@@ -11,14 +11,14 @@
 #+summary: A particle of energy \(E<V_0\) crosses a barrier of width \(a\) with probability \(T=\left[1+\frac{V_0^2\sinh^2\kappa a}{4E(V_0-E)}\right]^{-1}\approx16\frac{E}{V_0}(1-\frac{E}{V_0})e^{-2\kappa a}\); for smooth barriers WKB gives \(T\approx\exp\!\left(-\frac2\hbar\int\sqrt{2m(V-E)}\,\dd x\right)\).
 
 * Statement: rectangular barrier
-\(V=V_0\) for \(0<x<a\). Incident from the left: \(\psi=e^{ikx}+re^{-ikx}\); inside \(Ce^{\kappa x}+De^{-\kappa x}\), \(\kappa=\sqrt{2m(V_0-E)}/\hbar\); right \(te^{ikx}\). Matching \(\psi,\psi'\) at both edges (4 equations, 4 unknowns) gives
+\(V=V_0\) for \(0<x<a\) [cite:@gamow1928;@gurney1928]. Incident from the left: \(\psi=e^{ikx}+re^{-ikx}\); inside \(Ce^{\kappa x}+De^{-\kappa x}\), \(\kappa=\sqrt{2m(V_0-E)}/\hbar\); right \(te^{ikx}\). Matching \(\psi,\psi'\) at both edges (4 equations, 4 unknowns) gives
 \[ T=|t|^2=\left[1+\frac{V_0^2\sinh^2(\kappa a)}{4E(V_0-E)}\right]^{-1}. \]
 The current ([[id:schrodinger-equation-and-time-evolution][probability current]]) is conserved: \(R+T=1\). For \(E>V_0\), \(\sinh\to\sin\) with real \(k'\): transmission resonances \(T=1\) when \(k'a=n\pi\).
 
 * WKB approximation
-Write \(\psi=e^{iS(x)/\hbar}\) and expand \(S=S_0+\hbar S_1+\dots\): \(S_0'^2=2m(E-V)\), \(S_1=\tfrac i2\ln S_0'\). Hence
+Write \(\psi=e^{iS(x)/\hbar}\) and expand \(S=S_0+\hbar S_1+\dots\): \(S_0'^2=2m(E-V)\), \(S_1=\tfrac i2\ln S_0'\) [cite:@wentzel1926]. Hence
 \[ \psi(x)\approx\frac{C}{\sqrt{p(x)}}\exp\!\left(\pm\frac i\hbar\int^xp(x')\dd x'\right),\qquad p=\sqrt{2m(E-V)}, \]
-valid when the local wavelength varies slowly: \(|\dd\lambda/\dd x|\ll1\). Connection formulas at turning points give
+valid when the local wavelength varies slowly: \(|\dd\lambda/\dd x|\ll1\). Connection formulas at turning points give [cite:@kramers1926]
 - tunnelling: \(T\approx e^{-2\int_{x_1}^{x_2}\kappa(x)\dd x}\);
 - Bohr–Sommerfeld: \(\oint p\,\dd x=(n+\tfrac12)h\) for bound states.
 
@@ -33,7 +33,3 @@ Electron, \(V_0-E=1\) eV, \(a=1\) nm: \(\kappa=\sqrt{2\cdot9.11\times10^{-31}\cd
 
 * Pitfall
 \(T\approx e^{-2\kappa a}\) uses \(\kappa\) of the *amplitude*; the factor 2 comes from \(|t|^2\). Do not use WKB near turning points or for abrupt barriers thinner than a wavelength.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Quantum_tunnelling][Quantum tunnelling]]
-- [[https://en.wikipedia.org/wiki/WKB_approximation][WKB approximation]]

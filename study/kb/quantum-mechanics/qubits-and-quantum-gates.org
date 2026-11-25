@@ -18,12 +18,13 @@
 | H    | (1 1; 1 −1)/√2              | ket 0 → (ket 0 + ket 1)/√2   |
 | S, T | diag(1,i), diag(1,e^{iπ/4}) | phase gates                  |
 | CNOT | flips target if control = 1 | creates entanglement         |
-\(R_{\hat n}(\theta)=e^{-i\theta\,\boldsymbol\sigma\cdot\hat n/2}\) is realised physically by a resonant pulse ([[id:spin-precession-and-rabi-oscillations][Rabi]]) of area \(\theta=\Omega t\).
+\(R_{\hat n}(\theta)=e^{-i\theta\,\boldsymbol\sigma\cdot\hat n/2}\) is realised physically by a resonant pulse ([[id:spin-precession-and-rabi-oscillations][Rabi]]) of area \(\theta=\Omega t\) [cite:@deutsch1985].
 
 * Bell-state circuit
-\(\ket{00}\xrightarrow{H\otimes1}\tfrac1{\sqrt2}(\ket{00}+\ket{10})\xrightarrow{\mathrm{CNOT}}\tfrac1{\sqrt2}(\ket{00}+\ket{11})=\ket{\Phi^+}\).
+\(\ket{00}\xrightarrow{H\otimes1}\tfrac1{\sqrt2}(\ket{00}+\ket{10})\xrightarrow{\mathrm{CNOT}}\tfrac1{\sqrt2}(\ket{00}+\ket{11})=\ket{\Phi^+}\) [cite:@barenco1995].
 
 * Picture
+#+CAPTION: A two-qubit circuit: a Hadamard gate followed by a CNOT turns \(\ket{00}\) into the Bell state \((\ket{00}+\ket{11})/\sqrt2\).
 \begin{tikzpicture}[font=\small]
 \draw (0,0) node[left]{$\ket0$} -- (3,0); \draw (0,-1) node[left]{$\ket0$} -- (3,-1);
 \draw[fill=white] (0.6,-0.3) rectangle (1.2,0.3) node[midway]{H};
@@ -45,7 +46,3 @@ Superconducting qubits (transmons built on [[id:josephson-junction-and-rcsj-mode
 
 * Pitfall
 A global phase is unobservable, but a *relative* phase between \(\ket0\) and \(\ket1\) is physical: \(\ket+\) and \(\ket-\) give identical \(Z\) statistics yet are orthogonal.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Quantum_logic_gate][Quantum logic gate]]
-- [[https://quantum.cloud.ibm.com/learning][IBM Quantum Learning]]

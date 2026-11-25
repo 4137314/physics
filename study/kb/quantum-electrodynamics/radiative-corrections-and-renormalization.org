@@ -11,7 +11,7 @@
 #+summary: At order \(\alpha\) three one-loop insertions appear — vacuum polarisation \(\Pi(q^2)\), electron self-energy \(\Sigma(p)\), vertex \(\Lambda^\mu\); their ultraviolet divergences are absorbed into the physical mass and charge (\(Z_1=Z_2\) by the Ward identity), leaving finite predictions such as the running coupling \(\alpha(q^2)\approx\frac{\alpha}{1-\frac{\alpha}{3\pi}\ln\frac{-q^2}{Am^2}}\).
 
 * The three divergent pieces
-- *Vacuum polarisation*: a virtual \(e^+e^-\) loop inside a photon propagator: \(\frac{-ig_{\mu\nu}}{q^2}\to\frac{-ig_{\mu\nu}}{q^2[1-\Pi(q^2)]}\). Gauge invariance forces \(\Pi^{\mu\nu}=(q^2g^{\mu\nu}-q^\mu q^\nu)\Pi(q^2)\), so the photon stays massless.
+- *Vacuum polarisation*: a virtual \(e^+e^-\) loop inside a photon propagator: \(\frac{-ig_{\mu\nu}}{q^2}\to\frac{-ig_{\mu\nu}}{q^2[1-\Pi(q^2)]}\) [cite:@feynman1949]. Gauge invariance forces \(\Pi^{\mu\nu}=(q^2g^{\mu\nu}-q^\mu q^\nu)\Pi(q^2)\), so the photon stays massless.
 - *Self-energy* \(\Sigma(p)\): the electron emits and reabsorbs a photon; shifts the mass \(\delta m=\frac{3\alpha}{4\pi}m\ln\frac{\Lambda^2}{m^2}\) (log divergent).
 - *Vertex* \(\Lambda^\mu(p',p)\): photon exchanged across the vertex; produces form factors \(F_1(q^2),F_2(q^2)\).
 
@@ -19,7 +19,7 @@
 Regulate (cutoff, Pauli–Villars, dimensional) then define parameters by measurements: \(m\) is the pole of the full propagator; \(e\) is the charge measured at \(q^2\to0\) (Thomson limit). The Ward identity \(\partial\Sigma/\partial p_\mu=-\Lambda^\mu(p,p)\), i.e. \(Z_1=Z_2\), ensures charge renormalisation comes only from vacuum polarisation, \(e^2=Z_3e_0^2\): the same for electrons, muons and protons (charge universality).
 
 * Running coupling (derivation)
-Renormalised \(\hat\Pi(q^2)=\Pi(q^2)-\Pi(0)=-\frac{2\alpha}\pi\int_0^1x(1-x)\ln\left(1-\frac{q^2x(1-x)}{m^2}\right)\dd x\). For \(-q^2\gg m^2\): \(\hat\Pi\approx\frac\alpha{3\pi}\ln\frac{-q^2}{Am^2}\), \(A=e^{5/3}\). The vacuum screens charge like a dielectric: the effective \(\alpha\) grows at short distance, \(\alpha(M_Z^2)\approx1/128\). For \(-q^2\ll m^2\) one gets the Uehling correction to Coulomb, \(\delta V(\mathbf r)=-\frac{4\alpha^2}{15m^2}\delta^3(\mathbf r)\) (contributes −27 MHz to the hydrogen Lamb shift).
+Renormalised \(\hat\Pi(q^2)=\Pi(q^2)-\Pi(0)=-\frac{2\alpha}\pi\int_0^1x(1-x)\ln\left(1-\frac{q^2x(1-x)}{m^2}\right)\dd x\) [cite:@tomonaga1946;@schwinger1948b]. For \(-q^2\gg m^2\): \(\hat\Pi\approx\frac\alpha{3\pi}\ln\frac{-q^2}{Am^2}\), \(A=e^{5/3}\). The vacuum screens charge like a dielectric: the effective \(\alpha\) grows at short distance, \(\alpha(M_Z^2)\approx1/128\). For \(-q^2\ll m^2\) one gets the Uehling correction to Coulomb, \(\delta V(\mathbf r)=-\frac{4\alpha^2}{15m^2}\delta^3(\mathbf r)\) (contributes −27 MHz to the hydrogen Lamb shift).
 
 * Infrared divergence
 The vertex correction also diverges for soft virtual photons; it cancels against real soft-photon emission (bremsstrahlung) below detector resolution (Bloch–Nordsieck). Only inclusive rates are finite.
@@ -32,7 +32,3 @@ Precision metrology (\(\alpha\) from g−2 and atom recoil), radiative correctio
 
 * Pitfall
 "Infinities" are not subtracted arbitrarily: they appear only in relations between bare and measured parameters, which are not observable. Predictions relating observables are finite.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Renormalization][Renormalization]]
-- [[https://en.wikipedia.org/wiki/Vacuum_polarization][Vacuum polarization]]

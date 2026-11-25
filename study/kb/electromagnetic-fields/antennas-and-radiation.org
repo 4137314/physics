@@ -11,7 +11,7 @@
 #+summary: A short dipole \(I\dd l\) radiates \(E_\theta=j\eta\frac{kI\dd l}{4\pi r}\sin\theta\,e^{-jkr}\), power \(P=\frac{\eta\pi}{3}I^2\left(\frac{\dd l}\lambda\right)^2\), radiation resistance \(80\pi^2(\dd l/\lambda)^2\); antennas are characterised by directivity \(D\), gain \(G=e_{rad}D\), aperture \(A_e=\frac{\lambda^2}{4\pi}G\), and links by Friis \(P_r=P_tG_tG_r\left(\frac\lambda{4\pi R}\right)^2\).
 
 * Derivation (Hertzian dipole)
-\(A_z=\frac{\mu I\dd l}{4\pi r}e^{-jkr}\) ([[id:potentials-and-gauges][retarded potential]]). \(\mathbf H=\frac1\mu\nabla\times\mathbf A\), \(\mathbf E\) from Ampère. Far field (\(kr\gg1\)) keeps the \(1/r\) terms:
+\(A_z=\frac{\mu I\dd l}{4\pi r}e^{-jkr}\) ([[id:potentials-and-gauges][retarded potential]]) [cite:@hertz1889]. \(\mathbf H=\frac1\mu\nabla\times\mathbf A\), \(\mathbf E\) from Ampère. Far field (\(kr\gg1\)) keeps the \(1/r\) terms:
 \[ E_\theta=j\eta\frac{kI\dd l}{4\pi r}\sin\theta\,e^{-jkr},\qquad H_\phi=E_\theta/\eta. \]
 Integrating \(\braket S=|E_\theta|^2/2\eta\) over the sphere: \(P=\frac{\eta(kI\dd l)^2}{12\pi}\). Directivity \(D=1.5\) (1.76 dBi). The near field (\(1/r^2,1/r^3\)) stores reactive energy. Classical analogue: Larmor \(P=\frac{q^2a^2}{6\pi\epsilon_0c^3}\); the quantum analogue is the dipole [[id:radiative-transitions-and-selection-rules][transition rate]].
 
@@ -22,7 +22,7 @@ Integrating \(\braket S=|E_\theta|^2/2\eta\) over the sphere: \(P=\frac{\eta(kI\
 | half-wave dipole   | 2.15          | 73 Ω        | resonant, easy to match   |
 | quarter-wave mono. | 5.15          | 36.5 Ω      | over ground plane         |
 | dish, diameter Dd  | (πDd/λ)²·e_ap | –           | e_ap ≈ 0.5–0.7            |
-Far-field distance \(2D^2/\lambda\). Arrays: pattern = element × array factor \(AF=\sum I_ne^{jn(kd\cos\theta+\delta)}\) (beam steering by \(\delta\)).
+Far-field distance \(2D^2/\lambda\) [cite:@friis1946]. Arrays: pattern = element × array factor \(AF=\sum I_ne^{jn(kd\cos\theta+\delta)}\) (beam steering by \(\delta\)).
 
 * Worked example: link budget
 2.4 GHz Wi-Fi, \(P_t=20\) dBm, \(G_t=G_r=2\) dBi, \(R=100\) m: free-space loss \(20\log(4\pi R/\lambda)=20\log(4\pi\cdot100/0.125)=80.0\) dB. \(P_r=20+2+2-80=-56\) dBm, well above a −90 dBm sensitivity: ~34 dB margin for walls and fading.
@@ -32,7 +32,3 @@ Mobile and Wi-Fi antennas, phased-array radar and 5G beam-forming, satellite dis
 
 * Pitfall
 Friis holds only in the far field and with matched polarisation and impedance; include mismatch \((1-|\Gamma|^2)\) and polarisation loss factors.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Dipole_antenna][Dipole antenna]]
-- [[https://en.wikipedia.org/wiki/Friis_transmission_equation][Friis transmission equation]]

@@ -23,6 +23,7 @@ In semiconductors near the band edge the field shifts and broadens absorption: F
 LiNbO\(_3\), \(\lambda=1.55\) µm, \(d=10\) µm, \(L=2\) cm, \(\Gamma=0.5\), push–pull (factor 2): \(V_\pi=\frac{1.55\times10^{-6}\cdot10^{-5}}{2\cdot2.14^3\cdot30.8\times10^{-12}\cdot0.02\cdot0.5}=\frac{1.55\times10^{-11}}{6.04\times10^{-12}}\approx2.6\) V. Bandwidth is limited by velocity mismatch between microwave and optical waves: travelling-wave electrodes, and thin-film LiNbO\(_3\) reaching > 100 GHz.
 
 * Picture: Mach–Zehnder transfer function
+#+CAPTION: Transfer function of a Mach–Zehnder modulator, \(\cos^2(\pi V/2V_\pi)\); biased at quadrature, it is most linear and most sensitive.
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$V/V_\pi$},ylabel={$T$},xmin=0,xmax=2,ymin=0,ymax=1.05]
 \addplot+[no marks,thick,domain=0:2,samples=100]{cos(deg(pi*x/2))^2}; \addlegendentry{$\cos^2(\pi V/2V_\pi)$}
@@ -41,7 +42,3 @@ A LiNbO\(_3\) Mach–Zehnder at 1550 nm uses \(r_{33}=30.8\) pm/V, \(n_e=2.138\)
 
 * Pitfall
 Silicon is centrosymmetric: no Pockels effect. Its weak Kerr effect is useless for modulators, which is why silicon modulators use free carriers.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Pockels_effect][Pockels effect]]
-- [[https://en.wikipedia.org/wiki/Electro-optic_modulator][Electro-optic modulator]]

@@ -12,7 +12,7 @@
 
 * Method
 1. Normalise \(z_L=Z_L/Z_0\); plot on the constant-\(r\) circles and constant-\(x\) arcs.
-2. Towards the generator: rotate clockwise by \(2\beta\ell\) (half a turn = \(\lambda/4\)); \(|\Gamma|\) and VSWR stay constant.
+2. Towards the generator: rotate clockwise by \(2\beta\ell\) (half a turn = \(\lambda/4\)); \(|\Gamma|\) and VSWR stay constant [cite:@smith1939].
 3. Admittance = point reflected through the centre.
 4. Design: reach the \(r=1\) (or \(g=1\)) circle, then cancel the remaining reactance.
 
@@ -30,7 +30,3 @@ Matching LNAs and power amplifiers, antenna feeds, RFID and NFC coils, impedance
 
 * Pitfall
 Maximum power transfer needs \(Z_L=Z_s^*\) (conjugate), which is not the same as minimum reflection on a line unless \(Z_s=Z_0\) real; for amplifiers, noise matching and power matching are different targets.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Smith_chart][Smith chart]]
-- [[https://en.wikipedia.org/wiki/Impedance_matching][Impedance matching]]

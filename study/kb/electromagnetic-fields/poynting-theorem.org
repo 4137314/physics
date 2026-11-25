@@ -11,7 +11,7 @@
 #+summary: \(-\oint(\mathbf E\times\mathbf H)\cdot\dd\mathbf S=\frac{\dd}{\dd t}\int\left(\tfrac12\epsilon E^2+\tfrac12\mu H^2\right)\dd V+\int\mathbf J\cdot\mathbf E\,\dd V\): power entering a volume is stored or dissipated; \(\mathbf S=\mathbf E\times\mathbf H\) is the power flux, time average \(\tfrac12\mathrm{Re}(\mathbf E\times\mathbf H^*)\) in phasors.
 
 * Proof
-Using \(\nabla\cdot(\mathbf E\times\mathbf H)=\mathbf H\cdot\nabla\times\mathbf E-\mathbf E\cdot\nabla\times\mathbf H\) and Maxwell:
+Using \(\nabla\cdot(\mathbf E\times\mathbf H)=\mathbf H\cdot\nabla\times\mathbf E-\mathbf E\cdot\nabla\times\mathbf H\) and Maxwell [cite:@poynting1884]:
 \[ \nabla\cdot(\mathbf E\times\mathbf H)=-\mathbf H\cdot\partial_t\mathbf B-\mathbf E\cdot\mathbf J-\mathbf E\cdot\partial_t\mathbf D=-\partial_t\left(\tfrac12\epsilon E^2+\tfrac12\mu H^2\right)-\mathbf J\cdot\mathbf E. \]
 Integrate over \(V\) and apply the divergence theorem.
 
@@ -29,7 +29,3 @@ Link budgets and power density limits (RF exposure in W/m²), antenna radiated p
 
 * Pitfall
 \(\mathbf E\times\mathbf H\) is defined up to a curl; only its flux through closed surfaces is unambiguous. A static charge next to a magnet has \(\mathbf S\neq0\) but no net energy flow.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Poynting_vector][Poynting vector]]
-- [[https://www.feynmanlectures.caltech.edu/II_27.html][Feynman II-27: Field energy and field momentum]]

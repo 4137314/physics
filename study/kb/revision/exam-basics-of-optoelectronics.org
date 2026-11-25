@@ -135,8 +135,3 @@ Each in three or four lines, with one formula and one number.
 
 * Pitfall
 The most expensive mistakes in these papers are (1) using the diameter instead of the radius in \(V\); (2) taking \(2\theta=30^\circ\) as the half-angle (doubles \(w_0\)); (3) forgetting that NEP is per \(\sqrt{\mathrm{Hz}}\); (4) mixing nm and m in \(\Delta\lambda=\lambda^2\Delta\nu/c\); (5) answering "the minimum compensating length" with the upper end of the window.
-
-* Explore
-- [[https://www.rp-photonics.com/noise_equivalent_power.html][RP Photonics: noise-equivalent power]]
-- [[https://www.rp-photonics.com/chromatic_dispersion.html][RP Photonics: chromatic dispersion]]
-- [[https://www.corning.com/optical-communications/worldwide/en/home/products/fiber/optical-fiber-products/smf-28-ultra.html][Corning SMF-28 Ultra fibre]]

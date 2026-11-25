@@ -12,7 +12,7 @@
 
 * Model
 - *Internal QE*: \(\eta_{int}=\frac{R_{rad}}{R_{rad}+R_{nr}}=\frac{1/\tau_r}{1/\tau_r+1/\tau_{nr}}\) ([[id:generation-recombination-and-continuity][recombination]]). Double heterostructures and QWs raise carrier density in the active layer, favouring radiative \(Bnp\).
-- *Extraction*: only rays inside the escape cone \(\theta_c=\arcsin(1/n)\) leave; the cone holds a fraction \(\frac12(1-\cos\theta_c)\approx\frac{1}{4n^2}\) of isotropic emission, further reduced by Fresnel reflection \(1-\left(\frac{n-1}{n+1}\right)^2\): for GaAs (\(n=3.6\)) about \(1.9\%\times0.68\approx1.3\%\) per face. Domes, texturing, flip-chip and photonic crystals raise it to >80%.
+- *Extraction*: only rays inside the escape cone \(\theta_c=\arcsin(1/n)\) leave; the cone holds a fraction \(\frac12(1-\cos\theta_c)\approx\frac{1}{4n^2}\) of isotropic emission, further reduced by Fresnel reflection \(1-\left(\frac{n-1}{n+1}\right)^2\): for GaAs (\(n=3.6\)) about \(1.9\%\times0.68\approx1.3\%\) per face [cite:@holonyak1962]. Domes, texturing, flip-chip and photonic crystals raise it to >80%.
 - *Spectrum*: emission \(\propto\sqrt{h\nu-E_g}\,e^{-(h\nu-E_g)/k_BT}\), peak at \(E_g+k_BT/2\), FWHM \(\approx1.8k_BT\)–\(3k_BT\): \(\Delta\lambda\approx\frac{\lambda^2}{hc}3k_BT\).
 
 * Derivation of the bandwidth
@@ -22,9 +22,10 @@ Small-signal current modulation \(i(\omega)\) drives the carrier density through
 GaAs LED at 870 nm, \(I=50\) mA, \(\eta_{ext}=5\%\): \(P=\eta_{ext}\frac{h\nu}{q}I=0.05\cdot1.43\,\mathrm{V}\cdot0.05\,\mathrm{A}\approx3.6\) mW. Linewidth \(3k_BT=78\) meV → \(\Delta\lambda=\frac{0.87^2}{1.24}\cdot0.078\approx48\) nm. With \(\tau=5\) ns, \(f_{3dB}=55\) MHz: fine for remote controls and short plastic-fibre links, too slow for Gb/s.
 
 * White LEDs
-Blue InGaN LED (≈450 nm) + yellow YAG:Ce phosphor (Stokes loss ≈ 20%), or RGB chips. Luminous efficacy of white LEDs > 150 lm/W, vs 15 lm/W for incandescent. *Droop*: \(\eta_{int}\) falls at high current (Auger, carrier leakage).
+Blue InGaN LED (≈450 nm) + yellow YAG:Ce phosphor (Stokes loss ≈ 20%), or RGB chips [cite:@nakamura1994]. Luminous efficacy of white LEDs > 150 lm/W, vs 15 lm/W for incandescent. *Droop*: \(\eta_{int}\) falls at high current (Auger, carrier leakage).
 
 * Picture: emission spectrum at two temperatures
+#+CAPTION: Emission spectrum of an LED at 300 K and 350 K: heating shifts the peak to longer wavelengths and broadens it (width about \(3kT\)).
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$h\nu-E_g$ (meV)},ylabel={emission (a.u.)},xmin=0,xmax=200,ymin=0,ymax=3.6,ytick=\empty]
 \addplot+[no marks,thick,domain=0:200,samples=150]{sqrt(x)*exp(-x/25.9)}; \addlegendentry{300 K}
@@ -43,7 +44,3 @@ An InGaAsP LED emits at 1310 nm at 300 K. (a) Linewidth in nm (take \(\Delta(h\n
 
 * Pitfall
 External quantum efficiency (photons out per electron) is not wall-plug efficiency (optical power / electrical power): the latter includes the voltage \(V>h\nu/q\) across series resistance.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Light-emitting_diode][Light-emitting diode]]
-- [[https://www.nobelprize.org/prizes/physics/2014/summary/][Nobel Prize 2014: blue LEDs]]

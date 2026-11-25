@@ -15,7 +15,7 @@ Rotation by angle \(\phi\) about \(\hat n\): \(\mathcal D(R)=e^{-i\mathbf J\cdot
 \[ [J_i,J_j]=i\hbar\,\epsilon_{ijk}J_k,\qquad [\mathbf J^2,J_i]=0. \]
 
 * Proof of the spectrum
-1. Ladders \(J_\pm=J_x\pm iJ_y\): \([J_z,J_\pm]=\pm\hbar J_\pm\), \([\mathbf J^2,J_\pm]=0\). So \(J_\pm\ket{a,b}\) has the same \(\mathbf J^2\) eigenvalue \(a\) and \(J_z\) eigenvalue \(b\pm\hbar\).
+1. Ladders \(J_\pm=J_x\pm iJ_y\): \([J_z,J_\pm]=\pm\hbar J_\pm\), \([\mathbf J^2,J_\pm]=0\) [cite:@born1926a]. So \(J_\pm\ket{a,b}\) has the same \(\mathbf J^2\) eigenvalue \(a\) and \(J_z\) eigenvalue \(b\pm\hbar\).
 2. \(\mathbf J^2-J_z^2=\tfrac12(J_+J_-+J_-J_+)\ge0\) gives \(a\ge b^2\): \(b\) is bounded; there is \(b_{\max}\) with \(J_+\ket{a,b_{\max}}=0\).
 3. \(J_-J_+=\mathbf J^2-J_z^2-\hbar J_z\). Applying to the top state: \(a=b_{\max}(b_{\max}+\hbar)\). Similarly \(a=b_{\min}(b_{\min}-\hbar)\), so \(b_{\min}=-b_{\max}\).
 4. Reaching \(b_{\min}\) from \(b_{\max}\) in integer steps: \(2b_{\max}=n\hbar\). Call \(j=b_{\max}/\hbar=n/2\): \(a=\hbar^2j(j+1)\), \(m=-j..j\).
@@ -32,7 +32,3 @@ Spin qubits, NMR pulse sequences (products of rotations), polarisation optics (J
 
 * Pitfall
 Half-integer \(j\) is allowed by the algebra but not by *orbital* angular momentum, where single-valued wave functions force integer \(l\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Angular_momentum_operator][Angular momentum operator]]
-- [[https://en.wikipedia.org/wiki/Pauli_matrices][Pauli matrices]]

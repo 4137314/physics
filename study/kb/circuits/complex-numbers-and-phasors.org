@@ -15,7 +15,7 @@
 
 * Method
 1. Check that the circuit is LTI and driven by sinusoids of one frequency, in steady state.
-2. Replace each source by its phasor (choose cos or sin as reference and stay consistent).
+2. Replace each source by its phasor (choose cos or sin as reference and stay consistent) [cite:@steinmetz1893].
 3. Since \(\frac{\dd}{\dd t}\mathrm{Re}[\mathbf Ve^{j\omega t}]=\mathrm{Re}[j\omega\mathbf Ve^{j\omega t}]\), each derivative is \(j\omega\).
 4. Solve algebraically; return to time domain with \(v(t)=|\mathbf V|\cos(\omega t+\arg\mathbf V)\).
 Linearity of Re and of the circuit justifies it; it fails for nonlinear elements or different frequencies at once (use superposition per frequency).
@@ -31,6 +31,3 @@ AC power systems, RF and audio circuit design, the \(e^{j\omega t}\) convention 
 
 * Pitfall
 Phasors with peak amplitude vs rms amplitude: power formulas differ by a factor 2 (\(P=\tfrac12\mathrm{Re}(\mathbf V\mathbf I^*)\) with peak, \(\mathrm{Re}(\mathbf V\mathbf I^*)\) with rms). State which one you use.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Phasor][Phasor]]

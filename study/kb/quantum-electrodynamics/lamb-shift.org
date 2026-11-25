@@ -13,7 +13,7 @@
 * Welton's picture (derivation)
 Zero-point field makes the electron jitter, \(\delta\mathbf r\). Averaging the Coulomb potential: \(\braket{V(\mathbf r+\delta\mathbf r)}=V+\tfrac16\braket{\delta r^2}\nabla^2V\). With \(\nabla^2V=\frac{e^2}{\epsilon_0}\delta^3(\mathbf r)\) only s-states (\(|\psi(0)|^2=\frac{1}{\pi n^3a_0^3}\)) are shifted. Each field mode drives \(m\ddot{\delta r}=eE_\omega\); summing \(\braket{\delta r^2}\) over vacuum modes between \(\omega_{min}\sim\alpha^2mc^2/\hbar\) (atomic frequencies, below which the electron is bound) and \(\omega_{max}\sim mc^2/\hbar\) (above which it is relativistic) gives \(\braket{\delta r^2}=\frac{2\alpha}{\pi}\left(\frac\hbar{mc}\right)^2\ln\frac{1}{\alpha^2}\); with \(a_0=\hbar/mc\alpha\), hence
 \[ \Delta E_{ns}\approx\frac{4\alpha^5mc^2}{3\pi n^3}\ln\frac{1}{\alpha^2}. \]
-For \(n=2\): \(\frac{4}{3\pi\cdot8}\cdot1.06\times10^{-5}\,\mathrm{eV}\cdot9.84\approx5.5\) µeV \(\approx1.3\) GHz. Bethe's non-relativistic self-energy (1947) gives 1040 MHz with the "Bethe logarithm"; vertex, anomalous moment and vacuum polarisation (−27 MHz) complete it.
+For \(n=2\): \(\frac{4}{3\pi\cdot8}\cdot1.06\times10^{-5}\,\mathrm{eV}\cdot9.84\approx5.5\) µeV \(\approx1.3\) GHz. Bethe's non-relativistic self-energy (1947) gives 1040 MHz with the "Bethe logarithm"; vertex, anomalous moment and vacuum polarisation (−27 MHz) complete it [cite:@lamb1947;@bethe1947].
 
 * Contributions to 2s½ − 2p½ (MHz)
 | term                          | MHz    |
@@ -34,7 +34,3 @@ Hydrogen spectroscopy determines the Rydberg constant and the proton radius (the
 
 * Pitfall
 The Lamb shift is not the fine structure: fine structure depends on \(j\), the Lamb shift separates states with the same \(n,j\) and different \(l\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Lamb_shift][Lamb shift]]
-- [[https://en.wikipedia.org/wiki/Proton_radius_puzzle][Proton radius puzzle]]

@@ -17,7 +17,7 @@ Drift region with \(N_D=\frac{\epsilon E_c^2}{2qV_{BR}}\) and \(W=\frac{2V_{BR}}
 DMOS/trench cells in parallel (millions per chip); body diode inherent. Switching is governed by gate charge \(Q_G\) (Miller plateau): \(t_{sw}\approx Q_{GD}R_G/(V_{drive}-V_{plateau})\). Loss \(P=I_{rms}^2R_{on}+\tfrac12VI(t_r+t_f)f+Q_GV_{GS}f\).
 
 * IGBT
-MOS gate controls an electron current that drives a wide-base pnp: holes injected from the collector flood the drift region (like a [[id:power-diodes][pin diode]]): \(V_{CE,sat}\approx0.7\) V + small drift drop, independent of \(V_{BR}\) to first order. Turn-off: the MOS channel stops instantly but stored holes recombine → tail current, \(E_{off}\) grows with stored charge. Parasitic thyristor (pnpn) latch-up must be avoided by layout (p\(^+\) body under the emitter).
+MOS gate controls an electron current that drives a wide-base pnp: holes injected from the collector flood the drift region (like a [[id:power-diodes][pin diode]]): \(V_{CE,sat}\approx0.7\) V + small drift drop, independent of \(V_{BR}\) to first order [cite:@baliga1982]. Turn-off: the MOS channel stops instantly but stored holes recombine → tail current, \(E_{off}\) grows with stored charge. Parasitic thyristor (pnpn) latch-up must be avoided by layout (p\(^+\) body under the emitter).
 
 * Worked example
 Si, \(V_{BR}=600\) V, \(\mu_n=1350\) cm²/Vs, \(E_c=2.5\times10^5\) V/cm: \(R_{on,sp}=\frac{4\cdot3.6\times10^5}{1.04\times10^{-12}\cdot1350\cdot1.56\times10^{16}}=66\) mΩ cm² (drift only). For 20 A at 1 V drop (20 W): area \(=66\,\mathrm{m\Omega\,cm^2}/50\,\mathrm{m\Omega}=1.3\) cm² — impractical; an IGBT does it in ~0.2 cm² with \(V_{CE}\approx1.7\) V, a superjunction MOSFET in ~0.3 cm².
@@ -27,7 +27,3 @@ Low-voltage MOSFETs in CPU VRMs and synchronous rectifiers, superjunction MOSFET
 
 * Pitfall
 \(R_{on}\) of Si MOSFETs roughly doubles from 25 °C to 150 °C (mobility drop): design conduction loss at hot temperature. IGBTs have a knee voltage (~0.7 V): poor at light load.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Power_MOSFET][Power MOSFET]]
-- [[https://en.wikipedia.org/wiki/Insulated-gate_bipolar_transistor][IGBT]]

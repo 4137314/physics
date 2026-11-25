@@ -11,10 +11,10 @@
 #+summary: The number states \(\ket n=\frac{(a^\dagger)^n}{\sqrt{n!}}\ket0\) have exactly \(n\) photons and \(\braket{\mathbf E}=0\); thermal light is the mixture \(\rho=\sum\frac{\bar n^n}{(1+\bar n)^{n+1}}\ket n\bra n\) with \(\bar n=1/(e^{\hbar\omega/kT}-1)\) and variance \(\bar n^2+\bar n\).
 
 * Definition
-Fock space \(\mathcal F=\bigotimes_{\text{modes}}\{\ket{n_k}\}\). Single mode: \(N\ket n=n\ket n\), \(\Delta n=0\). The mean field vanishes for every \(n\), \(\bra nE\ket n=0\), but \(\bra nE^2\ket n=\mathcal E_1^2(2n+1)\): a phase-randomised wave with definite energy.
+Fock space \(\mathcal F=\bigotimes_{\text{modes}}\{\ket{n_k}\}\) [cite:@fock1932]. Single mode: \(N\ket n=n\ket n\), \(\Delta n=0\). The mean field vanishes for every \(n\), \(\bra nE\ket n=0\), but \(\bra nE^2\ket n=\mathcal E_1^2(2n+1)\): a phase-randomised wave with definite energy.
 
 * Thermal state
-Maximising entropy at fixed \(\braket N\) gives \(\rho=e^{-\beta\hbar\omega N}/Z\):
+Maximising entropy at fixed \(\braket N\) gives \(\rho=e^{-\beta\hbar\omega N}/Z\) [cite:@planck1901]:
 \[ P(n)=\frac{\bar n^n}{(1+\bar n)^{n+1}},\qquad \bar n=\frac{1}{e^{\hbar\omega/k_BT}-1},\qquad \Delta n^2=\bar n^2+\bar n. \]
 The Bose–Einstein (geometric) distribution: noisier than Poisson (\(\Delta n^2=\bar n\)) by the "wave noise" term \(\bar n^2\). Multiplying \(\bar n\) by the mode density \(\omega^2/\pi^2c^3\) and \(\hbar\omega\) gives Planck's law.
 
@@ -26,6 +26,3 @@ Heralded single-photon sources (SPDC: detect one photon of a pair to announce th
 
 * Pitfall
 A strongly attenuated laser is *not* a single-photon source: it remains a coherent (Poisson) state with a probability \(\approx\bar n^2/2\) of two photons, the loophole exploited by photon-number-splitting attacks on QKD.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Fock_state][Fock state]]

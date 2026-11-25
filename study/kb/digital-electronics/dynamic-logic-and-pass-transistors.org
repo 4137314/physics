@@ -13,7 +13,7 @@
 * Dynamic gate operation
 - *Precharge* (CLK = 0): PMOS on, foot NMOS off → \(v_O=V_{DD}\).
 - *Evaluate* (CLK = 1): PMOS off, foot on → output discharges if the pull-down network conducts, otherwise floats high.
-Inputs must be stable (or only rise) during evaluation: cascading requires *domino* logic (dynamic gate + static inverter) so that all inputs are low during precharge.
+Inputs must be stable (or only rise) during evaluation: cascading requires *domino* logic (dynamic gate + static inverter) so that all inputs are low during precharge [cite:@krambeck1982].
 
 * Design (exam style)
 Make precharge rise time equal to worst-case evaluation delay:
@@ -34,7 +34,3 @@ High-speed datapaths (domino adders in older CPUs), register files, memory decod
 
 * Pitfall
 Dynamic gates consume power on every clock (precharge) even if the output does not logically change; activity factor can exceed that of static logic.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Dynamic_logic_(digital_electronics)][Dynamic logic]]
-- [[https://en.wikipedia.org/wiki/Domino_logic][Domino logic]]

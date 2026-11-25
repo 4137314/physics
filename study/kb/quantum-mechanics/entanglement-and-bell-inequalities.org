@@ -11,7 +11,7 @@
 #+summary: A pure state of two systems is entangled if it is not a product; local hidden-variable theories obey the CHSH bound \(|S|\le2\), whereas the singlet gives correlations \(E(\mathbf a,\mathbf b)=-\mathbf a\cdot\mathbf b\) and \(|S|=2\sqrt2\), confirmed by loophole-free experiments.
 
 * Definitions
-- *Product* state \(\ket\psi=\ket\alpha_A\otimes\ket\beta_B\); otherwise *entangled*.
+- *Product* state \(\ket\psi=\ket\alpha_A\otimes\ket\beta_B\); otherwise *entangled* [cite:@bell1964].
 - *Schmidt decomposition*: \(\ket\psi=\sum_i\sqrt{\lambda_i}\ket{i_A}\ket{i_B}\) (SVD of the coefficient matrix). Entangled iff more than one \(\lambda_i\neq0\); entanglement entropy \(S(\rho_A)=-\sum\lambda_i\ln\lambda_i\).
 - *Singlet*: \(\ket{\psi^-}=\tfrac1{\sqrt2}(\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow})\), rotationally invariant, \(\rho_A=1/2\).
 
@@ -19,10 +19,10 @@
 Measuring \(\boldsymbol\sigma\cdot\mathbf a\) on A and \(\boldsymbol\sigma\cdot\mathbf b\) on B in the singlet: \(E(\mathbf a,\mathbf b)=\bra{\psi^-}(\boldsymbol\sigma\cdot\mathbf a)\otimes(\boldsymbol\sigma\cdot\mathbf b)\ket{\psi^-}=-\mathbf a\cdot\mathbf b=-\cos\theta_{ab}\).
 
 * CHSH inequality (proof)
-Local realism: outcomes \(A(\mathbf a,\lambda),B(\mathbf b,\lambda)=\pm1\), with \(\lambda\) distributed by \(\rho(\lambda)\) independent of the settings. For each \(\lambda\),
+Local realism: outcomes \(A(\mathbf a,\lambda),B(\mathbf b,\lambda)=\pm1\), with \(\lambda\) distributed by \(\rho(\lambda)\) independent of the settings [cite:@epr1935;@clauser1969]. For each \(\lambda\),
 \[ A(a)[B(b)+B(b')]+A(a')[B(b)-B(b')]=\pm2, \]
 because one bracket is 0 and the other \(\pm2\). Averaging: \(|S|=|E(a,b)+E(a,b')+E(a',b)-E(a',b')|\le2\).
-Quantum: \(a=0^\circ,a'=90^\circ,b=45^\circ,b'=-45^\circ\) give \(|S|=4\cos45^\circ=2\sqrt2\) (Tsirelson's maximum).
+Quantum: \(a=0^\circ,a'=90^\circ,b=45^\circ,b'=-45^\circ\) give \(|S|=4\cos45^\circ=2\sqrt2\) (Tsirelson's maximum) [cite:@aspect1982].
 
 * Worked example
 Photon pairs from type-II SPDC in the state \(\tfrac1{\sqrt2}(\ket{HV}-\ket{VH})\): polariser correlations \(E=-\cos2(\theta_a-\theta_b)\), so optimal angles are halved: 0°, 45°, 22.5°, −22.5°. Experiments measure \(S\approx2.7\pm0.02\).
@@ -35,7 +35,3 @@ Entanglement-based QKD (E91, device-independent security certified by CHSH viola
 
 * Pitfall
 Correlation is not signalling: each side alone sees random 50/50 outcomes; the correlation appears only when results are compared over a classical channel.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/CHSH_inequality][CHSH inequality]]
-- [[https://www.nobelprize.org/prizes/physics/2022/summary/][Nobel Prize in Physics 2022]]

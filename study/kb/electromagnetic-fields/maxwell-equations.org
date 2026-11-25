@@ -20,7 +20,7 @@
 Constitutive: \(\mathbf D=\epsilon\mathbf E\), \(\mathbf B=\mu\mathbf H\), \(\mathbf J=\sigma\mathbf E\) (linear isotropic media).
 
 * Derivation: why the displacement current
-Taking the divergence of Ampère's static law gives \(\nabla\cdot\mathbf J=0\), false when charge accumulates (charging capacitor). Continuity \(\nabla\cdot\mathbf J=-\partial_t\rho=-\partial_t\nabla\cdot\mathbf D\) requires adding \(\partial_t\mathbf D\). Then in vacuum, \(\nabla\times\nabla\times\mathbf E=-\mu_0\epsilon_0\partial_t^2\mathbf E\) and \(\nabla\cdot\mathbf E=0\) give
+Taking the divergence of Ampère's static law gives \(\nabla\cdot\mathbf J=0\), false when charge accumulates (charging capacitor) [cite:@maxwell1865]. Continuity \(\nabla\cdot\mathbf J=-\partial_t\rho=-\partial_t\nabla\cdot\mathbf D\) requires adding \(\partial_t\mathbf D\). Then in vacuum, \(\nabla\times\nabla\times\mathbf E=-\mu_0\epsilon_0\partial_t^2\mathbf E\) and \(\nabla\cdot\mathbf E=0\) give
 \[ \nabla^2\mathbf E=\mu_0\epsilon_0\frac{\partial^2\mathbf E}{\partial t^2},\qquad c=\frac{1}{\sqrt{\mu_0\epsilon_0}}=2.998\times10^8\text{ m/s}. \]
 
 * Boundary conditions
@@ -37,7 +37,3 @@ Every EM simulator (FDTD, FEM, MoM) solves these four equations; signal integrit
 
 * Pitfall
 Phasor convention: engineering uses \(e^{j\omega t}\) (waves \(e^{-jkz}\)), physics \(e^{-i\omega t}\) (waves \(e^{ikz}\)); signs of imaginary parts (losses, \(\epsilon''\)) flip between texts.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Maxwell%27s_equations][Maxwell's equations]]
-- [[https://www.feynmanlectures.caltech.edu/II_18.html][Feynman II-18: The Maxwell equations]]

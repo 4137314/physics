@@ -17,7 +17,7 @@ Projectors: \(\Lambda_\pm=\frac{\pm\slashed p+m}{2m}\). Completeness:
 Proof: both sides are \(4\times4\) matrices; check on the rest frame (\(\gamma^0m+m=\mathrm{diag}(2m,2m,0,0)\)) and boost covariantly.
 
 * Antiparticles
-- *Hole theory*: all negative-energy states filled; a hole behaves as a particle of charge \(+e\), energy \(+|E|\): the positron (Anderson 1932). Pair creation = lifting an electron out of the sea.
+- *Hole theory*: all negative-energy states filled; a hole behaves as a particle of charge \(+e\), energy \(+|E|\): the positron (Anderson 1932) [cite:@dirac1930;@anderson1933]. Pair creation = lifting an electron out of the sea.
 - *Feynman–Stückelberg*: a negative-energy solution moving backward in time equals a positive-energy antiparticle moving forward. This is built into the [[id:green-functions-and-feynman-propagator][Feynman propagator]] and needs no sea.
 - *Charge conjugation*: \(\psi^c=C\bar\psi^T\), \(C=i\gamma^2\gamma^0\), maps solutions of charge \(e\) to \(-e\).
 
@@ -32,7 +32,3 @@ Positron emission tomography (annihilation photons), positron annihilation spect
 
 * Pitfall
 \(v(p,s)\) describes an antiparticle of momentum \(\mathbf p\) and *opposite* spin label; keep track when summing spins only through the completeness relations.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Dirac_spinor][Dirac spinor]]
-- [[https://en.wikipedia.org/wiki/Dirac_sea][Dirac sea]]

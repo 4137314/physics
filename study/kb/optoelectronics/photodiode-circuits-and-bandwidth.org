@@ -13,6 +13,7 @@
 * Equivalent circuit
 A current source \(I_{ph}=\mathcal RP\) in parallel with the ideal diode, the junction capacitance \(C_j=\epsilon A/W\) (falls with reverse bias as \(W\) grows), a large shunt resistance \(R_{sh}\) (leakage), and a small series resistance \(R_s\); the load or amplifier input follows. Bandwidth \(\frac{1}{2\pi(R_s+R_L)C_{tot}}\), with \(C_{tot}\) including the amplifier input and parasitics.
 
+#+CAPTION: Small-signal equivalent circuit of a photodiode: photocurrent source, ideal diode, junction capacitance \(C_j\), shunt resistance \(R_{sh}\), series resistance \(R_s\) and load \(R_L\).
 \begin{circuitikz}[scale=0.9]
 \draw (0,0) to[I, l=$I_{ph}$] (0,2.5) -- (2,2.5) to[D, l=$D$, *-*] (2,0) -- (0,0);
 \draw (2,2.5) -- (3.6,2.5) to[C, l=$C_j$] (3.6,0) -- (2,0);
@@ -21,6 +22,7 @@ A current source \(I_{ph}=\mathcal RP\) in parallel with the ideal diode, the ju
 \end{circuitikz}
 
 * Operating modes and load line
+#+CAPTION: I–V curves of a photodiode in the dark and under two illuminations, with a load line: photoconductive operation in the third quadrant, photovoltaic in the fourth.
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.8cm,axis lines=left,xlabel={$V$ (V)},ylabel={$I$ (mA)},xmin=-2.6,xmax=0.75,ymin=-2.6,ymax=1.3]
 \addplot+[no marks,thick,domain=-2.5:0.5,samples=150]{1e-8*(exp(x/0.0259)-1)}; \addlegendentry{dark}
@@ -54,7 +56,3 @@ A Si pin (\(\mathcal R=0.5\) A/W at 850 nm, \(C_j=2\) pF at 5 V reverse bias) is
 
 * Pitfall
 The "bandwidth" of a photodiode on a datasheet is measured with 50 Ω; the same diode on a 10 kΩ load is hundreds of times slower. Always recompute \(f_c\) with the real load and amplifier capacitance.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Transimpedance_amplifier][Transimpedance amplifier]]
-- [[https://www.rp-photonics.com/photodiodes.html][RP Photonics: photodiodes]]

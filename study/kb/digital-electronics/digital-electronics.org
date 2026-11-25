@@ -40,7 +40,3 @@
 
 * Engineering applications
 Microprocessors, memories, FPGAs, mixed-signal SoCs; the [[id:exam-practice-digital-electronics][exam practice]] contains full solved problems.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/CMOS][CMOS]]
-- [[https://ngspice.sourceforge.io/][ngspice: open-source SPICE simulator]]

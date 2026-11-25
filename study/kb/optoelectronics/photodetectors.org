@@ -11,7 +11,7 @@
 #+summary: A reverse-biased junction collects photogenerated carriers: responsivity \(\mathcal R=\frac{I_{ph}}{P}=\eta\frac{q\lambda}{hc}=\eta\frac{\lambda[\mu m]}{1.24}\) A/W; a pin diode puts the absorption in a wide depleted i-layer (fast drift); bandwidth is limited by transit time \(f_t\approx0.45v_{sat}/W\) and by \(RC\); an APD multiplies the current by \(M\) at the cost of excess noise \(F(M)\).
 
 * Model
-- *Quantum efficiency*: \(\eta=(1-R)\,\zeta\,(1-e^{-\alpha W})\) (surface reflection, collection, absorption in the depleted region).
+- *Quantum efficiency*: \(\eta=(1-R)\,\zeta\,(1-e^{-\alpha W})\) (surface reflection, collection, absorption in the depleted region) [cite:@einstein1905a].
 - *pin*: \(W\) chosen \(\gtrsim1/\alpha\) for absorption but small for speed: trade-off \(\eta\)–bandwidth. Waveguide photodiodes decouple them (light travels along the junction).
 - *Bandwidth*: \(\frac1{f_{3dB}^2}\approx\frac{1}{f_t^2}+\frac{1}{f_{RC}^2}\), \(f_{RC}=\frac{1}{2\pi(R_L+R_s)C_j}\), \(C_j=\epsilon A/W\) ([[id:pn-junction-electrostatics][junction capacitance]]).
 - *APD*: high-field region gives impact ionisation; mean gain \(M\), excess noise \(F=kM+(1-k)(2-1/M)\), \(k=\beta/\alpha\) ionisation ratio (Si \(k\approx0.02\): low noise; InGaAs/InP \(k\approx0.4\)).
@@ -23,6 +23,7 @@ InGaAs pin at 1550 nm, \(\eta=0.8\): \(\mathcal R=0.8\cdot1.55/1.24=1.0\) A/W. D
 Gain inside the device: [[id:avalanche-photodiodes][avalanche photodiodes]] and [[id:photoconductors-and-phototransistors][photoconductors and phototransistors]]; the circuit around the diode and its speed: [[id:photodiode-circuits-and-bandwidth][photodiode circuits]]; arrays of photodiodes: [[id:image-sensors][CCD and CMOS image sensors]].
 
 * Picture: responsivity versus wavelength
+#+CAPTION: Responsivity versus wavelength: the ideal limit \(\mathcal R=\eta q\lambda/hc\) for silicon with \(\eta=1\), with typical silicon and InGaAs photodiodes, each cut off at its band gap.
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$\lambda$ (µm)},ylabel={$\mathcal R$ (A/W)},xmin=0.3,xmax=1.8,ymin=0,ymax=1.5]
 \addplot+[no marks,dashed,domain=0.3:1.1]{x/1.24}; \addlegendentry{ideal Si, $\eta=1$}
@@ -42,7 +43,3 @@ Optical receivers (pin + transimpedance amplifier), APDs for long reach and LiDA
 
 * Pitfall
 Responsivity grows with \(\lambda\) at fixed \(\eta\) (more photons per watt) until the cutoff \(\lambda_g\), where \(\eta\) collapses: \(\mathcal R(\lambda)\) is a sawtooth-like curve, not flat.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Photodiode][Photodiode]]
-- [[https://en.wikipedia.org/wiki/Avalanche_photodiode][Avalanche photodiode]]

@@ -28,6 +28,3 @@ Caches and register files in every processor (most of the transistors of a moder
 
 * Pitfall
 Read and write requirements conflict (strong access helps write, hurts read); variability (random \(V_T\) mismatch) makes the worst cell among billions decide the design.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Static_random-access_memory][Static random-access memory]]

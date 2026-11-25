@@ -14,7 +14,7 @@
 Between collisions (mean time \(\tau\)) carriers accelerate: \(v_d=-\mu_nE\), \(\mu=q\tau/m^*\). Conductivity \(\sigma=q(n\mu_n+p\mu_p)\). Mobility falls with doping (impurity scattering) and temperature (phonons, \(\propto T^{-3/2}\)).
 
 * Diffusion and Einstein relation (derivation)
-Fick: flux \(-D\nabla n\). In equilibrium with a built-in field, \(J_n=0\): \(qn\mu_nE=-qD_n\frac{\dd n}{\dd x}\). With \(n=N_ce^{-(E_c-E_F)/k_BT}\), \(E_F\) flat and \(E_c\) bending, \(\frac{\dd n}{\dd x}=-\frac{n}{k_BT}\frac{\dd E_c}{\dd x}\), and since \(\frac{\dd E_c}{\dd x}=qE\) (band edge is \(-q\) times the potential), \(\frac{\dd n}{\dd x}=-\frac{qnE}{k_BT}\). Substituting:
+Fick: flux \(-D\nabla n\) [cite:@einstein1905c;@roosbroeck1950]. In equilibrium with a built-in field, \(J_n=0\): \(qn\mu_nE=-qD_n\frac{\dd n}{\dd x}\). With \(n=N_ce^{-(E_c-E_F)/k_BT}\), \(E_F\) flat and \(E_c\) bending, \(\frac{\dd n}{\dd x}=-\frac{n}{k_BT}\frac{\dd E_c}{\dd x}\), and since \(\frac{\dd E_c}{\dd x}=qE\) (band edge is \(-q\) times the potential), \(\frac{\dd n}{\dd x}=-\frac{qnE}{k_BT}\). Substituting:
 \[ \frac{D_n}{\mu_n}=\frac{D_p}{\mu_p}=\frac{k_BT}{q}=25.9\ \text{mV at 300 K}. \]
 In general \(J_n=n\mu_n\frac{\dd E_{Fn}}{\dd x}\): current flows only where the quasi-Fermi level is tilted.
 
@@ -29,7 +29,3 @@ Resistor design in ICs (sheet resistance × squares), Hall sensors (\(R_H=1/qn\)
 
 * Pitfall
 The Einstein relation holds in non-degenerate equilibrium-like conditions; for degenerate doping \(D/\mu>k_BT/q\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Electrical_mobility][Electrical mobility]]
-- [[https://en.wikipedia.org/wiki/Einstein_relation_(kinetic_theory)][Einstein relation]]

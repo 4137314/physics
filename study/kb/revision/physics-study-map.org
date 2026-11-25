@@ -11,6 +11,7 @@
 #+summary: Start here. The base runs from quantum mechanics (postulates to foundations) through quantum optics and QED, then classical fields, optoelectronics and photonics, semiconductor physics and the electronics built on it (circuits, digital, power, superconducting); every note has derivations, worked numbers, engineering applications and links, and the revision domain holds formula sheets and exam problems with full solutions.
 
 * The domains and how they connect
+#+CAPTION: The domains of the physics notes and how they depend on one another.
 \begin{tikzpicture}[node distance=0.9cm and 1.2cm, every node/.style={draw, rounded corners, font=\small, align=center, minimum width=2.6cm}]
 \node (qm) {quantum\\mechanics};
 \node (qo) [right=of qm] {quantum\\optics};

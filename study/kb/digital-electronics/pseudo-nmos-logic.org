@@ -32,6 +32,3 @@ Wide NOR decoders and PLAs, address comparators, places where area matters more 
 
 * Pitfall
 Pseudo-NMOS NAND is the *worst* choice for large fan-in (series pull-down fights a constant pull-up); NOR is where it shines.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Logic_family][Logic family]]

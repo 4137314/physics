@@ -23,7 +23,7 @@ Using \(\mathbf S_1\cdot\mathbf S_2=\tfrac12(\mathbf S^2-\mathbf S_1^2-\mathbf S
 \(l=1\), \(s=\tfrac12\): \(j=\tfrac32\) (4 states) and \(j=\tfrac12\) (2 states). \(\mathbf L\cdot\mathbf S=\tfrac{\hbar^2}2[j(j+1)-l(l+1)-s(s+1)]=\hbar^2/2\) and \(-\hbar^2\): the \(2p_{3/2}\)/\(2p_{1/2}\) splitting. Also \(\ket{\tfrac12,\tfrac12}=-\sqrt{\tfrac13}\ket{0,\uparrow}+\sqrt{\tfrac23}\ket{1,\downarrow}\).
 
 * Wigner–Eckart theorem
-For a rank-\(k\) spherical tensor \(T^{(k)}_q\): \(\bra{j'm'}T^{(k)}_q\ket{jm}=\braket{j\,m;k\,q|j'm'}\frac{\bra{j'}\|T^{(k)}\|\ket{j}}{\sqrt{2j'+1}}\). Geometry (Clebsch–Gordan) is separated from dynamics (reduced element): selection rules \(|j-k|\le j'\le j+k\), \(m'=m+q\).
+For a rank-\(k\) spherical tensor \(T^{(k)}_q\): \(\bra{j'm'}T^{(k)}_q\ket{jm}=\braket{j\,m;k\,q|j'm'}\frac{\bra{j'}\|T^{(k)}\|\ket{j}}{\sqrt{2j'+1}}\). Geometry (Clebsch–Gordan) is separated from dynamics (reduced element): selection rules \(|j-k|\le j'\le j+k\), \(m'=m+q\) [cite:@wigner1931].
 
 * Worked example
 Hydrogen hyperfine: \(\mathbf S_e\cdot\mathbf S_p\) splits triplet and singlet by \(\Delta E=5.9\) µeV, i.e. 1420 MHz, \(\lambda=21\) cm, the hydrogen-maser frequency.
@@ -33,7 +33,3 @@ Hyperfine clock transitions (Cs 9.19 GHz defines the second), heteronuclear coup
 
 * Pitfall
 \(\ket{1,0}\) is entangled although it is "a triplet state", and \(\ket{\uparrow\downarrow}\) is not an eigenstate of \(\mathbf S^2\): it is a mixture of singlet and triplet in the coupled basis.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Clebsch%E2%80%93Gordan_coefficients][Clebsch–Gordan coefficients]]
-- [[https://en.wikipedia.org/wiki/Wigner%E2%80%93Eckart_theorem][Wigner–Eckart theorem]]

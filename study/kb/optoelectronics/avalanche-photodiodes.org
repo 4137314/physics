@@ -11,7 +11,7 @@
 #+summary: A high-field region multiplies each photogenerated carrier by impact ionisation: \(I_{ph}=MI_{ph0}\), with \(M\approx\frac{1}{1-(V_r/V_{br})^n}\) near breakdown; the randomness of the avalanche adds an excess noise factor \(F(M)=kM+(1-k)\left(2-\frac1M\right)\) (\(k=\alpha_h/\alpha_e\)), so the SNR \(\frac{(MI_{ph0})^2}{2q(I_{ph0}+I_d)M^2FB+4k_BTB/R_L}\) has an optimum gain; low \(k\) (Si) is quiet, InGaAs/InP uses a separate absorption and multiplication (SAM) structure.
 
 * Multiplication
-An electron accelerated in a field \(\sim3\times10^5\) V/cm gains more than \(\approx\frac32E_g\) between collisions and creates a new electron–hole pair. Ionisation coefficients \(\alpha_e\), \(\alpha_h\) (per unit length) grow steeply with field. If only electrons ionise (\(k=0\)), \(M=e^{\alpha_ew}\) grows smoothly and there is no feedback; if holes also ionise, holes travelling back trigger new electrons: positive feedback, larger fluctuations, slower avalanche build-up and breakdown when \(\int\alpha\,\dd x\) reaches 1. Empirically \(M=\left[1-(V_r/V_{br})^n\right]^{-1}\), \(n\approx3\)–6; \(V_{br}\) rises with temperature (phonons steal energy), so APDs need bias or temperature control.
+An electron accelerated in a field \(\sim3\times10^5\) V/cm gains more than \(\approx\frac32E_g\) between collisions and creates a new electron–hole pair. Ionisation coefficients \(\alpha_e\), \(\alpha_h\) (per unit length) grow steeply with field. If only electrons ionise (\(k=0\)), \(M=e^{\alpha_ew}\) grows smoothly and there is no feedback; if holes also ionise, holes travelling back trigger new electrons: positive feedback, larger fluctuations, slower avalanche build-up and breakdown when \(\int\alpha\,\dd x\) reaches 1 [cite:@mcintyre1966]. Empirically \(M=\left[1-(V_r/V_{br})^n\right]^{-1}\), \(n\approx3\)–6; \(V_{br}\) rises with temperature (phonons steal energy), so APDs need bias or temperature control.
 
 * Structures
 - *Reach-through Si APD* (n⁺-p-π-p⁺): light absorbed in the wide π region, electrons drift to a thin high-field p–n⁺ layer where they multiply; electrons only, \(k\approx0.02\).
@@ -20,6 +20,7 @@ An electron accelerated in a field \(\sim3\times10^5\) V/cm gains more than \(\a
 - *SPAD*: biased above breakdown (Geiger mode), each photon triggers a macroscopic pulse, then quenched: single-photon counting (LiDAR, quantum optics).
 
 * Picture: SNR versus gain (InGaAs APD, 100 nW, 1 GHz, 1 kΩ)
+#+CAPTION: Signal-to-noise ratio of an InGaAs APD versus multiplication gain \(M\) (100 nW, 1 GHz, 1 kΩ, excess noise \(F=M^{0.7}\)), against a pin photodiode (\(M=1\)): gain helps until excess noise takes over, so there is an optimum \(M\).
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.4cm,axis lines=left,xlabel={$M$},ylabel={SNR (dB)},xmin=1,xmax=60,ymin=-5,ymax=16]
 \addplot+[no marks,thick,domain=1:60,samples=200]{10*log10(765.6*x^2/(2.8035*x^2.7+1657))}; \addlegendentry{$F=M^{0.7}$}
@@ -46,7 +47,3 @@ A Si APD at 800 nm has \(\eta=0.75\) at \(M=1\), dark current (primary, unmultip
 
 * Pitfall
 Dark current has two parts: the *bulk* part flows through the multiplication region and is multiplied (with its excess noise), the *surface* leakage is not. Use the unmultiplied primary dark current inside \(M^2F\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Avalanche_photodiode][Avalanche photodiode]]
-- [[https://www.rp-photonics.com/avalanche_photodiodes.html][RP Photonics: avalanche photodiodes]]

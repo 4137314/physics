@@ -19,6 +19,7 @@
 | light–matter    | Jaynes–Cummings, spontaneous emission, master equation |
 
 * Picture
+#+CAPTION: Map of quantum optics: the quantised field as harmonic oscillators, its states, their correlations, and light–matter coupling.
 \begin{tikzpicture}[node distance=1.4cm, every node/.style={draw, rounded corners, font=\small, align=center}]
 \node (ho) {harmonic\\oscillator};
 \node (fq) [right=of ho] {field\\quantisation};
@@ -30,7 +31,3 @@
 
 * Engineering applications
 Single-photon sources and detectors for quantum communication, squeezed light in gravitational-wave detectors, cavity and circuit QED for quantum computing, laser linewidth and noise in optical communications ([[id:noise-in-photodetectors][shot noise]]).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Quantum_optics][Quantum optics]]
-- [[https://ocw.mit.edu/courses/6-974-fundamentals-of-photonics-quantum-electronics-spring-2006/][MIT 6.974 Fundamentals of photonics: quantum electronics]]

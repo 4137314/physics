@@ -14,7 +14,7 @@
 1. Coulomb gauge \(\nabla\cdot\mathbf A=0\), no sources: \(\Box\mathbf A=0\), \(\mathbf E=-\dot{\mathbf A}\), \(\mathbf B=\nabla\times\mathbf A\).
 2. In a box of volume \(V\) with periodic conditions, expand \(\mathbf A=\sum_{\mathbf k,\lambda}\left(\mathcal A_{k\lambda}(t)\boldsymbol\epsilon_{k\lambda}e^{i\mathbf k\cdot\mathbf r}+\text{c.c.}\right)\), two transverse polarisations \(\boldsymbol\epsilon\perp\mathbf k\).
 3. The energy \(\frac12\int(\epsilon_0E^2+B^2/\mu_0)\dd^3r\) becomes \(\sum_{k\lambda}\frac12(P_{k\lambda}^2+\omega_k^2Q_{k\lambda}^2)\) with real canonical pairs built from \(\mathcal A\): one oscillator per mode.
-4. Quantise each oscillator, \([Q,P]=i\hbar\), and introduce \(a_{k\lambda}\) with \([a_{k\lambda},a^\dagger_{k'\lambda'}]=\delta_{kk'}\delta_{\lambda\lambda'}\):
+4. Quantise each oscillator, \([Q,P]=i\hbar\), and introduce \(a_{k\lambda}\) with \([a_{k\lambda},a^\dagger_{k'\lambda'}]=\delta_{kk'}\delta_{\lambda\lambda'}\) [cite:@dirac1927]:
 \[ \mathbf A=\sum_{k\lambda}\sqrt{\frac{\hbar}{2\epsilon_0\omega_kV}}\left(a_{k\lambda}\boldsymbol\epsilon_{k\lambda}e^{i(\mathbf k\cdot\mathbf r-\omega_kt)}+\text{h.c.}\right),\qquad H=\sum_{k\lambda}\hbar\omega_k\left(a^\dagger_{k\lambda}a_{k\lambda}+\tfrac12\right). \]
 Momentum \(\mathbf P=\sum\hbar\mathbf k\,a^\dagger a\): photons carry \(\hbar\omega\) and \(\hbar\mathbf k\).
 
@@ -29,7 +29,3 @@ Shot noise and the standard quantum limit in photodetection, spontaneous emissio
 
 * Pitfall
 A photon is not a localised particle with a wave function in the Schrödinger sense; it is an excitation of a mode, which may be spread over the whole cavity.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Quantization_of_the_electromagnetic_field][Quantization of the electromagnetic field]]
-- [[https://en.wikipedia.org/wiki/Casimir_effect][Casimir effect]]

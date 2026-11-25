@@ -20,9 +20,10 @@
 Rayleigh: \(\alpha_R\propto\lambda^{-4}\); ≈ 0.15 dB/km at 1550 nm, hence ≈ 0.29 dB/km at 1310 nm and ≈ 1.7 dB/km at 850 nm. Brillouin: light Bragg-reflects on a sound wave moving at \(v_a\approx5.96\) km/s, Doppler-shifted by \(\nu_B=\frac{2nv_a}{\lambda}=\frac{2\cdot1.45\cdot5960}{1.55\times10^{-6}}\approx11\) GHz. Above a threshold of a few mW in long fibres, stimulated Brillouin scattering reflects the launched power back: it limits narrow-linewidth transmitters (power per linewidth).
 
 * OTDR (derivation)
-A pulse of duration \(\tau\) is launched; at time \(t\) the detector sees light backscattered at \(z=\frac{ct}{2n}\) (round trip). Two events closer than \(\Delta z=\frac{c\tau}{2n}\) merge. The backscattered power from \(z\) has crossed the fibre twice: \(P(z)\propto e^{-2\alpha z}\), and the trace in dB falls with slope \(2\alpha_{dB}\); instruments divide by 2 and display one-way loss. A splice is a step down, a connector or the far end a reflection spike followed by a step; dynamic range (dB between initial backscatter and noise floor) sets the maximum length; averaging \(N\) traces gains \(5\log_{10}N\) dB.
+A pulse of duration \(\tau\) is launched; at time \(t\) the detector sees light backscattered at \(z=\frac{ct}{2n}\) (round trip) [cite:@barnoski1976]. Two events closer than \(\Delta z=\frac{c\tau}{2n}\) merge. The backscattered power from \(z\) has crossed the fibre twice: \(P(z)\propto e^{-2\alpha z}\), and the trace in dB falls with slope \(2\alpha_{dB}\); instruments divide by 2 and display one-way loss. A splice is a step down, a connector or the far end a reflection spike followed by a step; dynamic range (dB between initial backscatter and noise floor) sets the maximum length; averaging \(N\) traces gains \(5\log_{10}N\) dB.
 
 * Picture: an OTDR trace
+#+CAPTION: An OTDR trace: Rayleigh backscatter decays linearly in dB with distance, splices appear as steps and connectors or the fibre end as reflection peaks.
 \begin{tikzpicture}
 \draw[-{Latex}] (0,0)--(8,0) node[right,font=\scriptsize]{distance};
 \draw[-{Latex}] (0,0)--(0,3.6); \node[font=\scriptsize,rotate=90] at (-0.3,1.8) {backscatter (dB)};
@@ -53,7 +54,3 @@ An OTDR uses 100 ns pulses at 1550 nm (\(n=1.47\)), has 28 dB dynamic range, and
 
 * Pitfall
 The round trip appears twice: in \(z=ct/2n\) and in the \(2\alpha\) slope of the raw trace. Forgetting the 2 doubles the distance or the loss.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Optical_time-domain_reflectometer][Optical time-domain reflectometer]]
-- [[https://en.wikipedia.org/wiki/Distributed_temperature_sensing][Distributed temperature sensing]]

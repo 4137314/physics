@@ -12,7 +12,7 @@
 
 * Statement
 \[ \mathrm{emf}=\oint_C(\mathbf E+\mathbf v\times\mathbf B)\cdot\dd\mathbf l=-\frac{\dd}{\dd t}\int_S\mathbf B\cdot\dd\mathbf S. \]
-Two contributions: *transformer emf* (\(\partial_t\mathbf B\), stationary loop) and *motional emf* (\(\mathbf v\times\mathbf B\), moving conductor). Differential form for fixed contours: \(\nabla\times\mathbf E=-\partial_t\mathbf B\): \(\mathbf E\) is no longer conservative.
+Two contributions: *transformer emf* (\(\partial_t\mathbf B\), stationary loop) and *motional emf* (\(\mathbf v\times\mathbf B\), moving conductor) [cite:@faraday1832]. Differential form for fixed contours: \(\nabla\times\mathbf E=-\partial_t\mathbf B\): \(\mathbf E\) is no longer conservative.
 
 * Inductance
 Self: \(L=N\Phi/I\), \(v=L\,\dd i/\dd t\). Mutual: \(M_{21}=N_2\Phi_{21}/I_1=M_{12}\) (Neumann formula, reciprocity), coupling \(k=M/\sqrt{L_1L_2}\le1\). Energy \(W=\tfrac12\int\mathbf B\cdot\mathbf H\,\dd V=\tfrac12LI^2\).
@@ -31,7 +31,3 @@ Transformers, induction motors and generators, induction cooking and heating, wi
 
 * Pitfall
 The emf depends on the surface's flux, but the *voltage* read by a voltmeter in a time-varying field depends on the path of the leads: Kirchhoff's voltage law is only an approximation when flux links the circuit.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Faraday%27s_law_of_induction][Faraday's law of induction]]
-- [[https://www.feynmanlectures.caltech.edu/II_17.html][Feynman II-17: The laws of induction]]

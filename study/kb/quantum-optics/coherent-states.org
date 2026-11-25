@@ -11,9 +11,9 @@
 #+summary: \(\ket\alpha=e^{-|\alpha|^2/2}\sum\frac{\alpha^n}{\sqrt{n!}}\ket n=D(\alpha)\ket0\) is the eigenstate of \(a\) with eigenvalue \(\alpha\); it has Poisson photon statistics (\(\Delta n=\sqrt{\bar n}\)), minimum uncertainty, and its mean field oscillates classically: the quantum description of an ideal laser.
 
 * Definition and properties
-\(a\ket\alpha=\alpha\ket\alpha\). Expanding in Fock states, \(\braket{n|\alpha}=\braket{n-1|\alpha}\alpha/\sqrt n\), so
+\(a\ket\alpha=\alpha\ket\alpha\) [cite:@sudarshan1963]. Expanding in Fock states, \(\braket{n|\alpha}=\braket{n-1|\alpha}\alpha/\sqrt n\), so
 \[ \ket\alpha=e^{-|\alpha|^2/2}\sum_{n=0}^\infty\frac{\alpha^n}{\sqrt{n!}}\ket n,\qquad P(n)=e^{-\bar n}\frac{\bar n^n}{n!},\quad\bar n=|\alpha|^2. \]
-- Displacement: \(D(\alpha)=e^{\alpha a^\dagger-\alpha^*a}\), \(D^\dagger aD=a+\alpha\), \(\ket\alpha=D(\alpha)\ket0\) (Baker–Campbell–Hausdorff).
+- Displacement: \(D(\alpha)=e^{\alpha a^\dagger-\alpha^*a}\), \(D^\dagger aD=a+\alpha\), \(\ket\alpha=D(\alpha)\ket0\) (Baker–Campbell–Hausdorff) [cite:@glauber1963b].
 - Quadratures \(X_1=\frac{a+a^\dagger}2\), \(X_2=\frac{a-a^\dagger}{2i}\): \(\Delta X_1=\Delta X_2=\tfrac12\), the vacuum noise, minimum uncertainty.
 - Evolution under \(H=\hbar\omega a^\dagger a\): \(\ket{\alpha e^{-i\omega t}}\), stays coherent; \(\braket E\) is a classical sinusoid.
 - Overcomplete: \(\frac1\pi\int\ket\alpha\bra\alpha\dd^2\alpha=1\), \(|\braket{\beta|\alpha}|^2=e^{-|\alpha-\beta|^2}\).
@@ -29,6 +29,3 @@ Coherent optical communications (QPSK/QAM constellations are coherent states \(\
 
 * Pitfall
 Coherent states with different \(\alpha\) are not orthogonal: their overlap is small only when \(|\alpha-\beta|\gg1\). Perfect discrimination of weak signals is impossible (Helstrom bound).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Coherent_state][Coherent state]]

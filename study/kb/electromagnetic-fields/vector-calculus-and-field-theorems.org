@@ -32,7 +32,3 @@ Every field solver (FEM, FDTD) discretises these operators; Stokes underlies Amp
 
 * Pitfall
 In curvilinear coordinates the unit vectors depend on position: you cannot differentiate components as if Cartesian.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Divergence_theorem][Divergence theorem]]
-- [[https://en.wikipedia.org/wiki/Helmholtz_decomposition][Helmholtz decomposition]]

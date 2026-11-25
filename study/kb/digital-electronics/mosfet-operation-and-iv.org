@@ -14,9 +14,9 @@
 Increasing \(V_{GS}\): accumulation → depletion → *strong inversion* when the surface potential reaches \(2\phi_F\), \(\phi_F=\frac{k_BT}{q}\ln\frac{N_A}{n_i}\). Threshold \(V_{TN}=V_{FB}+2\phi_F+\frac{\sqrt{2q\epsilon_sN_A(2\phi_F+V_{SB})}}{C_{ox}}\) — the last term grows with \(V_{SB}\): body effect \(V_{TN}=V_{TO}+\gamma\left(\sqrt{V_{SB}+2\phi_F}-\sqrt{2\phi_F}\right)\), \(\gamma=\sqrt{2q\epsilon_sN_A}/C_{ox}\).
 
 * Derivation (gradual channel)
-Channel charge per area at position \(y\): \(Q_n(y)=-C_{ox}(V_{GS}-V(y)-V_{TN})\). Drift current \(I_D=-W\mu_nQ_n\frac{\dd V}{\dd y}\). Integrate from \(V=0\) (source) to \(V_{DS}\) (drain) over length \(L\):
+Channel charge per area at position \(y\): \(Q_n(y)=-C_{ox}(V_{GS}-V(y)-V_{TN})\) [cite:@shockley1952]. Drift current \(I_D=-W\mu_nQ_n\frac{\dd V}{\dd y}\). Integrate from \(V=0\) (source) to \(V_{DS}\) (drain) over length \(L\):
 \[ I_D=\mu_nC_{ox}\frac WL\left(V_{GS}-V_{TN}-\frac{V_{DS}}{2}\right)V_{DS}. \]
-Maximum at \(V_{DS}=V_{GS}-V_{TN}\) (channel *pinch-off* at the drain); beyond it the current saturates: \(I_D=\frac{K_n}{2}(V_{GS}-V_{TN})^2\). Channel-length modulation adds \((1+\lambda V_{DS})\).
+Maximum at \(V_{DS}=V_{GS}-V_{TN}\) (channel *pinch-off* at the drain); beyond it the current saturates: \(I_D=\frac{K_n}{2}(V_{GS}-V_{TN})^2\) [cite:@sah1964]. Channel-length modulation adds \((1+\lambda V_{DS})\).
 
 * Regions (NMOS; PMOS with all signs reversed)
 | region     | condition                          | I_D                             |
@@ -27,6 +27,7 @@ Maximum at \(V_{DS}=V_{GS}-V_{TN}\) (channel *pinch-off* at the drain); beyond i
 Small-signal: \(g_m=\sqrt{2K_nI_D}\), \(r_o=1/\lambda I_D\). For small \(V_{DS}\): \(R_{on}=\frac{1}{K_n(V_{GS}-V_{TN})}\).
 
 * Picture
+#+CAPTION: Output characteristics of an n-MOSFET for \(V_{GS}=2\), 3 and 4 V; the dashed parabola \(V_{DS}=V_{GS}-V_{TN}\) separates the triode and saturation regions.
 \begin{tikzpicture}
 \begin{axis}[width=7.5cm,height=4.5cm,axis lines=left,xlabel={$V_{DS}$ (V)},ylabel={$I_D$ (mA)},xmin=0,xmax=5,ymin=0,ymax=2.6]
 \addplot+[no marks,domain=0:5,samples=100]{(x<1) ? 0.5*(1-x/2)*x : 0.25*1^2};
@@ -46,7 +47,3 @@ All digital CMOS, analog amplifiers (current mirrors, differential pairs), power
 
 * Pitfall
 The saturation condition is on \(V_{DS}\) *and* \(V_{GS}\): \(V_{DS}\ge V_{GS}-V_{TN}\). A diode-connected MOS (\(V_{GS}=V_{DS}\)) is always saturated when on — use it to shortcut exam problems.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/MOSFET][MOSFET]]
-- [[https://en.wikipedia.org/wiki/Body_effect][Body effect]]

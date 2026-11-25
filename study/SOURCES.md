@@ -24,5 +24,10 @@ problems) come from the course documents listed here.
 
 Corrections made while writing: the Klein–Nishina ratio at 1.33 MeV is 0.27 (the high-energy
 approximation gives 0.31); the photodiode example with a 50 Ω load is thermal-noise limited at 24 dB
-SNR. External links were checked on 2026-11-19; `feynmanlectures.caltech.edu` refuses automated checks
-and `pveducation.org` was unreachable from the checking machine, both are kept.
+SNR.
+
+The notes cite the papers that first proved, measured or proposed each result with org-cite,
+`[cite:@key]`, next to the statement they support; the entries are in `refs.bib`. Their DOIs,
+volumes and pages were checked against Crossref on 2026-11-25; the few works Crossref does not hold
+(books, a patent, some journals of the 19th and early 20th century) are cited without a DOI. The
+links to web pages that the notes used to end with were removed on the same day.

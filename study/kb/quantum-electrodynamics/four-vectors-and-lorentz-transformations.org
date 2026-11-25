@@ -13,11 +13,11 @@
 * Definitions
 - Contravariant \(a^\mu\), covariant \(a_\mu=g_{\mu\nu}a^\nu\); scalar product \(a\cdot b=a^0b^0-\mathbf a\cdot\mathbf b\), invariant under \(\Lambda\) with \(\Lambda^Tg\Lambda=g\).
 - Boost along \(x\): \(t'=\gamma(t-\beta x)\), \(x'=\gamma(x-\beta t)\), \(\gamma=1/\sqrt{1-\beta^2}\).
-- Electromagnetism: \(A^\mu=(\phi,\mathbf A)\), \(F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu\), \(\partial_\mu F^{\mu\nu}=j^\nu\) (Heaviside–Lorentz units, \(\alpha=e^2/4\pi\)), Lorenz gauge \(\partial_\mu A^\mu=0\).
+- Electromagnetism: \(A^\mu=(\phi,\mathbf A)\), \(F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu\), \(\partial_\mu F^{\mu\nu}=j^\nu\) (Heaviside–Lorentz units, \(\alpha=e^2/4\pi\)), Lorenz gauge \(\partial_\mu A^\mu=0\) [cite:@einstein1905b].
 - Natural units: \(\hbar c=197.327\) MeV fm, \(m_ec^2=0.511\) MeV, \(1\,\mathrm{GeV}^{-2}=0.3894\) mb.
 
 * Mandelstam variables
-For \(p_1+p_2\to p_3+p_4\): \(s\) = squared CM energy, \(t\) = squared momentum transfer (\(\le0\) in elastic scattering), \(u\) crossed. In the CM frame for massless particles: \(t=-\frac s2(1-\cos\theta)\), \(u=-\frac s2(1+\cos\theta)\).
+For \(p_1+p_2\to p_3+p_4\): \(s\) = squared CM energy, \(t\) = squared momentum transfer (\(\le0\) in elastic scattering), \(u\) crossed [cite:@mandelstam1958]. In the CM frame for massless particles: \(t=-\frac s2(1-\cos\theta)\), \(u=-\frac s2(1+\cos\theta)\).
 
 * Derivation: threshold energy
 Fixed-target production of \(e^+e^-\) by a photon on an electron, \(\gamma e\to e\,e^+e^-\): invariance of \(s\): \(s=(E_\gamma+m)^2-E_\gamma^2=m^2+2mE_\gamma\ge(3m)^2\Rightarrow E_\gamma\ge4m=2.04\) MeV. On a nucleus of mass \(M\gg m\) the threshold is \(\approx2m=1.022\) MeV.
@@ -30,7 +30,3 @@ Collider energy budgets, relativistic Doppler in GPS and in radar, inverse-Compt
 
 * Pitfall
 Sign conventions: Greiner and Bjorken–Drell use \((+,-,-,-)\); some texts use \((-,+,+,+)\), which flips the sign of \(p^2\) and of \(t\). Always state the metric.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Mandelstam_variables][Mandelstam variables]]
-- [[https://en.wikipedia.org/wiki/Four-vector][Four-vector]]

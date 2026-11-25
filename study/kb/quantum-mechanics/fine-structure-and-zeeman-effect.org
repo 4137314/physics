@@ -11,17 +11,17 @@
 #+summary: Relativistic kinetic correction plus spin–orbit plus Darwin term give \(E_{nj}=E_n\left[1+\frac{\alpha^2}{n^2}\left(\frac{n}{j+1/2}-\frac34\right)\right]\); a weak field shifts levels by \(\mu_Bg_JBm_j\) with the Landé factor \(g_J=1+\frac{j(j+1)+s(s+1)-l(l+1)}{2j(j+1)}\).
 
 * Spin–orbit
-In the electron's rest frame the nucleus moves and produces \(\mathbf B=-\mathbf v\times\mathbf E/c^2\); with Thomas precession (factor ½):
+In the electron's rest frame the nucleus moves and produces \(\mathbf B=-\mathbf v\times\mathbf E/c^2\); with Thomas precession (factor ½) [cite:@uhlenbeck1925;@thomas1926]:
 \[ H_{SO}=\frac{1}{2m^2c^2}\frac1r\frac{\dd V}{\dd r}\mathbf L\cdot\mathbf S. \]
 \(\mathbf L\cdot\mathbf S\) is diagonal in \(\ket{l,s;j,m_j}\): first-order perturbation theory in the *coupled* basis.
 
 * Fine structure
-Adding \(-p^4/8m^3c^2\) and the Darwin term (for \(l=0\)), all three combine to
+Adding \(-p^4/8m^3c^2\) and the Darwin term (for \(l=0\)), all three combine to [cite:@sommerfeld1916]
 \[ \Delta E_{nj}=-\frac{mc^2\alpha^4}{2n^4}\left(\frac{n}{j+\tfrac12}-\frac34\right), \]
 which depends only on \(j\): \(2s_{1/2}\) and \(2p_{1/2}\) stay degenerate (exactly as the [[id:dirac-equation][Dirac equation]] predicts; the [[id:lamb-shift][Lamb shift]] breaks it). \(n=2\): \(2p_{3/2}-2p_{1/2}=45\) µeV (10.9 GHz).
 
 * Zeeman effect
-\(H_Z=\frac{\mu_B}{\hbar}(\mathbf L+2\mathbf S)\cdot\mathbf B\).
+\(H_Z=\frac{\mu_B}{\hbar}(\mathbf L+2\mathbf S)\cdot\mathbf B\) [cite:@zeeman1897].
 - *Weak field* (\(\mu_BB\ll\) fine structure): project onto \(\mathbf J\) (projection theorem), \(\Delta E=g_J\mu_BBm_j\).
 - *Strong field* (Paschen–Back): \(\Delta E=\mu_BB(m_l+2m_s)\), then add spin–orbit as a correction.
 
@@ -33,7 +33,3 @@ Zeeman-tuned atomic magnetometers, magneto-optical traps, laser frequency stabil
 
 * Pitfall
 Using \(g_J=1\) (orbital only) or \(g_s=1\) misses the factor 2 of spin; the electron \(g_s=2.0023\) ([[id:anomalous-magnetic-moment][g−2]]).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Fine_structure][Fine structure]]
-- [[https://en.wikipedia.org/wiki/Zeeman_effect][Zeeman effect]]

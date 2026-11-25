@@ -11,7 +11,7 @@
 #+summary: A periodic perturbation of period \(\Lambda\) couples forward and backward modes when \(\lambda_B=2n_{eff}\Lambda\); coupled-mode theory gives peak reflectivity \(R=\tanh^2(\kappa L)\) and stopband width \(\Delta\lambda=\frac{\lambda_B^2}{\pi n_g}\sqrt{\kappa^2+(\pi/L)^2}\); a quarter-wave phase shift opens a narrow transmission peak (the DFB laser cavity).
 
 * Coupled-mode derivation
-Forward \(A(z)e^{-j\beta z}\) and backward \(B(z)e^{j\beta z}\) waves, coupling \(\kappa\) from the index modulation \(\Delta n\): \(\kappa\approx\frac{2\Delta n}{\lambda}\) for a square-wave corrugation. With detuning \(\delta=\beta-\pi/\Lambda\):
+Forward \(A(z)e^{-j\beta z}\) and backward \(B(z)e^{j\beta z}\) waves, coupling \(\kappa\) from the index modulation \(\Delta n\): \(\kappa\approx\frac{2\Delta n}{\lambda}\) for a square-wave corrugation [cite:@kogelnik1972]. With detuning \(\delta=\beta-\pi/\Lambda\):
 \[ \frac{\dd A}{\dd z}=-j\kappa Be^{2j\delta z},\qquad \frac{\dd B}{\dd z}=j\kappa Ae^{-2j\delta z}. \]
 Boundary conditions \(A(0)=1\), \(B(L)=0\) give \(r(\delta)\); at \(\delta=0\): \(r=-j\tanh(\kappa L)\). Inside the stopband (\(|\delta|<\kappa\)) waves decay — a 1D [[id:photonic-crystals][photonic band gap]], the same physics as electron band gaps ([[id:bloch-theorem-and-energy-bands][Bloch]]).
 
@@ -23,7 +23,3 @@ On-chip filters and mirrors, DFB and DBR laser cavities ([[id:semiconductor-lase
 
 * Pitfall
 Fabrication smooths small corrugations (lithography blurs features < 100 nm), so the realised \(\kappa\) is often much smaller than designed: measure and calibrate.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Fiber_Bragg_grating][Fiber Bragg grating]]
-- [[https://en.wikipedia.org/wiki/Coupled_mode_theory][Coupled mode theory]]

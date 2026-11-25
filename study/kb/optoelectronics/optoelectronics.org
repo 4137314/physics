@@ -32,6 +32,7 @@ Chapter by chapter:
 - *Polarisation and modulation*: [[id:polarization-and-birefringence][polarisation and wave plates]], [[id:electro-optic-modulators][electro-optic modulators]].
 
 * Picture: an optical link
+#+CAPTION: An optical link: laser diode and modulator, fibre with amplifiers, photodetector and receiver, the chain the subject studies piece by piece.
 \begin{tikzpicture}[node distance=1.2cm, every node/.style={draw, rounded corners, font=\small, align=center}]
 \node (s) {laser diode\\+ modulator};
 \node (f) [right=of s] {fibre\\(loss, dispersion)};
@@ -45,7 +46,3 @@ All past papers of the written exam, solved and grouped by exercise type with th
 
 * Engineering applications
 Telecom and datacom links, LiDAR, displays and solid-state lighting, imaging sensors, photovoltaics, fibre sensors (gyroscopes, FBG strain gauges), laser machining and medicine.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Optoelectronics][Optoelectronics]]
-- [[https://www.rp-photonics.com/encyclopedia.html][RP Photonics Encyclopedia]]

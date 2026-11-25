@@ -11,6 +11,7 @@
 #+summary: Inversion needs a metastable upper level fed by a pump: in a three-level laser (ruby) the lower level is the ground state, so half the atoms must be pumped, \(P_{min}=V\frac{N_0}{2}\frac{h\nu_{13}}{\tau_{sp}}\); in a four-level laser (He–Ne, Nd:YAG) the lower level is empty and threshold is far lower; threshold inversion \(\Delta N_{th}\approx g_{th}\frac{8\pi n^2\nu^2\tau_{sp}\Delta\nu}{c^2}\), photon lifetime \(\tau_{ph}=\frac{n}{c\alpha_t}\), and the number of lasing modes is the gain width over \(c/2nL\).
 
 * Level schemes
+#+CAPTION: Level schemes of a three-level laser (ruby), lasing to the ground state, and of a four-level laser (Nd:YAG), lasing to an empty level above it.
 \begin{tikzpicture}[scale=0.9]
 \draw[thick] (0,0)--(1.6,0) node[right,font=\scriptsize]{$E_1$ ground};
 \draw[thick] (0,2.2)--(1.6,2.2) node[right,font=\scriptsize]{$E_2$ metastable};
@@ -33,10 +34,10 @@
 \end{tikzpicture}
 
 * Three-level minimum pump (derivation)
-All \(N_0\) ions start in \(E_1\). Inversion begins when \(N_2=N_1=N_0/2\): an energy \(V\frac{N_0}{2}h\nu_{13}\) must be absorbed, and it must be supplied faster than \(E_2\) empties, i.e. within \(\tau_{sp}\): \(P_{min}=V\frac{N_0}{2}\frac{h\nu_{13}}{\tau_{sp}}\). In a four-level system \(E_1\) is above the ground state and drains quickly, so any population in \(E_2\) is already an inversion: thresholds are orders of magnitude lower and CW operation is easy.
+All \(N_0\) ions start in \(E_1\) [cite:@maiman1960]. Inversion begins when \(N_2=N_1=N_0/2\): an energy \(V\frac{N_0}{2}h\nu_{13}\) must be absorbed, and it must be supplied faster than \(E_2\) empties, i.e. within \(\tau_{sp}\): \(P_{min}=V\frac{N_0}{2}\frac{h\nu_{13}}{\tau_{sp}}\). In a four-level system \(E_1\) is above the ground state and drains quickly, so any population in \(E_2\) is already an inversion: thresholds are orders of magnitude lower and CW operation is easy.
 
 * The He–Ne laser
-A discharge excites He atoms to metastable 2¹S and 2³S levels; collisions transfer the energy resonantly to Ne levels (3s, 2s), which lase to 2p (632.8 nm, also 543, 1152, 3391 nm); 2p empties to 1s, which empties by collisions with the tube walls — hence narrow tubes. Brewster windows make the output polarised; one mirror is ≈ 99.9%, the output coupler ≈ 99%. Overall efficiency ≈ 0.1%. Gain is small (a few %/m): the cavity must be low loss.
+A discharge excites He atoms to metastable 2¹S and 2³S levels; collisions transfer the energy resonantly to Ne levels (3s, 2s), which lase to 2p (632.8 nm, also 543, 1152, 3391 nm); 2p empties to 1s, which empties by collisions with the tube walls — hence narrow tubes [cite:@javan1961]. Brewster windows make the output polarised; one mirror is ≈ 99.9%, the output coupler ≈ 99%. Overall efficiency ≈ 0.1%. Gain is small (a few %/m): the cavity must be low loss.
 
 * Worked examples
 1. *Ruby*, \(N_0=10^{19}\) cm\(^{-3}\), rod 10 cm × 1 cm diameter (\(V=7.85\) cm³), pump band 2.2 eV, \(\tau_{sp}=3\) ms: \(P_{min}=7.85\cdot5\times10^{18}\cdot2.2\cdot1.6\times10^{-19}/0.003=4.6\) kW — this is why ruby lasers are flash-pumped and pulsed.
@@ -45,7 +46,7 @@ A discharge excites He atoms to metastable 2¹S and 2³S levels; collisions tran
 4. *Photon lifetime*: \(\tau_{ph}=\frac{1}{c\alpha_t}=52\) ns, cavity \(Q=2\pi\nu\tau_{ph}=1.5\times10^8\).
 
 * Other lasers
-Argon ion (488/514.5 nm, W-level, water-cooled, efficiency ≈ 0.05%); CO\(_2\) (10.6 µm, vibrational levels, kW, 10–20% efficiency: cutting and welding); Nd:YAG (four-level, 1064 nm, diode- or lamp-pumped, Q-switched for ns pulses, frequency-doubled to 532 nm); Er-doped fibre (the gain medium of [[id:optical-amplifiers][EDFAs]], three-level-like at 1550 nm).
+Argon ion (488/514.5 nm, W-level, water-cooled, efficiency ≈ 0.05%); CO\(_2\) (10.6 µm, vibrational levels, kW, 10–20% efficiency: cutting and welding); Nd:YAG (four-level, 1064 nm, diode- or lamp-pumped, Q-switched for ns pulses, frequency-doubled to 532 nm); Er-doped fibre (the gain medium of [[id:optical-amplifiers][EDFAs]], three-level-like at 1550 nm) [cite:@geusic1964].
 
 * Engineering applications
 Alignment, metrology and interferometry (He–Ne, single frequency stabilised to 10\(^{-9}\)), barcode scanners historically, materials processing (CO\(_2\), Nd:YAG, fibre lasers), medicine and spectroscopy, pumping of dye and Ti:sapphire lasers (Ar ion, doubled Nd).
@@ -57,7 +58,3 @@ A He–Ne laser at 632.8 nm has a 30 cm cavity and gain FWHM 1.5 GHz. (a) Mode s
 
 * Pitfall
 "Doppler width" is the width of the *gain*, not of the laser line: each longitudinal mode is far narrower; the laser spectrum is a comb of narrow lines under the Doppler envelope.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Helium%E2%80%93neon_laser][Helium–neon laser]]
-- [[https://en.wikipedia.org/wiki/Ruby_laser][Ruby laser]]

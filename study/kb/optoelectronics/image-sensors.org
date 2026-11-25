@@ -11,9 +11,10 @@
 #+summary: An image sensor integrates photo-generated charge in each pixel during the exposure (\(N_e=\eta\frac{P\,t_{exp}}{h\nu}\)); a CCD moves the charge packets pixel to pixel to one output amplifier with clocked MOS gates, a CMOS active-pixel sensor converts charge to voltage inside each pixel and reads rows through switches; performance is set by quantum efficiency, full-well capacity \(N_{sat}\), read noise \(\sigma_r\) (dynamic range \(20\log\frac{N_{sat}}{\sigma_r}\)) and photon shot noise (\(\mathrm{SNR}=\frac{N_e}{\sqrt{N_e+\sigma_r^2}}\)).
 
 * CCD: charge transfer
-Each pixel is a MOS capacitor biased into deep depletion: a potential well that collects electrons. In a three-phase CCD every pixel has three gates; raising the voltage of the next gate while lowering the current one moves the well — and its charge packet — one gate along. Rows shift into a serial register that shifts to a single charge amplifier. Charge transfer efficiency must be > 0.99999 per transfer (a 4000-column CCD makes ~12 000 transfers). Advantages: uniformity, very low noise, 100% fill factor; drawbacks: high clock voltages and power, slow serial readout, blooming and smear.
+Each pixel is a MOS capacitor biased into deep depletion: a potential well that collects electrons. In a three-phase CCD every pixel has three gates; raising the voltage of the next gate while lowering the current one moves the well — and its charge packet — one gate along [cite:@boyle1970]. Rows shift into a serial register that shifts to a single charge amplifier. Charge transfer efficiency must be > 0.99999 per transfer (a 4000-column CCD makes ~12 000 transfers). Advantages: uniformity, very low noise, 100% fill factor; drawbacks: high clock voltages and power, slow serial readout, blooming and smear.
 
 * Picture: three-phase transfer
+#+CAPTION: Three-phase charge transfer in a CCD: raising the next gate's potential well moves the charge packet \(Q\) one electrode along between \(t_1\) and \(t_2\).
 \begin{tikzpicture}[scale=0.85]
 \foreach \y/\lab/\w in {0/{$t_1$}/1, -1.6/{$t_2$}/2} {
   \foreach \i/\g in {0/$\phi_1$,1/$\phi_2$,2/$\phi_3$,3/$\phi_1$,4/$\phi_2$,5/$\phi_3$} \draw[fill=gray!25] (\i*1.1,\y+0.9) rectangle (\i*1.1+0.9,\y+1.15);
@@ -30,8 +31,9 @@ Each pixel is a MOS capacitor biased into deep depletion: a potential well that 
 \end{tikzpicture}
 
 * CMOS active-pixel sensor
-Each pixel holds a pinned photodiode and 3–4 transistors: reset, transfer gate (4T), source follower (in-pixel buffer) and row select; columns share amplifiers and ADCs. Correlated double sampling (read reset level, then signal, subtract) cancels kTC and offset noise: read noise ≈ 1–2 e⁻. Advantages: low power, on-chip logic and ADCs, random access, speed; drawbacks historically fill factor (transistors take area — solved by microlenses and back-side illumination) and rolling-shutter distortion of moving objects (global-shutter pixels store charge). CMOS now dominates phones, cars and most scientific cameras; CCDs survive in niche astronomy and spectroscopy.
+Each pixel holds a pinned photodiode and 3–4 transistors: reset, transfer gate (4T), source follower (in-pixel buffer) and row select; columns share amplifiers and ADCs. Correlated double sampling (read reset level, then signal, subtract) cancels kTC and offset noise: read noise ≈ 1–2 e⁻. Advantages: low power, on-chip logic and ADCs, random access, speed; drawbacks historically fill factor (transistors take area — solved by microlenses and back-side illumination) and rolling-shutter distortion of moving objects (global-shutter pixels store charge). CMOS now dominates phones, cars and most scientific cameras; CCDs survive in niche astronomy and spectroscopy [cite:@fossum1997].
 
+#+CAPTION: A four-transistor CMOS active pixel: pinned photodiode, transfer gate, floating diffusion, source-follower buffer, reset and row-select switches on a shared column line.
 \begin{tikzpicture}[scale=0.9,every node/.style={font=\scriptsize}]
 \draw[thick] (0,0) rectangle (1.4,1.0) node[pos=0.5,align=center] {pinned\\photodiode};
 \draw[thick] (2.0,0) rectangle (3.2,1.0) node[pos=0.5,align=center] {transfer\\gate};
@@ -60,7 +62,3 @@ A CMOS sensor has 1.4 µm pixels, QE 0.7 at 530 nm, full well 6000 e⁻, read no
 
 * Pitfall
 Pixel SNR is not the "dynamic range": DR compares the largest and smallest signals in one exposure, SNR the signal to its own noise; at full well the SNR (≈ 40 dB) is far below the DR (≈ 70 dB).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Active-pixel_sensor][Active-pixel sensor]]
-- [[https://en.wikipedia.org/wiki/Charge-coupled_device][Charge-coupled device]]

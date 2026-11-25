@@ -11,13 +11,13 @@
 #+summary: In a periodic dielectric \(\epsilon(\mathbf r)\) light obeys the Hermitian eigenproblem \(\nabla\times\frac{1}{\epsilon}\nabla\times\mathbf H=\frac{\omega^2}{c^2}\mathbf H\); Bloch's theorem gives bands \(\omega_n(\mathbf k)\), and for strong contrast a complete photonic band gap where no light propagates — defects then become ultra-high-Q cavities and lossless waveguides.
 
 * Theorem
-1. *Master equation*: from Maxwell with \(\mathbf D=\epsilon\mathbf E\), \(\mu=\mu_0\): \(\Theta\mathbf H=(\omega/c)^2\mathbf H\), \(\Theta=\nabla\times\frac1\epsilon\nabla\times\), Hermitian under \(\int\mathbf H_1^*\cdot\mathbf H_2\). Real \(\omega^2\ge0\), orthogonal modes — a quantum-mechanics-like eigenproblem.
+1 [cite:@yablonovitch1987]. *Master equation*: from Maxwell with \(\mathbf D=\epsilon\mathbf E\), \(\mu=\mu_0\): \(\Theta\mathbf H=(\omega/c)^2\mathbf H\), \(\Theta=\nabla\times\frac1\epsilon\nabla\times\), Hermitian under \(\int\mathbf H_1^*\cdot\mathbf H_2\). Real \(\omega^2\ge0\), orthogonal modes — a quantum-mechanics-like eigenproblem.
 2. *Bloch*: periodic \(\epsilon\) → \(\mathbf H=e^{i\mathbf k\cdot\mathbf r}\mathbf u_{\mathbf k}(\mathbf r)\) ([[id:bloch-theorem-and-energy-bands][Bloch's theorem]]).
 3. *Scale invariance*: scaling all lengths by \(s\) scales frequencies by \(1/s\): band diagrams use \(\omega a/2\pi c=a/\lambda\).
 4. *Variational principle*: low bands concentrate energy in high-\(\epsilon\) regions, upper bands in low-\(\epsilon\) ones; the energy difference opens the gap (1D: the [[id:bragg-gratings][Bragg]] stopband, gap/midgap \(\approx\frac4\pi\frac{|n_1-n_2|}{n_1+n_2}\) for quarter-wave layers).
 
 * Defects
-Removing a row of holes in a 2D slab crystal makes a waveguide (guided by the gap in-plane and by TIR vertically) with tunable dispersion and slow light (\(n_g\) up to ~100); removing a few holes (L3, H1 cavities) gives \(Q>10^6\) with \(V\sim(\lambda/n)^3\): giant Purcell factors ([[id:spontaneous-emission-and-purcell-effect][Purcell]]).
+Removing a row of holes in a 2D slab crystal makes a waveguide (guided by the gap in-plane and by TIR vertically) with tunable dispersion and slow light (\(n_g\) up to ~100); removing a few holes (L3, H1 cavities) gives \(Q>10^6\) with \(V\sim(\lambda/n)^3\): giant Purcell factors ([[id:spontaneous-emission-and-purcell-effect][Purcell]]) [cite:@john1987].
 
 * Worked example
 Si slab with triangular lattice of air holes, \(r/a=0.3\): TE gap roughly at \(a/\lambda=0.26\)–0.33. For a gap centred at 1550 nm choose \(a\approx0.29\cdot1.55=450\) nm, holes of 270 nm diameter. A 1D Bragg stack Si/SiO\(_2\) (3.48/1.44): relative gap \(\frac4\pi\cdot\frac{2.04}{4.92}=53\%\).
@@ -27,7 +27,3 @@ Photonic-crystal fibres (endlessly single-mode, hollow core), PhC lasers and nan
 
 * Pitfall
 A 2D slab crystal has no true complete gap: modes above the light line leak vertically. Designs must keep the operating band below the light line.
-
-* Explore
-- [[http://ab-initio.mit.edu/book/][Joannopoulos et al., Photonic Crystals: Molding the Flow of Light (free online)]]
-- [[https://mpb.readthedocs.io/][MPB: MIT Photonic Bands solver]]

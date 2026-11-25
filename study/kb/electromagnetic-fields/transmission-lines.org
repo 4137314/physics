@@ -11,7 +11,7 @@
 #+summary: Distributed \(R,L,G,C\) per metre give the telegrapher equations with waves \(V^\pm e^{\mp\gamma z}\), \(Z_0=\sqrt{\frac{R+j\omega L}{G+j\omega C}}\); a load reflects \(\Gamma_L=\frac{Z_L-Z_0}{Z_L+Z_0}\) and a lossless line of length \(\ell\) transforms it into \(Z_{in}=Z_0\frac{Z_L+jZ_0\tan\beta\ell}{Z_0+jZ_L\tan\beta\ell}\).
 
 * Derivation
-KVL and KCL on a section \(\dd z\): \(-\partial_zv=Ri+L\partial_ti\), \(-\partial_zi=Gv+C\partial_tv\). Phasors: \(\frac{\dd^2V}{\dd z^2}=\gamma^2V\), \(\gamma=\sqrt{(R+j\omega L)(G+j\omega C)}\). Solution
+KVL and KCL on a section \(\dd z\): \(-\partial_zv=Ri+L\partial_ti\), \(-\partial_zi=Gv+C\partial_tv\) [cite:@thomson1855]. Phasors: \(\frac{\dd^2V}{\dd z^2}=\gamma^2V\), \(\gamma=\sqrt{(R+j\omega L)(G+j\omega C)}\). Solution
 \[ V(z)=V_0^+e^{-\gamma z}+V_0^-e^{\gamma z},\qquad I(z)=\frac{V_0^+e^{-\gamma z}-V_0^-e^{\gamma z}}{Z_0}. \]
 At the load (\(z=0\)): \(V_0^-/V_0^+=\Gamma_L\). At distance \(\ell\) from the load the impedance formula above follows by dividing \(V\) by \(I\).
 
@@ -38,7 +38,3 @@ PCB traces and connectors (signal integrity: ringing, reflections when rise time
 
 * Pitfall
 Lumped circuit analysis fails when line length exceeds roughly \(\lambda/10\) or the edge travel distance: a 10 cm FR-4 trace (\(v\approx c/2\)) has 0.67 ns delay, longer than a 100 ps edge.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Transmission_line][Transmission line]]
-- [[https://www.allaboutcircuits.com/textbook/alternating-current/chpt-14/][All About Circuits: transmission lines]]

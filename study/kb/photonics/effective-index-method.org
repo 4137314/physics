@@ -12,7 +12,7 @@
 
 * Method
 1. Divide the cross-section into vertical regions (ridge, sides).
-2. For each region solve a vertical slab ([[id:dielectric-slab-waveguide][slab waveguide]]) for the chosen polarisation (TE: \(E\) horizontal → solve the vertical slab as TE).
+2. For each region solve a vertical slab ([[id:dielectric-slab-waveguide][slab waveguide]]) for the chosen polarisation (TE: \(E\) horizontal → solve the vertical slab as TE) [cite:@marcatili1969].
 3. Build a horizontal slab with core index \(n_{eff,ridge}\) and cladding \(n_{eff,side}\) (for a strip guide the sides are just cladding).
 4. Solve it with the *other* polarisation (TM-like boundary conditions for the TE mode) to get \(n_{eff}\).
 5. Group index \(n_g=n_{eff}-\lambda\,\dd n_{eff}/\dd\lambda\) by repeating at two wavelengths.
@@ -28,6 +28,3 @@ Quick design of ridge lasers, rib modulators, AWG slab regions, MMI couplers; sa
 
 * Pitfall
 EIM fails near cutoff and for modes with strong hybrid (TE/TM mixed) character, e.g. in slot waveguides or at sharp bends.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Waveguide_(optics)][Waveguide (optics)]]

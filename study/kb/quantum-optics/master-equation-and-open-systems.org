@@ -11,7 +11,7 @@
 #+summary: Tracing out a Markovian bath gives the Lindblad equation \(\dot\rho=-\frac i\hbar[H,\rho]+\sum_k\gamma_k\left(L_k\rho L_k^\dagger-\tfrac12\{L_k^\dagger L_k,\rho\}\right)\); for a damped cavity \(L=a\), for a decaying atom \(L=\sigma_-\), giving the optical Bloch equations with \(T_1=1/\Gamma\), \(T_2=2/\Gamma\).
 
 * Model
-System + bath, \(H=H_S+H_B+H_{SB}\). Assumptions: weak coupling (Born: \(\rho_{SB}\approx\rho_S\otimes\rho_B\)), bath correlation time short (Markov), and secular (RWA) approximation. The result is the most general generator of completely positive, trace-preserving semigroups (Lindblad–Gorini–Kossakowski–Sudarshan).
+System + bath, \(H=H_S+H_B+H_{SB}\). Assumptions: weak coupling (Born: \(\rho_{SB}\approx\rho_S\otimes\rho_B\)), bath correlation time short (Markov), and secular (RWA) approximation. The result is the most general generator of completely positive, trace-preserving semigroups (Lindblad–Gorini–Kossakowski–Sudarshan) [cite:@lindblad1976;@gorini1976].
 
 * Damped cavity
 \(\dot\rho=-i\omega[a^\dagger a,\rho]+\kappa(\bar n+1)\mathcal D[a]\rho+\kappa\bar n\mathcal D[a^\dagger]\rho\), with \(\mathcal D[L]\rho=L\rho L^\dagger-\tfrac12\{L^\dagger L,\rho\}\). Then \(\frac{\dd}{\dd t}\braket a=-(i\omega+\kappa/2)\braket a\) and \(\frac{\dd}{\dd t}\braket n=-\kappa(\braket n-\bar n)\): field amplitude decays at \(\kappa/2\), energy at \(\kappa\) towards thermal equilibrium. \(Q=\omega/\kappa\).
@@ -29,8 +29,3 @@ Qubit \(T_1/T_2\) modelling and error budgets, laser rate equations and linewidt
 
 * Pitfall
 Phenomenological damping added to the Schrödinger equation (\(-i\gamma\) in \(H\)) does not conserve trace; the jump terms \(L\rho L^\dagger\) are needed to put the probability back into the ground state.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Lindbladian][Lindblad equation]]
-- [[https://en.wikipedia.org/wiki/Optical_Bloch_equations][Optical Bloch equations]]
-- [[https://qutip.org/][QuTiP: simulate open quantum systems in Python]]

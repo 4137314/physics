@@ -11,7 +11,7 @@
 #+summary: Measuring \(A=\sum_a a P_a\) on \(\ket\psi\) gives \(a\) with probability \(p(a)=\bra\psi P_a\ket\psi\) and leaves the state \(P_a\ket\psi/\sqrt{p(a)}\); the mean is \(\braket{A}=\bra\psi A\ket\psi\) and the spread \(\Delta A^2=\braket{A^2}-\braket{A}^2\).
 
 * Definition
-- *Born rule*: outcome \(a\) has probability \(p(a)=\bra\psi P_a\ket\psi=\sum_{i}|\braket{a,i|\psi}|^2\) (sum over a degenerate eigenspace).
+- *Born rule*: outcome \(a\) has probability \(p(a)=\bra\psi P_a\ket\psi=\sum_{i}|\braket{a,i|\psi}|^2\) (sum over a degenerate eigenspace) [cite:@born1926b].
 - *State reduction*: immediately after, the state is \(P_a\ket\psi/\|P_a\ket\psi\|\); repeating the measurement yields \(a\) again.
 - *Expectation value*: \(\braket A=\sum_a a\,p(a)=\bra\psi A\ket\psi\).
 - *Dispersion*: \(\Delta A^2=\braket{(A-\braket A)^2}=\braket{A^2}-\braket A^2\), zero iff \(\ket\psi\) is an eigenket.
@@ -26,11 +26,7 @@
 Qubit read-out (dispersive measurement of a transmon, fluorescence of a trapped ion) is a projective measurement repeated many times to estimate \(p(a)\): the number of shots \(N\) gives a statistical error \(\sqrt{p(1-p)/N}\). Quantum key distribution (BB84) relies on the disturbance caused by measuring in the wrong basis.
 
 * Intuition
-The state does not hold a pre-existing value of \(A\); it holds the probabilities. Measurement is an interaction that picks one value and updates the state accordingly.
+The state does not hold a pre-existing value of \(A\); it holds the probabilities. Measurement is an interaction that picks one value and updates the state accordingly [cite:@neumann1932].
 
 * Pitfall
 \(\braket A\) need not be an eigenvalue (\(\hbar/4\) above is never measured): it is an average over many identically prepared systems.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Born_rule][Born rule]]
-- [[https://plato.stanford.edu/entries/qt-measurement/][Stanford Encyclopedia: Measurement in quantum theory]]

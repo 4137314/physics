@@ -11,14 +11,15 @@
 #+summary: Two waves add as \(I=I_1+I_2+2\sqrt{I_1I_2}\cos\delta\); in a cavity of length \(L\) with mirror reflectance \(R\), multiple reflections give the Airy transmission \(T=\frac{1}{1+F\sin^2(\delta/2)}\), \(F=\frac{4R}{(1-R)^2}\), resonances every FSR \(=c/2nL\), linewidth FSR/\(\mathcal F\) with finesse \(\mathcal F=\frac{\pi\sqrt R}{1-R}\).
 
 * Two-beam interference
-\(|E_1+E_2e^{j\delta}|^2\) gives the formula above; visibility \(V=\frac{2\sqrt{I_1I_2}}{I_1+I_2}|g^{(1)}|\), where \(g^{(1)}\) is the [[id:coherence-of-light][degree of coherence]]. Michelson and [[id:mach-zehnder-interferometers][Mach–Zehnder]] interferometers measure \(\delta=2\pi\Delta(nL)/\lambda\).
+\(|E_1+E_2e^{j\delta}|^2\) gives the formula above; visibility \(V=\frac{2\sqrt{I_1I_2}}{I_1+I_2}|g^{(1)}|\), where \(g^{(1)}\) is the [[id:coherence-of-light][degree of coherence]] [cite:@young1804]. Michelson and [[id:mach-zehnder-interferometers][Mach–Zehnder]] interferometers measure \(\delta=2\pi\Delta(nL)/\lambda\).
 
 * Fabry–Perot (derivation)
-Field transmitted after \(m\) round trips: \(E_t=E_0t^2\sum_m(r^2e^{-j\delta})^m=\frac{E_0t^2}{1-Re^{-j\delta}}\), with round-trip phase \(\delta=\frac{4\pi nL}{\lambda}\) (normal incidence, lossless mirrors \(|t|^2=1-R\)). Then
+Field transmitted after \(m\) round trips: \(E_t=E_0t^2\sum_m(r^2e^{-j\delta})^m=\frac{E_0t^2}{1-Re^{-j\delta}}\), with round-trip phase \(\delta=\frac{4\pi nL}{\lambda}\) (normal incidence, lossless mirrors \(|t|^2=1-R\)) [cite:@fabry1899]. Then
 \[ \frac{I_t}{I_0}=\frac{(1-R)^2}{(1-R)^2+4R\sin^2(\delta/2)}. \]
 Peaks at \(\delta=2\pi m\): \(\nu_m=m\frac{c}{2nL}\) (longitudinal modes). FWHM \(\delta\nu=\mathrm{FSR}/\mathcal F\); quality factor \(Q=\nu/\delta\nu\); photon lifetime \(\tau_{ph}=Q/2\pi\nu\).
 
 * Picture
+#+CAPTION: Airy transmission of a Fabry–Perot resonator for mirror reflectances \(R=0.5\) and \(R=0.9\): higher reflectance gives sharper resonances and higher finesse.
 \begin{tikzpicture}
 \begin{axis}[width=7.5cm,height=4.2cm,axis lines=left,xlabel={$\delta/2\pi$},ylabel={$T$},xmin=0,xmax=3,ymin=0,ymax=1.05]
 \addplot+[no marks,domain=0:3,samples=400]{1/(1+4*0.5/(0.5^2)*sin(deg(pi*x))^2)}; \addlegendentry{$R=0.5$}
@@ -42,7 +43,3 @@ A scanning Fabry–Perot spectrum analyser has an air gap of 1 cm and mirrors \(
 
 * Pitfall
 FSR uses the *group* index when computing mode spacing in a dispersive medium; using the phase index gives wrong spacing in semiconductors (error ~10%).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Fabry%E2%80%93P%C3%A9rot_interferometer][Fabry–Pérot interferometer]]
-- [[https://en.wikipedia.org/wiki/Distributed_Bragg_reflector][Distributed Bragg reflector]]

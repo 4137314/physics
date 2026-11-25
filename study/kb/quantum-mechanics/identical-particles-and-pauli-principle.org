@@ -11,11 +11,11 @@
 #+summary: States of identical particles are symmetric (bosons, integer spin) or antisymmetric (fermions, half-integer spin) under exchange; antisymmetry gives Pauli exclusion and Slater determinants, and through the exchange term the spin-dependent energies that build the periodic table, magnetism and metals.
 
 * Statement
-The exchange operator \(P_{12}\) commutes with every observable of identical particles; physical states are eigenstates with eigenvalue \(+1\) (bosons) or \(-1\) (fermions). Spin–statistics (proved in relativistic QFT): integer spin ↔ bosons, half-integer ↔ fermions.
+The exchange operator \(P_{12}\) commutes with every observable of identical particles; physical states are eigenstates with eigenvalue \(+1\) (bosons) or \(-1\) (fermions) [cite:@heisenberg1926;@fermi1926;@bose1924]. Spin–statistics (proved in relativistic QFT): integer spin ↔ bosons, half-integer ↔ fermions.
 
 * Consequences
-- Two fermions in one-particle states \(a,b\): \(\psi=\tfrac1{\sqrt2}[\phi_a(1)\phi_b(2)-\phi_b(1)\phi_a(2)]\), zero if \(a=b\): *Pauli exclusion*. For \(N\) fermions, a Slater determinant \(\det[\phi_i(j)]/\sqrt{N!}\).
-- Spatial and spin parts: for two electrons, triplet spin (symmetric) × antisymmetric space, or singlet × symmetric space.
+- Two fermions in one-particle states \(a,b\): \(\psi=\tfrac1{\sqrt2}[\phi_a(1)\phi_b(2)-\phi_b(1)\phi_a(2)]\), zero if \(a=b\): *Pauli exclusion* [cite:@pauli1925]. For \(N\) fermions, a Slater determinant \(\det[\phi_i(j)]/\sqrt{N!}\).
+- Spatial and spin parts: for two electrons, triplet spin (symmetric) × antisymmetric space, or singlet × symmetric space [cite:@dirac1926].
 - *Exchange energy*: for a repulsion \(V\), \(\braket V=J\mp K\), with direct \(J\) and exchange \(K=\int\phi_a^*(1)\phi_b^*(2)V\phi_b(1)\phi_a(2)\). The triplet (antisymmetric space) keeps electrons apart and has lower repulsion: Hund's rule, ferromagnetism.
 
 * Worked example
@@ -26,7 +26,3 @@ Pauli exclusion fills bands up to the Fermi energy ([[id:density-of-states-and-f
 
 * Pitfall
 Pauli forbids two fermions in the same *complete* one-particle state (orbital and spin): two electrons share an orbital with opposite spins.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Identical_particles][Identical particles]]
-- [[https://en.wikipedia.org/wiki/Pauli_exclusion_principle][Pauli exclusion principle]]

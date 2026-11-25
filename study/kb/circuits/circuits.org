@@ -21,6 +21,7 @@
 | analog      | operational-amplifier circuits                        |
 
 * Picture
+#+CAPTION: A series RC circuit driven by a source \(v_s\): the prototype of the linear circuits studied in the subject.
 \begin{tikzpicture}[scale=0.9, transform shape]
 \draw (0,0) to[V, v=$v_s$] (0,2) to[R, l=$R$] (3,2) to[C, l=$C$, v=$v_C$] (3,0) -- (0,0);
 \end{tikzpicture}
@@ -37,7 +38,3 @@ The RC circuit: the reference example for every method in this domain.
 
 * Engineering applications
 Every electronic system: filters, amplifiers, power supplies, grids, sensors, the small-signal models of [[id:digital-electronics][transistors]] and the lumped limit of [[id:transmission-lines][transmission lines]].
-
-* Explore
-- [[https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/][MIT 6.002 Circuits and electronics]]
-- [[https://www.falstad.com/circuit/][Falstad interactive circuit simulator]]

@@ -11,9 +11,9 @@
 #+summary: With \(a=\sqrt{\frac{m\omega}{2\hbar}}\left(x+\frac{ip}{m\omega}\right)\), \([a,a^\dagger]=1\) and \(H=\hbar\omega(a^\dagger a+\tfrac12)\), so \(E_n=\hbar\omega(n+\tfrac12)\), \(a^\dagger\ket n=\sqrt{n+1}\ket{n+1}\), \(a\ket n=\sqrt n\ket{n-1}\); the same algebra quantises light, phonons and LC circuits.
 
 * Statement
-\(H=\frac{p^2}{2m}+\frac12m\omega^2x^2\). Define \(a\) as above and \(N=a^\dagger a\). Then
+\(H=\frac{p^2}{2m}+\frac12m\omega^2x^2\) [cite:@dirac1927]. Define \(a\) as above and \(N=a^\dagger a\). Then
 \[ [a,a^\dagger]=1,\quad H=\hbar\omega\left(N+\tfrac12\right),\quad [N,a]=-a,\quad [N,a^\dagger]=a^\dagger. \]
-Spectrum \(E_n=\hbar\omega(n+\tfrac12)\), \(n=0,1,2,\dots\), \(\ket n=\frac{(a^\dagger)^n}{\sqrt{n!}}\ket0\).
+Spectrum \(E_n=\hbar\omega(n+\tfrac12)\), \(n=0,1,2,\dots\), \(\ket n=\frac{(a^\dagger)^n}{\sqrt{n!}}\ket0\) [cite:@heisenberg1925].
 
 * Proof
 1. \(a^\dagger a=\frac{m\omega}{2\hbar}\left(x^2+\frac{p^2}{m^2\omega^2}\right)+\frac{i}{2\hbar}[x,p]=\frac{H}{\hbar\omega}-\frac12\).
@@ -35,7 +35,3 @@ Vibration of CO, \(\tilde\nu=2143\) cm\(^{-1}\): \(\hbar\omega=0.266\) eV. At 30
 
 * Pitfall
 The ground state is not at rest: \(E_0=\hbar\omega/2\neq0\) and \(\Delta x\neq0\). Also \(a\) is not Hermitian: it is not an observable.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Quantum_harmonic_oscillator][Quantum harmonic oscillator]]
-- [[https://en.wikipedia.org/wiki/Hermite_polynomials][Hermite polynomials]]

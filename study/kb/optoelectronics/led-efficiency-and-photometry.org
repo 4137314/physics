@@ -16,6 +16,7 @@
 - *Photometry*: the eye weighs power by \(V(\lambda)\) (photopic curve, peak 683 lm/W at 555 nm). Luminous flux \(\Phi_v=683\int V(\lambda)P(\lambda)\dd\lambda\); luminous efficacy of the source = flux per electrical watt. Luminous intensity (candela) is flux per steradian; LED "brightness" in datasheets is usually mcd on axis.
 
 * Picture: eye sensitivity and an LED drive circuit
+#+CAPTION: Photopic luminosity function \(V(\lambda)\) of the eye with the spectra of blue, green and red LEDs.
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.4cm,axis lines=left,xlabel={$\lambda$ (nm)},ylabel={$V(\lambda)$},xmin=380,xmax=760,ymin=0,ymax=1.1]
 \addplot+[no marks,thick,domain=380:760,samples=150]{1.019*exp(-285.4*(x/1000-0.559)^2)}; \addlegendentry{photopic $V(\lambda)$}
@@ -23,6 +24,7 @@
 \end{axis}
 \end{tikzpicture}
 
+#+CAPTION: Driving an LED from a voltage source through a series resistor, which sets the current from the supply minus the forward voltage \(V_F\).
 \begin{circuitikz}
 \draw (0,0) to[V, l=$V_S$] (0,2.5) to[R, l=$R$] (3,2.5) to[led, l=LED] (3,0) -- (0,0);
 \draw (3,2.5) to[short,-o] (4,2.5) node[right]{$V_F$};
@@ -53,7 +55,3 @@ A 870 nm GaAs LED with \(\eta_{EQE}=4\%\) is driven at 50 mA and 1.6 V, and butt
 
 * Pitfall
 Efficacy (lm per *electrical* W) and luminous efficiency of radiation (lm per *optical* W, max 683) are different numbers; and \(V(\lambda)\) collapses quickly at the ends of the spectrum, so deep-red and deep-blue LEDs look dim at equal power.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Luminous_efficiency_function][Luminous efficiency function]]
-- [[https://en.wikipedia.org/wiki/Light-emitting_diode#Efficiency_and_operational_parameters][LED efficiency]]

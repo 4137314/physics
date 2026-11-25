@@ -11,7 +11,7 @@
 #+summary: Linearising \(E^2=p^2+m^2\) requires \(4\times4\) matrices with \(\{\gamma^\mu,\gamma^\nu\}=2g^{\mu\nu}\): \((i\gamma^\mu\partial_\mu-m)\psi=0\); its current \(\bar\psi\gamma^\mu\psi\) has positive density, spin ½ appears automatically, and the non-relativistic limit gives the Pauli equation with \(g=2\).
 
 * Derivation
-Seek \(i\partial_t\psi=(\boldsymbol\alpha\cdot\mathbf p+\beta m)\psi\) whose square is KG: requires \(\alpha_i^2=\beta^2=1\), \(\{\alpha_i,\alpha_j\}=2\delta_{ij}\), \(\{\alpha_i,\beta\}=0\). Smallest solution: \(4\times4\). With \(\gamma^0=\beta\), \(\gamma^i=\beta\alpha_i\):
+Seek \(i\partial_t\psi=(\boldsymbol\alpha\cdot\mathbf p+\beta m)\psi\) whose square is KG: requires \(\alpha_i^2=\beta^2=1\), \(\{\alpha_i,\alpha_j\}=2\delta_{ij}\), \(\{\alpha_i,\beta\}=0\). Smallest solution: \(4\times4\). With \(\gamma^0=\beta\), \(\gamma^i=\beta\alpha_i\) [cite:@dirac1928]:
 \[ (i\gamma^\mu\partial_\mu-m)\psi=0,\qquad \{\gamma^\mu,\gamma^\nu\}=2g^{\mu\nu}. \]
 Dirac representation \(\gamma^0=\begin{pmatrix}1&0\\0&-1\end{pmatrix}\), \(\gamma^i=\begin{pmatrix}0&\sigma_i\\-\sigma_i&0\end{pmatrix}\). Notation \(\slashed{a}=\gamma^\mu a_\mu\), \(\bar\psi=\psi^\dagger\gamma^0\), \(\gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3\).
 
@@ -34,7 +34,3 @@ Spin–orbit coupling in semiconductors (Rashba/Dresselhaus effects for spintron
 
 * Pitfall
 The Dirac "wave function" cannot be a one-particle state at high energy (Zitterbewegung, Klein paradox): negative-energy solutions are reinterpreted as positrons.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Dirac_equation][Dirac equation]]
-- [[https://en.wikipedia.org/wiki/Gamma_matrices][Gamma matrices]]

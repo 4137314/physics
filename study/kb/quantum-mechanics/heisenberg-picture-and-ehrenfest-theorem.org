@@ -11,12 +11,12 @@
 #+summary: Moving the time dependence onto operators, \(A_H(t)=U^\dagger AU\), gives \(\dd A_H/\dd t=\frac{1}{i\hbar}[A_H,H]\); for \(H=p^2/2m+V\) the expectation values obey Newton's law \(m\,\dd^2\braket x/\dd t^2=-\braket{V'(x)}\).
 
 * Statement
-Schrödinger picture: states move, operators fixed. Heisenberg picture: \(\ket\psi_H=\ket{\psi(0)}\), \(A_H(t)=U^\dagger(t)A_SU(t)\). Same predictions because \(\bra{\psi(t)}A_S\ket{\psi(t)}=\bra{\psi(0)}A_H(t)\ket{\psi(0)}\). Differentiating \(U^\dagger AU\) with \(i\hbar\dot U=HU\):
+Schrödinger picture: states move, operators fixed. Heisenberg picture: \(\ket\psi_H=\ket{\psi(0)}\), \(A_H(t)=U^\dagger(t)A_SU(t)\) [cite:@heisenberg1925]. Same predictions because \(\bra{\psi(t)}A_S\ket{\psi(t)}=\bra{\psi(0)}A_H(t)\ket{\psi(0)}\). Differentiating \(U^\dagger AU\) with \(i\hbar\dot U=HU\):
 \[ \frac{\dd A_H}{\dd t}=\frac{1}{i\hbar}[A_H,H]\;\left(+\frac{\partial A}{\partial t}\right)_H. \]
 This mirrors the classical \(\dot A=\{A,H\}\) under \(\{\,,\}\to[\,,]/i\hbar\) (Dirac).
 
 * Ehrenfest theorem
-With \(H=p^2/2m+V(x)\), using \([x,F(p)]=i\hbar F'(p)\) and \([p,G(x)]=-i\hbar G'(x)\):
+With \(H=p^2/2m+V(x)\), using \([x,F(p)]=i\hbar F'(p)\) and \([p,G(x)]=-i\hbar G'(x)\) [cite:@ehrenfest1927]:
 \[ \frac{\dd x_H}{\dd t}=\frac{p_H}{m},\qquad \frac{\dd p_H}{\dd t}=-V'(x_H)\;\Rightarrow\; m\frac{\dd^2\braket{x}}{\dd t^2}=-\braket{V'(x)}. \]
 The centre of a packet follows the classical trajectory only when \(\braket{V'(x)}\simeq V'(\braket x)\), i.e. when \(V\) varies little over the packet (exact for \(V\) at most quadratic).
 
@@ -28,7 +28,3 @@ Free particle: \(x_H(t)=x(0)+p(0)t/m\). Then \([x_H(t),x_H(0)]=-i\hbar t/m\) and
 
 * Pitfall
 Constants of motion in the Heisenberg picture (\([A,H]=0\)) are operators that do not change; it does not mean the state is an eigenstate of \(A\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Heisenberg_picture][Heisenberg picture]]
-- [[https://en.wikipedia.org/wiki/Ehrenfest_theorem][Ehrenfest theorem]]

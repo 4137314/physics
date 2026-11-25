@@ -20,7 +20,7 @@ Conservation: \(\frac{\partial p}{\partial t}=-\frac1q\frac{\partial J_p}{\parti
 | SRH (traps) | (np − n_i²)/(τ_p(n+n₁)+τ_n(p+p₁)) | indirect gap (Si), defects     |
 | Auger       | (C_n n + C_p p)(np − n_i²)        | high density: lasers, emitters |
 | surface     | S·Δp at the surface               | solar cells, small devices     |
-SRH is fastest for traps near mid-gap (\(n_1\approx p_1\approx n_i\)): gold and iron are lifetime killers.
+SRH is fastest for traps near mid-gap (\(n_1\approx p_1\approx n_i\)): gold and iron are lifetime killers [cite:@shockley1952b;@hall1952].
 
 * Diffusion length (derivation)
 Steady state, no field, no generation for \(x>0\), \(\Delta p(0)\) fixed: \(D_p\Delta p''=\Delta p/\tau_p\Rightarrow\Delta p(x)=\Delta p(0)e^{-x/L_p}\), \(L_p=\sqrt{D_p\tau_p}\). Diffusion current at \(x=0\): \(qD_p\Delta p(0)/L_p\) — the building block of the [[id:pn-junction-diode-current][diode equation]].
@@ -33,7 +33,3 @@ Photoconductive detectors (gain \(=\tau/t_{transit}\)), LED internal quantum eff
 
 * Pitfall
 \(\tau\) depends on injection level and temperature; a single "lifetime" is only valid in low-level injection.
-
-* Explore
-- [[https://www.pveducation.org/pvcdrom/pn-junctions/types-of-recombination][PVEducation: types of recombination]]
-- [[https://en.wikipedia.org/wiki/Carrier_generation_and_recombination][Carrier generation and recombination]]

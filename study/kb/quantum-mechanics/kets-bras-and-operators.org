@@ -11,7 +11,7 @@
 #+summary: A state is a ket \(\ket{\alpha}\) in a complex Hilbert space; bras \(\bra{\beta}\) are the dual (antilinear) vectors, \(\braket{\beta|\alpha}=\overline{\braket{\alpha|\beta}}\); the completeness relation \(\sum_n\ket{n}\bra{n}=1\) turns every operator into a matrix \(A_{mn}=\bra{m}A\ket{n}\).
 
 * Definition
-- *Kets* \(\ket{\alpha}\in\mathcal H\), a complex vector space with inner product, complete in its norm (Hilbert space). \(\ket\alpha\) and \(c\ket\alpha\), \(c\neq0\), describe the same physical state.
+- *Kets* \(\ket{\alpha}\in\mathcal H\), a complex vector space with inner product, complete in its norm (Hilbert space) [cite:@dirac1939]. \(\ket\alpha\) and \(c\ket\alpha\), \(c\neq0\), describe the same physical state.
 - *Bras*: to every ket the dual correspondence \(\ket\alpha\leftrightarrow\bra\alpha\), antilinear: \(c_1\ket\alpha+c_2\ket\beta\leftrightarrow \bar c_1\bra\alpha+\bar c_2\bra\beta\).
 - *Inner product* \(\braket{\beta|\alpha}\): linear in the ket, \(\braket{\beta|\alpha}=\overline{\braket{\alpha|\beta}}\), \(\braket{\alpha|\alpha}\ge0\) with equality only for the null ket.
 - *Operators* act from the left on kets, \(X\ket\alpha\), from the right on bras; the adjoint is defined by \(X\ket\alpha\leftrightarrow\bra\alpha X^\dagger\). The *outer product* \(\ket\beta\bra\alpha\) is an operator.
@@ -32,6 +32,3 @@ A ket is a column vector, a bra the conjugate row vector; the projector \(\ket n
 
 * Pitfall
 \(\ket{c\alpha}=c\ket\alpha\) but \(\bra{c\alpha}=\bar c\bra\alpha\): forgetting the complex conjugate in the bra is the most common algebraic error in exams.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Bra%E2%80%93ket_notation][Bra–ket notation]]

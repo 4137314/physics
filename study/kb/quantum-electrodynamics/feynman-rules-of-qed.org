@@ -23,7 +23,7 @@
 Follow each fermion line *against* the arrow when writing spinors and matrices. Diagrams differing by exchange of identical external fermions get a relative minus sign.
 
 * Derivation sketch
-Expand \(S=T\exp(-i\int\mathcal H_I)\) with \(\mathcal H_I=e\bar\psi\gamma^\mu\psi A_\mu\) to order \(n\); Wick's theorem pairs fields into propagators (contractions) and external states; integrating vertex positions gives momentum conservation at each vertex. The \(1/n!\) cancels against the permutations of vertices.
+Expand \(S=T\exp(-i\int\mathcal H_I)\) with \(\mathcal H_I=e\bar\psi\gamma^\mu\psi A_\mu\) to order \(n\); Wick's theorem pairs fields into propagators (contractions) and external states; integrating vertex positions gives momentum conservation at each vertex [cite:@feynman1949;@dyson1949]. The \(1/n!\) cancels against the permutations of vertices.
 
 * Crossing symmetry
 Moving a particle from initial to final state turns it into its antiparticle with \(p\to-p\): \(e^-\mu^-\to e^-\mu^-\) (t-channel) and \(e^+e^-\to\mu^+\mu^-\) (s-channel) have the same \(\overline{|\mathcal M|^2}\) with \(s\leftrightarrow t\).
@@ -36,7 +36,3 @@ Monte Carlo event generators for detector design, radiation transport codes (Gea
 
 * Pitfall
 Polarisation sums: \(\sum\epsilon_\mu\epsilon^*_\nu\to-g_{\mu\nu}\) is valid only for gauge-invariant (current-conserving) amplitudes with all diagrams included.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Feynman_diagram][Feynman diagram]]
-- [[https://en.wikipedia.org/wiki/Quantum_electrodynamics][Quantum electrodynamics]]

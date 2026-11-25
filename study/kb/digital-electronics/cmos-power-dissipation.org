@@ -14,7 +14,7 @@
 Charging: the supply delivers \(Q=CV_{DD}\) at voltage \(V_{DD}\), energy \(CV_{DD}^2\); the capacitor stores \(\tfrac12CV_{DD}^2\); the other half is dissipated in the PMOS (any resistance: \(\int i^2R\,\dd t=\tfrac12CV^2\) for an RC charge). Discharging: the stored \(\tfrac12CV_{DD}^2\) is dissipated in the NMOS. Per cycle \(CV_{DD}^2\); with transition probability \(\alpha\) (0→1 transitions per clock), \(P=\alpha CV_{DD}^2f\).
 
 * Other components
-- *Short-circuit*: both devices on while \(V_{TN}<v_I<V_{DD}-|V_{TP}|\); \(P_{sc}\approx\frac{K}{12}(V_{DD}-2V_T)^3\frac{t_r}{T}\) (Veendrick) — small if input and output edges are similar.
+- *Short-circuit*: both devices on while \(V_{TN}<v_I<V_{DD}-|V_{TP}|\); \(P_{sc}\approx\frac{K}{12}(V_{DD}-2V_T)^3\frac{t_r}{T}\) (Veendrick) — small if input and output edges are similar [cite:@veendrick1984].
 - *Leakage*: subthreshold, gate tunnelling, junction: \(P=V_{DD}I_{leak}\), exponential in \(-V_T\) and in temperature.
 
 * Reduction techniques
@@ -34,6 +34,3 @@ Battery life of mobile SoCs, thermal design power, near-threshold computing for 
 
 * Pitfall
 \(\alpha\) is defined in different ways (per clock cycle, 0→1 only, or any transition); with "any transition" the formula becomes \(\tfrac12\alpha CV^2f\). State the convention.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/CMOS#Power:_switching_and_leakage][CMOS: switching and leakage power]]

@@ -11,12 +11,13 @@
 #+summary: Diffusion of majority carriers leaves a depletion region of ionised dopants; equilibrium (flat \(E_F\)) gives \(V_{bi}=\frac{k_BT}q\ln\frac{N_AN_D}{n_i^2}\); in the depletion approximation \(W=\sqrt{\frac{2\epsilon(V_{bi}-V)}{q}\left(\frac1{N_A}+\frac1{N_D}\right)}\), \(E_{max}=\frac{2(V_{bi}-V)}W\), and the junction is a voltage-dependent capacitor \(C_j=\epsilon A/W\).
 
 * Derivation
-1. *Built-in potential*: far from the junction \(E_c-E_F\) is fixed by doping on each side; flat \(E_F\) forces a band bending \(qV_{bi}=k_BT\ln\frac{N_AN_D}{n_i^2}\).
+1. *Built-in potential*: far from the junction \(E_c-E_F\) is fixed by doping on each side; flat \(E_F\) forces a band bending \(qV_{bi}=k_BT\ln\frac{N_AN_D}{n_i^2}\) [cite:@shockley1949].
 2. *Depletion approximation*: \(\rho=-qN_A\) for \(-x_p<x<0\), \(+qN_D\) for \(0<x<x_n\), zero elsewhere; neutrality \(N_Ax_p=N_Dx_n\).
 3. Poisson \(\frac{\dd E}{\dd x}=\rho/\epsilon\): triangular field, peak \(E_{max}=\frac{qN_Dx_n}{\epsilon}\).
 4. Potential drop = area of the triangle: \(V_{bi}-V=\frac12E_{max}W\). Solving gives \(W\) above. One-sided junction (\(N_A\gg N_D\)): \(W\approx\sqrt{2\epsilon(V_{bi}-V)/qN_D}\), almost all in the lightly doped side.
 
 * Picture
+#+CAPTION: Depletion approximation of an abrupt pn junction: charge densities \(-qN_A\) and \(+qN_D\) and the triangular electric field \(E(x)\), peaking at the junction.
 \begin{tikzpicture}[font=\small]
 \draw[->] (-3,0) -- (3,0) node[right]{$x$};
 \fill[kbcyan!30] (-1,0) rectangle (0,-0.8); \fill[kbmagenta!30] (0,0) rectangle (2,0.4);
@@ -37,7 +38,3 @@ Varactor tuning in VCOs, junction capacitance as parasitic load in CMOS (drain d
 
 * Pitfall
 \(V\) is the *applied forward* voltage: reverse bias is \(V<0\), which widens \(W\). Forgetting the sign makes \(W\) imaginary for \(V>V_{bi}\) — the depletion approximation breaks down under strong forward bias.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/P%E2%80%93n_junction][p–n junction]]
-- [[https://www.pveducation.org/pvcdrom/pn-junctions/formation-of-a-pn-junction][PVEducation: formation of a pn junction]]

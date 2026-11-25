@@ -14,11 +14,12 @@
 The translation \(T_a\psi(x)=\psi(x+a)\) commutes with \(H\) ([[id:symmetries-and-conservation-laws][symmetry]]), so common eigenstates exist with \(T_a\psi=\lambda\psi\), \(|\lambda|=1\) (bounded states; or periodic boundary conditions over \(N\) cells, \(\lambda^N=1\)): \(\lambda=e^{ika}\), \(k=2\pi m/Na\). Then \(u_k(x)=e^{-ikx}\psi_k(x)\) is periodic. \(\hbar k\) is the *crystal momentum*, conserved modulo \(\hbar G\), \(G=2\pi/a\).
 
 * Kronig–Penney model
-Square wells (width \(b\)) and barriers (\(V_0\), width \(c\)), \(a=b+c\). Matching as in [[id:tunnelling-and-wkb][tunnelling]] with the Bloch condition gives (for \(E<V_0\))
+Square wells (width \(b\)) and barriers (\(V_0\), width \(c\)), \(a=b+c\) [cite:@kronig1931]. Matching as in [[id:tunnelling-and-wkb][tunnelling]] with the Bloch condition gives (for \(E<V_0\)) [cite:@bloch1929]
 \[ \cos ka=\cos\alpha b\cosh\beta c+\frac{\beta^2-\alpha^2}{2\alpha\beta}\sin\alpha b\sinh\beta c,\qquad \alpha=\frac{\sqrt{2mE}}\hbar,\ \beta=\frac{\sqrt{2m(V_0-E)}}\hbar. \]
 Energies where the right side exceeds 1 in magnitude have no real \(k\): band gaps.
 
 * Picture
+#+CAPTION: The Kronig–Penney condition \(\cos\alpha a+P\sin(\alpha a)/(\alpha a)\): energies where it lies between \(-1\) and \(1\) are allowed bands, the others gaps.
 \begin{tikzpicture}
 \begin{axis}[width=7.5cm,height=4.5cm,axis lines=left,xlabel={$\alpha a$},ylabel={$f(E)$},xmin=0.01,xmax=12,ymin=-4,ymax=6]
 \addplot+[no marks,domain=0.01:12,samples=400]{cos(deg(x))+3*sin(deg(x))/x}; \addlegendentry{$\cos\alpha a+P\frac{\sin\alpha a}{\alpha a}$}
@@ -41,7 +42,3 @@ Band engineering of semiconductors and alloys, superlattices and quantum-cascade
 
 * Pitfall
 \(\hbar k\) is not the electron's real momentum: \(\psi_k\) is not a momentum eigenstate, and crystal momentum is conserved only up to reciprocal-lattice vectors (Umklapp).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Bloch%27s_theorem][Bloch's theorem]]
-- [[https://en.wikipedia.org/wiki/Particle_in_a_one-dimensional_lattice][Kronig–Penney model]]

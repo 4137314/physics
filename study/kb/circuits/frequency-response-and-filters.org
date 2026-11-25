@@ -11,7 +11,7 @@
 #+summary: \(H(j\omega)\) is plotted as \(20\log|H|\) and \(\arg H\) vs \(\log\omega\) (Bode); each real pole bends the magnitude by −20 dB/decade and the phase by −90°, each zero the opposite; first-order RC sections give \(f_c=1/2\pi RC\), second-order sections add resonance with \(Q\).
 
 * Method (Bode asymptotes)
-Factor \(H(j\omega)=K\frac{\prod(1+j\omega/z_i)}{\prod(1+j\omega/p_k)}\). Magnitude in dB is a sum: each factor is 0 dB below its corner and ±20 dB/dec above (exact error −3 dB at the corner). Phase: each factor contributes ±45° at its corner, ±90° asymptotically, transitions over one decade each side.
+Factor \(H(j\omega)=K\frac{\prod(1+j\omega/z_i)}{\prod(1+j\omega/p_k)}\) [cite:@bode1940]. Magnitude in dB is a sum: each factor is 0 dB below its corner and ±20 dB/dec above (exact error −3 dB at the corner). Phase: each factor contributes ±45° at its corner, ±90° asymptotically, transitions over one decade each side.
 
 * Standard filters
 | filter        | H(jω)                   | behaviour                      |
@@ -20,9 +20,10 @@ Factor \(H(j\omega)=K\frac{\prod(1+j\omega/z_i)}{\prod(1+j\omega/p_k)}\). Magnit
 | CR high-pass  | jωRC/(1 + jωRC)         | +20 dB/dec below f_c           |
 | RLC band-pass | 1/(1 + jQ(ω/ω₀ − ω₀/ω)) | peak at ω₀, bandwidth ω₀/Q     |
 | 2nd-order LP  | ω₀²/(ω₀² − ω² + jωω₀/Q) | −40 dB/dec, peaking if Q>0.707 |
-Butterworth (\(Q=0.707\)) is maximally flat.
+Butterworth (\(Q=0.707\)) is maximally flat [cite:@butterworth1930].
 
 * Picture
+#+CAPTION: Magnitude responses of low-pass filters: a first-order section, a Butterworth response and a peaked second-order response with \(Q=3\).
 \begin{tikzpicture}
 \begin{axis}[width=7.5cm,height=4.3cm,axis lines=left,xmode=log,xlabel={$f/f_c$},ylabel={$|H|$ (dB)},xmin=0.01,xmax=100,ymin=-45,ymax=10]
 \addplot+[no marks,domain=0.01:100,samples=200]{-10*log10(1+x^2)}; \addlegendentry{1st order}
@@ -39,7 +40,3 @@ Audio equalisers, anti-aliasing and reconstruction filters, loop stability (gain
 
 * Pitfall
 dB of voltage ratios is \(20\log\), of power ratios \(10\log\); the "−3 dB" frequency is where *power* halves, i.e. \(|H|=1/\sqrt2\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Bode_plot][Bode plot]]
-- [[https://en.wikipedia.org/wiki/Butterworth_filter][Butterworth filter]]

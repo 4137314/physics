@@ -31,6 +31,3 @@ Atomic orbitals (s, p, d) behind chemical bonding and semiconductor band edges (
 
 * Pitfall
 \(Y_l^m\) for \(m\neq0\) are complex; the real "p_x, p_y" orbitals are combinations of \(m=\pm1\) and are not \(L_z\) eigenstates.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Spherical_harmonics][Spherical harmonics]]

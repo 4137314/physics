@@ -11,7 +11,7 @@
 #+summary: In lumped circuits \(\sum i=0\) at every node (KCL, charge conservation) and \(\sum v=0\) around every loop (KVL, negligible linked flux); for linear networks superposition holds, and any two-terminal network is equivalent to \(V_{th}\) in series with \(Z_{th}\) (Thévenin) or \(I_N=V_{th}/Z_{th}\) in parallel (Norton); maximum power reaches a load \(Z_L=Z_{th}^*\).
 
 * Statement and origin
-- KCL: \(\nabla\cdot\mathbf J=-\partial_t\rho\) with no charge accumulating in nodes.
+- KCL: \(\nabla\cdot\mathbf J=-\partial_t\rho\) with no charge accumulating in nodes [cite:@kirchhoff1845].
 - KVL: \(\oint\mathbf E\cdot\dd\mathbf l=-\dd\Phi/\dd t\approx0\) outside the elements (all magnetic flux inside inductors) — valid when dimensions \(\ll\lambda\).
 - Element laws: \(v=Ri\), \(i=C\,\dd v/\dd t\), \(v=L\,\dd i/\dd t\), ideal sources.
 
@@ -19,7 +19,7 @@
 *Nodal*: choose a reference, write KCL at the other \(n-1\) nodes in terms of node voltages: \(\mathbf G\mathbf v=\mathbf i_s\). *Mesh*: KVL around independent loops: \(\mathbf R\mathbf i=\mathbf v_s\). Number of independent equations: \(b-n+1\) loops, \(n-1\) nodes.
 
 * Thévenin (proof sketch)
-By linearity, the port voltage is an affine function of the port current: \(v=V_{th}-Z_{th}i\). \(V_{th}\) = open-circuit voltage; \(Z_{th}\) = impedance seen with independent sources zeroed (or \(V_{oc}/I_{sc}\)). Maximum power: \(P=\frac{|V_{th}|^2R_L}{2|Z_{th}+Z_L|^2}\) is maximal at \(Z_L=Z_{th}^*\), giving \(P_{max}=\frac{|V_{th}|^2}{8R_{th}}\) (peak phasors).
+By linearity, the port voltage is an affine function of the port current: \(v=V_{th}-Z_{th}i\) [cite:@thevenin1883]. \(V_{th}\) = open-circuit voltage; \(Z_{th}\) = impedance seen with independent sources zeroed (or \(V_{oc}/I_{sc}\)). Maximum power: \(P=\frac{|V_{th}|^2R_L}{2|Z_{th}+Z_L|^2}\) is maximal at \(Z_L=Z_{th}^*\), giving \(P_{max}=\frac{|V_{th}|^2}{8R_{th}}\) (peak phasors).
 
 * Worked example
 Wheatstone bridge: 10 V across \(R_1=R_2=1\) kΩ (left divider) and \(R_3=1\) kΩ, \(R_4=1.1\) kΩ (right divider); galvanometer 500 Ω between midpoints. Left node 5 V; right node \(10\cdot\frac{1.1}{2.1}=5.238\) V: \(V_{th}=0.238\) V; \(R_{th}=0.5+\frac{1\cdot1.1}{2.1}=1.024\) kΩ; galvanometer current \(\frac{0.238}{1.524\text{ k}}=156\) µA. Strain gauges and RTDs are read this way.
@@ -29,7 +29,3 @@ SPICE solves modified nodal analysis; Thévenin models of sensors, batteries and
 
 * Pitfall
 Superposition applies to voltages and currents, never to power (\(P\) is quadratic). And dependent sources must not be zeroed when computing \(Z_{th}\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Th%C3%A9venin%27s_theorem][Thévenin's theorem]]
-- [[https://en.wikipedia.org/wiki/Kirchhoff%27s_circuit_laws][Kirchhoff's circuit laws]]

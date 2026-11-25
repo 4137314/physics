@@ -15,8 +15,8 @@ For \(x\ket{x'}=x'\ket{x'}\) normalisation is \(\braket{x''|x'}=\delta(x''-x')\)
 
 * Derivation
 1. *Translation*: \(\mathcal T(\dd x')\ket{x'}=\ket{x'+\dd x'}\). Unitarity, composition and continuity force \(\mathcal T(\dd x')=1-iK\dd x'\) with \(K\) Hermitian.
-2. \(x\mathcal T\ket{x'}-\mathcal Tx\ket{x'}=\dd x'\ket{x'}\) gives \([x,K]=i\). Identify \(K=p/\hbar\) (de Broglie): \([x,p]=i\hbar\).
-3. Acting on a wave function: \(\bra{x'}\mathcal T(\Delta x')\ket\psi=\psi(x'-\Delta x')\); expanding, \(\bra{x'}p\ket\psi=-i\hbar\,\partial_{x'}\psi(x')\).
+2. \(x\mathcal T\ket{x'}-\mathcal Tx\ket{x'}=\dd x'\ket{x'}\) gives \([x,K]=i\). Identify \(K=p/\hbar\) (de Broglie): \([x,p]=i\hbar\) [cite:@broglie1925].
+3. Acting on a wave function: \(\bra{x'}\mathcal T(\Delta x')\ket\psi=\psi(x'-\Delta x')\); expanding, \(\bra{x'}p\ket\psi=-i\hbar\,\partial_{x'}\psi(x')\) [cite:@schrodinger1926a].
 4. Eigenfunctions of \(p\): \(-i\hbar\,\partial_x\braket{x|p'}=p'\braket{x|p'}\) gives \(\braket{x|p'}=\frac{1}{\sqrt{2\pi\hbar}}e^{ip'x/\hbar}\), the factor fixed by \(\braket{p''|p'}=\delta(p''-p')\).
 5. Therefore
 \[ \phi(p')=\frac{1}{\sqrt{2\pi\hbar}}\int\dd x'\,e^{-ip'x'/\hbar}\psi(x'),\qquad \psi(x')=\frac{1}{\sqrt{2\pi\hbar}}\int\dd p'\,e^{ip'x'/\hbar}\phi(p'). \]
@@ -30,7 +30,3 @@ Fourier duality between position and momentum is the same mathematics as time–
 
 * Pitfall
 Plane waves \(\ket{p'}\) and \(\ket{x'}\) are not normalisable states: they are generalised eigenvectors. Physical states are wave packets.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Canonical_commutation_relation][Canonical commutation relation]]
-- [[https://en.wikipedia.org/wiki/Wave_function][Wave function]]

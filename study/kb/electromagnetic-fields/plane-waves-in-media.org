@@ -11,7 +11,7 @@
 #+summary: A uniform plane wave \(\mathbf E=\hat x E_0e^{-\gamma z}\), \(\gamma=\alpha+j\beta=\sqrt{j\omega\mu(\sigma+j\omega\epsilon)}\), has \(\mathbf H=\hat z\times\mathbf E/\eta\) with \(\eta=\sqrt{j\omega\mu/(\sigma+j\omega\epsilon)}\); lossless: \(\beta=\omega\sqrt{\mu\epsilon}\), \(\eta=\sqrt{\mu/\epsilon}\); good conductor: \(\alpha=\beta=1/\delta\), \(\delta=\sqrt{2/\omega\mu\sigma}\).
 
 * Statement and derivation
-From the Helmholtz equation \(\frac{\dd^2E_x}{\dd z^2}=\gamma^2E_x\), \(\gamma^2=j\omega\mu(\sigma+j\omega\epsilon)\). Faraday gives \(H_y=E_x/\eta\).
+From the Helmholtz equation \(\frac{\dd^2E_x}{\dd z^2}=\gamma^2E_x\), \(\gamma^2=j\omega\mu(\sigma+j\omega\epsilon)\) [cite:@hertz1889]. Faraday gives \(H_y=E_x/\eta\).
 | medium         | condition | α           | β       | η             |
 |----------------+-----------+-------------+---------+---------------|
 | lossless       | σ = 0     | 0           | ω√(με)  | √(μ/ε)        |
@@ -33,7 +33,3 @@ Shielding effectiveness (absorption \(8.7\,t/\delta\) dB), litz wire and PCB con
 
 * Pitfall
 In a lossy medium \(\mathbf E\) and \(\mathbf H\) are not in phase (\(\eta\) complex, 45° for good conductors); power must be computed with \(\tfrac12\mathrm{Re}(\mathbf E\times\mathbf H^*)\), not \(E^2/2\eta\) with complex \(\eta\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Skin_effect][Skin effect]]
-- [[https://en.wikipedia.org/wiki/Polarization_(waves)][Polarization]]

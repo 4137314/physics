@@ -17,7 +17,7 @@
 Near a band minimum: \(E=E_c+\frac{\hbar^2k^2}{2m^*}\): electrons in a crystal behave as free particles with modified mass, and the periodic potential disappears from the equations.
 
 * Holes
-In an almost full band, the current of all electrons equals that of a single positive charge moving with the velocity of the missing electron. At the band top \(\frac{\dd^2E}{\dd k^2}<0\): the missing electron has negative mass and charge \(-e\), the hole has \(m_h^*>0\), charge \(+e\), energy increasing downwards. Valence bands of Si/GaAs: heavy holes, light holes, split-off band.
+In an almost full band, the current of all electrons equals that of a single positive charge moving with the velocity of the missing electron. At the band top \(\frac{\dd^2E}{\dd k^2}<0\): the missing electron has negative mass and charge \(-e\), the hole has \(m_h^*>0\), charge \(+e\), energy increasing downwards [cite:@heisenberg1931]. Valence bands of Si/GaAs: heavy holes, light holes, split-off band.
 
 * Direct and indirect gaps
 Direct (GaAs, InP): conduction minimum and valence maximum at the same \(k\) → efficient light emission. Indirect (Si, Ge): minimum at a different \(k\), so a phonon must supply momentum → weak emission, slow absorption edge ([[id:semiconductor-optical-properties][optical properties]]).
@@ -30,7 +30,3 @@ Low effective mass → high mobility → fast transistors (InGaAs HEMTs); strain
 
 * Pitfall
 \(m^*\) is not a property of the electron but of the band at that point; far from the extremum the parabolic approximation fails (non-parabolicity, velocity saturation).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Effective_mass_(solid-state_physics)][Effective mass (solid-state physics)]]
-- [[https://en.wikipedia.org/wiki/Electron_hole][Electron hole]]

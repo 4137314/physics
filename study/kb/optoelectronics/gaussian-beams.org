@@ -13,7 +13,7 @@
 * Model
 Write \(E=A(x,y,z)e^{-jkz}\) with \(A\) slowly varying: \(\nabla_t^2A-2jk\partial_zA=0\) (paraxial). The Gaussian solution:
 \[ E=E_0\frac{w_0}{w(z)}\exp\!\left(-\frac{r^2}{w^2(z)}\right)\exp\!\left(-jkz-jk\frac{r^2}{2R(z)}+j\zeta(z)\right),\qquad \zeta=\arctan\frac z{z_0}. \]
-\(\zeta\) is the Gouy phase (\(\pi\) across the focus). Beam-parameter product \(w_0\theta=\lambda/\pi\): a narrow waist diverges fast. Real beams: \(w_0\theta=M^2\lambda/\pi\).
+\(\zeta\) is the Gouy phase (\(\pi\) across the focus). Beam-parameter product \(w_0\theta=\lambda/\pi\): a narrow waist diverges fast [cite:@kogelnik1966]. Real beams: \(w_0\theta=M^2\lambda/\pi\).
 
 * Cavity matching
 A beam fits a resonator when \(R(z)\) equals the mirror radii at the mirror positions. Symmetric confocal cavity (\(L=R\)): \(z_0=L/2\), \(2w_0=\sqrt{2R\lambda/\pi}\). Stability of a two-mirror cavity: \(0\le g_1g_2\le1\), \(g_i=1-L/R_i\).
@@ -25,6 +25,7 @@ HeNe at 633 nm, \(2w_0=0.8\) mm: \(\theta=\frac{633\times10^{-9}}{\pi\cdot0.4\ti
 A laser diode's output is roughly Gaussian with a small waist and a large divergence. To keep the beam inside a fibre mode of radius \(w_f\) (half the MFD), the fibre must sit within \(z_{max}=z_0\sqrt{(w_f/w_0)^2-1}\approx w_f/\theta\). Full divergence \(2\theta=30^\circ\) at 850 nm: \(w_0=\frac{\lambda}{\pi\theta}=\frac{0.85}{\pi\cdot0.262}=1.03\) µm, \(z_0=3.9\) µm; MFD 9 µm gives \(z_{max}=17\) µm. That is why packages use lensed fibres or ball lenses to match the two mode sizes.
 
 * Picture: beam envelope
+#+CAPTION: Envelope \(w(z)\) of a Gaussian beam: the waist \(w_0\), the Rayleigh range where the beam has widened by \(\sqrt2\), and the far-field divergence \(\theta\).
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$z/z_0$},ylabel={$\pm w/w_0$},xmin=-4,xmax=4,ymin=-4.5,ymax=4.5]
 \addplot+[no marks,thick,blue!70!black,domain=-4:4,samples=100]{sqrt(1+x^2)}; \addlegendentry{$w(z)$}
@@ -46,7 +47,3 @@ A 5 mW He–Ne beam (633 nm) with \(2w_0=1\) mm. (a) Diameter at 100 m. (b) It i
 
 * Pitfall
 \(w\) is the \(1/e^2\) intensity radius, not the FWHM: FWHM \(=w\sqrt{2\ln2}=1.18w\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Gaussian_beam][Gaussian beam]]
-- [[https://www.rp-photonics.com/gaussian_beams.html][RP Photonics: Gaussian beams]]

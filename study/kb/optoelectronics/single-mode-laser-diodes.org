@@ -14,9 +14,10 @@
 Gain-guided stripe lasers inject current through a narrow contact; index-guided buried heterostructures surround the active stripe with lower-index material on all sides: lower threshold, stable single *transverse* mode, elliptical output beam (larger divergence across the thin junction). Longitudinal mode selection is the job of the gratings below.
 
 * DFB and DBR (derivation of the DFB modes)
-A corrugation of period \(\Lambda\) couples forward and backward waves when \(2\bar n\Lambda=q\lambda\). Coupled-mode theory ([[id:bragg-gratings][Bragg gratings]]) gives a stop band around \(\lambda_B\) where no mode propagates; the allowed modes sit symmetrically outside it, spaced like those of a cavity of length \(L\): \(\lambda_m=\lambda_B\pm\frac{\lambda_B^2}{2\bar nL}(m+1)\), \(m=0,1,\dots\) The two \(m=0\) modes have equal threshold; a \(\lambda/4\) phase shift in the middle of the grating (or an asymmetric facet coating) places one mode at \(\lambda_B\) with the lowest threshold: single-frequency operation with side-mode suppression > 40 dB. In a DBR laser the gratings are passive end mirrors; separate electrodes on the grating and phase sections tune the wavelength.
+A corrugation of period \(\Lambda\) couples forward and backward waves when \(2\bar n\Lambda=q\lambda\) [cite:@kogelnik1972]. Coupled-mode theory ([[id:bragg-gratings][Bragg gratings]]) gives a stop band around \(\lambda_B\) where no mode propagates; the allowed modes sit symmetrically outside it, spaced like those of a cavity of length \(L\): \(\lambda_m=\lambda_B\pm\frac{\lambda_B^2}{2\bar nL}(m+1)\), \(m=0,1,\dots\) The two \(m=0\) modes have equal threshold; a \(\lambda/4\) phase shift in the middle of the grating (or an asymmetric facet coating) places one mode at \(\lambda_B\) with the lowest threshold: single-frequency operation with side-mode suppression > 40 dB. In a DBR laser the gratings are passive end mirrors; separate electrodes on the grating and phase sections tune the wavelength.
 
 * Picture: DFB structure and spectrum
+#+CAPTION: A distributed-feedback laser: the corrugation of period \(\Lambda\) reflects only near the Bragg wavelength \(\lambda_B\), so one longitudinal mode lases.
 \begin{tikzpicture}[scale=0.95]
 \fill[gray!20] (0,0) rectangle (6,0.5); \node[font=\scriptsize] at (3,0.25) {n-cladding};
 \fill[red!25] (0,0.5) rectangle (6,0.75); \node[font=\scriptsize,anchor=west] at (6.05,0.62) {active layer};
@@ -32,7 +33,7 @@ A corrugation of period \(\Lambda\) couples forward and backward waves when \(2\
 \end{tikzpicture}
 
 * VCSEL and external-cavity lasers
-A VCSEL has a ≈ 1λ cavity with quantum wells between two DBR mirrors of 20–30 GaAs/AlAs pairs (\(R>99.5\%\), [[id:thin-film-optics-and-coatings][dielectric mirrors]]): the mode spacing (tens of nm) exceeds the gain width, so one longitudinal mode lases; circular, low-divergence beam; threshold below 1 mA; wafer-level testing; arrays. External-cavity lasers close the cavity with a grating outside an AR-coated chip: kHz linewidths, tens of nm of tuning.
+A VCSEL has a ≈ 1λ cavity with quantum wells between two DBR mirrors of 20–30 GaAs/AlAs pairs (\(R>99.5\%\), [[id:thin-film-optics-and-coatings][dielectric mirrors]]): the mode spacing (tens of nm) exceeds the gain width, so one longitudinal mode lases; circular, low-divergence beam; threshold below 1 mA; wafer-level testing; arrays [cite:@soda1979;@dingle1974]. External-cavity lasers close the cavity with a grating outside an AR-coated chip: kHz linewidths, tens of nm of tuning.
 
 * Quantum-well lasers
 A well of thickness \(d\) quantises the motion across it: \(E_n=\frac{n^2h^2}{8m^*d^2}\) above the band edge for electrons and holes ([[id:heterojunctions-and-quantum-wells][quantum wells]]). The step-like density of states puts more carriers at the band edge: lower transparency density, lower \(J_{th}\), higher differential gain, less temperature sensitivity; the emission shifts to \(E_g+E_{1e}+E_{1h}\). Strained wells and multiple wells (MQW) refine this.
@@ -60,7 +61,3 @@ A DFB laser must emit at 1550 nm with \(\bar n=3.3\). (a) First-order grating pe
 
 * Pitfall
 The DFB lases *beside* the Bragg wavelength unless the grating is phase-shifted: answering "\(\lambda=\lambda_B\)" for a uniform DFB misses the stop band.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Distributed-feedback_laser][Distributed-feedback laser]]
-- [[https://en.wikipedia.org/wiki/Vertical-cavity_surface-emitting_laser][VCSEL]]

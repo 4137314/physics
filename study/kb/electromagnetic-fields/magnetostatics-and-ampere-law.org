@@ -11,7 +11,7 @@
 #+summary: Steady currents produce \(\mathbf B\) with \(\nabla\cdot\mathbf B=0\) and \(\nabla\times\mathbf H=\mathbf J\), \(\mathbf B=\mu\mathbf H\); Ampère's law \(\oint\mathbf H\cdot\dd\mathbf l=I_{enc}\) gives symmetric fields, magnetic circuits \(\mathcal F=NI=\Phi\mathcal R\) design cores, and inductance \(L=N\Phi/I\) stores energy \(\tfrac12LI^2\).
 
 * Statement
-Biot–Savart: \(\dd\mathbf B=\frac{\mu_0}{4\pi}\frac{I\dd\mathbf l\times\hat R}{R^2}\). Equivalently \(\mathbf B=\nabla\times\mathbf A\), \(\mathbf A=\frac{\mu_0}{4\pi}\int\frac{\mathbf J}{R}\dd V'\), giving
+Biot–Savart: \(\dd\mathbf B=\frac{\mu_0}{4\pi}\frac{I\dd\mathbf l\times\hat R}{R^2}\) [cite:@maxwell1865]. Equivalently \(\mathbf B=\nabla\times\mathbf A\), \(\mathbf A=\frac{\mu_0}{4\pi}\int\frac{\mathbf J}{R}\dd V'\), giving
 \[ \nabla\cdot\mathbf B=0,\qquad \nabla\times\mathbf H=\mathbf J,\qquad \oint_C\mathbf H\cdot\dd\mathbf l=I_{enc}. \]
 Force on a current: \(\dd\mathbf F=I\dd\mathbf l\times\mathbf B\); on a charge \(q\mathbf v\times\mathbf B\).
 
@@ -34,7 +34,3 @@ Inductors and transformers ([[id:transformer][transformer model]]), motors and a
 
 * Pitfall
 \(\mathbf H\) and \(\mathbf B\) differ inside materials: Ampère's law with free currents uses \(\mathbf H\); flux and force use \(\mathbf B\).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Biot%E2%80%93Savart_law][Biot–Savart law]]
-- [[https://en.wikipedia.org/wiki/Magnetic_circuit][Magnetic circuit]]

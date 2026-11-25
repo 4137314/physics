@@ -25,6 +25,7 @@ Rayleigh criterion: two points are resolved when the maximum of one falls on the
 1200 lines/mm grating (\(d=833\) nm), normal incidence, \(\lambda=633\) nm: \(\sin\theta_1=0.76\), \(\theta_1=49.5^\circ\); \(m=2\) impossible (\(\sin>1\)). Illuminating 10 mm (\(N=12000\)) resolves \(\Delta\lambda=633/12000=0.05\) nm in first order. A 10 cm lens at 550 nm resolves \(6.7\) µrad (1.22λ/D).
 
 * Picture: single-slit pattern
+#+CAPTION: Fraunhofer intensity of a single slit, \(\mathrm{sinc}^2\) of the angle: the central lobe holds most of the power, its width falls as the slit widens.
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$a\sin\theta/\lambda$},ylabel={$I/I_0$},xmin=-3,xmax=3,ymin=0,ymax=1.05]
 \addplot+[no marks,thick,domain=-3:3,samples=200]{(sin(deg(pi*x))/(pi*x))^2}; \addlegendentry{$\mathrm{sinc}^2$}
@@ -42,7 +43,3 @@ A transmission grating has 600 lines/mm. (a) First- and second-order angles of t
 
 * Pitfall
 The Fraunhofer approximation needs \(z\gg a^2/\lambda\) (or a lens focal plane); close to the aperture (Fresnel regime) the pattern is not a Fourier transform.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Fraunhofer_diffraction][Fraunhofer diffraction]]
-- [[https://en.wikipedia.org/wiki/Diffraction_grating][Diffraction grating]]

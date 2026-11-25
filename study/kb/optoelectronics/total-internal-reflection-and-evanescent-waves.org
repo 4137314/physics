@@ -19,6 +19,7 @@
 With \(n=n_2/n_1\) and Snell, \(n\cos\theta_t=\sqrt{n^2-\sin^2\theta_i}=-j\sqrt{\sin^2\theta_i-n^2}\). For \(\perp\) polarisation \(r_\perp=\frac{\cos\theta_i-n\cos\theta_t}{\cos\theta_i+n\cos\theta_t}=\frac{\cos\theta_i+jb}{\cos\theta_i-jb}\), \(b=\sqrt{\sin^2\theta_i-n^2}\). Numerator and denominator are conjugates, so \(|r_\perp|=1\) and the phase is twice the argument of the numerator: \(\tan\frac{\phi_\perp}2=\frac{b}{\cos\theta_i}\). The same steps with \(r_\parallel\) bring a factor \(n^2\) under \(\cos\theta_i\). The phase grows from 0 at \(\theta_c\) to \(\pi\) at grazing incidence; \(\phi_\parallel\ne\phi_\perp\), so TIR turns linear light at 45° into elliptical light (Fresnel rhomb: two TIRs at 54.6° in glass give a quarter-wave retarder).
 
 * Picture
+#+CAPTION: Total internal reflection: beyond the critical angle the field decays exponentially in the second medium, as an evanescent wave travelling along the interface.
 \begin{tikzpicture}[scale=1.1]
 \fill[blue!8] (-3,0) rectangle (3,2.2);
 \node[font=\small] at (-2.3,1.9) {$n_1$};
@@ -54,7 +55,3 @@ A right-angle prism of glass \(n=1.5\) is used to turn a 1550 nm beam by 90°. (
 
 * Pitfall
 The angle in TIR formulas is measured from the normal; in fibre problems the "bounce" angle is often given from the axis (\(90^\circ-\theta_i\)). Check which one the problem uses before computing \(\theta_c\) or the NA.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Total_internal_reflection][Total internal reflection]]
-- [[https://en.wikipedia.org/wiki/Goos%E2%80%93H%C3%A4nchen_effect][Goos–Hänchen effect]]

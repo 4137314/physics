@@ -11,12 +11,13 @@
 #+summary: In an absorbing medium \(N=n-jK=\sqrt{\epsilon_r'-j\epsilon_r''}\); the wave decays as \(e^{-kKz}\), so the intensity absorption coefficient is \(\alpha=\frac{4\pi K}{\lambda}\) (Beer–Lambert \(I=I_0e^{-\alpha z}\)); normal-incidence reflectance becomes \(R=\frac{(n-1)^2+K^2}{(n+1)^2+K^2}\), close to 1 when \(K\gg n\) (metals, reststrahlen band); \(n\) and \(K\) are linked by the Kramers–Kronig relations.
 
 * Model
-- \(\epsilon_r=\epsilon_r'-j\epsilon_r''\) and \(N^2=\epsilon_r\): \(n^2-K^2=\epsilon_r'\), \(2nK=\epsilon_r''\).
+- \(\epsilon_r=\epsilon_r'-j\epsilon_r''\) and \(N^2=\epsilon_r\): \(n^2-K^2=\epsilon_r'\), \(2nK=\epsilon_r''\) [cite:@drude1900].
 - Plane wave \(E=E_0e^{j(\omega t-k_0Nz)}=E_0e^{-k_0Kz}e^{j(\omega t-k_0nz)}\): phase set by \(n\), decay by \(K\). Intensity \(\propto|E|^2\), hence the factor 2: \(\alpha=2k_0K=\frac{4\pi K}{\lambda}\).
 - Fresnel at normal incidence with complex \(N\): \(r=\frac{1-N}{1+N}\), \(R=|r|^2\) as in the summary.
 - *Lorentz oscillator* (bound charges with resonance \(\omega_0\) and damping \(\gamma\)): \(\epsilon_r=1+\frac{\omega_p^2}{\omega_0^2-\omega^2+j\gamma\omega}\). Below resonance \(n\) rises with \(\omega\) (normal dispersion, [[id:dispersion-and-group-velocity][Sellmeier]]); at resonance \(\epsilon''\) peaks (absorption) and \(n\) falls (anomalous dispersion).
 
 * Picture: one Lorentz resonance
+#+CAPTION: Real and imaginary parts of the relative permittivity near a single Lorentz resonance: anomalous dispersion and absorption peak together.
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$\omega/\omega_0$},ylabel={$\epsilon_r$},xmin=0.5,xmax=1.5,ymin=-0.2,ymax=2.2]
 \addplot+[no marks,thick,domain=0.5:1.5,samples=300]{1+0.2*(1-x^2)/((1-x^2)^2+(0.1*x)^2)}; \addlegendentry{$\epsilon_r'$}
@@ -46,7 +47,3 @@ A semiconductor has \(n=3.5\), \(K=0.1\) at 1 µm. (a) Absorption coefficient. (
 
 * Pitfall
 Two conventions exist: \(N=n-jK\) (engineering, \(e^{j\omega t}\)) and \(N=n+i\kappa\) (physics, \(e^{-i\omega t}\)); \(K\) is positive in both. And \(\alpha\) in absorption formulas is the *intensity* coefficient, twice the field one.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Refractive_index#Complex_refractive_index][Complex refractive index]]
-- [[https://refractiveindex.info/][refractiveindex.info database]]

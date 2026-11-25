@@ -28,7 +28,3 @@
 
 * Engineering applications
 Ultra-fast digital signal processing (RF digital receivers), cryogenic control and read-out of [[id:qubits-and-quantum-gates][qubits]], SQUID magnetometry (MEG brain imaging), voltage standards (Josephson arrays define the volt).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Rapid_single_flux_quantum][Rapid single flux quantum]]
-- [[https://en.wikipedia.org/wiki/Superconducting_logic][Superconducting logic]]

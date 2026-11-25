@@ -18,7 +18,7 @@ Expand \(\ket n=\ket{n^0}+\lambda\ket{n^1}+\dots\), \(E_n=E^{(0)}_n+\lambda\Delt
 Validity: \(|V_{kn}|\ll|E^0_n-E^0_k|\). The ground-state second-order shift is always negative: levels repel.
 
 * Degenerate case
-If \(E^0\) is \(g\)-fold degenerate, the denominators vanish. Diagonalise the \(g\times g\) matrix \(\bra{m^0}V\ket{m'^0}\) in the degenerate subspace: its eigenvalues are the first-order shifts and its eigenvectors the correct zeroth-order states.
+If \(E^0\) is \(g\)-fold degenerate, the denominators vanish. Diagonalise the \(g\times g\) matrix \(\bra{m^0}V\ket{m'^0}\) in the degenerate subspace: its eigenvalues are the first-order shifts and its eigenvectors the correct zeroth-order states [cite:@schrodinger1926c].
 
 * Worked example
 Two-level system \(H=\begin{pmatrix}E_1&\Delta\\\Delta&E_2\end{pmatrix}\): exact \(E_\pm=\frac{E_1+E_2}2\pm\sqrt{\left(\frac{E_1-E_2}{2}\right)^2+\Delta^2}\). Expanding for \(\Delta\ll|E_1-E_2|\): \(E_1-\Delta^2/(E_2-E_1)\), the second-order formula. At \(E_1=E_2\) (degenerate): \(E\pm\Delta\), the degenerate-theory result — an *avoided crossing*.
@@ -31,6 +31,3 @@ Quantum-confined Stark effect in quantum-well electro-absorption modulators (fas
 
 * Pitfall
 Using non-degenerate formulas on degenerate levels gives infinities or wrong states; always check degeneracy first.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Perturbation_theory_(quantum_mechanics)][Perturbation theory (quantum mechanics)]]

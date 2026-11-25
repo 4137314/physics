@@ -11,7 +11,7 @@
 #+summary: For an N-port, incident and reflected waves \(a_i=V_i^+/\sqrt{Z_0}\), \(b_i=V_i^-/\sqrt{Z_0}\) are related by \(\mathbf b=S\mathbf a\); \(|S_{11}|\) is the input reflection, \(|S_{21}|^2\) the transmitted power fraction; reciprocal networks have \(S=S^T\), lossless ones \(S^\dagger S=1\).
 
 * Definition
-\(S_{ij}=\left.\frac{b_i}{a_j}\right|_{a_k=0,\,k\neq j}\): drive port \(j\), terminate every other port in \(Z_0\). Power in the waves: \(|a|^2/2\) (peak phasors). Return loss \(-20\log|S_{11}|\), insertion loss \(-20\log|S_{21}|\).
+\(S_{ij}=\left.\frac{b_i}{a_j}\right|_{a_k=0,\,k\neq j}\): drive port \(j\), terminate every other port in \(Z_0\) [cite:@kurokawa1965]. Power in the waves: \(|a|^2/2\) (peak phasors). Return loss \(-20\log|S_{11}|\), insertion loss \(-20\log|S_{21}|\).
 
 * Properties (proof sketch)
 - *Reciprocity* (\(\epsilon,\mu\) symmetric tensors, no ferrites or active bias): Lorentz reciprocity theorem gives \(S_{ij}=S_{ji}\).
@@ -29,6 +29,3 @@ Vector network analyser measurement and calibration (SOLT, TRL), amplifier stabi
 
 * Pitfall
 S-parameters are defined for a reference impedance; changing \(Z_0\) (e.g. 50 → 75 Ω) changes every \(S_{ij}\), even though the device is the same.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Scattering_parameters][Scattering parameters]]

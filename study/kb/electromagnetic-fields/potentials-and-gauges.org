@@ -14,7 +14,7 @@
 \(\nabla\cdot\mathbf B=0\Rightarrow\mathbf B=\nabla\times\mathbf A\); then Faraday gives \(\nabla\times(\mathbf E+\partial_t\mathbf A)=0\Rightarrow\mathbf E=-\nabla\phi-\partial_t\mathbf A\). Fields are unchanged by gauge transformations.
 
 * Derivation in Lorenz gauge
-Substituting into the inhomogeneous equations and choosing \(\nabla\cdot\mathbf A+\frac{1}{c^2}\partial_t\phi=0\):
+Substituting into the inhomogeneous equations and choosing \(\nabla\cdot\mathbf A+\frac{1}{c^2}\partial_t\phi=0\) [cite:@lorenz1867]:
 \[ \nabla^2\phi-\frac{1}{c^2}\partial_t^2\phi=-\frac{\rho}{\epsilon_0},\qquad \nabla^2\mathbf A-\frac{1}{c^2}\partial_t^2\mathbf A=-\mu_0\mathbf J. \]
 The causal Green's function of the wave operator gives the retarded potentials
 \[ \phi(\mathbf r,t)=\frac{1}{4\pi\epsilon_0}\int\frac{\rho(\mathbf r',t-R/c)}{R}\dd V',\qquad \mathbf A(\mathbf r,t)=\frac{\mu_0}{4\pi}\int\frac{\mathbf J(\mathbf r',t-R/c)}{R}\dd V'. \]
@@ -31,7 +31,3 @@ Antenna and scattering codes (method of moments solves an integral equation for 
 
 * Pitfall
 In Coulomb gauge \(\phi\) changes instantaneously everywhere — not a causality violation, because \(\mathbf A\) compensates so that \(\mathbf E\) and \(\mathbf B\) are retarded.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Retarded_potential][Retarded potential]]
-- [[https://en.wikipedia.org/wiki/Gauge_fixing][Gauge fixing]]

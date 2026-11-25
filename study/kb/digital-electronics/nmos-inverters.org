@@ -34,6 +34,3 @@ Historical NMOS microprocessors (6800, Z80), today's pseudo-NMOS and current-mod
 
 * Pitfall
 In ratioed logic \(V_{OL}\) depends on the *ratio* of switch to load strength; making both transistors bigger by the same factor does not lower \(V_{OL}\), it only increases power.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Depletion-load_NMOS_logic][Depletion-load NMOS logic]]

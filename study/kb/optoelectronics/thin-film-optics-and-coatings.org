@@ -16,6 +16,7 @@ Wave A reflects at the top surface (\(r_{12}\)), wave B at the bottom (\(r_{23}\
 For \(n_1<n_2<n_3\) both \(r\) have the same sign, so the minimum is at \(2\delta=\pi\): \(d=\frac{\lambda}{4n_2}\) (or odd multiples \(m\frac{\lambda}{4n_2}\), \(m\) odd, narrower in band). Substituting gives \(R_{min}\) of the summary. For \(n_2>n_3\) the same thickness gives a *maximum*: a high-index quarter-wave layer is a weak mirror.
 
 * Picture: a MgF\(_2\) coating on glass
+#+CAPTION: Reflectance of bare glass and of glass with a quarter-wave MgF\(_2\) coating designed for 550 nm: the coating removes most of the reflection across the visible.
 \begin{tikzpicture}
 \begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$\lambda$ (nm)},ylabel={$R$ (\%)},xmin=400,xmax=800,ymin=0,ymax=5]
 \addplot+[no marks,thick,domain=400:800,samples=200]{100*(0.025491+0.002331+0.015417*cos(deg(pi*550/x)))/(1+0.0000594+0.015417*cos(deg(pi*550/x)))}; \addlegendentry{MgF$_2$, $d=\lambda_0/4n$ at 550 nm}
@@ -26,6 +27,7 @@ For \(n_1<n_2<n_3\) both \(r\) have the same sign, so the minimum is at \(2\delt
 * Dielectric mirror
 Alternate high and low indices, each a quarter wave thick (\(n_Hd_H=n_Ld_L=\lambda_0/4\), i.e. \(n_1d_1+n_2d_2=\lambda_0/2\)). Reflections at H→L and L→H interfaces have opposite signs, and each extra half-wave of path restores the phase: all reflections add. The reflectance approaches 1 geometrically in \((n_L/n_H)^{2N}\); the reflected band is the photonic stop gap of a 1D [[id:photonic-crystals][photonic crystal]]. The light penetrates only a few periods, which sets the effective mirror position (important in VCSELs).
 
+#+CAPTION: A dielectric mirror: alternating quarter-wave layers of high and low index \(n_H\), \(n_L\) on a substrate \(n_3\), whose reflections add in phase.
 \begin{tikzpicture}[scale=0.9]
 \foreach \i in {0,...,4} {
   \fill[blue!35] (\i*1.0,0) rectangle (\i*1.0+0.4,2);
@@ -58,7 +60,3 @@ A GaAs laser facet (\(n=3.6\)) at 850 nm must be AR-coated. (a) Ideal index and 
 
 * Pitfall
 \(d=\lambda/4\) is the quarter wave *inside the layer*: divide by \(n_2\). And \(n_0\) in the mirror formula is the medium the light comes from, \(n_3\) the substrate behind the stack.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Anti-reflective_coating][Anti-reflective coating]]
-- [[https://www.rp-photonics.com/dielectric_mirrors.html][RP Photonics: dielectric mirrors]]

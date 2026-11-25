@@ -23,6 +23,7 @@
 Mode solver (FDE) → propagation (FDTD/EME) → compact models (S-parameters, [[id:scattering-parameters][same formalism as microwaves]]) → circuit simulation → layout (GDS) → fabrication tolerance analysis (±10 nm width changes \(n_{eff}\) noticeably).
 
 * Picture
+#+CAPTION: Cross-section of a silicon-on-insulator strip waveguide: a 500×220 nm silicon core on 2 µm of buried oxide, under a silica cladding.
 \begin{tikzpicture}[font=\small]
 \fill[kbguide!20] (0,0) rectangle (6,0.6); \node at (3,0.3) {Si substrate};
 \fill[kbcyan!20] (0,0.6) rectangle (6,1.6); \node at (1,1.1) {BOX SiO$_2$ 2 µm};
@@ -33,7 +34,3 @@ Mode solver (FDE) → propagation (FDTD/EME) → compact models (S-parameters, [
 
 * Engineering applications
 Datacenter transceivers (400G/800G), coherent transceivers, LiDAR (optical phased arrays), biosensors (ring resonance shift), quantum photonic chips, optical interconnects for AI accelerators.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Silicon_photonics][Silicon photonics]]
-- [[https://github.com/SiEPIC][SiEPIC open-source silicon-photonics design tools]]

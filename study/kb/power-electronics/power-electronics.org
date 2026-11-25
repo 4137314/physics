@@ -27,7 +27,3 @@
 
 * Engineering applications
 Electric vehicles, renewable inverters, motor drives, HVDC links, switch-mode power supplies, induction heating.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Power_semiconductor_device][Power semiconductor device]]
-- [[https://en.wikipedia.org/wiki/Power_electronics][Power electronics]]

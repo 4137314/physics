@@ -28,6 +28,7 @@
 5. Insert in the [[id:s-matrix-and-cross-sections][cross-section formula]] and check limits (non-relativistic → Rutherford, \(m\to0\)).
 
 * Picture
+#+CAPTION: The QED vertex, an electron line emitting or absorbing a photon with factor \(-ie\gamma^\mu\): every Feynman diagram of the theory is built from it.
 \begin{tikzpicture}[font=\small]
 \draw[thick,-{Latex}] (0,0) -- (1,1); \draw[thick,-{Latex}] (1,1) -- (2,2);
 \draw[thick,-{Latex}] (4,0) -- (3,1); \draw[thick,-{Latex}] (3,1) -- (2,2);
@@ -37,8 +38,3 @@
 
 * Engineering applications
 QED predicts the electron g-factor (metrology of \(\alpha\)), atomic level shifts used by optical clocks, X-ray and gamma interactions with matter (Compton scattering in medical imaging and radiotherapy dosimetry, pair production in PET detectors and shielding), synchrotron light sources.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Quantum_electrodynamics][Quantum electrodynamics]]
-- [[https://www.feynmanlectures.caltech.edu/][Feynman, QED: The Strange Theory of Light and Matter (also the online volumes)]]
-- [[https://pdg.lbl.gov/][Particle Data Group: constants and cross sections]]

@@ -11,7 +11,7 @@
 #+summary: Photodetection measures normally ordered correlations: \(g^{(1)}(\tau)=\frac{\braket{E^-(t)E^+(t+\tau)}}{\braket{E^-E^+}}\) gives interference visibility, \(g^{(2)}(\tau)=\frac{\braket{E^-(t)E^-(t+\tau)E^+(t+\tau)E^+(t)}}{\braket{E^-E^+}^2}\) photon-pair statistics; \(g^{(2)}(0)=2\) for thermal, 1 for coherent, \(1-1/n\) for Fock light — values below 1 are non-classical.
 
 * Definitions
-Split \(E=E^++E^-\) (positive frequency ∝ \(a\)). A photodetector absorbs photons, so its rate is \(\propto\braket{E^-E^+}\), coincidences \(\propto\braket{E^-E^-E^+E^+}\). Single mode: \(g^{(2)}(0)=\frac{\braket{a^{\dagger2}a^2}}{\braket{a^\dagger a}^2}=1+\frac{\Delta n^2-\bar n}{\bar n^2}\).
+Split \(E=E^++E^-\) (positive frequency ∝ \(a\)) [cite:@glauber1963a]. A photodetector absorbs photons, so its rate is \(\propto\braket{E^-E^+}\), coincidences \(\propto\braket{E^-E^-E^+E^+}\). Single mode: \(g^{(2)}(0)=\frac{\braket{a^{\dagger2}a^2}}{\braket{a^\dagger a}^2}=1+\frac{\Delta n^2-\bar n}{\bar n^2}\).
 
 * Values
 | light             | g2(0)   | statistics       |
@@ -20,12 +20,13 @@ Split \(E=E^++E^-\) (positive frequency ∝ \(a\)). A photodetector absorbs phot
 | coherent (laser)  | 1       | Poissonian       |
 | Fock n            | 1 − 1/n | sub-Poissonian   |
 | single photon     | 0       | antibunched      |
-Classical fields satisfy \(g^{(2)}(0)\ge1\) and \(g^{(2)}(0)\ge g^{(2)}(\tau)\) (Cauchy–Schwarz): antibunching is proof of quantum light.
+Classical fields satisfy \(g^{(2)}(0)\ge1\) and \(g^{(2)}(0)\ge g^{(2)}(\tau)\) (Cauchy–Schwarz): antibunching is proof of quantum light [cite:@hbt1956;@kimble1977].
 
 * Derivation for thermal light
 For a Gaussian (chaotic) field, factorising fourth moments gives the Siegert relation \(g^{(2)}(\tau)=1+|g^{(1)}(\tau)|^2\). With a Lorentzian line of width \(\Delta\omega\), \(g^{(1)}=e^{-i\omega_0\tau-\Delta\omega|\tau|/2}\) and \(g^{(2)}(\tau)=1+e^{-\Delta\omega|\tau|}\): photons arrive bunched within the coherence time.
 
 * Picture
+#+CAPTION: Second-order correlation \(g^{(2)}(\tau)\) of thermal light (bunched, 2 at \(\tau=0\)), coherent light (1) and a single emitter (antibunched, 0 at \(\tau=0\)).
 \begin{tikzpicture}
 \begin{axis}[width=7.5cm,height=4.2cm,axis lines=left,xlabel={$\tau/\tau_c$},ylabel={$g^{(2)}(\tau)$},ymin=0,ymax=2.2,xmin=-3,xmax=3]
 \addplot+[no marks,domain=-3:3,samples=100]{1+exp(-2*abs(x))}; \addlegendentry{thermal}
@@ -42,7 +43,3 @@ Single-photon source certification, stellar interferometry (HBT measured star di
 
 * Pitfall
 \(g^{(1)}\) cannot distinguish a laser from filtered thermal light of the same spectrum; only \(g^{(2)}\) and higher orders reveal the statistics.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Degree_of_coherence][Degree of coherence]]
-- [[https://en.wikipedia.org/wiki/Hanbury_Brown_and_Twiss_effect][Hanbury Brown and Twiss effect]]

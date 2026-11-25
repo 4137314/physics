@@ -11,7 +11,7 @@
 #+summary: A two-level atom coupled to one cavity mode in the rotating-wave approximation, \(H=\hbar\omega_c a^\dagger a+\tfrac{\hbar\omega_a}{2}\sigma_z+\hbar g(a\sigma_++a^\dagger\sigma_-)\), splits into 2×2 blocks \(\{\ket{e,n},\ket{g,n+1}\}\) with Rabi frequency \(2g\sqrt{n+1}\); even the vacuum drives Rabi oscillations.
 
 * Model
-Dipole coupling \(-\mathbf d\cdot\mathbf E\) with \(\mathbf E\propto a+a^\dagger\) and \(\mathbf d\propto\sigma_++\sigma_-\); dropping the energy-non-conserving terms \(a\sigma_-\), \(a^\dagger\sigma_+\) (RWA, \(g\ll\omega\)) leaves the JC Hamiltonian, which conserves \(N=a^\dagger a+\sigma_+\sigma_-\).
+Dipole coupling \(-\mathbf d\cdot\mathbf E\) with \(\mathbf E\propto a+a^\dagger\) and \(\mathbf d\propto\sigma_++\sigma_-\); dropping the energy-non-conserving terms \(a\sigma_-\), \(a^\dagger\sigma_+\) (RWA, \(g\ll\omega\)) leaves the JC Hamiltonian, which conserves \(N=a^\dagger a+\sigma_+\sigma_-\) [cite:@jaynes1963].
 
 * Solution
 In the block with \(n\) excitations, detuning \(\Delta=\omega_a-\omega_c\):
@@ -29,7 +29,3 @@ Circuit QED (qubit read-out and two-qubit gates via a bus resonator), cavity-QED
 
 * Pitfall
 The RWA fails in ultrastrong coupling (\(g/\omega\gtrsim0.1\)): the counter-rotating terms then shift and mix levels (Bloch–Siegert shift, Rabi model).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Jaynes%E2%80%93Cummings_model][Jaynes–Cummings model]]
-- [[https://en.wikipedia.org/wiki/Circuit_quantum_electrodynamics][Circuit quantum electrodynamics]]

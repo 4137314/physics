@@ -31,7 +31,3 @@ Pipeline registers, state machines, clock-domain crossing synchronisers, scan ch
 
 * Pitfall
 A latch is not a flip-flop: in a latch-based pipeline data can race through consecutive transparent stages; two-phase non-overlapping clocks or flip-flops are required.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Flip-flop_(electronics)][Flip-flop (electronics)]]
-- [[https://en.wikipedia.org/wiki/Metastability_(electronics)][Metastability]]

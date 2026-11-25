@@ -11,7 +11,7 @@
 #+summary: A pnpn structure behaves as two coupled transistors; once triggered, positive feedback (\(\alpha_1+\alpha_2\to1\)) latches it on with very low voltage drop at huge currents, and it turns off only when the current falls below the holding current (line commutation) — or, in GTOs/IGCTs, by extracting gate charge.
 
 * Two-transistor model (derivation)
-pnp (\(\alpha_1\)) and npn (\(\alpha_2\)) share the middle layers: \(I_A=\frac{\alpha_2I_G+I_{CO1}+I_{CO2}}{1-(\alpha_1+\alpha_2)}\). The \(\alpha\)'s rise with current; when \(\alpha_1+\alpha_2\to1\) the anode current is limited only by the external circuit: the device latches. Triggers: gate current, \(\dd v/\dd t\) (displacement current through \(C_j\)), overvoltage (breakover), light (LTT).
+pnp (\(\alpha_1\)) and npn (\(\alpha_2\)) share the middle layers: \(I_A=\frac{\alpha_2I_G+I_{CO1}+I_{CO2}}{1-(\alpha_1+\alpha_2)}\). The \(\alpha\)'s rise with current; when \(\alpha_1+\alpha_2\to1\) the anode current is limited only by the external circuit: the device latches [cite:@moll1956]. Triggers: gate current, \(\dd v/\dd t\) (displacement current through \(C_j\)), overvoltage (breakover), light (LTT).
 
 * Characteristics
 Forward blocking and reverse blocking (symmetric); on-state \(V_T\approx1\)–2 V at kA; latching current \(I_L\) to stay on after the gate pulse, holding current \(I_H<I_L\) below which it turns off. Limits: \(\dd i/\dd t\) at turn-on (current crowding near the gate), \(\dd v/\dd t\) in blocking.
@@ -27,6 +27,3 @@ HVDC converter stations, static VAR compensators, soft starters, light dimmers (
 
 * Pitfall
 Without proper snubbers a fast \(\dd v/\dd t\) turns a thyristor on unintentionally; and once on, it cannot be turned off by the gate (except GTO/IGCT).
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Thyristor][Thyristor]]

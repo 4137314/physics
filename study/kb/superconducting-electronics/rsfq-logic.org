@@ -23,7 +23,7 @@
 | PTL + driver   | ballistic pulses on microstrip   | matched ≈ 5–10 Ω          |
 
 * Operation of the DFF (derivation sketch)
-A loop of inductance \(L\) between two junctions: an incoming pulse switches the input junction and leaves a circulating current \(\approx\Phi_0/L\) (state "1") provided \(LI_c>\Phi_0/2\pi\) (\(\beta_L>1\)), otherwise the flux escapes. The clock pulse adds current through the output junction: if a fluxon is stored the output junction exceeds \(I_c\) and emits an SFQ pulse (and the loop resets); if not, the clock pulse escapes through a buffer junction and nothing is output.
+A loop of inductance \(L\) between two junctions: an incoming pulse switches the input junction and leaves a circulating current \(\approx\Phi_0/L\) (state "1") provided \(LI_c>\Phi_0/2\pi\) (\(\beta_L>1\)), otherwise the flux escapes. The clock pulse adds current through the output junction: if a fluxon is stored the output junction exceeds \(I_c\) and emits an SFQ pulse (and the loop resets); if not, the clock pulse escapes through a buffer junction and nothing is output [cite:@likharev1991].
 
 * Timing
 Every clocked gate needs setup/hold times (a few ps) between data and clock ([[id:latches-and-flip-flops][same concepts as CMOS]]); clock skew is managed by concurrent or counter-flow clocking along pipelines; JTL delay ≈ 2–5 ps per stage. Clock rates of 20–50 GHz in practical circuits (770 GHz T flip-flop demonstrated).
@@ -39,7 +39,3 @@ Digital RF receivers (direct digitisation of GHz signals), cryogenic qubit contr
 
 * Pitfall
 SFQ logic is pulse-based, not level-based: a "1" exists only as a picosecond pulse within a clock period, and fan-out requires explicit splitters — CMOS design habits (wired fan-out, static levels) do not transfer.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Rapid_single_flux_quantum][Rapid single flux quantum]]
-- [[https://doi.org/10.1007/978-3-031-47475-0][Krylov, Jabbari, Friedman: Single Flux Quantum Integrated Circuit Design (2nd ed.)]]

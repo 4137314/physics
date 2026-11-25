@@ -11,12 +11,12 @@
 #+summary: To first order \(c_f(t)=\frac{1}{i\hbar}\int_0^t\bra fV(t')\ket ie^{i\omega_{fi}t'}\dd t'\); a constant or harmonic perturbation coupling to a continuum gives the constant rate \(\Gamma_{i\to f}=\frac{2\pi}\hbar|V_{fi}|^2\rho(E_f)\) with \(E_f=E_i\pm\hbar\omega\).
 
 * Dyson series
-In the interaction picture \(i\hbar\partial_tU_I=V_IU_I\), iterated:
+In the interaction picture \(i\hbar\partial_tU_I=V_IU_I\), iterated [cite:@dirac1927]:
 \[ U_I(t)=1+\frac1{i\hbar}\int_0^t\dd t_1V_I(t_1)+\frac1{(i\hbar)^2}\int_0^t\dd t_1\int_0^{t_1}\dd t_2V_I(t_1)V_I(t_2)+\dots \]
 First order amplitude \(c_f^{(1)}=\frac1{i\hbar}\int_0^te^{i\omega_{fi}t'}V_{fi}(t')\dd t'\), \(\omega_{fi}=(E_f-E_i)/\hbar\).
 
 * Derivation of the golden rule
-Constant \(V\) switched on at \(t=0\):
+Constant \(V\) switched on at \(t=0\) [cite:@fermi1950]:
 \[ |c_f|^2=\frac{|V_{fi}|^2}{\hbar^2}\frac{\sin^2(\omega_{fi}t/2)}{(\omega_{fi}/2)^2}. \]
 For large \(t\), \(\frac{\sin^2(\omega t/2)}{(\omega/2)^2}\to2\pi t\,\delta(\omega)\): the probability grows linearly in time. Summing over a continuum with density of states \(\rho(E)\):
 \[ \Gamma=\frac{\dd}{\dd t}\sum_f|c_f|^2=\frac{2\pi}\hbar|V_{fi}|^2\rho(E_f)\Big|_{E_f=E_i}. \]
@@ -33,7 +33,3 @@ Absorption and gain in lasers, radiative and Auger recombination rates in LEDs, 
 
 * Pitfall
 \(\rho\) is the density of *final* states at the energy fixed by energy conservation; for photons it includes polarisation and direction, for electrons spin.
-
-* Explore
-- [[https://en.wikipedia.org/wiki/Fermi%27s_golden_rule][Fermi's golden rule]]
-- [[https://en.wikipedia.org/wiki/Dyson_series][Dyson series]]
