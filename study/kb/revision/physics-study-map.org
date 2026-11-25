@@ -1,0 +1,70 @@
+:PROPERTIES:
+:ID:       physics-study-map
+:DOMAIN:   revision
+:AREA:     study-map
+:KIND:     overview
+:REQUIRES:
+:SEE:      quantum-mechanics electromagnetic-fields
+:ALIASES:  study map, physics map, start here, exam plan, course map
+:END:
+#+title: Physics: study map
+#+summary: Start here. The base runs from quantum mechanics (postulates to foundations) through quantum optics and QED, then classical fields, optoelectronics and photonics, semiconductor physics and the electronics built on it (circuits, digital, power, superconducting); every note has derivations, worked numbers, engineering applications and links, and the revision domain holds formula sheets and exam problems with full solutions.
+
+* The domains and how they connect
+\begin{tikzpicture}[node distance=0.9cm and 1.2cm, every node/.style={draw, rounded corners, font=\small, align=center, minimum width=2.6cm}]
+\node (qm) {quantum\\mechanics};
+\node (qo) [right=of qm] {quantum\\optics};
+\node (qed) [right=of qo] {QED};
+\node (ss) [below=of qm] {solid state};
+\node (em) [below=of qed] {EM fields};
+\node (op) [below=of qo] {optoelectronics};
+\node (ph) [below=of op] {photonics};
+\node (ci) [below=of em] {circuits};
+\node (de) [below=of ss] {digital\\electronics};
+\node (pe) [below=of de] {power\\electronics};
+\node (sc) [below=of ph] {superconducting\\electronics};
+\draw[-{Latex}] (qm)--(qo); \draw[-{Latex}] (qo)--(qed); \draw[-{Latex}] (qm)--(ss);
+\draw[-{Latex}] (em)--(op); \draw[-{Latex}] (ss)--(op); \draw[-{Latex}] (op)--(ph);
+\draw[-{Latex}] (em)--(ci); \draw[-{Latex}] (ss)--(de); \draw[-{Latex}] (ci)--(de);
+\draw[-{Latex}] (de)--(pe); \draw[-{Latex}] (de)--(sc); \draw[-{Latex}] (qm.south east)--(sc);
+\draw[-{Latex}] (em)--(qo);
+\end{tikzpicture}
+
+* Domains
+| domain                      | exam material                       |
+|-----------------------------+-------------------------------------|
+| quantum mechanics           | QM problems, quantum formula sheet  |
+| quantum optics              | quantum formula sheet               |
+| quantum electrodynamics     | QED problems                        |
+| electromagnetic fields      | fields and optoelectronics problems |
+| optoelectronics             | fields and optoelectronics problems |
+| integrated photonics        | fields and optics formula sheet     |
+| semiconductor physics       | electronics formula sheet           |
+| circuit theory              | circuit problems                    |
+| digital electronic circuits | digital problems (CED style)        |
+| power devices               | electronics formula sheet           |
+| superconducting electronics | electronics formula sheet           |
+Open them: [[id:quantum-mechanics][quantum mechanics]], [[id:quantum-optics][quantum optics]], [[id:quantum-electrodynamics][QED]], [[id:electromagnetic-fields][EM fields]], [[id:optoelectronics][optoelectronics]], [[id:photonics][photonics]], [[id:solid-state][solid state]], [[id:circuits][circuits]], [[id:digital-electronics][digital electronics]], [[id:power-electronics][power electronics]], [[id:superconducting-electronics][superconducting electronics]].
+
+* Revision material
+- Formula sheets: [[id:formula-sheet-quantum][quantum]], [[id:formula-sheet-fields-and-optics][fields and optics]], [[id:formula-sheet-electronics][electronics]].
+- Problems with full solutions: [[id:exam-practice-quantum-mechanics][quantum mechanics]], [[id:exam-practice-qed][QED]], [[id:exam-practice-fields-and-optoelectronics][fields and optoelectronics]], [[id:exam-basics-of-optoelectronics][Basics of Opto-Electronics past papers]], [[id:exam-practice-optoelectronics-syllabus][optoelectronics full-syllabus set]], [[id:exam-practice-circuits][circuits]], [[id:exam-practice-digital-electronics][digital electronics]].
+
+* Method for top marks
+1. *Understand*: read a note in study order (`]`), then close it and rederive the main result on paper.
+2. *Compute*: redo the worked example with different numbers; check units and limits.
+3. *Connect*: explain the engineering application and one link to another domain (e.g. the finite well ↔ slab waveguide ↔ quantum-well laser).
+4. *Recall*: on later days use `r` (random note) and try to state the summary formula before reading.
+5. *Exam*: two days before, solve the practice problems timed, then review the formula sheet.
+
+* Cross-domain analogies worth knowing
+| idea                | appears as                                                |
+|---------------------+-----------------------------------------------------------|
+| eigenvalue problem  | QM levels, waveguide modes, photonic bands, circuit poles |
+| Bloch theorem       | electron bands, photonic crystals, Bragg gratings         |
+| two-level coupling  | Rabi, directional couplers, JC model, avoided crossings   |
+| tunnelling          | barriers, frustrated TIR, Josephson junctions             |
+| Fourier duality     | x–p, t–ω, aperture–far field, coherence–spectrum          |
+| Green's function    | propagator, impulse response, retarded potentials         |
+| unitary S matrix    | QED scattering, microwave S-parameters, beam splitters    |
+| harmonic oscillator | photons, phonons, LC circuits, transmons                  |

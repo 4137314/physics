@@ -1,0 +1,52 @@
+:PROPERTIES:
+:ID:       gaussian-beams
+:DOMAIN:   optoelectronics
+:AREA:     wave-optics
+:KIND:     model
+:REQUIRES: dispersion-and-group-velocity
+:SEE:      interference-and-fabry-perot stimulated-emission-and-lasers grating-couplers
+:ALIASES:  Gaussian beam, beam waist, Rayleigh range, beam divergence, paraxial wave equation, Gouy phase, confocal cavity, M2 factor, beam quality, focusing
+:END:
+#+title: Gaussian beams
+#+summary: The fundamental solution of the paraxial wave equation has intensity \(I\propto e^{-2r^2/w^2(z)}\), width \(w(z)=w_0\sqrt{1+(z/z_0)^2}\), Rayleigh range \(z_0=\pi w_0^2/\lambda\), wavefront radius \(R(z)=z[1+(z_0/z)^2]\) and far-field half-angle \(\theta=\lambda/\pi w_0\); laser beams are Gaussian, and stable cavities select the beam whose wavefronts match the mirrors.
+
+* Model
+Write \(E=A(x,y,z)e^{-jkz}\) with \(A\) slowly varying: \(\nabla_t^2A-2jk\partial_zA=0\) (paraxial). The Gaussian solution:
+\[ E=E_0\frac{w_0}{w(z)}\exp\!\left(-\frac{r^2}{w^2(z)}\right)\exp\!\left(-jkz-jk\frac{r^2}{2R(z)}+j\zeta(z)\right),\qquad \zeta=\arctan\frac z{z_0}. \]
+\(\zeta\) is the Gouy phase (\(\pi\) across the focus). Beam-parameter product \(w_0\theta=\lambda/\pi\): a narrow waist diverges fast. Real beams: \(w_0\theta=M^2\lambda/\pi\).
+
+* Cavity matching
+A beam fits a resonator when \(R(z)\) equals the mirror radii at the mirror positions. Symmetric confocal cavity (\(L=R\)): \(z_0=L/2\), \(2w_0=\sqrt{2R\lambda/\pi}\). Stability of a two-mirror cavity: \(0\le g_1g_2\le1\), \(g_i=1-L/R_i\).
+
+* Worked example
+HeNe at 633 nm, \(2w_0=0.8\) mm: \(\theta=\frac{633\times10^{-9}}{\pi\cdot0.4\times10^{-3}}=0.50\) mrad (divergence \(2\theta=1\) mrad), \(z_0=\frac{\pi(0.4\times10^{-3})^2}{633\times10^{-9}}=0.79\) m. At 10 m: \(w=0.4\sqrt{1+(10/0.79)^2}=5.1\) mm, beam width 10.2 mm. Confocal cavity \(L=R=50\) cm: \(2w_0=\sqrt{2\cdot0.5\cdot633\times10^{-9}/\pi}=0.45\) mm, at the mirrors \(\sqrt2\) larger: 0.63 mm.
+
+* Butt coupling into a fibre
+A laser diode's output is roughly Gaussian with a small waist and a large divergence. To keep the beam inside a fibre mode of radius \(w_f\) (half the MFD), the fibre must sit within \(z_{max}=z_0\sqrt{(w_f/w_0)^2-1}\approx w_f/\theta\). Full divergence \(2\theta=30^\circ\) at 850 nm: \(w_0=\frac{\lambda}{\pi\theta}=\frac{0.85}{\pi\cdot0.262}=1.03\) µm, \(z_0=3.9\) µm; MFD 9 µm gives \(z_{max}=17\) µm. That is why packages use lensed fibres or ball lenses to match the two mode sizes.
+
+* Picture: beam envelope
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$z/z_0$},ylabel={$\pm w/w_0$},xmin=-4,xmax=4,ymin=-4.5,ymax=4.5]
+\addplot+[no marks,thick,blue!70!black,domain=-4:4,samples=100]{sqrt(1+x^2)}; \addlegendentry{$w(z)$}
+\addplot+[no marks,thick,blue!70!black,domain=-4:4,samples=100,forget plot]{-sqrt(1+x^2)};
+\addplot+[no marks,dashed,gray,domain=-4:4]{abs(x)}; \addlegendentry{far field $\theta z$}
+\addplot+[no marks,dashed,gray,domain=-4:4,forget plot]{-abs(x)};
+\draw[dotted] (axis cs:1,-4.5)--(axis cs:1,4.5); \node[font=\scriptsize] at (axis cs:1.5,-3.8) {$z_0$};
+\end{axis}
+\end{tikzpicture}
+At \(z=z_0\) the width is \(\sqrt2w_0\) and the wavefront curvature is strongest; beyond a few \(z_0\) the beam grows linearly with half-angle \(\theta=\lambda/\pi w_0\).
+
+* Engineering applications
+Fibre coupling (mode-field matching: overlap of two Gaussians), laser focusing for machining and lithography (spot \(\approx\lambda/\pi\mathrm{NA}\)), LiDAR beam footprint, free-space optical links, optical tweezers, [[id:grating-couplers][grating couplers]] designed to emit near-Gaussian beams.
+
+* Exam-style exercise
+A 5 mW He–Ne beam (633 nm) with \(2w_0=1\) mm. (a) Diameter at 100 m. (b) It is focused by a lens \(f=50\) mm placed at the waist: focal spot radius (\(w_f\approx\frac{\lambda f}{\pi w_0}\)), peak intensity \(\frac{2P}{\pi w_f^2}\), depth of focus \(2z_0'\). (c) Fraction of power inside a circle of radius \(w\).
+** Solution
+(a) \(z_0=1.24\) m, \(2w(100)=1\cdot\sqrt{1+(100/1.24)^2}=81\) mm. (b) \(w_f=\frac{0.633\times10^{-6}\cdot0.05}{\pi\cdot5\times10^{-4}}=20\) µm; \(I=\frac{2\cdot5\times10^{-3}}{\pi(2.0\times10^{-5})^2}=7.8\times10^6\) W/m² \(=784\) W/cm²; \(2z_0'=2\pi w_f^2/\lambda=4.0\) mm. (c) \(1-e^{-2}=86.5\%\) (the formula sheet's definition of the beam diameter).
+
+* Pitfall
+\(w\) is the \(1/e^2\) intensity radius, not the FWHM: FWHM \(=w\sqrt{2\ln2}=1.18w\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Gaussian_beam][Gaussian beam]]
+- [[https://www.rp-photonics.com/gaussian_beams.html][RP Photonics: Gaussian beams]]

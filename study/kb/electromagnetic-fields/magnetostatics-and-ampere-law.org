@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       magnetostatics-and-ampere-law
+:DOMAIN:   electromagnetic-fields
+:AREA:     static-fields
+:KIND:     theorem
+:REQUIRES: vector-calculus-and-field-theorems
+:SEE:      faraday-law-and-induction transformer
+:ALIASES:  Biot-Savart law, Ampere's law, magnetic flux density, magnetic field intensity, vector potential, inductance, magnetic materials, hysteresis, magnetic circuits, reluctance
+:END:
+#+title: Magnetostatics: Biot–Savart, Ampère and inductance
+#+summary: Steady currents produce \(\mathbf B\) with \(\nabla\cdot\mathbf B=0\) and \(\nabla\times\mathbf H=\mathbf J\), \(\mathbf B=\mu\mathbf H\); Ampère's law \(\oint\mathbf H\cdot\dd\mathbf l=I_{enc}\) gives symmetric fields, magnetic circuits \(\mathcal F=NI=\Phi\mathcal R\) design cores, and inductance \(L=N\Phi/I\) stores energy \(\tfrac12LI^2\).
+
+* Statement
+Biot–Savart: \(\dd\mathbf B=\frac{\mu_0}{4\pi}\frac{I\dd\mathbf l\times\hat R}{R^2}\). Equivalently \(\mathbf B=\nabla\times\mathbf A\), \(\mathbf A=\frac{\mu_0}{4\pi}\int\frac{\mathbf J}{R}\dd V'\), giving
+\[ \nabla\cdot\mathbf B=0,\qquad \nabla\times\mathbf H=\mathbf J,\qquad \oint_C\mathbf H\cdot\dd\mathbf l=I_{enc}. \]
+Force on a current: \(\dd\mathbf F=I\dd\mathbf l\times\mathbf B\); on a charge \(q\mathbf v\times\mathbf B\).
+
+* Standard fields
+| source                    | field                      |
+|---------------------------+----------------------------|
+| infinite wire             | B = μ₀I/(2πr)              |
+| long solenoid (n turns/m) | B = μ₀nI inside, 0 outside |
+| toroid, N turns           | B = μNI/(2πr)              |
+| loop axis, radius a       | μ₀Ia²/(2(a²+z²)^{3/2})     |
+
+* Magnetic circuits
+In a core of length \(\ell\), section \(A\), permeability \(\mu\): reluctance \(\mathcal R=\ell/\mu A\); with an air gap \(g\): \(\mathcal R=\frac{\ell}{\mu A}+\frac{g}{\mu_0A}\), usually gap dominated. \(\Phi=NI/\mathcal R\), \(L=N^2/\mathcal R\). Boundary conditions: \(B_{n1}=B_{n2}\), \(H_{t1}-H_{t2}=J_s\). Ferromagnets: hysteresis loop, saturation \(B_{sat}\sim1.5\)–2 T (Fe-Si), core losses.
+
+* Worked example
+Ferrite core, \(\ell=5\) cm, \(A=1\) cm², \(\mu_r=2000\), gap 0.5 mm, \(N=50\): \(\mathcal R_{core}=\frac{0.05}{2000\cdot4\pi\times10^{-7}\cdot10^{-4}}=2.0\times10^5\), \(\mathcal R_{gap}=\frac{5\times10^{-4}}{4\pi\times10^{-7}\cdot10^{-4}}=4.0\times10^6\) H\(^{-1}\): \(L=2500/4.2\times10^6=0.6\) mH, nearly independent of the uncertain \(\mu_r\) — that is why power inductors have gaps.
+
+* Engineering applications
+Inductors and transformers ([[id:transformer][transformer model]]), motors and actuators, Hall sensors and current clamps, magnetic storage, MRI magnets, on-chip spiral inductors for RF.
+
+* Pitfall
+\(\mathbf H\) and \(\mathbf B\) differ inside materials: Ampère's law with free currents uses \(\mathbf H\); flux and force use \(\mathbf B\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Biot%E2%80%93Savart_law][Biot–Savart law]]
+- [[https://en.wikipedia.org/wiki/Magnetic_circuit][Magnetic circuit]]

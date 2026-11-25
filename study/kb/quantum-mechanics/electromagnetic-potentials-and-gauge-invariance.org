@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       electromagnetic-potentials-and-gauge-invariance
+:DOMAIN:   quantum-mechanics
+:AREA:     dynamics
+:KIND:     theorem
+:REQUIRES: propagator-and-path-integral potentials-and-gauges
+:SEE:      superconductivity-and-flux-quantization dirac-equation
+:ALIASES:  minimal coupling, gauge transformation, Aharonov-Bohm effect, Landau levels, magnetic flux quantum, charged particle in a magnetic field
+:END:
+#+title: Electromagnetic potentials and gauge invariance
+#+summary: A charge in a field has \(H=\frac{(\mathbf p-q\mathbf A)^2}{2m}+q\phi\); a gauge change \(\mathbf A\to\mathbf A+\nabla\Lambda\) is compensated by the phase \(\psi\to e^{iq\Lambda/\hbar}\psi\), and the potentials themselves are physical through the Aharonov–Bohm phase \(q\Phi/\hbar\).
+
+* Minimal coupling
+\[ H=\frac{1}{2m}\left(\mathbf p-q\mathbf A\right)^2+q\phi,\qquad m\dot{\mathbf x}=\mathbf p-q\mathbf A\equiv\boldsymbol\Pi . \]
+The kinetic momenta do not commute: \([\Pi_i,\Pi_j]=i\hbar q\,\epsilon_{ijk}B_k\). The Heisenberg equations give the Lorentz force \(m\ddot{\mathbf x}=q\left(\mathbf E+\tfrac12(\dot{\mathbf x}\times\mathbf B-\mathbf B\times\dot{\mathbf x})\right)\).
+
+* Gauge invariance
+Under \(\mathbf A\to\mathbf A+\nabla\Lambda\), \(\phi\to\phi-\partial_t\Lambda\) (fields unchanged), the Schrödinger equation keeps its form if \(\psi\to e^{iq\Lambda/\hbar}\psi\). Proof: \((\mathbf p-q\mathbf A-q\nabla\Lambda)e^{iq\Lambda/\hbar}\psi=e^{iq\Lambda/\hbar}(\mathbf p-q\mathbf A)\psi\). Reversing the logic — demanding invariance under local phase changes — *requires* a gauge field: the principle behind [[id:quantum-electrodynamics][QED]].
+
+* Aharonov–Bohm effect
+A solenoid confines \(\mathbf B\); outside \(\mathbf B=0\) but \(\mathbf A\neq0\). Two paths around it acquire phases \(\frac q\hbar\int\mathbf A\cdot\dd\mathbf l\), whose difference is
+\[ \Delta\varphi=\frac q\hbar\oint\mathbf A\cdot\dd\mathbf l=\frac{q\Phi_B}{\hbar}. \]
+The interference pattern shifts with \(\Phi_B\) though the electrons never touch \(\mathbf B\). Periodicity: \(\Phi_B\to\Phi_B+h/|q|\).
+
+* Landau levels
+Uniform \(B\hat z\), Landau gauge \(\mathbf A=(0,Bx,0)\): \(H\) reduces to a harmonic oscillator with cyclotron frequency \(\omega_c=|q|B/m\), \(E_n=\hbar\omega_c(n+\tfrac12)+p_z^2/2m\), degeneracy \(|q|B/h\) per unit area.
+
+* Worked example
+Electrons (\(q=-e\)) in a 1 µm\(^2\) ring: one flux period \(h/e=4.14\times10^{-15}\) Wb corresponds to \(B=4.1\) mT. Superconductors have pairs, \(q=-2e\): the flux quantum is \(\Phi_0=h/2e=2.07\times10^{-15}\) Wb, the unit of [[id:superconductivity-and-flux-quantization][SQUIDs and SFQ logic]].
+
+* Engineering applications
+SQUID magnetometers, the quantum Hall resistance standard \(R_K=h/e^2=25812.807\) Ω (Landau levels), magnetoresistance oscillations in mesoscopic devices, SFQ electronics.
+
+* Pitfall
+\(\mathbf p\) (canonical) is not \(m\mathbf v\) and is gauge dependent; physical quantities must be expressed through \(\boldsymbol\Pi\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Aharonov%E2%80%93Bohm_effect][Aharonov–Bohm effect]]
+- [[https://en.wikipedia.org/wiki/Landau_quantization][Landau quantization]]

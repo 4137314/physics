@@ -1,0 +1,45 @@
+:PROPERTIES:
+:ID:       rsfq-logic
+:DOMAIN:   superconducting-electronics
+:AREA:     sfq-logic
+:KIND:     method
+:REQUIRES: josephson-junction-and-rcsj-model latches-and-flip-flops
+:SEE:      qubits-and-quantum-gates cmos-power-dissipation
+:ALIASES:  RSFQ, rapid single flux quantum, SFQ pulse, Josephson transmission line, JTL, SFQ DFF, clocked logic, splitter, merger, confluence buffer, ERSFQ, energy-efficient RSFQ, bias current, AQFP, passive transmission line, LIPPL
+:END:
+#+title: RSFQ logic: storing and moving flux quanta
+#+summary: In RSFQ a bit is the presence (1) or absence (0) of an SFQ pulse within a clock period; pulses propagate along Josephson transmission lines, are stored as circulating currents in loops with \(\beta_L=\frac{2\pi LI_c}{\Phi_0}>1\), and almost every gate is clocked (gate-level pipelining); DC bias current makes static power dominate, which ERSFQ/eSFQ remove with inductive, junction-limited biasing.
+
+* Building blocks
+| element        | function                         | key condition             |
+|----------------+----------------------------------+---------------------------|
+| JTL            | JJs + series L, pass pulse       | I_b ≈ 0.7 I_c             |
+| splitter       | 1 pulse in, 2 out                | larger input JJ           |
+| merger (CB)    | OR of async pulses               | escape JJs block backflow |
+| DFF            | loop stores; clock reads, resets | β_L > 1 to hold one Φ₀    |
+| NDRO           | non-destructive read-out         | set/reset/clock inputs    |
+| T flip-flop    | toggles; frequency divider       | two fluxoid states        |
+| AND/OR/XOR/NOT | clocked; clock releases result   | data vs clock timing      |
+| PTL + driver   | ballistic pulses on microstrip   | matched ≈ 5–10 Ω          |
+
+* Operation of the DFF (derivation sketch)
+A loop of inductance \(L\) between two junctions: an incoming pulse switches the input junction and leaves a circulating current \(\approx\Phi_0/L\) (state "1") provided \(LI_c>\Phi_0/2\pi\) (\(\beta_L>1\)), otherwise the flux escapes. The clock pulse adds current through the output junction: if a fluxon is stored the output junction exceeds \(I_c\) and emits an SFQ pulse (and the loop resets); if not, the clock pulse escapes through a buffer junction and nothing is output.
+
+* Timing
+Every clocked gate needs setup/hold times (a few ps) between data and clock ([[id:latches-and-flip-flops][same concepts as CMOS]]); clock skew is managed by concurrent or counter-flow clocking along pipelines; JTL delay ≈ 2–5 ps per stage. Clock rates of 20–50 GHz in practical circuits (770 GHz T flip-flop demonstrated).
+
+* Power
+RSFQ: each junction is biased at ≈ 0.7 \(I_c\) through a resistor from a low-voltage bus (a few mV), so static power \(P=V_{bus}\sum I_{bias}\) dominates. In ERSFQ/eSFQ the resistors are replaced by inductors and current-limiting junctions, leaving only the dynamic dissipation \(\approx I_c\Phi_0f\) per switching junction.
+
+* Worked example
+Junction \(I_c=250\) µA switching at 20 GHz: dynamic energy \(I_c\Phi_0=5.2\times10^{-19}\) J, power \(10\) nW per junction. A 10\(^5\)-junction circuit: 1 mW dynamic. Classic RSFQ biased from 2.6 mV through resistors with 0.7 I_c per junction: \(10^5\cdot175\) µA \(\cdot\) 2.6 mV \(=46\) mW static — 45 times more, which is why ERSFQ exists. Cooling cost at 4 K is ~400–1000 W per W, so the energy advantage over CMOS is real only for efficient designs.
+
+* Engineering applications
+Digital RF receivers (direct digitisation of GHz signals), cryogenic qubit controllers (SFQ pulses can drive qubit rotations), superconducting AI accelerators and network switches, SQUID read-out.
+
+* Pitfall
+SFQ logic is pulse-based, not level-based: a "1" exists only as a picosecond pulse within a clock period, and fan-out requires explicit splitters — CMOS design habits (wired fan-out, static levels) do not transfer.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Rapid_single_flux_quantum][Rapid single flux quantum]]
+- [[https://doi.org/10.1007/978-3-031-47475-0][Krylov, Jabbari, Friedman: Single Flux Quantum Integrated Circuit Design (2nd ed.)]]

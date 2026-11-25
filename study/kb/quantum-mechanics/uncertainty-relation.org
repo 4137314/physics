@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       uncertainty-relation
+:DOMAIN:   quantum-mechanics
+:AREA:     postulates
+:KIND:     inequality
+:REQUIRES: commutators-and-compatible-observables
+:SEE:      position-momentum-and-wave-functions coherent-states squeezed-states
+:ALIASES:  Heisenberg uncertainty principle, Robertson inequality, Schrodinger-Robertson, minimum uncertainty
+:END:
+#+title: The uncertainty relation
+#+summary: For any state and any two observables, \(\Delta A\,\Delta B\ge\tfrac12|\braket{[A,B]}|\); for position and momentum \(\Delta x\,\Delta p\ge\hbar/2\), with equality only for Gaussian wave packets.
+
+* Statement
+\[ \Delta A^2\,\Delta B^2\;\ge\;\frac14\left|\braket{[A,B]}\right|^2+\frac14\left|\braket{\{\delta A,\delta B\}}\right|^2\;\ge\;\frac14\left|\braket{[A,B]}\right|^2, \]
+where \(\delta A=A-\braket A\) and \(\{\,,\}\) is the anticommutator.
+
+* Proof
+1. *Schwarz*: \(\braket{\alpha|\alpha}\braket{\beta|\beta}\ge|\braket{\alpha|\beta}|^2\). Take \(\ket\alpha=\delta A\ket\psi\), \(\ket\beta=\delta B\ket\psi\): \(\Delta A^2\Delta B^2\ge|\braket{\delta A\,\delta B}|^2\).
+2. *Split*: \(\delta A\,\delta B=\tfrac12[\delta A,\delta B]+\tfrac12\{\delta A,\delta B\}=\tfrac12[A,B]+\tfrac12\{\delta A,\delta B\}\).
+3. The commutator is anti-Hermitian (purely imaginary expectation), the anticommutator Hermitian (real expectation). Hence \(|\braket{\delta A\delta B}|^2=\tfrac14|\braket{[A,B]}|^2+\tfrac14|\braket{\{\delta A,\delta B\}}|^2\).
+
+* Minimum-uncertainty states
+Equality in Schwarz needs \(\delta B\ket\psi=\lambda\,\delta A\ket\psi\); vanishing anticommutator term needs \(\lambda\) imaginary. For \(x,p\) this is the first-order ODE \((p-\braket p)\psi=i c(x-\braket x)\psi\), whose solution is the Gaussian
+\[ \psi(x)\propto\exp\!\left[\frac{i\braket p x}{\hbar}-\frac{(x-\braket x)^2}{4\Delta x^2}\right]. \]
+
+* Worked example
+An electron confined to \(\Delta x=0.1\) nm (an atom): \(\Delta p\ge\hbar/(2\Delta x)=5.3\times10^{-25}\) kg m/s, kinetic energy \(\gtrsim\Delta p^2/2m=1.5\times10^{-19}\) J \(\approx1\) eV — the right order of atomic binding energies. For a 1 g bead localised to 1 µm, \(\Delta v\gtrsim5\times10^{-26}\) m/s: irrelevant.
+
+* Engineering applications
+- The standard quantum limit of interferometers and of continuous position measurement (LIGO), beaten by [[id:squeezed-states][squeezed light]].
+- Time–frequency analogue \(\Delta t\,\Delta\omega\ge\tfrac12\) (Fourier): bandwidth of short laser pulses, transform-limited pulses, radar resolution.
+
+* Pitfall
+\(\Delta E\,\Delta t\gtrsim\hbar\) is *not* a case of this theorem: time is a parameter, not an operator. It means that a state changing appreciably in time \(\Delta t\) has energy spread \(\gtrsim\hbar/\Delta t\) (natural linewidth).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Uncertainty_principle][Uncertainty principle]]

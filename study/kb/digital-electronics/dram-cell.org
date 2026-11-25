@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       dram-cell
+:DOMAIN:   digital-electronics
+:AREA:     memories
+:KIND:     model
+:REQUIRES: dynamic-logic-and-pass-transistors
+:SEE:      sram-cell generation-recombination-and-continuity
+:ALIASES:  DRAM, 1T1C cell, storage capacitor, bit line capacitance, charge sharing, destructive read, refresh, retention time, leakage current, sense amplifier, word line boost
+:END:
+#+title: The 1T1C DRAM cell
+#+summary: One access NMOS and one storage capacitor \(C_S\); reading connects \(C_S\) to the precharged bit line \(C_{BL}\gg C_S\) and charge conservation gives \(V_F=\frac{C_SV_S+C_{BL}V_{BL}}{C_S+C_{BL}}\), a small swing amplified by a sense amplifier; the read is destructive and leakage forces periodic refresh within the retention time \(t=C_S\Delta V/I_{leak}\).
+
+* Operation
+- *Write*: WL high, BL at \(V_{DD}\) or 0. An NMOS passes a "1" only up to \(V_{DD}-V_{TN}\) (threshold drop; body effect makes it worse) unless the word line is boosted above \(V_{DD}\).
+- *Read*: BL precharged to \(V_{BL}\) (often \(V_{DD}/2\)); WL high → charge sharing; the sense amplifier compares with a reference and restores (writes back) the full level.
+- *Refresh*: every row read and rewritten every ~64 ms.
+
+* Derivation (charge sharing)
+Before: \(Q=C_SV_S+C_{BL}V_{BL}\). After: \(Q=(C_S+C_{BL})V_F\). Signal \(\Delta V=V_F-V_{BL}=\frac{C_S}{C_S+C_{BL}}(V_S-V_{BL})\): with \(C_{BL}=10C_S\), only 1/11 of the cell swing reaches the bit line.
+
+* Worked example (exam July 2024)
+\(V_{TN}=0.4\) V, \(V_{DD}=1.2\) V, \(C_S=100\) fF, \(C_{BL}=10C_S\). Maximum stored level (no body effect): \(V_{DD}-V_{TN}=0.8\) V. Bit line precharged to \((V_{DD}-V_{TN})/2=0.4\) V; sense threshold 420 mV: \(V_F=\frac{V_S+10\cdot0.4}{11}\ge0.42\Rightarrow V_S\ge11\cdot0.42-4=0.62\) V. Allowed droop 0.18 V in 1 ms: \(I_{leak}\le C_S\frac{\Delta V}{\Delta t}=100\text{ fF}\cdot\frac{0.18}{10^{-3}}=18\) pA.
+
+* Engineering applications
+Main memory (DDR, LPDDR, HBM), embedded DRAM caches; retention is set by junction and subthreshold leakage (generation current, [[id:generation-recombination-and-continuity][SRH]]), which doubles every ~10 K — refresh rate doubles above 85 °C.
+
+* Pitfall
+The read signal depends on \(C_S/C_{BL}\), not on \(C_S\) alone: longer bit lines (more cells) reduce the signal; that is why arrays are segmented.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Dynamic_random-access_memory][Dynamic random-access memory]]

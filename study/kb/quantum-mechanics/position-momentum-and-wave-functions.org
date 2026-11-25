@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       position-momentum-and-wave-functions
+:DOMAIN:   quantum-mechanics
+:AREA:     postulates
+:KIND:     theorem
+:REQUIRES: uncertainty-relation
+:SEE:      stone-and-stone-von-neumann-theorems self-adjoint-operators-and-spectral-theorem fourier-series-and-transform
+:ALIASES:  wave function, canonical commutation relation, translation operator, momentum representation, plane wave, delta normalization
+:END:
+#+title: Position, momentum and wave functions
+#+summary: Momentum is the generator of translations, \(\mathcal T(a)=e^{-ipa/\hbar}\); this forces \([x,p]=i\hbar\), \(\bra{x}p\ket\psi=-i\hbar\,\partial_x\psi(x)\) and \(\braket{x|p}=e^{ipx/\hbar}/\sqrt{2\pi\hbar}\), so position and momentum wave functions are Fourier transforms of each other.
+
+* Continuous spectra
+For \(x\ket{x'}=x'\ket{x'}\) normalisation is \(\braket{x''|x'}=\delta(x''-x')\) and completeness \(\int\dd x'\ket{x'}\bra{x'}=1\). The wave function is \(\psi(x')=\braket{x'|\psi}\); \(|\psi(x')|^2\dd x'\) is the probability of finding the particle in \(\dd x'\).
+
+* Derivation
+1. *Translation*: \(\mathcal T(\dd x')\ket{x'}=\ket{x'+\dd x'}\). Unitarity, composition and continuity force \(\mathcal T(\dd x')=1-iK\dd x'\) with \(K\) Hermitian.
+2. \(x\mathcal T\ket{x'}-\mathcal Tx\ket{x'}=\dd x'\ket{x'}\) gives \([x,K]=i\). Identify \(K=p/\hbar\) (de Broglie): \([x,p]=i\hbar\).
+3. Acting on a wave function: \(\bra{x'}\mathcal T(\Delta x')\ket\psi=\psi(x'-\Delta x')\); expanding, \(\bra{x'}p\ket\psi=-i\hbar\,\partial_{x'}\psi(x')\).
+4. Eigenfunctions of \(p\): \(-i\hbar\,\partial_x\braket{x|p'}=p'\braket{x|p'}\) gives \(\braket{x|p'}=\frac{1}{\sqrt{2\pi\hbar}}e^{ip'x/\hbar}\), the factor fixed by \(\braket{p''|p'}=\delta(p''-p')\).
+5. Therefore
+\[ \phi(p')=\frac{1}{\sqrt{2\pi\hbar}}\int\dd x'\,e^{-ip'x'/\hbar}\psi(x'),\qquad \psi(x')=\frac{1}{\sqrt{2\pi\hbar}}\int\dd p'\,e^{ip'x'/\hbar}\phi(p'). \]
+Finite translations: \(\mathcal T(a)=e^{-ipa/\hbar}\). In 3D, \([x_i,p_j]=i\hbar\delta_{ij}\), \([p_i,p_j]=0\).
+
+* Worked example
+Gaussian packet \(\psi(x)=(\pi d^2)^{-1/4}e^{ikx-x^2/2d^2}\). Then \(\braket x=0\), \(\Delta x^2=d^2/2\), \(\braket p=\hbar k\), \(\Delta p^2=\hbar^2/2d^2\): \(\Delta x\Delta p=\hbar/2\), the minimum. Its transform is again a Gaussian centred at \(\hbar k\) with width \(\hbar/d\).
+
+* Engineering applications
+Fourier duality between position and momentum is the same mathematics as time–frequency in signals ([[id:fourier-series-and-transform][Fourier transform]]) and as near-field/far-field in optics: a narrow slit (or a short pulse) means a broad angular (or spectral) spread. Electron-beam lithography resolution and the diffraction limit both follow from it.
+
+* Pitfall
+Plane waves \(\ket{p'}\) and \(\ket{x'}\) are not normalisable states: they are generalised eigenvectors. Physical states are wave packets.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Canonical_commutation_relation][Canonical commutation relation]]
+- [[https://en.wikipedia.org/wiki/Wave_function][Wave function]]

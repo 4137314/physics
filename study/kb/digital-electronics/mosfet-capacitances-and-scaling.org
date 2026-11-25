@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       mosfet-capacitances-and-scaling
+:DOMAIN:   digital-electronics
+:AREA:     mos-devices
+:KIND:     model
+:REQUIRES: mosfet-operation-and-iv capacitance-and-laplace-equation
+:SEE:      cmos-propagation-delay cmos-power-dissipation
+:ALIASES:  gate capacitance, oxide capacitance, overlap capacitance, junction capacitance, Miller effect, Dennard scaling, constant field scaling, short channel effects, subthreshold slope, leakage, FinFET
+:END:
+#+title: MOSFET capacitances and scaling
+#+summary: The gate presents \(C_G\approx C_{ox}WL\) (\(C_{ox}=\epsilon_{ox}/t_{ox}\)) distributed among source and drain by region, plus overlap and drain/source junction capacitances; these load every gate; constant-field (Dennard) scaling by \(1/\alpha\) makes delay \(\propto1/\alpha\), power per gate \(\propto1/\alpha^2\) and power density constant — until leakage ended it.
+
+* Capacitances
+| capacitance | cutoff  | triode    | saturation   |
+|-------------+---------+-----------+--------------|
+| C_GS        | C_ov    | C_ox WL/2 | (2/3)C_ox WL |
+| C_GD        | C_ov    | C_ox WL/2 | C_ov         |
+| C_GB        | C_ox WL | 0         | 0            |
+Junctions \(C_{DB},C_{SB}=C_jA+C_{jsw}P\) (area and perimeter), voltage dependent ([[id:pn-junction-electrostatics][junction capacitance]]). \(C_{GD}\) between input and output of an inverter is multiplied by the Miller effect (\(\approx2C_{GD}\) for a full swing).
+
+* Scaling (derivation)
+Scale \(W,L,t_{ox},V_{DD},V_T\) by \(1/\alpha\), doping by \(\alpha\). Then \(C_{ox}\times\alpha\), \(C_G=C_{ox}WL\times1/\alpha\), current \(K_n(V)^2\propto\alpha\cdot\frac{1}{\alpha^2}=\frac1\alpha\), delay \(CV/I\propto\frac1\alpha\), power \(VI\propto\frac{1}{\alpha^2}\), area \(\frac1{\alpha^2}\): density \(\alpha^2\) and power density constant.
+Breakdown of Dennard scaling (~2005): \(V_T\) cannot shrink because subthreshold leakage \(I\propto10^{-V_T/S}\) with \(S\ge\frac{k_BT}{q}\ln10=60\) mV/dec at 300 K; so \(V_{DD}\) stalled near 0.7–1 V → power wall, multicore, FinFET/GAA for better electrostatic control.
+
+* Worked example
+\(t_{ox}=2\) nm: \(C_{ox}=\frac{3.9\cdot8.85\times10^{-12}}{2\times10^{-9}}=17\) fF/µm². A gate \(W/L=0.5/0.1\) µm: \(C_G=0.86\) fF. Subthreshold: with \(V_T=0.3\) V and \(S=80\) mV/dec, \(I_{off}\approx I_T\cdot10^{-V_T/S}=I_T\cdot10^{-3.75}\); taking \(I_T=1\) µA/µm at threshold gives ≈ 0.18 nA/µm, and for \(10^9\) transistors of 0.2 µm width at 1 V that is \(\approx36\) mW of static power — rising tenfold for every 80 mV of lower \(V_T\).
+
+* Engineering applications
+Gate sizing and fan-out (load = sum of gate capacitances), interconnect-dominated delay in modern nodes, high-k/metal-gate stacks, multiple-\(V_T\) libraries trading speed vs leakage, power gating.
+
+* Pitfall
+The gate capacitance of a switching inverter is not constant: it changes as the device moves through regions; delay formulas use an average effective \(C\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Dennard_scaling][Dennard scaling]]
+- [[https://en.wikipedia.org/wiki/Subthreshold_conduction][Subthreshold conduction]]

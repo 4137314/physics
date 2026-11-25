@@ -1,0 +1,15 @@
+# Local course material and extracted content
+asset/
+assets/
+
+# Reader state, Nix and editors
+result
+result-*
+.direnv/
+.cache/
+build/
+*.swp
+.DS_Store
+.env
+.env.*
+!.envrc

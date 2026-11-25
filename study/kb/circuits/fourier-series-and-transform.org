@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       fourier-series-and-transform
+:DOMAIN:   circuits
+:AREA:     transforms
+:KIND:     theorem
+:REQUIRES: complex-numbers-and-phasors
+:SEE:      frequency-response-and-filters position-momentum-and-wave-functions diffraction-and-gratings coherence-of-light
+:ALIASES:  Fourier series, Fourier transform, spectrum, Parseval theorem, convolution theorem, square wave harmonics, Gibbs phenomenon, sinc, bandwidth, time-bandwidth product, sampling
+:END:
+#+title: Fourier series and Fourier transform
+#+summary: A periodic signal is \(x(t)=\sum_nc_ne^{jn\omega_0t}\), \(c_n=\frac1T\int_Tx\,e^{-jn\omega_0t}\dd t\); an aperiodic one \(X(\omega)=\int x(t)e^{-j\omega t}\dd t\); through an LTI system each component is multiplied by \(H(j\omega)\) (convolution theorem), and energy is preserved (Parseval).
+
+* Series
+Orthogonality \(\frac1T\int_Te^{j(n-m)\omega_0t}\dd t=\delta_{nm}\) gives the coefficients. Real form: \(a_0+\sum(a_n\cos n\omega_0t+b_n\sin n\omega_0t)\). Square wave of amplitude ±A: \(x=\frac{4A}{\pi}\sum_{n\text{ odd}}\frac{\sin n\omega_0t}{n}\) — harmonics fall as \(1/n\) (jump discontinuity); a triangle wave as \(1/n^2\). Partial sums overshoot by 9% at jumps (Gibbs). Parseval: \(\frac1T\int|x|^2=\sum|c_n|^2\).
+
+* Transform and properties
+| property    | time          | frequency      |
+|-------------+---------------+----------------|
+| shift       | x(t − t₀)     | e^{−jωt₀} X(ω) |
+| modulation  | e^{jω₀t} x(t) | X(ω − ω₀)      |
+| derivative  | dx/dt         | jω X(ω)        |
+| convolution | (h * x)(t)    | H(ω) X(ω)      |
+| product     | x(t) y(t)     | (1/2π) X * Y   |
+| scaling     | x(at)         | X(ω/a)/⎮a⎮     |
+Pairs: rectangle of width \(\tau\) ↔ \(\tau\,\mathrm{sinc}(\omega\tau/2)\); Gaussian ↔ Gaussian; \(\delta(t)\) ↔ 1; \(e^{-at}u(t)\) ↔ \(\frac1{a+j\omega}\). Duration × bandwidth \(\gtrsim1\): the same uncertainty as [[id:uncertainty-relation][Heisenberg]] and [[id:diffraction-and-gratings][diffraction]].
+
+* Worked example
+1 kHz square wave (±1 V) into an RC low-pass with \(f_c=1\) kHz: fundamental amplitude \(4/\pi=1.27\) V attenuated by \(1/\sqrt2\) → 0.90 V; 3rd harmonic \(0.42\) V × \(1/\sqrt{10}\) → 0.134 V; 5th \(0.255/\sqrt{26}=0.05\) V. The output is nearly sinusoidal: low-pass filtering removes harmonics.
+
+* Sampling
+Sampling at \(f_s\) replicates the spectrum every \(f_s\): no aliasing if \(f_s>2f_{max}\) (Nyquist–Shannon); reconstruction by sinc interpolation.
+
+* Engineering applications
+Spectrum analysis and EMC (harmonics of clocks), THD of amplifiers, OFDM in Wi-Fi/5G (orthogonal subcarriers), filters, image processing, optical Fourier transforms by lenses, FFT-based solvers.
+
+* Pitfall
+\(2\pi\) conventions: with \(f\) instead of \(\omega\), \(X(f)=\int xe^{-j2\pi ft}\dd t\) and the inverse has no \(1/2\pi\). Mixing conventions breaks Parseval by \(2\pi\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Fourier_transform][Fourier transform]]
+- [[https://www.youtube.com/watch?v=spUNpyF58BY][3Blue1Brown: But what is the Fourier transform?]]

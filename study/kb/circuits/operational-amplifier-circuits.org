@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       operational-amplifier-circuits
+:DOMAIN:   circuits
+:AREA:     analog-building-blocks
+:KIND:     model
+:REQUIRES: frequency-response-and-filters
+:SEE:      photodetectors noise-in-photodetectors
+:ALIASES:  op-amp, operational amplifier, virtual ground, inverting amplifier, non-inverting amplifier, integrator, differentiator, gain-bandwidth product, slew rate, transimpedance amplifier, negative feedback, active filter
+:END:
+#+title: Operational-amplifier circuits
+#+summary: With negative feedback an ideal op-amp (infinite gain and input impedance) forces \(v_+=v_-\) and draws no input current; this gives inverting gain \(-R_f/R_1\), non-inverting \(1+R_f/R_1\), integrators \(-1/sRC\), transimpedance \(-R_f\); a real op-amp has finite gain–bandwidth product \(\mathrm{GBW}\), so closed-loop bandwidth \(\approx\mathrm{GBW}/(1+R_f/R_1)\).
+
+* Model
+Open-loop \(A(s)=\frac{A_0}{1+s/\omega_p}\), GBW \(=A_0\omega_p/2\pi\). Feedback fraction \(\beta\): closed-loop gain \(\frac{A}{1+A\beta}\to\frac1\beta\) when loop gain \(A\beta\gg1\). Golden rules (ideal): no input current, \(v_+=v_-\) (virtual short).
+
+* Standard circuits
+| circuit        | transfer          | note                            |
+|----------------+-------------------+---------------------------------|
+| inverting      | −R_f/R₁           | input impedance R₁              |
+| non-inverting  | 1 + R_f/R₁        | very high input impedance       |
+| follower       | 1                 | buffer                          |
+| summing        | −R_f Σ v_k/R_k    | audio mixer, DAC                |
+| integrator     | −1/(sRC)          | needs DC reset or R in parallel |
+| difference     | (R₂/R₁)(v₂ − v₁)  | matched resistors for CMRR      |
+| transimpedance | v_out = −R_f i_in | photodiode receiver             |
+
+* Derivation: inverting amplifier with finite gain
+KCL at \(v_-\): \(\frac{v_i-v_-}{R_1}=\frac{v_--v_o}{R_f}\), \(v_o=-Av_-\). Eliminating: \(\frac{v_o}{v_i}=-\frac{R_f/R_1}{1+(1+R_f/R_1)/A}\). With \(A(s)\) single-pole, the closed-loop pole is at \(\mathrm{GBW}/(1+R_f/R_1)\) (noise gain).
+
+* Worked example
+Photodiode TIA, \(R_f=10\) kΩ, photodiode capacitance 1 pF, op-amp GBW = 1 GHz: bandwidth \(\approx\sqrt{\frac{\mathrm{GBW}}{2\pi R_fC_{in}}}=\sqrt{\frac{10^9}{2\pi\cdot10^4\cdot10^{-12}}}=126\) MHz (feedback capacitor \(C_f\approx\sqrt{C_{in}/2\pi R_f\mathrm{GBW}}\) for stability) — the receiver of [[id:photodetectors][photodetectors]].
+
+* Engineering applications
+Sensor conditioning, active filters (Sallen–Key), ADC drivers, precision references, photoreceivers, control loops; CMOS op-amps are built from the [[id:mosfet-operation-and-iv][MOSFETs]] of the digital domain.
+
+* Pitfall
+The virtual short holds only with negative feedback and an op-amp not saturated or slew-limited; with positive feedback (comparators, Schmitt triggers) \(v_+\neq v_-\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Operational_amplifier_applications][Operational amplifier applications]]
+- [[https://artofelectronics.net/][The Art of Electronics companion site]]

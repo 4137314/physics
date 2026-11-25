@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       photon-statistics-and-glauber-correlations
+:DOMAIN:   quantum-optics
+:AREA:     coherence
+:KIND:     definition
+:REQUIRES: coherent-states
+:SEE:      coherence-of-light beam-splitter-and-hong-ou-mandel
+:ALIASES:  g1, g2, second-order correlation, Hanbury Brown and Twiss, photon bunching, antibunching, sub-Poissonian light, Mandel Q parameter, photodetection theory
+:END:
+#+title: Photon statistics and Glauber correlation functions
+#+summary: Photodetection measures normally ordered correlations: \(g^{(1)}(\tau)=\frac{\braket{E^-(t)E^+(t+\tau)}}{\braket{E^-E^+}}\) gives interference visibility, \(g^{(2)}(\tau)=\frac{\braket{E^-(t)E^-(t+\tau)E^+(t+\tau)E^+(t)}}{\braket{E^-E^+}^2}\) photon-pair statistics; \(g^{(2)}(0)=2\) for thermal, 1 for coherent, \(1-1/n\) for Fock light — values below 1 are non-classical.
+
+* Definitions
+Split \(E=E^++E^-\) (positive frequency ∝ \(a\)). A photodetector absorbs photons, so its rate is \(\propto\braket{E^-E^+}\), coincidences \(\propto\braket{E^-E^-E^+E^+}\). Single mode: \(g^{(2)}(0)=\frac{\braket{a^{\dagger2}a^2}}{\braket{a^\dagger a}^2}=1+\frac{\Delta n^2-\bar n}{\bar n^2}\).
+
+* Values
+| light             | g2(0)   | statistics       |
+|-------------------+---------+------------------|
+| thermal (chaotic) | 2       | super-Poissonian |
+| coherent (laser)  | 1       | Poissonian       |
+| Fock n            | 1 − 1/n | sub-Poissonian   |
+| single photon     | 0       | antibunched      |
+Classical fields satisfy \(g^{(2)}(0)\ge1\) and \(g^{(2)}(0)\ge g^{(2)}(\tau)\) (Cauchy–Schwarz): antibunching is proof of quantum light.
+
+* Derivation for thermal light
+For a Gaussian (chaotic) field, factorising fourth moments gives the Siegert relation \(g^{(2)}(\tau)=1+|g^{(1)}(\tau)|^2\). With a Lorentzian line of width \(\Delta\omega\), \(g^{(1)}=e^{-i\omega_0\tau-\Delta\omega|\tau|/2}\) and \(g^{(2)}(\tau)=1+e^{-\Delta\omega|\tau|}\): photons arrive bunched within the coherence time.
+
+* Picture
+\begin{tikzpicture}
+\begin{axis}[width=7.5cm,height=4.2cm,axis lines=left,xlabel={$\tau/\tau_c$},ylabel={$g^{(2)}(\tau)$},ymin=0,ymax=2.2,xmin=-3,xmax=3]
+\addplot+[no marks,domain=-3:3,samples=100]{1+exp(-2*abs(x))}; \addlegendentry{thermal}
+\addplot+[no marks,domain=-3:3]{1}; \addlegendentry{coherent}
+\addplot+[no marks,domain=-3:3,samples=100]{1-exp(-2*abs(x))}; \addlegendentry{single emitter}
+\end{axis}
+\end{tikzpicture}
+
+* Worked example
+Hanbury Brown–Twiss with a sodium lamp, linewidth 1 GHz: bunching lasts \(\tau_c\sim1/\Delta\nu=1\) ns, so detectors need sub-ns timing. A quantum dot measured with \(g^{(2)}(0)=0.02\) has a multiphoton probability 1% of that of a laser with equal \(\bar n\).
+
+* Engineering applications
+Single-photon source certification, stellar interferometry (HBT measured star diameters), fluorescence correlation spectroscopy, laser threshold diagnosis (\(g^{(2)}\) goes from 2 to 1 crossing threshold), LIDAR photon counting.
+
+* Pitfall
+\(g^{(1)}\) cannot distinguish a laser from filtered thermal light of the same spectrum; only \(g^{(2)}\) and higher orders reveal the statistics.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Degree_of_coherence][Degree of coherence]]
+- [[https://en.wikipedia.org/wiki/Hanbury_Brown_and_Twiss_effect][Hanbury Brown and Twiss effect]]

@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       orbital-angular-momentum
+:DOMAIN:   quantum-mechanics
+:AREA:     angular-momentum
+:KIND:     definition
+:REQUIRES: angular-momentum-algebra position-momentum-and-wave-functions
+:SEE:      hydrogen-atom radiative-transitions-and-selection-rules
+:ALIASES:  spherical harmonics, L squared, central potential, radial equation, centrifugal barrier
+:END:
+#+title: Orbital angular momentum and spherical harmonics
+#+summary: \(\mathbf L=\mathbf x\times\mathbf p\) has integer \(l\); its eigenfunctions are the spherical harmonics \(Y_l^m(\theta,\phi)\propto P_l^m(\cos\theta)e^{im\phi}\), and in a central potential \(\psi=R(r)Y_l^m\) with \(u=rR\) solving a 1D equation with the centrifugal barrier \(\hbar^2l(l+1)/2mr^2\).
+
+* Definition
+\(L_i=\epsilon_{ijk}x_jp_k\) satisfies the angular-momentum algebra. In spherical coordinates
+\[ L_z=-i\hbar\,\partial_\phi,\qquad \mathbf L^2=-\hbar^2\left[\frac{1}{\sin\theta}\partial_\theta(\sin\theta\,\partial_\theta)+\frac{1}{\sin^2\theta}\partial_\phi^2\right]. \]
+Single-valuedness \(e^{im(\phi+2\pi)}=e^{im\phi}\) forces integer \(m\), hence integer \(l\).
+
+* Spherical harmonics
+\(Y_0^0=\frac1{\sqrt{4\pi}}\), \(Y_1^0=\sqrt{\frac3{4\pi}}\cos\theta\), \(Y_1^{\pm1}=\mp\sqrt{\frac3{8\pi}}\sin\theta e^{\pm i\phi}\). Orthonormal on the sphere, parity \((-1)^l\) under \(\mathbf x\to-\mathbf x\).
+
+* Central potentials
+Since \(p^2=-\hbar^2\nabla^2\) and \(\nabla^2=\frac1r\partial_r^2r-\frac{\mathbf L^2}{\hbar^2r^2}\), writing \(\psi=\frac{u(r)}rY_l^m\):
+\[ -\frac{\hbar^2}{2m}u''+\left[V(r)+\frac{\hbar^2l(l+1)}{2mr^2}\right]u=Eu,\qquad u(0)=0. \]
+The energy does not depend on \(m\): \((2l+1)\)-fold degeneracy from rotational symmetry.
+
+* Worked example
+Rigid rotor (diatomic molecule), \(H=\mathbf L^2/2I\): \(E_l=\hbar^2l(l+1)/2I\). For CO, \(B=\hbar^2/2I=0.24\) meV (1.92 cm\(^{-1}\)); the \(l=0\to1\) line at 115 GHz is the radio-astronomy tracer of molecular clouds.
+
+* Engineering applications
+Atomic orbitals (s, p, d) behind chemical bonding and semiconductor band edges (s-like conduction band, p-like valence band in GaAs and Si); antenna radiation patterns and multipole expansions use the same \(Y_l^m\); orbital angular momentum of light beams for mode-division multiplexing.
+
+* Pitfall
+\(Y_l^m\) for \(m\neq0\) are complex; the real "p_x, p_y" orbitals are combinations of \(m=\pm1\) and are not \(L_z\) eigenstates.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Spherical_harmonics][Spherical harmonics]]

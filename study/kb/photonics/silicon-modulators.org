@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       silicon-modulators
+:DOMAIN:   photonics
+:AREA:     silicon-photonics
+:KIND:     model
+:REQUIRES: mach-zehnder-interferometers ring-resonators pn-junction-electrostatics electro-optic-modulators
+:SEE:      photodetectors
+:ALIASES:  plasma dispersion effect, Soref-Bennett, carrier depletion modulator, carrier injection, VpiL, ring modulator, Ge photodetector, free carrier absorption
+:END:
+#+title: Silicon modulators: plasma dispersion
+#+summary: Free carriers change silicon's index and loss (Soref–Bennett at 1550 nm: \(\Delta n=-8.8\times10^{-22}\Delta N-8.5\times10^{-18}\Delta P^{0.8}\), \(\Delta\alpha=8.5\times10^{-18}\Delta N+6\times10^{-18}\Delta P\) cm\(^{-1}\)); a reverse-biased pn junction in a rib waveguide modulates them at tens of GHz with \(V_\pi L\approx1\)–2 V·cm in an MZI, or with a few volts in a compact ring.
+
+* Model
+Drude-like response of free carriers. Three ways to change the density:
+| mechanism       | speed      | VπL         | note                          |
+|-----------------+------------+-------------+-------------------------------|
+| injection (pin) | ~ns (τ)    | ≈ 0.02 V·cm | high loss, needs pre-emphasis |
+| depletion (pn)  | > 50 GHz   | 1–3 V·cm    | standard in transceivers      |
+| accumulation    | ~10–30 GHz | ≈ 0.2 V·cm  | MOS capacitor in waveguide    |
+In depletion, the change of depletion width \(W(V)\) ([[id:pn-junction-electrostatics][pn electrostatics]]) removes carriers overlapping the mode; holes give more \(\Delta n\) per unit absorption than electrons, so the junction is offset towards the p side.
+
+* Worked example
+pn with \(N_A=N_D=5\times10^{17}\) cm\(^{-3}\), 220 nm thick rib: from 0 to −2 V the depletion width grows by ≈ 40 nm, removing \(\Delta P\Delta W\) holes per unit area; averaged over the mode, \(\Delta n_{eff}\approx2\times10^{-4}\). \(\pi\) shift needs \(L=\frac{\lambda}{2\Delta n_{eff}}=3.9\) mm → \(V_\pi L\approx2\cdot0.39=0.8\) V·cm (push–pull halves the length). Ring version: a resonance shift of 40 pm × (FWHM ~ 50 pm) gives ~6 dB modulation in a 10 µm ring.
+
+* Detectors
+Ge (gap 0.66 eV, strained to absorb up to ~1.6 µm) grown on Si: waveguide pin photodiodes with \(\mathcal R\approx1\) A/W and > 50 GHz bandwidth ([[id:photodetectors][photodetectors]]).
+
+* Engineering applications
+100G–800G datacenter transceivers (MZM or ring modulators driven by CMOS), co-packaged optics, coherent IQ modulators in Si, optical phase arrays.
+
+* Pitfall
+Carrier modulation always adds loss (free-carrier absorption) and chirp; the figure of merit is \(V_\pi\cdot\alpha\cdot L\), not \(V_\pi L\) alone.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Silicon_photonics][Silicon photonics]]

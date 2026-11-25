@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       power-electronics
+:DOMAIN:   power-electronics
+:AREA:     power-electronics
+:KIND:     overview
+:REQUIRES: solid-state circuits
+:SEE:      digital-electronics
+:ALIASES:  power semiconductor devices, power electronics, Lutz, Baliga, switching power
+:END:
+#+title: Power semiconductor devices: the map of the subject
+#+summary: Power devices block high voltage with thick, lightly doped drift regions and conduct high current with low loss; the trade-off between breakdown voltage and on-resistance (unipolar limit \(R_{on,sp}\propto V_{BR}^{2.5}\)), conductivity modulation in bipolar devices (pin, IGBT, thyristor) and wide-bandgap materials (SiC, GaN) define the field; converters switch them at kHz–MHz.
+
+* Overview
+| block      | notes                                                    |
+|------------+----------------------------------------------------------|
+| devices    | power diodes, MOSFETs and IGBTs, thyristors, SiC and GaN |
+| converters | buck, boost, losses and the switching cycle              |
+
+* Device map
+| device     | voltage      | frequency   | carriers | typical use            |
+|------------+--------------+-------------+----------+------------------------|
+| Si MOSFET  | < 600 V      | 100 kHz–MHz | unipolar | supplies, motor drives |
+| IGBT       | 600 V–6.5 kV | 1–50 kHz    | bipolar  | inverters, traction    |
+| thyristor  | up to 10 kV  | 50–1000 Hz  | bipolar  | HVDC, soft starters    |
+| SiC MOSFET | 650 V–3.3 kV | 10–200 kHz  | unipolar | EV inverters, PV       |
+| GaN HEMT   | < 650 V      | 0.1–10 MHz  | unipolar | chargers, data centres |
+
+* Engineering applications
+Electric vehicles, renewable inverters, motor drives, HVDC links, switch-mode power supplies, induction heating.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Power_semiconductor_device][Power semiconductor device]]
+- [[https://en.wikipedia.org/wiki/Power_electronics][Power electronics]]

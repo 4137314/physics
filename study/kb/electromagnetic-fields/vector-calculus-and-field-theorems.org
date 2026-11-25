@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       vector-calculus-and-field-theorems
+:DOMAIN:   electromagnetic-fields
+:AREA:     static-fields
+:KIND:     identity
+:REQUIRES: electromagnetic-fields
+:SEE:      maxwell-equations electrostatics-and-gauss-law
+:ALIASES:  gradient, divergence, curl, divergence theorem, Stokes theorem, Helmholtz theorem, Laplacian, vector identities, coordinate systems
+:END:
+#+title: Vector calculus and the field theorems
+#+summary: Gradient, divergence and curl with the theorems \(\oint_S\mathbf F\cdot\dd\mathbf S=\int_V\nabla\cdot\mathbf F\,\dd V\) (Gauss) and \(\oint_C\mathbf F\cdot\dd\mathbf l=\int_S(\nabla\times\mathbf F)\cdot\dd\mathbf S\) (Stokes); Helmholtz: a field is fixed by its divergence and curl, which is why Maxwell's equations specify them.
+
+* Identities
+\[ \nabla\times\nabla f=0,\qquad \nabla\cdot(\nabla\times\mathbf A)=0,\qquad \nabla\times(\nabla\times\mathbf A)=\nabla(\nabla\cdot\mathbf A)-\nabla^2\mathbf A,\qquad \nabla\cdot(\mathbf E\times\mathbf H)=\mathbf H\cdot\nabla\times\mathbf E-\mathbf E\cdot\nabla\times\mathbf H. \]
+Consequences: curl-free ⇔ \(\mathbf F=-\nabla V\) (conservative, path-independent); divergence-free ⇔ \(\mathbf F=\nabla\times\mathbf A\).
+
+* Coordinates
+| system      | divergence of F                                               |
+|-------------+---------------------------------------------------------------|
+| Cartesian   | ∂Fx/∂x + ∂Fy/∂y + ∂Fz/∂z                                      |
+| cylindrical | (1/r)∂(rFr)/∂r + (1/r)∂Fφ/∂φ + ∂Fz/∂z                         |
+| spherical   | (1/R²)∂(R²FR)/∂R + (1/R sinθ)∂(sinθ Fθ)/∂θ + (1/R sinθ)∂Fφ/∂φ |
+
+* Helmholtz theorem
+If \(\nabla\cdot\mathbf F=\rho_s\) and \(\nabla\times\mathbf F=\mathbf J_s\) are given and \(\mathbf F\to0\) fast enough at infinity, then \(\mathbf F=-\nabla\int\frac{\rho_s}{4\pi R}\dd V'+\nabla\times\int\frac{\mathbf J_s}{4\pi R}\dd V'\), uniquely. Proof sketch: the difference of two solutions is curl- and divergence-free, so it is \(\nabla\phi\) with \(\nabla^2\phi=0\) vanishing at infinity, hence zero.
+
+* Worked example
+\(\mathbf F=\hat r\,r\) (cylindrical) in a cylinder of radius \(a\), height \(h\): \(\nabla\cdot\mathbf F=\frac1r\partial_r(r^2)=2\), volume integral \(2\pi a^2h\); flux through the side \(a\cdot2\pi ah\), through the caps 0: equal, as Gauss requires.
+
+* Engineering applications
+Every field solver (FEM, FDTD) discretises these operators; Stokes underlies Ampère-loop current probes (Rogowski coils) and Faraday induction; divergence underlies charge conservation in circuit simulators (KCL is \(\nabla\cdot\mathbf J=0\) integrated).
+
+* Pitfall
+In curvilinear coordinates the unit vectors depend on position: you cannot differentiate components as if Cartesian.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Divergence_theorem][Divergence theorem]]
+- [[https://en.wikipedia.org/wiki/Helmholtz_decomposition][Helmholtz decomposition]]

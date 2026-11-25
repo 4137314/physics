@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       group-representations-and-spin
+:DOMAIN:   quantum-mechanics
+:AREA:     mathematical-foundations
+:KIND:     theorem
+:REQUIRES: stone-and-stone-von-neumann-theorems symmetries-and-conservation-laws
+:SEE:      dirac-equation four-vectors-and-lorentz-transformations
+:ALIASES:  Wigner's theorem, projective representation, SU(2), SO(3), double cover, Lie algebra, Bargmann, irreducible representations
+:END:
+#+title: Group representations, Wigner's theorem and spin
+#+summary: Symmetries act on rays, so by Wigner's theorem they are unitary or antiunitary up to phase; projective representations of SO(3) are true representations of its double cover SU(2), whose irreducible representations are labelled by \(j\in\tfrac12\mathbb N\): spin ½ exists because \(\pi_1(SO(3))=\mathbb Z_2\).
+
+* Wigner's theorem
+A bijection of rays preserving transition probabilities \(|\braket{\phi|\psi}|^2\) is induced by an operator \(U\) on \(\mathcal H\), either unitary or antiunitary, unique up to a phase. Hence a symmetry group \(G\) acts by \(U(g_1)U(g_2)=\omega(g_1,g_2)U(g_1g_2)\), \(|\omega|=1\): a *projective* representation.
+
+* SU(2) → SO(3)
+\(SU(2)=\{e^{-i\boldsymbol\sigma\cdot\hat n\phi/2}\}\) acts on traceless Hermitian matrices \(\mathbf x\cdot\boldsymbol\sigma\mapsto U(\mathbf x\cdot\boldsymbol\sigma)U^\dagger\), preserving \(\det=-|\mathbf x|^2\): a rotation \(R(U)\in SO(3)\). The map is 2:1, \(\pm U\mapsto R\). Its kernel \(\{\pm1\}\) is why a \(2\pi\) rotation gives \(-1\) on spinors.
+*Bargmann*: for simply connected groups with no central extension of the Lie algebra (true for SU(2)), every projective representation of the quotient lifts to a true representation of the cover. Irreducible unitary representations of SU(2): dimension \(2j+1\), \(j=0,\tfrac12,1,\dots\) — the [[id:angular-momentum-algebra][angular-momentum spectrum]] reobtained from topology.
+
+* Lie algebra view
+Differentiating \(U(e^{tX})=e^{-itJ_X}\) (Stone) maps the Lie algebra \(\mathfrak{su}(2)\) to self-adjoint generators with \([J_i,J_j]=i\epsilon_{ijk}J_k\) (\(\hbar=1\)). Casimir \(\mathbf J^2\) labels irreducibles. The same scheme with the Lorentz group gives spinor representations \((\tfrac12,0)\oplus(0,\tfrac12)\) of the [[id:dirac-equation][Dirac equation]].
+
+* Worked example
+\(\tfrac12\otimes\tfrac12=0\oplus1\) and \(1\otimes1=0\oplus1\oplus2\) (dimensions \(4=1+3\), \(9=1+3+5\)): character theory, \(\chi_j(\phi)=\frac{\sin((j+\frac12)\phi)}{\sin(\phi/2)}\), and \(\chi_{1/2}^2=\chi_0+\chi_1\).
+
+* Engineering applications
+Classification of electron states in crystals by space-group representations (band labels at high-symmetry points), polarisation optics on the Poincaré sphere (SU(2) acting on Jones vectors), quantum control as paths in SU(2).
+
+* Pitfall
+Phases matter: a projective representation that cannot be made linear signals a genuinely new quantum number (spin, or mass in the Galilei group via Bargmann's superselection).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Wigner%27s_theorem][Wigner's theorem]]
+- [[https://www.math.columbia.edu/~woit/QM/qmbook.pdf][Woit, Quantum Theory, Groups and Representations (author's free draft)]]

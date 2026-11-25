@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       optical-fibers
+:DOMAIN:   optoelectronics
+:AREA:     fibers
+:KIND:     theorem
+:REQUIRES: dielectric-slab-waveguide
+:SEE:      fiber-dispersion-and-attenuation optical-amplifiers
+:ALIASES:  step-index fiber, numerical aperture, single-mode fiber, multimode fiber, LP modes, cutoff wavelength, mode field diameter, Marcuse equation, graded-index fiber, acceptance angle, photonic crystal fiber
+:END:
+#+title: Optical fibres: modes, numerical aperture and single-mode condition
+#+summary: A step-index fibre (core radius \(a\), indices \(n_1>n_2\), \(\Delta=\frac{n_1-n_2}{n_1}\)) accepts light within \(\mathrm{NA}=\sin\theta_{max}=\sqrt{n_1^2-n_2^2}\); its weakly guiding modes are LP\(_{lm}\), the number is \(M\approx V^2/2\) with \(V=\frac{2\pi a}{\lambda}\mathrm{NA}\), and it is single-mode for \(V<2.405\); the fundamental mode is nearly Gaussian with MFD \(2w\approx2a(0.65+1.619V^{-3/2}+2.879V^{-6})\).
+
+* Statement
+- *Acceptance*: TIR at the core/cladding interface for rays inside the cone \(n_0\sin\theta_a\le\mathrm{NA}\).
+- *Modes*: solving the wave equation in cylindrical coordinates, Bessel \(J_l\) in the core and \(K_l\) in the cladding; for \(\Delta\ll1\) (weak guidance) modes group into linearly polarised LP\(_{lm}\). LP\(_{01}\) has no cutoff; LP\(_{11}\) appears at \(V=2.405\), the first zero of \(J_0\).
+- *Cutoff wavelength* \(\lambda_c=\frac{2\pi a\,\mathrm{NA}}{2.405}\): single-mode above it.
+
+* Graded index
+\(n(r)=n_1\sqrt{1-2\Delta(r/a)^\gamma}\); for \(\gamma\approx2\) (parabolic) rays follow sinusoidal paths with nearly equal transit times: intermodal spread drops from \(\frac{L n_1\Delta}{c}\) (step) to \(\frac{Ln_1\Delta^2}{8c}\). Number of modes \(M\approx V^2/4\).
+
+* Worked example
+SMF-28-like fibre: \(a=4.1\) µm, \(n_1=1.4504\), \(n_2=1.4447\): NA \(=\sqrt{2.10366-2.08716}=0.128\); at 1550 nm \(V=\frac{2\pi\cdot4.1}{1.55}\cdot0.128=2.13<2.405\) → single mode; \(\lambda_c=\frac{2\pi\cdot4.1\cdot0.128}{2.405}=1.37\) µm. MFD \(=8.2(0.65+1.619\cdot2.13^{-1.5}+2.879\cdot2.13^{-6})=8.2(0.65+0.521+0.031)=9.9\) µm. Multimode 50 µm core, NA 0.2 at 850 nm: \(V=37\), \(M\approx V^2/2\approx680\) (step) or ~340 (graded).
+
+* Picture: index profiles and acceptance cone
+\begin{tikzpicture}[scale=0.9]
+\draw[-{Latex}] (0,0)--(0,2.4) node[above,font=\scriptsize]{$n$}; \draw[-{Latex}] (-1.8,0.2)--(1.8,0.2) node[right,font=\scriptsize]{$r$};
+\draw[thick,blue!70!black] (-1.7,1.0)--(-0.6,1.0)--(-0.6,1.8)--(0.6,1.8)--(0.6,1.0)--(1.7,1.0);
+\draw[thick,red!70!black,domain=-0.6:0.6,samples=30] plot (\x,{1.0+0.8*(1-(\x/0.6)^2)});
+\node[font=\scriptsize] at (0,2.05) {$n_1$}; \node[font=\scriptsize] at (1.3,0.8) {$n_2$};
+\node[font=\scriptsize,blue!70!black] at (-1.2,1.25) {step}; \node[font=\scriptsize,red!70!black] at (1.2,1.6) {graded};
+\begin{scope}[shift={(3.2,0)}]
+\fill[blue!10] (1,0.6) rectangle (6,1.6); \draw (1,0.4)--(6,0.4); \draw (1,1.8)--(6,1.8); \draw (1,0.6)--(6,0.6); \draw (1,1.6)--(6,1.6);
+\draw[dashed] (0,1.1)--(6,1.1);
+\draw[-{Latex},thick,red!70!black] (0,0.55)--(1,1.1)--(2.0,1.6)--(3.0,0.6)--(4.0,1.6)--(5.0,0.6)--(6.0,1.6);
+\draw (0.45,1.1) arc (180:208:0.55); \node[font=\scriptsize] at (0.25,0.85) {$\theta_a$};
+\node[font=\scriptsize] at (3.5,1.95) {cladding $n_2$}; \node[font=\scriptsize] at (6.3,1.1) {core};
+\end{scope}
+\end{tikzpicture}
+
+* Engineering applications
+Long-haul (single-mode, 1550 nm) vs datacenter (multimode OM3/OM4 with VCSELs at 850 nm) links, fibre lasers and amplifiers, fibre sensors (gyroscopes, Bragg-grating strain/temperature gauges), hollow-core photonic-crystal fibres (low latency, high power), endoscopy.
+
+* Exam-style exercise
+A step-index fibre has \(n_1=1.46\) and a measured full acceptance angle of 30° in air; core diameter 50 µm. (a) NA and \(n_2\). (b) \(V\) and number of modes at 850 nm. (c) Wavelength above which it is single mode. (d) Would a graded-index version carry more or fewer modes?
+** Solution
+(a) \(\mathrm{NA}=\sin15^\circ=0.259\), \(n_2=\sqrt{1.46^2-0.259^2}=1.437\). (b) \(V=\frac{2\pi\cdot25}{0.85}\cdot0.259=47.8\), \(M\approx V^2/2=1.1\times10^3\). (c) \(\lambda_c=\frac{2\pi\cdot25\cdot0.259}{2.405}=16.9\) µm: never in practice. (d) Fewer, \(\approx V^2/4\approx570\), with far less intermodal dispersion.
+
+* Pitfall
+\(V<2.405\) assumes a step profile; bending raises the effective cutoff, and a fibre just below cutoff is very bend-sensitive (bending loss grows as the mode spreads into the cladding).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Optical_fiber][Optical fiber]]
+- [[https://www.rp-photonics.com/v_number.html][RP Photonics: V number]]

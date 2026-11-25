@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       inverter-static-characteristics
+:DOMAIN:   digital-electronics
+:AREA:     inverters
+:KIND:     definition
+:REQUIRES: mosfet-operation-and-iv
+:SEE:      nmos-inverters cmos-inverter
+:ALIASES:  voltage transfer characteristic, VTC, noise margins, VIL, VIH, VOL, VOH, logic levels, logic swing, fan-out, regenerative property, switching threshold
+:END:
+#+title: Inverter static characteristics and noise margins
+#+summary: The voltage transfer characteristic \(v_O(v_I)\) defines \(V_{OH}\), \(V_{OL}\) and the unity-gain points \(V_{IL}\), \(V_{IH}\) (\(\dd v_O/\dd v_I=-1\)); noise margins \(NM_H=V_{OH}-V_{IH}\) and \(NM_L=V_{IL}-V_{OL}\) measure how much noise a chain of gates tolerates; a gain larger than 1 in the transition region restores degraded levels.
+
+* Definitions
+- \(V_{OH}\), \(V_{OL}\): output levels for input low/high (driving an identical gate).
+- \(V_{IL}\), \(V_{IH}\): input boundaries where the VTC slope is −1; inputs below \(V_{IL}\) are surely "0", above \(V_{IH}\) surely "1".
+- Switching threshold \(V_M\): \(v_O=v_I\).
+- Noise margins as above; ideal inverter: \(V_{OH}=V_{DD}\), \(V_{OL}=0\), \(V_{IL}=V_{IH}=V_{DD}/2\), \(NM=V_{DD}/2\).
+
+* Why slope −1
+If \(|\dd v_O/\dd v_I|>1\) between \(V_{IL}\) and \(V_{IH}\), small disturbances grow there; outside, they are attenuated. Choosing the −1 points maximises the guaranteed margin for a chain of identical gates (regeneration).
+
+* Picture
+\begin{tikzpicture}
+\begin{axis}[width=6.5cm,height=5cm,axis lines=left,xlabel={$v_I$ (V)},ylabel={$v_O$ (V)},xmin=0,xmax=5,ymin=0,ymax=5.3]
+\addplot+[no marks,domain=0:5,samples=200]{0.1+4.8/(1+exp(4*(x-2.5)))}; \addlegendentry{VTC}
+\addplot+[no marks,dashed,domain=0:5]{x}; \addlegendentry{$v_O=v_I$}
+\end{axis}
+\end{tikzpicture}
+
+* Worked example
+Measured CMOS VTC (\(V_{DD}=5\) V): slope −1 at \(V_{IL}=2.8\) V (\(V_{OH}\approx4.6\) V) and \(V_{IH}=3.9\) V (\(V_{OL}\approx0.2\) V). \(NM_H=4.6-3.9=0.7\) V, \(NM_L=2.8-0.2=2.6\) V: asymmetric, \(V_M>V_{DD}/2\) because the PMOS is relatively strong. Region check at point \(v_I=3.4\) V, \(v_O=2.2\) V (\(V_{TN}=-V_{TP}=0.6\)): NMOS \(V_{GS}=3.4>V_{DS}+V_{TN}=2.8\) → triode; PMOS \(V_{SG}=1.6\), \(V_{SD}=2.8>V_{SG}-|V_{TP}|=1.0\) → saturation.
+
+* Engineering applications
+Logic-family compatibility (TTL vs CMOS levels), signal integrity budgets (crosstalk and ground bounce must stay within NM), level shifters, Schmitt triggers for noisy inputs.
+
+* Pitfall
+\(V_{OH}\) and \(V_{OL}\) are not \(V_{DD}\) and 0 in ratioed logic (NMOS, pseudo-NMOS): \(V_{OL}\) is set by a current balance and must be computed.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Noise_margin][Noise margin]]

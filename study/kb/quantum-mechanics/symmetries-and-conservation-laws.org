@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       symmetries-and-conservation-laws
+:DOMAIN:   quantum-mechanics
+:AREA:     symmetries
+:KIND:     theorem
+:REQUIRES: angular-momentum-algebra heisenberg-picture-and-ehrenfest-theorem
+:SEE:      group-representations-and-spin bloch-theorem-and-energy-bands radiative-transitions-and-selection-rules
+:ALIASES:  symmetry, conservation law, degeneracy, parity, time reversal, Kramers degeneracy, lattice translation, quantum Noether
+:END:
+#+title: Symmetries, conservation laws and degeneracy
+#+summary: A unitary symmetry \(\mathcal S=e^{-i\epsilon G/\hbar}\) of the Hamiltonian, \([\mathcal S,H]=0\), makes \(G\) a constant of motion and forces degeneracies; discrete symmetries (parity, lattice translations, time reversal) give parity selection rules, Bloch bands and Kramers doublets.
+
+* Theorem
+If \([G,H]=0\) then \(\dd\braket G/\dd t=0\) (Heisenberg equation) and, if \(\ket n\) is an energy eigenket, \(\mathcal S\ket n\) is an eigenket with the same energy. If the symmetry group is non-Abelian (rotations), irreducible representations of dimension \(>1\) force degeneracy (\(2l+1\) states for rotations).
+
+* Discrete symmetries
+- *Parity* \(\pi\): \(\pi\mathbf x\pi^\dagger=-\mathbf x\), \(\pi\mathbf p\pi^\dagger=-\mathbf p\), \(\pi\mathbf L\pi^\dagger=\mathbf L\). Eigenvalues \(\pm1\); \(Y_l^m\) has parity \((-1)^l\). Since \(\mathbf x\) is odd, \(\bra\beta\mathbf x\ket\alpha=0\) between states of the same parity: the electric-dipole rule \(\Delta l=\pm1\).
+- *Lattice translations* \(\tau(a)\) with \(V(x+a)=V(x)\): eigenvalues \(e^{-ika}\) — [[id:bloch-theorem-and-energy-bands][Bloch's theorem]].
+- *Time reversal* \(\Theta\): antiunitary, \(\Theta\mathbf p\Theta^{-1}=-\mathbf p\), \(\Theta\mathbf J\Theta^{-1}=-\mathbf J\). For half-integer spin \(\Theta^2=-1\), so every level is at least doubly degenerate if \(H\) is time-reversal invariant (Kramers), broken only by \(\mathbf B\).
+
+* Proof (Kramers)
+If \(\Theta\ket n\propto\ket n\), i.e. \(\Theta\ket n=c\ket n\), then \(\Theta^2\ket n=\bar cc\ket n=|c|^2\ket n\), contradicting \(\Theta^2=-1\). So \(\ket n\) and \(\Theta\ket n\) are distinct, degenerate states.
+
+* Worked example
+Symmetric double well: parity commutes with \(H\), so eigenstates are even \(\ket S\) (lower) and odd \(\ket A\), split by tunnelling \(\Delta\). A particle localised on the left, \((\ket S+\ket A)/\sqrt2\), oscillates between wells with period \(2\pi\hbar/\Delta\): the ammonia maser at 24 GHz.
+
+* Engineering applications
+Selection rules in lasers and spectroscopy, band-structure labelling of semiconductors by crystal symmetry, spin degeneracy and its lifting (Zeeman, Rashba) in spintronics, protected degeneracies in topological insulators.
+
+* Pitfall
+A symmetry of \(H\) does not mean each eigenstate is symmetric when there is degeneracy; one can choose a symmetric basis, but superpositions are equally valid.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Symmetry_in_quantum_mechanics][Symmetry in quantum mechanics]]
+- [[https://en.wikipedia.org/wiki/Kramers%27_theorem][Kramers' theorem]]

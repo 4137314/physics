@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       photodetectors
+:DOMAIN:   optoelectronics
+:AREA:     photodetectors
+:KIND:     model
+:REQUIRES: semiconductor-optical-properties pn-junction-electrostatics
+:SEE:      noise-in-photodetectors solar-cells
+:ALIASES:  photodiode, pin photodiode, avalanche photodiode, APD, responsivity, quantum efficiency, photoconductor, transit time, RC bandwidth, transimpedance amplifier, Ge-on-Si photodetector, NEP
+:END:
+#+title: Photodetectors: pn, pin and avalanche photodiodes
+#+summary: A reverse-biased junction collects photogenerated carriers: responsivity \(\mathcal R=\frac{I_{ph}}{P}=\eta\frac{q\lambda}{hc}=\eta\frac{\lambda[\mu m]}{1.24}\) A/W; a pin diode puts the absorption in a wide depleted i-layer (fast drift); bandwidth is limited by transit time \(f_t\approx0.45v_{sat}/W\) and by \(RC\); an APD multiplies the current by \(M\) at the cost of excess noise \(F(M)\).
+
+* Model
+- *Quantum efficiency*: \(\eta=(1-R)\,\zeta\,(1-e^{-\alpha W})\) (surface reflection, collection, absorption in the depleted region).
+- *pin*: \(W\) chosen \(\gtrsim1/\alpha\) for absorption but small for speed: trade-off \(\eta\)–bandwidth. Waveguide photodiodes decouple them (light travels along the junction).
+- *Bandwidth*: \(\frac1{f_{3dB}^2}\approx\frac{1}{f_t^2}+\frac{1}{f_{RC}^2}\), \(f_{RC}=\frac{1}{2\pi(R_L+R_s)C_j}\), \(C_j=\epsilon A/W\) ([[id:pn-junction-electrostatics][junction capacitance]]).
+- *APD*: high-field region gives impact ionisation; mean gain \(M\), excess noise \(F=kM+(1-k)(2-1/M)\), \(k=\beta/\alpha\) ionisation ratio (Si \(k\approx0.02\): low noise; InGaAs/InP \(k\approx0.4\)).
+
+* Worked example
+InGaAs pin at 1550 nm, \(\eta=0.8\): \(\mathcal R=0.8\cdot1.55/1.24=1.0\) A/W. Diameter 30 µm, \(W=2\) µm: \(C_j=\frac{13.9\cdot8.85\times10^{-12}\cdot7.07\times10^{-10}}{2\times10^{-6}}=43\) fF; with 50 Ω, \(f_{RC}=74\) GHz; \(f_t=0.45\cdot6.5\times10^4/2\times10^{-6}\approx15\) GHz (holes, \(v\approx6.5\times10^6\) cm/s): transit-limited, ≈ 15 GHz overall → 10–25 Gb/s receivers.
+
+* Related detectors
+Gain inside the device: [[id:avalanche-photodiodes][avalanche photodiodes]] and [[id:photoconductors-and-phototransistors][photoconductors and phototransistors]]; the circuit around the diode and its speed: [[id:photodiode-circuits-and-bandwidth][photodiode circuits]]; arrays of photodiodes: [[id:image-sensors][CCD and CMOS image sensors]].
+
+* Picture: responsivity versus wavelength
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$\lambda$ (µm)},ylabel={$\mathcal R$ (A/W)},xmin=0.3,xmax=1.8,ymin=0,ymax=1.5]
+\addplot+[no marks,dashed,domain=0.3:1.1]{x/1.24}; \addlegendentry{ideal Si, $\eta=1$}
+\addplot+[no marks,thick,smooth] coordinates {(0.4,0.12) (0.5,0.28) (0.6,0.37) (0.7,0.45) (0.8,0.52) (0.9,0.6) (0.95,0.55) (1.0,0.4) (1.05,0.2) (1.1,0.05)}; \addlegendentry{typical Si}
+\addplot+[no marks,thick,smooth] coordinates {(0.9,0.45) (1.1,0.7) (1.3,0.9) (1.55,1.0) (1.62,0.95) (1.66,0.4) (1.7,0.05)}; \addlegendentry{typical InGaAs}
+\end{axis}
+\end{tikzpicture}
+The ideal line \(\lambda/1.24\) rises with \(\lambda\) (more photons per watt) until the cut-off \(\lambda_g\); real curves fall at short \(\lambda\) because carriers are generated near the surface and recombine.
+
+* Engineering applications
+Optical receivers (pin + transimpedance amplifier), APDs for long reach and LiDAR, Ge-on-Si waveguide detectors in silicon photonics, image sensors (CMOS pinned photodiodes), single-photon avalanche diodes (SPADs, Geiger mode) for photon counting.
+
+* Exam-style exercise
+(a) Cut-off wavelengths of Si (1.12 eV), Ge (0.66 eV), In\(_{0.53}\)Ga\(_{0.47}\)As (0.75 eV). (b) A Si photodiode gives 0.48 A/W at 850 nm: QE? (c) Maximum possible responsivity at 850 nm. (d) The diode is 1 mm² and receives 1 mW/cm²: photocurrent.
+** Solution
+(a) \(\lambda_g=1.24/E_g\): 1.11, 1.88, 1.65 µm. (b) \(\eta=\mathcal R\frac{1.24}{\lambda}=0.48\cdot1.459=0.70\). (c) \(\eta=1\): 0.69 A/W. (d) \(P=10\) µW → 4.8 µA.
+
+* Pitfall
+Responsivity grows with \(\lambda\) at fixed \(\eta\) (more photons per watt) until the cutoff \(\lambda_g\), where \(\eta\) collapses: \(\mathcal R(\lambda)\) is a sawtooth-like curve, not flat.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Photodiode][Photodiode]]
+- [[https://en.wikipedia.org/wiki/Avalanche_photodiode][Avalanche photodiode]]

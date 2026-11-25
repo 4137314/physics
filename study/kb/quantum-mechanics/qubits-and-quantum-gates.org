@@ -1,0 +1,51 @@
+:PROPERTIES:
+:ID:       qubits-and-quantum-gates
+:DOMAIN:   quantum-mechanics
+:AREA:     quantum-information
+:KIND:     definition
+:REQUIRES: entanglement-and-bell-inequalities spin-precession-and-rabi-oscillations
+:SEE:      josephson-junction-and-rcsj-model jaynes-cummings-model
+:ALIASES:  qubit, quantum gate, Hadamard, CNOT, Bell state, quantum circuit, universal gate set, decoherence T1 T2, teleportation
+:END:
+#+title: Qubits and quantum gates
+#+summary: A qubit is a two-level system \(\alpha\ket0+\beta\ket1\); single-qubit gates are SU(2) rotations of the Bloch sphere, CNOT entangles two qubits, and {H, T, CNOT} is universal; real qubits lose coherence with times \(T_1\) (energy) and \(T_2\) (phase).
+
+* Definitions
+| gate | matrix                      | action                       |
+|------+-----------------------------+------------------------------|
+| X    | (0 1; 1 0)                  | bit flip, π rotation about x |
+| Z    | diag(1,−1)                  | phase flip                   |
+| H    | (1 1; 1 −1)/√2              | ket 0 → (ket 0 + ket 1)/√2   |
+| S, T | diag(1,i), diag(1,e^{iπ/4}) | phase gates                  |
+| CNOT | flips target if control = 1 | creates entanglement         |
+\(R_{\hat n}(\theta)=e^{-i\theta\,\boldsymbol\sigma\cdot\hat n/2}\) is realised physically by a resonant pulse ([[id:spin-precession-and-rabi-oscillations][Rabi]]) of area \(\theta=\Omega t\).
+
+* Bell-state circuit
+\(\ket{00}\xrightarrow{H\otimes1}\tfrac1{\sqrt2}(\ket{00}+\ket{10})\xrightarrow{\mathrm{CNOT}}\tfrac1{\sqrt2}(\ket{00}+\ket{11})=\ket{\Phi^+}\).
+
+* Picture
+\begin{tikzpicture}[font=\small]
+\draw (0,0) node[left]{$\ket0$} -- (3,0); \draw (0,-1) node[left]{$\ket0$} -- (3,-1);
+\draw[fill=white] (0.6,-0.3) rectangle (1.2,0.3) node[midway]{H};
+\fill (2,0) circle (2pt); \draw (2,0) -- (2,-1.2); \draw (2,-1) circle (0.2);
+\node[right] at (3,-0.5) {$\ket{\Phi^+}$};
+\end{tikzpicture}
+
+* Teleportation (derivation)
+Alice holds \(\ket\psi=\alpha\ket0+\beta\ket1\) and half of \(\ket{\Phi^+}\). Rewriting \(\ket\psi\ket{\Phi^+}=\tfrac12\sum_{k}\ket{\text{Bell}_k}_{12}\,\sigma_k\ket\psi_3\): a Bell measurement (2 classical bits) tells Bob which Pauli \(\sigma_k\) to undo. No cloning, no superluminal signalling.
+
+* Decoherence
+\(T_1\): decay \(\rho_{11}(t)=\rho_{11}(0)e^{-t/T_1}\); \(T_2\): decay of coherences, \(1/T_2=1/2T_1+1/T_\phi\). Gate fidelity \(\approx1-t_{gate}/T_2\). Superconducting transmons: \(T_1\sim100\) µs, gates \(\sim20\)–50 ns.
+
+* Worked example
+Deutsch's algorithm: one query of \(f:\{0,1\}\to\{0,1\}\) via \(U_f\ket x\ket y=\ket x\ket{y\oplus f(x)}\), on input \(H\ket0\otimes H\ket1\), yields \((-1)^{f(0)}\ket{f(0)\oplus f(1)}\) after a final \(H\): constant vs balanced is decided with one evaluation (classically two).
+
+* Engineering applications
+Superconducting qubits (transmons built on [[id:josephson-junction-and-rcsj-model][Josephson junctions]], controlled at 4–8 GHz, read through dispersive [[id:jaynes-cummings-model][cavity QED]]), trapped ions, photonic qubits in integrated circuits, spin qubits in silicon. Cryogenic control electronics can use [[id:rsfq-logic][SFQ pulses]].
+
+* Pitfall
+A global phase is unobservable, but a *relative* phase between \(\ket0\) and \(\ket1\) is physical: \(\ket+\) and \(\ket-\) give identical \(Z\) statistics yet are orthogonal.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Quantum_logic_gate][Quantum logic gate]]
+- [[https://quantum.cloud.ibm.com/learning][IBM Quantum Learning]]

@@ -1,0 +1,59 @@
+:PROPERTIES:
+:ID:       fiber-scattering-and-otdr
+:DOMAIN:   optoelectronics
+:AREA:     fibers
+:KIND:     model
+:REQUIRES: fiber-dispersion-and-attenuation
+:SEE:      fiber-optic-sensors optical-amplifiers optical-link-design
+:ALIASES:  OTDR, optical time domain reflectometry, Rayleigh scattering, Raman scattering, Brillouin scattering, stimulated Brillouin scattering, SBS, Stokes, anti-Stokes, distributed temperature sensing, DTS, distributed sensing, backscatter, dead zone, dynamic range, splice loss measurement, phase-sensitive OTDR
+:END:
+#+title: Scattering in fibres, OTDR and distributed sensing
+#+summary: Rayleigh scattering (elastic, \(\propto\lambda^{-4}\)) sends a small fraction of every pulse back; an OTDR times it, \(z=\frac{ct}{2n}\), with spatial resolution \(\Delta z=\frac{c\tau}{2n}\), and the trace slope gives the loss; Raman (≈ 13 THz shift, anti-Stokes/Stokes ratio set by temperature) and Brillouin (≈ 11 GHz shift, \(\nu_B=2nv_a/\lambda\), depends on strain and temperature) backscatter turn a plain fibre into a distributed thermometer or strain gauge.
+
+* Scattering processes
+| process   | origin                       | shift      | use                     |
+|-----------+------------------------------+------------+-------------------------|
+| Rayleigh  | frozen density fluctuations  | none       | loss floor, OTDR        |
+| Raman     | molecular vibrations         | ≈ 13 THz   | DTS, Raman amplifiers   |
+| Brillouin | acoustic waves (phonons)     | ≈ 11 GHz   | strain/T sensing, SBS   |
+
+Rayleigh: \(\alpha_R\propto\lambda^{-4}\); ≈ 0.15 dB/km at 1550 nm, hence ≈ 0.29 dB/km at 1310 nm and ≈ 1.7 dB/km at 850 nm. Brillouin: light Bragg-reflects on a sound wave moving at \(v_a\approx5.96\) km/s, Doppler-shifted by \(\nu_B=\frac{2nv_a}{\lambda}=\frac{2\cdot1.45\cdot5960}{1.55\times10^{-6}}\approx11\) GHz. Above a threshold of a few mW in long fibres, stimulated Brillouin scattering reflects the launched power back: it limits narrow-linewidth transmitters (power per linewidth).
+
+* OTDR (derivation)
+A pulse of duration \(\tau\) is launched; at time \(t\) the detector sees light backscattered at \(z=\frac{ct}{2n}\) (round trip). Two events closer than \(\Delta z=\frac{c\tau}{2n}\) merge. The backscattered power from \(z\) has crossed the fibre twice: \(P(z)\propto e^{-2\alpha z}\), and the trace in dB falls with slope \(2\alpha_{dB}\); instruments divide by 2 and display one-way loss. A splice is a step down, a connector or the far end a reflection spike followed by a step; dynamic range (dB between initial backscatter and noise floor) sets the maximum length; averaging \(N\) traces gains \(5\log_{10}N\) dB.
+
+* Picture: an OTDR trace
+\begin{tikzpicture}
+\draw[-{Latex}] (0,0)--(8,0) node[right,font=\scriptsize]{distance};
+\draw[-{Latex}] (0,0)--(0,3.6); \node[font=\scriptsize,rotate=90] at (-0.3,1.8) {backscatter (dB)};
+\draw[thick,blue!70!black] (0.1,3.4)--(0.2,2.9)--(2.5,2.4)--(2.5,2.15)--(4.4,1.75)--(4.4,2.6)--(4.5,1.45)--(6.3,1.05)--(6.3,2.2)--(6.4,0.25)--(7.6,0.3)--(7.8,0.2);
+\node[font=\scriptsize,anchor=west] at (0.35,3.45) {front reflection};
+\node[font=\scriptsize,anchor=north] at (2.6,2.1) {splice (loss step)};
+\node[font=\scriptsize,anchor=south] at (4.45,2.6) {connector};
+\node[font=\scriptsize,anchor=south] at (6.4,2.2) {fibre end};
+\node[font=\scriptsize,anchor=west] at (6.6,0.5) {noise};
+\node[font=\scriptsize,rotate=-12] at (1.4,2.9) {slope $=\alpha$};
+\end{tikzpicture}
+
+* Distributed temperature and strain sensing
+Raman DTS: the anti-Stokes line grows with temperature as \(e^{-h\Delta\nu/k_BT}\) (population of the vibrational level), the Stokes line barely changes; their ratio along the OTDR time axis maps temperature with ≈ 1 m resolution over 10 km. Brillouin (BOTDR/BOTDA): \(\nu_B\) shifts by ≈ 1 MHz/K and ≈ 0.05 MHz/µε, giving both. Phase-sensitive OTDR (coherent source) detects vibrations: intrusion detection along borders and pipelines.
+
+* Worked examples
+1. *Resolution*: 10 ns pulses, \(n=1.468\): \(\Delta z=1.02\) m. An echo after 100 µs comes from \(z=10.2\) km.
+2. *Loss from the trace*: the one-way trace falls from −20.0 to −27.0 dB over 20 km, with a 0.3 dB step at 12 km: \(\alpha=\frac{7.0-0.3}{20}=0.335\) dB/km (1310 nm), splice loss 0.3 dB.
+3. *Raman DTS*: \(\Delta\nu=13.2\) THz: \(e^{-h\Delta\nu/k_BT}=0.115\) at 20 °C and 0.183 at 100 °C — a 60% change of the anti-Stokes/Stokes ratio over 80 K. At 1550 nm the Raman lines sit at ≈ 1664 nm (Stokes) and ≈ 1450 nm (anti-Stokes).
+
+* Engineering applications
+Fault location and acceptance testing of installed cables, monitoring of PON drops, fire detection in tunnels and temperature profiles in oil wells (DTS), strain monitoring of dams and pipelines (Brillouin), perimeter security (φ-OTDR); Raman scattering also amplifies signals (distributed Raman amplifiers, [[id:optical-amplifiers][amplifiers]]).
+
+* Exam-style exercise
+An OTDR uses 100 ns pulses at 1550 nm (\(n=1.47\)), has 28 dB dynamic range, and the fibre loses 0.2 dB/km with a splice every 4 km (0.1 dB). (a) Spatial resolution. (b) Longest measurable fibre. (c) Repetition period to avoid overlapping traces on that length.
+** Solution
+(a) \(\Delta z=\frac{3\times10^8\cdot10^{-7}}{2\cdot1.47}=10.2\) m. (b) Loss per km \(0.2+0.025=0.225\) dB → \(28/0.225=124\) km (one-way loss, as displayed). (c) Round trip \(t=\frac{2nL}{c}=\frac{2\cdot1.47\cdot1.24\times10^5}{3\times10^8}=1.22\) ms: repetition rate ≤ 820 Hz.
+
+* Pitfall
+The round trip appears twice: in \(z=ct/2n\) and in the \(2\alpha\) slope of the raw trace. Forgetting the 2 doubles the distance or the loss.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Optical_time-domain_reflectometer][Optical time-domain reflectometer]]
+- [[https://en.wikipedia.org/wiki/Distributed_temperature_sensing][Distributed temperature sensing]]

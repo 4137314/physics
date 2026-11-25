@@ -1,0 +1,51 @@
+:PROPERTIES:
+:ID:       solar-cells
+:DOMAIN:   optoelectronics
+:AREA:     photodetectors
+:KIND:     model
+:REQUIRES: photodetectors pn-junction-diode-current
+:SEE:      generation-recombination-and-continuity
+:ALIASES:  photovoltaics, solar cell, short-circuit current, open-circuit voltage, fill factor, efficiency, maximum power point, Shockley-Queisser limit, series resistance, tandem cells, AM1.5
+:END:
+#+title: Solar cells
+#+summary: A pn junction under light: \(I=I_{ph}-I_0\left(e^{qV/nk_BT}-1\right)\); \(V_{oc}=\frac{nk_BT}{q}\ln\left(1+\frac{I_{sc}}{I_0}\right)\), \(\mathrm{FF}=\frac{V_mI_m}{V_{oc}I_{sc}}\), efficiency \(\eta=\frac{\mathrm{FF}\,V_{oc}I_{sc}}{P_{in}}\); a single junction is limited to ≈ 33% (Shockley–Queisser) by thermalisation and sub-gap losses.
+
+* Model
+Superposition of the dark diode and a photocurrent source (generator convention). Equivalent circuit adds \(R_s\) (series) and \(R_{sh}\) (shunt). Photocurrent \(I_{sc}=qA\int\Phi(\lambda)\mathrm{EQE}(\lambda)\dd\lambda\); carriers generated within a diffusion length of the junction are collected ([[id:generation-recombination-and-continuity][diffusion length]]).
+
+* Maximum power point (derivation)
+\(P=VI\); \(\frac{\dd P}{\dd V}=0\Rightarrow\left(1+\frac{qV_m}{nk_BT}\right)e^{qV_m/nk_BT}=1+\frac{I_{sc}}{I_0}\). Approximate FF for \(v_{oc}=qV_{oc}/nk_BT\): \(\mathrm{FF}\approx\frac{v_{oc}-\ln(v_{oc}+0.72)}{v_{oc}+1}\).
+
+* Picture
+\begin{tikzpicture}
+\begin{axis}[width=7.5cm,height=4.5cm,axis lines=left,xlabel={$V$ (V)},ylabel={$I$ (A), $P$ (W)},xmin=0,xmax=0.72,ymin=0,ymax=3.6]
+\addplot+[no marks,domain=0:0.705,samples=150]{3.5-3.5*exp((x-0.70)/0.0259)}; \addlegendentry{$I$}
+\addplot+[no marks,domain=0:0.705,samples=150]{x*(3.5-3.5*exp((x-0.70)/0.0259))}; \addlegendentry{$P$}
+\end{axis}
+\end{tikzpicture}
+
+* Worked example
+Si cell 100 cm², \(J_{sc}=35\) mA/cm² (\(I_{sc}=3.5\) A), \(I_0=6\times10^{-12}\) A, \(n=1\): \(V_{oc}=0.0259\ln(5.8\times10^{11})=0.70\) V; \(v_{oc}=27.1\), FF \(=\frac{27.1-\ln27.8}{28.1}=0.85\); \(P_m=0.85\cdot0.70\cdot3.5=2.08\) W; under 1000 W/m² (10 W on 100 cm²): \(\eta\approx21\%\). A series resistance of 10 mΩ dissipates \(I_m^2R_s\approx3.3^2\cdot0.01\approx0.11\) W, about 5% of the output.
+
+* Picture: equivalent circuit
+\begin{circuitikz}[scale=0.9]
+\draw (0,0) to[I, l=$I_{ph}$] (0,2.5) -- (2,2.5) to[D, l=$D$, *-*] (2,0) -- (0,0);
+\draw (2,2.5) -- (3.8,2.5) to[R, l=$R_{sh}$] (3.8,0) -- (2,0);
+\draw (3.8,2.5) to[R, l=$R_s$] (6.2,2.5) to[R, l=$R_L$] (6.2,0) -- (3.8,0);
+\end{circuitikz}
+A large shunt resistance and a small series resistance keep the I–V curve square; \(R_s\) of a few tenths of an ohm already costs several percent of fill factor in a 3 A cell.
+
+* Engineering applications
+Rooftop and utility PV (MPPT trackers in inverters exploit the curve above), space power (multijunction III-V > 30%), perovskite/Si tandems, photovoltaic power converters for optical power delivery, energy harvesting for IoT.
+
+* Exam-style exercise
+A 100 cm² Si cell under 1 kW/m² gives \(I_{sc}=3.5\) A, with \(I_0=1\) nA, ideality 1, 300 K. (a) \(V_{oc}\). (b) Maximum power point, fill factor and efficiency. (c) Operating point on a 0.15 Ω load.
+** Solution
+(a) \(V_{oc}=0.0259\ln(3.5\times10^9)=0.569\) V. (b) Maximising \(V(I_{sc}-I_0e^{V/V_T})\) numerically: \(V_m=0.492\) V, \(I_m=3.32\) A, \(P_m=1.63\) W; FF \(=\frac{1.63}{0.569\cdot3.5}=0.82\); \(\eta=\frac{1.63}{1000\cdot0.01}=16.3\%\). (c) Solve \(I=3.5-10^{-9}e^{V/V_T}\) with \(V=0.15I\): \(V=0.495\) V, \(I=3.30\) A, 1.63 W — the load is almost the optimum one (\(V_m/I_m=0.148\) Ω).
+
+* Pitfall
+\(V_{oc}\) grows only logarithmically with light; concentration helps efficiency mainly through \(V_{oc}\), while temperature reduces \(V_{oc}\) by ≈ −2 mV/K (≈ −0.4 %/K for Si modules).
+
+* Explore
+- [[https://www.pveducation.org/pvcdrom/solar-cell-operation/fill-factor][PVEducation: fill factor]]
+- [[https://en.wikipedia.org/wiki/Shockley%E2%80%93Queisser_limit][Shockley–Queisser limit]]

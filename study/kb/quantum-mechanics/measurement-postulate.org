@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       measurement-postulate
+:DOMAIN:   quantum-mechanics
+:AREA:     postulates
+:KIND:     definition
+:REQUIRES: observables-and-spectral-decomposition
+:SEE:      density-operator entanglement-and-bell-inequalities
+:ALIASES:  Born rule, collapse, expectation value, projection postulate, von Neumann measurement
+:END:
+#+title: Measurement: Born rule and collapse
+#+summary: Measuring \(A=\sum_a a P_a\) on \(\ket\psi\) gives \(a\) with probability \(p(a)=\bra\psi P_a\ket\psi\) and leaves the state \(P_a\ket\psi/\sqrt{p(a)}\); the mean is \(\braket{A}=\bra\psi A\ket\psi\) and the spread \(\Delta A^2=\braket{A^2}-\braket{A}^2\).
+
+* Definition
+- *Born rule*: outcome \(a\) has probability \(p(a)=\bra\psi P_a\ket\psi=\sum_{i}|\braket{a,i|\psi}|^2\) (sum over a degenerate eigenspace).
+- *State reduction*: immediately after, the state is \(P_a\ket\psi/\|P_a\ket\psi\|\); repeating the measurement yields \(a\) again.
+- *Expectation value*: \(\braket A=\sum_a a\,p(a)=\bra\psi A\ket\psi\).
+- *Dispersion*: \(\Delta A^2=\braket{(A-\braket A)^2}=\braket{A^2}-\braket A^2\), zero iff \(\ket\psi\) is an eigenket.
+
+* Derivation
+\(\sum_a p(a)=\bra\psi\sum_aP_a\ket\psi=\braket{\psi|\psi}=1\) by completeness, so the Born rule is a probability distribution. And \(\braket A=\sum_a a\bra\psi P_a\ket\psi=\bra\psi(\sum_a aP_a)\ket\psi=\bra\psi A\ket\psi\).
+
+* Worked example
+\(\ket\psi=\ket{\hat n;+}\) with \(\theta=60^\circ\). Measuring \(S_z\): \(p(+)=\cos^2 30^\circ=3/4\), \(p(-)=1/4\), \(\braket{S_z}=\tfrac\hbar2(3/4-1/4)=\tfrac\hbar4=\tfrac\hbar2\cos\theta\). \(\Delta S_z^2=\hbar^2/4-\hbar^2/16=3\hbar^2/16\).
+
+* Engineering applications
+Qubit read-out (dispersive measurement of a transmon, fluorescence of a trapped ion) is a projective measurement repeated many times to estimate \(p(a)\): the number of shots \(N\) gives a statistical error \(\sqrt{p(1-p)/N}\). Quantum key distribution (BB84) relies on the disturbance caused by measuring in the wrong basis.
+
+* Intuition
+The state does not hold a pre-existing value of \(A\); it holds the probabilities. Measurement is an interaction that picks one value and updates the state accordingly.
+
+* Pitfall
+\(\braket A\) need not be an eigenvalue (\(\hbar/4\) above is never measured): it is an average over many identically prepared systems.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Born_rule][Born rule]]
+- [[https://plato.stanford.edu/entries/qt-measurement/][Stanford Encyclopedia: Measurement in quantum theory]]

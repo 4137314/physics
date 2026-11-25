@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       nmos-inverters
+:DOMAIN:   digital-electronics
+:AREA:     inverters
+:KIND:     method
+:REQUIRES: inverter-static-characteristics
+:SEE:      pseudo-nmos-logic cmos-inverter
+:ALIASES:  NMOS inverter, resistive load inverter, saturated load inverter, enhancement load, depletion load inverter, ratioed logic, VOL design, static power, current mirror, diode-connected transistor
+:END:
+#+title: NMOS inverters: resistive, saturated and depletion loads
+#+summary: An NMOS switch with a pull-up load is a *ratioed* gate: \(V_{OL}\) follows from equating the triode switch current with the load current, and static power \(V_{DD}I_{DD}\) is drawn whenever the output is low; resistive loads need large R, saturated (diode-connected) loads lose \(V_{OH}=V_{DD}-V_{TN}\) (with body effect), depletion loads restore \(V_{OH}=V_{DD}\) and give sharper VTCs.
+
+* Method (design for \(V_{OL}\) and power)
+1. Output low: \(I_{DD}=P/V_{DD}\) (static power when low).
+2. Load sets the current at \(v_O=V_{OL}\): resistor \(R=\frac{V_{DD}-V_{OL}}{I_{DD}}\); saturated load \(I=\frac{K_L}2(V_{DD}-V_{OL}-V_{TNL})^2\); depletion load \(I=\frac{K_L}2V_{TNL}^2\) (gate tied to source, \(V_{TNL}<0\)).
+3. Switch in triode with \(V_{GS}=V_{OH}\): \(I_{DD}=K_S\left(V_{OH}-V_{TN}-\frac{V_{OL}}{2}\right)V_{OL}\) → \((W/L)_S\).
+4. Include body effect for loads whose source sits at \(v_O\): \(V_{TNL}=V_{TO}+\gamma(\sqrt{v_O+2\phi_F}-\sqrt{2\phi_F})\).
+
+* Comparison
+| load      | V_OH         | area   | VTC / NM  | note                    |
+|-----------+--------------+--------+-----------+-------------------------|
+| resistor  | V_DD         | huge R | soft      | slow pull-up (RC)       |
+| saturated | V_DD − V_TNL | small  | poor NM_H | no extra implant        |
+| depletion | V_DD         | small  | best NMOS | needs depletion implant |
+
+* Worked example (resistive load)
+\(V_{DD}=2.5\) V, \(V_{TN}=0.6\) V, \(K'_n=100\) µA/V², target \(V_{OL}=0.2\) V and 0.1 mW when low: \(I=40\) µA, \(R=\frac{2.3}{40\ \mu}=57.5\) kΩ; \((W/L)_S=\frac{40}{100\cdot(2.5-0.6-0.1)\cdot0.2}=1.11\).
+
+* Worked example (exam style, saturated mirror)
+\(V_{DD}=5\) V, \(V_{TN}=0.6\) V, \(K'_n=100\) µA/V², \(I_{in}=200\) µA into diode-connected \(M_1\) (\(W/L=4/1\)); \(M_2\) (4/1) mirrors it; \(M_2\) is loaded by \(R=1\) kΩ in series with diode-connected \(M_3\) (1/2) to \(V_{DD}\). \(M_1\): \((V_{GS}-0.6)^2=\frac{2\cdot200}{100\cdot4}=1\Rightarrow V_{GS}=1.6\) V; \(I_{D2}=200\) µA. \(M_3\): \((V_{GS3}-0.6)^2=\frac{2\cdot200}{100\cdot0.5}=8\Rightarrow V_{GS3}=3.43\) V. \(V_{OUT}=5-0.2-3.43=1.37\) V; \(M_2\) saturated since \(V_{DS2}=1.37\ge V_{GS2}-V_{TN}=1.0\). Static power \(5\cdot400\) µA = 2 mW.
+
+* Engineering applications
+Historical NMOS microprocessors (6800, Z80), today's pseudo-NMOS and current-mode logic, analog current mirrors and active loads (same diode-connected devices), sense amplifiers.
+
+* Pitfall
+In ratioed logic \(V_{OL}\) depends on the *ratio* of switch to load strength; making both transistors bigger by the same factor does not lower \(V_{OL}\), it only increases power.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Depletion-load_NMOS_logic][Depletion-load NMOS logic]]

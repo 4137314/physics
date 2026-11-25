@@ -1,0 +1,153 @@
+:PROPERTIES:
+:ID:       exam-practice-optoelectronics-syllabus
+:DOMAIN:   revision
+:AREA:     exam-practice
+:KIND:     example
+:REQUIRES: exam-basics-of-optoelectronics optical-link-design single-mode-laser-diodes avalanche-photodiodes thin-film-optics-and-coatings polarization-and-birefringence
+:SEE:      exam-practice-fields-and-optoelectronics optoelectronics
+:ALIASES:  optoelectronics problems, optoelectronics exercises full syllabus, esercizi optoelettronica, opto exam training, Kasap style problems, optoelectronics problem set
+:END:
+#+title: Exam practice: optoelectronics over the whole programme (30 solved problems)
+#+summary: Thirty multi-part problems in the format of the written exam, one or more for every chapter — waves and Fresnel, coatings, interferometers and gratings, coherence, waveguides and fibres, link budgets, couplers, OTDR and sensors, LEDs, quantum wells, gas and semiconductor lasers, DFB and VCSEL, EDFA, pin and APD receivers, photoconductors, BER, solar cells, image sensors, polarisation and Pockels cells — each with a full numerical solution.
+
+* How to use this set
+Do each problem with only the course formula sheet, then compare. The past papers themselves are in [[id:exam-basics-of-optoelectronics][the solved exam papers]]; this set covers the parts of the programme that the papers have not yet asked, so that no question is new on the day. Constants: \(h=6.626\times10^{-34}\) J s, \(k_B=1.381\times10^{-23}\) J/K, \(q=1.602\times10^{-19}\) C, \(c=2.998\times10^8\) m/s, \(hc=1.24\) eV µm.
+
+* Chapter 1: waves, interfaces, interference
+
+** Problem 1 — intensity and field
+A 1 mW He–Ne beam is a uniform disc of 1 mm diameter. (a) Intensity. (b) Field amplitude in air and in glass (\(n=1.5\)). (c) A 100 W isotropic lamp: intensity and field at 1 m.
+*Solution.* (a) \(I=\frac{10^{-3}}{\pi(5\times10^{-4})^2}=1.27\) kW/m². (b) \(I=\frac12c\epsilon_0nE_0^2\): \(E_0=979\) V/m in air, 800 V/m in glass. (c) \(I=\frac{100}{4\pi}=7.96\) W/m², \(E_0=77\) V/m: the laser is 160× more intense with 10⁵× less power.
+
+** Problem 2 — Fresnel at 45°
+Light in air hits glass (\(n=1.5\)) at 45°. (a) Refraction angle. (b) \(r_\perp\), \(r_\parallel\), \(R_\perp\), \(R_\parallel\). (c) Reflectance for unpolarised light. (d) Brewster angle and the polarisation of the reflected beam there.
+*Solution.* (a) \(\theta_t=28.1^\circ\). (b) \(r_\perp=-0.303\), \(r_\parallel=0.092\); \(R_\perp=9.2\%\), \(R_\parallel=0.85\%\) (at 45°, \(R_\parallel=R_\perp^2\) exactly). (c) 5.0%. (d) \(\theta_B=\arctan1.5=56.3^\circ\): reflected light is purely \(\perp\) (s) polarised ([[id:reflection-and-transmission-at-interfaces][Fresnel]]).
+
+** Problem 3 — fibre guiding by TIR
+Core 1.47, cladding 1.46, 1310 nm. (a) Critical angle at the core–cladding interface. (b) NA and acceptance half-angle in air. (c) Penetration depth for a ray at 85° to the normal. (d) Why must the cladding be ≥ 20 µm thick?
+*Solution.* (a) \(\theta_c=83.3^\circ\). (b) NA \(=0.171\), \(\theta_a=9.9^\circ\). (c) \(\delta=1.8\) µm. (d) The evanescent field must decay completely (≫ δ) before the coating, which absorbs ([[id:total-internal-reflection-and-evanescent-waves][TIR]]).
+
+** Problem 4 — VCSEL at 980 nm
+GaAs (\(n=3.52\)) / AlAs (2.95) mirrors, light incident from a GaAs cavity onto a stack ending in GaAs. (a) Layer thicknesses. (b) Pairs needed for \(R\ge99.5\%\). (c) Stop-band width. (d) The top surface (GaAs–air) must be AR-coated: ideal index and thickness.
+*Solution.* (a) \(\lambda/4n\): 69.6 nm and 83.1 nm. (b) With \(n_0=n_3\): \(R=\left(\frac{1-(n_L/n_H)^{2N}}{1+(n_L/n_H)^{2N}}\right)^2\): 98.0% (15), 99.66% (20), 99.94% (25) → 20 pairs. (c) \(\frac4\pi\arcsin\frac{0.57}{6.47}\cdot980=110\) nm. (d) \(\sqrt{3.52}=1.88\), \(d=131\) nm ([[id:thin-film-optics-and-coatings][thin films]]).
+
+** Problem 5 — complex index
+A semiconductor has \(n=3.5\), \(K=0.2\) at 600 nm. (a) \(\alpha\). (b) Absorption depth. (c) Normal-incidence reflectance. (d) Transmission through a 2 µm free-standing film (ignore multiple reflections).
+*Solution.* (a) \(\alpha=\frac{4\pi K}{\lambda}=4.2\times10^4\) cm\(^{-1}\). (b) 0.24 µm. (c) \(R=\frac{2.5^2+0.04}{4.5^2+0.04}=31\%\). (d) \((1-R)^2e^{-\alpha d}=0.476\cdot2.3\times10^{-4}=1.1\times10^{-4}\) ([[id:complex-refractive-index-and-absorption][complex index]]).
+
+** Problem 6 — Fabry–Perot filter
+Air-spaced, \(L=2\) mm, \(R=0.95\), 1550 nm. (a) FSR in GHz and nm. (b) Finesse and passband width. (c) \(Q\) and photon lifetime. (d) Tilting it by 2° shifts the resonances: by how much?
+*Solution.* (a) 75 GHz, 0.60 nm. (b) \(\mathcal F=61.2\), 1.22 GHz. (c) \(Q=\nu/\delta\nu=1.6\times10^5\), \(\tau_{ph}=Q/2\pi\nu=130\) ps. (d) Resonance \(2nL\cos\theta=m\lambda\): \(\Delta\lambda=\lambda(1-\cos2^\circ)=0.94\) nm, more than one FSR: angle-tuned filters work this way ([[id:interference-and-fabry-perot][Fabry–Perot]]).
+
+** Problem 7 — grating spectrometer
+600 lines/mm grating at normal incidence, 1550 nm, focusing lens \(f=200\) mm. (a) First-order angle; is there a second order? (b) Lines to illuminate to resolve 0.1 nm, and beam width. (c) Linear dispersion on the detector.
+*Solution.* (a) \(\sin\theta_1=0.93\), \(\theta_1=68.4^\circ\); \(2\lambda/d=1.86>1\): no second order. (b) \(N=\lambda/\Delta\lambda=15\,500\) lines → 25.8 mm. (c) \(f\frac{\dd\theta}{\dd\lambda}=\frac{f}{d\cos\theta}=0.33\) mm/nm ([[id:diffraction-and-gratings][gratings]]).
+
+** Problem 8 — coherence and OCT
+An 840 nm superluminescent diode has \(\Delta\lambda=50\) nm. (a) Coherence length. (b) OCT axial resolution \(\frac{2\ln2}{\pi}\frac{\lambda^2}{\Delta\lambda}\). (c) Resolution of a 1310 nm source with 100 nm.
+*Solution.* (a) \(\lambda^2/\Delta\lambda=14\) µm. (b) 6.2 µm. (c) 7.6 µm, with deeper penetration in tissue ([[id:coherence-of-light][coherence]]).
+
+* Chapter 2: waveguides, fibres, systems
+
+** Problem 9 — semiconductor slab guide
+\(n_1=3.5\), \(n_2=3.2\), 1550 nm. (a) NA. (b) Number of TE modes for thickness 0.2, 0.5 and 1 µm. (c) Maximum single-mode thickness.
+*Solution.* (a) \(\sqrt{12.25-10.24}=1.42\) (> 1: the guide confines very strongly). (b) \(V=\frac{\pi(2a)}{\lambda}\mathrm{NA}\) = 0.57, 1.44, 2.87 → \(M=\mathrm{Int}(2V/\pi)+1=1\), 1, 2. (c) \(2a<\lambda/2\mathrm{NA}=0.55\) µm ([[id:dielectric-slab-waveguide][slab]]).
+
+** Problem 10 — step vs graded index over 2 km
+\(n_1=1.46\), \(\Delta=1.2\%\). (a) Step index: \(\Delta\tau\), \(\sigma\), \(B_{RZ}\). (b) Graded: \(\sigma_{inter}\). (c) With an 850 nm LED (40 nm FWHM, \(|D|=100\) ps/(nm km)): total \(\sigma\), \(B_{NRZ}\). (d) With a 1 nm laser.
+*Solution.* (a) 117 ns, \(\sigma=33.7\) ns, 7.4 Mb/s. (b) 40 ps. (c) \(\sigma_{intra}=100\cdot2\cdot17=3.40\) ns ≫ 40 ps: 147 Mb/s. (d) \(\sigma_{intra}=85\) ps, total 94 ps → 5.3 Gb/s ([[id:optical-link-design][link design]]).
+
+** Problem 11 — single-mode fibre and splicing
+\(a=4.5\) µm, NA = 0.12. (a) \(\lambda_c\). (b) \(V\) and MFD (Marcuse) at 1310 and 1550 nm. (c) Splice loss between fibres with MFD 10.4 and 9.2 µm: \(-20\log\frac{2w_1w_2}{w_1^2+w_2^2}\). (d) Loss of a 1 µm lateral offset between identical fibres, \(e^{-(d/w)^2}\), \(w=5.2\) µm.
+*Solution.* (a) 1.41 µm (single mode at both windows only above it: at 1310 nm \(V=2.59\) — slightly multimode). (b) \(V=2.59\), MFD 9.4 µm; \(V=2.19\), MFD 10.6 µm. (c) 0.065 dB. (d) 0.16 dB: alignment matters more than MFD mismatch ([[id:optical-fibers][fibres]]).
+
+** Problem 12 — 10 Gb/s link
+DFB at 1550 nm, +3 dBm; receiver −30 dBm; 80 km at 0.22 dB/km, a splice every 5 km (0.05 dB), two connectors (0.5 dB), \(D=17\), spectral width (modulated) 0.1 nm. (a) Received power and margin. (b) Longest link with 3 dB margin. (c) Dispersion check (\(\Delta\tau<T_b\)). (d) Fixes.
+*Solution.* (a) Loss 19.4 dB → −16.4 dBm; margin 13.6 dB. (b) \((33-1-3)/0.23=126\) km. (c) \(17\cdot80\cdot0.1=136\) ps > 100 ps: fails. (d) DCF or chirped FBG; or 1310 nm; or coherent DSP ([[id:fiber-dispersion-and-attenuation][dispersion]]).
+
+** Problem 13 — FBG strain gauge
+Two FBGs at 1550 nm: G1 bonded to a structure, G2 free beside it. G2 shifts +0.22 nm, G1 +0.85 nm. (\(1.21\) pm/µε, \(11.2\) pm/K.) (a) Temperature change. (b) Strain. (c) Grating period for \(\bar n=1.447\).
+*Solution.* (a) \(220/11.2=19.6\) K. (b) \((850-220)/1.21=521\) µε. (c) 536 nm ([[id:fiber-optic-sensors][sensors]]).
+
+** Problem 14 — OTDR
+\(n=1.468\), 50 ns pulses. (a) Distance of an event 98 µs after the pulse. (b) Resolution. (c) The one-way trace drops from −18.0 to −24.6 dB over 30 km with one 0.4 dB step: fibre loss.
+*Solution.* (a) 10.0 km. (b) 5.1 m. (c) \((6.6-0.4)/30=0.21\) dB/km ([[id:fiber-scattering-and-otdr][OTDR]]).
+
+** Problem 15 — PON
+OLT +4 dBm; 1×64 splitter with 2 dB excess; 15 km at 0.35 dB/km; two connectors 0.5 dB. (a) Splitting loss. (b) Power at each ONU. (c) Is a −28 dBm receiver enough with 3 dB margin?
+*Solution.* (a) 18.1 dB. (b) Total 26.3 dB → −22.3 dBm. (c) Margin 5.7 dB: yes ([[id:fiber-couplers][couplers]]).
+
+* Chapter 3: semiconductors and LEDs
+
+** Problem 16 — red AlGaInP LED
+\(E_g=1.97\) eV, 300 K; 10 mW at 30 mA and 2.1 V. (a) Peak wavelength and width. (b) EQE and PCE. (c) Luminous flux and efficacy (\(V\approx0.29\)).
+*Solution.* (a) \(h\nu=E_g+k_BT/2=1.983\) eV → 625 nm; \(\Delta\lambda=\frac{\lambda^2}{hc}3k_BT=24\) nm. (b) \(\eta_{EQE}=\frac{10/1.983}{30}=16.8\%\); PCE \(=15.9\%\). (c) \(683\cdot0.29\cdot0.01=1.98\) lm; 31 lm/W ([[id:led-efficiency-and-photometry][LED efficiency]]).
+
+** Problem 17 — GaAs quantum well
+8 nm GaAs well, infinite-barrier model, \(m_e^*=0.067m_0\), \(m_{hh}^*=0.5m_0\). (a) \(E_{1e}\), \(E_{1h}\). (b) Emission wavelength vs bulk (\(E_g=1.424\) eV). (c) Spacing \(E_{2e}-E_{1e}\): why is only \(n=1\) populated?
+*Solution.* (a) 87.7 and 11.8 meV. (b) 814 nm vs 871 nm. (c) 263 meV ≫ \(k_BT\): carriers fill only the lowest subband ([[id:single-mode-laser-diodes][QW lasers]]).
+
+* Chapter 4: lasers and amplifiers
+
+** Problem 18 — ruby pump threshold
+Ruby rod 6 mm × 5 cm, Cr³⁺ \(1.58\times10^{19}\) cm\(^{-3}\), pump band 2.25 eV, \(\tau_{sp}=3\) ms. (a) Minimum absorbed pump power. (b) Why would a four-level medium need far less?
+*Solution.* (a) \(V=1.41\) cm³: \(P=V\frac{N_0}{2}\frac{h\nu_{13}}{\tau}=1.34\) kW. (b) The lower laser level is empty, so inversion starts with the first excited ions ([[id:gas-and-solid-state-lasers][three- and four-level lasers]]).
+
+** Problem 19 — He–Ne laser
+50 cm cavity, \(R_1=0.999\), \(R_2=0.98\), gas at 420 K, Ne mass 20.18 u, \(\tau_{sp}=300\) ns. (a) Doppler FWHM, mode spacing, number of modes. (b) \(g_{th}\), photon lifetime, passive cavity linewidth. (c) Threshold inversion.
+*Solution.* (a) 1.55 GHz, 300 MHz, ≈ 5. (b) \(g_{th}=\frac{1}{2L}\ln\frac{1}{R_1R_2}=0.0212\) m\(^{-1}\); \(\tau_{ph}=157\) ns; \(\frac{1}{2\pi\tau_{ph}}=1.0\) MHz. (c) \(\Delta N_{th}=g_{th}\frac{8\pi\nu^2\tau_{sp}\Delta\nu}{c^2}=6.2\times10^{14}\) m\(^{-3}\).
+
+** Problem 20 — laser diode with confinement factor
+\(L=300\) µm, \(R=0.32\), \(\alpha_s=15\) cm\(^{-1}\), \(\Gamma=0.3\), gain \(g=a(n-n_{tr})\), \(a=2.5\times10^{-16}\) cm², \(n_{tr}=10^{18}\) cm\(^{-3}\), \(d=0.1\) µm, \(W=3\) µm, \(B=10^{-10}\) cm³/s, \(\eta_i=0.85\), 1310 nm. (a) Mirror loss and material threshold gain. (b) \(n_{th}\), \(J_{th}\), \(I_{th}\). (c) \(\eta_d\), slope, power per facet 30 mA above threshold.
+*Solution.* (a) \(\alpha_m=38.0\) cm\(^{-1}\); \(g_{th}=\frac{15+38}{0.3}=177\) cm\(^{-1}\). (b) \(n_{th}=10^{18}+\frac{177}{2.5\times10^{-16}}=1.71\times10^{18}\) cm\(^{-3}\); \(\tau=\frac{1}{Bn_{th}}=5.9\) ns; \(J_{th}=\frac{qdn_{th}}{\tau}=466\) A/cm²; \(I_{th}=4.2\) mA. (c) \(\eta_d=0.85\cdot\frac{38}{53}=0.61\); slope \(0.61\cdot0.947=0.58\) W/A (both facets); 8.7 mW per facet ([[id:semiconductor-laser-diodes][laser diodes]]).
+
+** Problem 21 — DFB and VCSEL
+(a) First- and second-order grating periods for a 1550 nm DFB with \(\bar n=3.25\). (b) Uniform grating, \(L=500\) µm: offset of the two lowest modes from \(\lambda_B\). (c) A one-wavelength VCSEL cavity at 980 nm (\(n=3.52\)): length and mode spacing.
+*Solution.* (a) 238 and 477 nm. (b) \(\pm\frac{\lambda_B^2}{2\bar nL}=\pm0.74\) nm. (c) \(L=\lambda/n=278\) nm; \(\Delta\lambda_m=\frac{\lambda^2}{2nL}=\lambda/2=490\) nm: only one mode under the gain ([[id:single-mode-laser-diodes][DFB and VCSEL]]).
+
+** Problem 22 — EDFA booster
+Input −25 dBm, gain 25 dB, 980 nm pump. (a) Output. (b) Minimum pump. (c) Why does a 1480 nm pump give higher efficiency but more noise?
+*Solution.* (a) 0 dBm = 1 mW. (b) \(1/0.632=1.6\) mW absorbed (quantum limit). (c) Smaller quantum defect (\(1480/1550=95\%\)), but pumping inside the same band cannot fully invert the medium, so \(n_{sp}\) and NF rise ([[id:optical-amplifiers][EDFA]]).
+
+* Chapter 5: detectors
+
+** Problem 23 — InGaAs pin bandwidth
+\(\eta=0.8\) at 1550 nm, i-layer 2 µm, hole drift velocity \(6\times10^4\) m/s, diameter 50 µm, \(\epsilon_r=13.9\), 50 Ω load. (a) Responsivity. (b) Transit time and transit-limited bandwidth (\(0.45/t_{tr}\)). (c) Capacitance and RC bandwidth. (d) Overall bandwidth.
+*Solution.* (a) 1.00 A/W. (b) 33 ps, 13.5 GHz. (c) \(C=121\) fF, 26 GHz. (d) \(\left(13.5^{-2}+26^{-2}\right)^{-1/2}=12\) GHz ([[id:photodiode-circuits-and-bandwidth][speed]]).
+
+** Problem 24 — Si APD receiver
+\(V_{br}=60\) V, \(n=3\), bias 57 V; \(\eta=0.8\) at 850 nm; \(k=0.02\); 50 nW; \(B=200\) MHz; 10 kΩ; primary dark 0.5 nA. (a) \(M\), responsivity. (b) \(F\). (c) Shot and thermal noise; SNR. (d) Same diode as pin.
+*Solution.* (a) \(M=\frac{1}{1-0.95^3}=7.0\); \(\mathcal R=0.548\cdot7.0=3.84\) A/W. (b) \(F=1.96\). (c) \(I_{ph0}=27.4\) nA; shot 13.1 nA, thermal 18.2 nA; SNR \(=\frac{(192)^2}{13.1^2+18.2^2}=73\) (18.7 dB). (d) 2.3 (3.5 dB): the APD gains 15 dB ([[id:avalanche-photodiodes][APDs]]).
+
+** Problem 25 — GaAs photoconductor
+50 µm gap, \(\mu_e=0.85\) m²/(V s), 5 V, \(\tau=1\) µs. (a) Transit time, gain. (b) Bandwidth. (c) What limits gain in practice?
+*Solution.* (a) 0.59 ns, \(G=1700\). (b) ≈ 160 kHz. (c) Space charge, contact injection and velocity saturation; and the gain–bandwidth product is fixed by \(\tau_t\) ([[id:photoconductors-and-phototransistors][photoconductors]]).
+
+** Problem 26 — sensitivity at a target BER
+pin, \(\mathcal R=0.9\) A/W, thermal-noise-limited front end 500 Ω, noise bandwidth 7.5 GHz (10 Gb/s), OOK with \(Q=6\). (a) Noise current. (b) Required "1" photocurrent with \(\sigma_0=\sigma_1\), threshold midway. (c) Average received power in dBm. (d) BER at \(Q=6\) and \(Q=7\).
+*Solution.* (a) 0.50 µA. (b) \(I_1=2Q\sigma=6.0\) µA. (c) Average \(I_1/2\mathcal R=3.3\) µW = −24.8 dBm. (d) \(10^{-9}\), \(1.3\times10^{-12}\) ([[id:noise-in-photodetectors][noise]]).
+
+** Problem 27 — solar cell
+100 cm², \(I_{sc}=3.5\) A at 1 kW/m², \(I_0=2\times10^{-10}\) A, ideality 1.2, 300 K. (a) \(V_{oc}\). (b) Maximum power point, FF, efficiency. (c) Approximate efficiency with \(R_s=0.05\) Ω.
+*Solution.* (a) \(1.2\cdot0.02586\ln(1.75\times10^{10})=0.73\) V. (b) \(V_m=0.637\) V, \(I_m=3.34\) A, 2.12 W; FF = 0.83; 21.2%. (c) \(I_m^2R_s=0.56\) W lost: ≈ 15.7% — series resistance is the main enemy of large cells ([[id:solar-cells][solar cells]]).
+
+** Problem 28 — CMOS pixel
+2 µm pixel, QE 0.65 at 550 nm, irradiance 0.05 W/m², 20 ms exposure, full well 9000 e⁻, read noise 2.5 e⁻. (a) Electrons collected. (b) SNR. (c) Dynamic range. (d) Exposure that saturates.
+*Solution.* (a) \(5.5\times10^5\) photons/s → 7200 e⁻. (b) \(\frac{7200}{\sqrt{7200+6.25}}=85\) (38.6 dB). (c) 71 dB. (d) 25 ms ([[id:image-sensors][image sensors]]).
+
+* Chapter 6: polarisation and modulation
+
+** Problem 29 — polarisers, plates, isolator
+(a) Unpolarised light through a polariser and an analyser at 30°: fraction transmitted. (b) Quartz zero-order quarter-wave plate at 1064 nm (\(\Delta n=0.0092\)). (c) Faraday rotator for an isolator in TGG (\(\mathcal V=40\) rad T\(^{-1}\)m\(^{-1}\) at 1064 nm, 1 T).
+*Solution.* (a) \(\frac12\cos^230^\circ=37.5\%\). (b) 28.9 µm. (c) \(L=\frac{\pi/4}{40}=19.6\) mm ([[id:polarization-and-birefringence][polarisation]]).
+
+** Problem 30 — Pockels cell Q-switch
+LiNbO\(_3\) (\(n_e=2.2\), \(r_{33}=30.9\) pm/V) at 1064 nm. (a) Half-wave voltage of a transverse cell, gap 1 mm, length 2 cm. (b) Longitudinal cell. (c) How does the cell Q-switch a laser together with a polariser?
+*Solution.* (a) \(V_\pi=\frac{\lambda d}{n_e^3r_{33}L}=162\) V. (b) \(\frac{\lambda}{2n_e^3r_{33}}=1.6\) kV, independent of size. (c) At the quarter-wave voltage, two passes rotate the polarisation by 90° and the polariser ejects the light (cavity closed); switching the voltage off opens the cavity ([[id:electro-optic-modulators][Pockels effect]], [[id:line-broadening-and-pulsed-lasers][Q-switching]]).
+
+* Pitfall
+Most wrong answers in this set come from units: ps/(nm km) with km and nm, cm\(^{-1}\) vs m\(^{-1}\) in gain and absorption, dB vs dBm, and the factor 2 between intensity and field coefficients.
+
+* Explore
+- [[https://www.rp-photonics.com/encyclopedia.html][RP Photonics Encyclopedia]]
+- [[https://en.wikipedia.org/wiki/Optoelectronics][Optoelectronics]]

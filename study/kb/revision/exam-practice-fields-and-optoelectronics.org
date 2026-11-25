@@ -1,0 +1,61 @@
+:PROPERTIES:
+:ID:       exam-practice-fields-and-optoelectronics
+:DOMAIN:   revision
+:AREA:     exam-practice
+:KIND:     example
+:REQUIRES: formula-sheet-fields-and-optics antennas-and-radiation solar-cells optical-amplifiers ring-resonators electro-optic-modulators
+:SEE:      exam-practice-circuits
+:ALIASES:  optoelectronics exercises, electromagnetics exercises, Kasap problems, photonics exercises, fields exam problems
+:END:
+#+title: Exam practice: fields, optoelectronics and photonics (solved)
+#+summary: Ten problems in the style of Kasap's end-of-chapter exercises and engineering-electromagnetics exams, with numerical solutions: waves in lossy media, Fresnel, lines, Gaussian beams, Fabry–Perot, fibres, LEDs, lasers, photodiodes and a ring resonator.
+
+* Problem 1 — wave in a weakly conducting medium
+Show that for small \(\sigma\) the field attenuation is \(\alpha=\frac{\sigma}{2cn\epsilon_0}\); evaluate for glass with \(\sigma=10^{-10}\) S/m, \(n=1.5\).
+** Solution
+Low-loss expansion: \(\gamma=j\omega\sqrt{\mu\epsilon}\sqrt{1-j\frac{\sigma}{\omega\epsilon}}\approx j\beta+\frac\sigma2\sqrt{\frac\mu\epsilon}\); \(\sqrt{\mu_0/\epsilon}=\frac{\eta_0}{n}=\frac{1}{cn\epsilon_0}\). Numerically \(\alpha=\frac{10^{-10}}{2\cdot3\times10^8\cdot1.5\cdot8.85\times10^{-12}}=1.3\times10^{-8}\) m\(^{-1}\): negligible. Intensity attenuation is \(2\alpha\).
+
+* Problem 2 — Fresnel and Brewster
+Light from glass (\(n=1.5\)) to air: critical angle; Brewster angle; reflectance at normal incidence.
+** Solution
+\(\theta_c=\arcsin(1/1.5)=41.8^\circ\); \(\theta_B=\arctan(1/1.5)=33.7^\circ\); \(R=(0.5/2.5)^2=4\%\).
+
+* Problem 3 — transmission line
+A 75 Ω line, 0.3λ long, terminated in 50 Ω. \(Z_{in}\), \(\Gamma_L\), VSWR.
+** Solution
+\(\tan(2\pi\cdot0.3)=\tan108^\circ=-3.08\). \(Z_{in}=75\frac{50+j75(-3.08)}{75+j50(-3.08)}=75\frac{50-j231}{75-j154}\). Divide: \(\frac{(50-j231)(75+j154)}{75^2+154^2}=\frac{3750+35574+j(7700-17325)}{29341}=1.34-j0.33\); \(Z_{in}=100.6-j24.6\) Ω. \(\Gamma_L=-0.2\), VSWR = 1.5.
+
+* Problem 4 — Gaussian beam
+HeNe, 633 nm, waist 0.4 mm: Rayleigh range, divergence, width at 10 m.
+** Solution
+\(z_0=0.79\) m, \(2\theta=1.0\) mrad, \(2w(10\text{ m})=10.2\) mm ([[id:gaussian-beams][Gaussian beams]]).
+
+* Problem 5 — Fabry–Perot
+Etalon 1 mm thick glass (\(n=1.5\)), \(R=0.9\), at 1550 nm: FSR (GHz and nm), finesse, linewidth.
+** Solution
+FSR \(=\frac{c}{2nL}=100\) GHz \(=0.80\) nm; \(\mathcal F=\frac{\pi\sqrt{0.9}}{0.1}=29.8\); linewidth 3.4 GHz (27 pm).
+
+* Problem 6 — fibre
+Step-index fibre \(n_1=1.458\), \(n_2=1.453\), \(a=4\) µm. NA, cutoff wavelength, is it single mode at 1310 nm?
+** Solution
+\(\mathrm{NA}=\sqrt{1.458^2-1.453^2}=\sqrt{0.01456}=0.121\). \(\lambda_c=\frac{2\pi\cdot4\cdot0.121}{2.405}=1.26\) µm: single mode at 1310 nm (\(V=2.32\)).
+
+* Problem 7 — LED
+GaAs LED, 870 nm, external efficiency 2%, 30 mA. Optical power; how many photons per second?
+** Solution
+\(P=0.02\cdot1.425\cdot0.03=0.86\) mW; photons \(=P/h\nu=0.86\times10^{-3}/(2.28\times10^{-19})=3.8\times10^{15}\) s\(^{-1}\).
+
+* Problem 8 — laser threshold and output
+FP laser: \(L=250\) µm, \(R_1=R_2=0.32\), \(\alpha_i=20\) cm\(^{-1}\), \(\Gamma=0.3\). Threshold modal gain; with \(\eta_i=0.9\), slope efficiency at 1310 nm.
+** Solution
+Mirror loss \(\frac{1}{0.05}\ln\frac1{0.1024}=45.6\) cm\(^{-1}\); \(\Gamma g_{th}=65.6\) → \(g_{th}=219\) cm\(^{-1}\) material gain. \(\eta_d=0.9\cdot\frac{45.6}{65.6}=0.63\); slope \(=0.63\cdot0.946\) V \(=0.59\) W/A (both facets).
+
+* Problem 9 — photodiode receiver
+InGaAs pin, \(\eta=0.75\) at 1550 nm, 10 µW incident, 1 GHz bandwidth, \(R_L=50\) Ω, 300 K. Photocurrent, shot and thermal noise, SNR.
+** Solution
+\(\mathcal R=0.75\cdot1.55/1.24=0.94\) A/W, \(I=9.4\) µA. Shot noise \(\sqrt{2qIB}=\sqrt{2\cdot1.6\times10^{-19}\cdot9.4\times10^{-6}\cdot10^9}=55\) nA; thermal \(\sqrt{4k_BTB/R_L}=\sqrt{4\cdot4.14\times10^{-21}\cdot10^9/50}=0.58\) µA, which dominates. SNR \(=\frac{(9.4)^2}{0.58^2+0.055^2}\approx2.6\times10^2\) (24 dB). With a transimpedance amplifier of \(R_f=5\) kΩ the thermal term falls to 58 nA, comparable to shot noise, and SNR \(\approx1.4\times10^4\) (41 dB): receivers use TIAs, not 50 Ω loads ([[id:noise-in-photodetectors][noise]]).
+
+* Problem 10 — ring resonator
+Silicon ring, radius 5 µm, \(n_g=4.3\), at 1550 nm. FSR? For critical coupling with loss 5 dB/cm, Q?
+** Solution
+\(L=31.4\) µm, FSR \(=\frac{1.55^2}{4.3\cdot31.4}\) µm \(=17.8\) nm. Round-trip power loss \(5\cdot0.00314=0.0157\) dB → \(a^2=0.99639\), \(a=0.99819\). FWHM \(=\frac{(1-a^2)\lambda^2}{\pi n_gLa}=\frac{0.00361\cdot2.4025}{\pi\cdot4.3\cdot31.4\cdot0.998}\) µm \(=20.5\) pm, \(Q\approx7.6\times10^4\).

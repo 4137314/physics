@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       quantum-optics
+:DOMAIN:   quantum-optics
+:AREA:     quantum-optics
+:KIND:     overview
+:REQUIRES: quantum-mechanics
+:SEE:      optoelectronics quantum-electrodynamics
+:ALIASES:  quantum optics, photon, Walls Milburn
+:END:
+#+title: Quantum optics: the map of the subject
+#+summary: Each mode of the electromagnetic field is a harmonic oscillator; photons are its quanta, light states (Fock, coherent, squeezed, thermal) are distinguished by their correlation functions \(g^{(1)},g^{(2)}\), and atoms couple to modes through the Jaynes–Cummings Hamiltonian and decay through master equations.
+
+* Overview
+| block           | notes                                                  |
+|-----------------+--------------------------------------------------------|
+| field           | quantisation of the free field, Fock states            |
+| states of light | coherent, squeezed, thermal                            |
+| coherence       | Glauber correlations, beam splitter and HOM            |
+| light–matter    | Jaynes–Cummings, spontaneous emission, master equation |
+
+* Picture
+\begin{tikzpicture}[node distance=1.4cm, every node/.style={draw, rounded corners, font=\small, align=center}]
+\node (ho) {harmonic\\oscillator};
+\node (fq) [right=of ho] {field\\quantisation};
+\node (st) [right=of fq] {Fock, coherent,\\squeezed};
+\node (jc) [below=of fq] {Jaynes--Cummings};
+\node (me) [right=of jc] {master equation,\\laser};
+\draw[-{Latex}] (ho)--(fq); \draw[-{Latex}] (fq)--(st); \draw[-{Latex}] (fq)--(jc); \draw[-{Latex}] (jc)--(me);
+\end{tikzpicture}
+
+* Engineering applications
+Single-photon sources and detectors for quantum communication, squeezed light in gravitational-wave detectors, cavity and circuit QED for quantum computing, laser linewidth and noise in optical communications ([[id:noise-in-photodetectors][shot noise]]).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Quantum_optics][Quantum optics]]
+- [[https://ocw.mit.edu/courses/6-974-fundamentals-of-photonics-quantum-electronics-spring-2006/][MIT 6.974 Fundamentals of photonics: quantum electronics]]

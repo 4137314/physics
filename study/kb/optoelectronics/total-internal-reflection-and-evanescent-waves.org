@@ -1,0 +1,60 @@
+:PROPERTIES:
+:ID:       total-internal-reflection-and-evanescent-waves
+:DOMAIN:   optoelectronics
+:AREA:     wave-optics
+:KIND:     theorem
+:REQUIRES: reflection-and-transmission-at-interfaces plane-waves-in-media
+:SEE:      dielectric-slab-waveguide optical-fibers directional-couplers thin-film-optics-and-coatings
+:ALIASES:  total internal reflection, TIR, critical angle, evanescent wave, penetration depth, Goos-Hanchen shift, frustrated total internal reflection, FTIR, optical tunneling, beam splitter cube, lateral displacement, prism, phase change on reflection, Snell's law
+:END:
+#+title: Total internal reflection, evanescent waves and optical tunnelling
+#+summary: Going from \(n_1\) to \(n_2<n_1\) beyond \(\sin\theta_c=n_2/n_1\) all the power is reflected with a polarisation-dependent phase shift \(\tan\frac{\phi_\perp}{2}=\frac{\sqrt{\sin^2\theta_i-n^2}}{\cos\theta_i}\), \(\tan\frac{\phi_\parallel}{2}=\frac{\sqrt{\sin^2\theta_i-n^2}}{n^2\cos\theta_i}\) (\(n=n_2/n_1\)); a non-propagating field decays into medium 2 as \(e^{-\alpha_2y}\) with \(\alpha_2=\frac{2\pi n_2}{\lambda}\sqrt{(n_1/n_2)^2\sin^2\theta_i-1}\), shifts the reflected beam (Goos–Hänchen) and couples power across a thin gap (frustrated TIR).
+
+* Statement
+- *Snell*: phase matching along the interface, \(n_1\sin\theta_i=n_2\sin\theta_t\). For \(n_1>n_2\) the transmitted angle reaches \(90^\circ\) at the critical angle \(\theta_c=\arcsin(n_2/n_1)\).
+- *Beyond* \(\theta_c\): \(\sin\theta_t>1\), so \(\cos\theta_t=-j\sqrt{\sin^2\theta_t-1}\) is imaginary. The Fresnel coefficients ([[id:reflection-and-transmission-at-interfaces][Fresnel equations]]) become ratios of complex conjugates, \(|r_\perp|=|r_\parallel|=1\): reflection is total, only the phase changes.
+- *Evanescent field* in medium 2: \(E_t\propto e^{-\alpha_2y}\,e^{j(\omega t-k_{z}z)}\) with \(k_z=k_1\sin\theta_i\): it travels along the interface but carries no average power across it. Penetration depth \(\delta=1/\alpha_2\), a fraction of a wavelength except near \(\theta_c\).
+
+* Derivation of the phase shift
+With \(n=n_2/n_1\) and Snell, \(n\cos\theta_t=\sqrt{n^2-\sin^2\theta_i}=-j\sqrt{\sin^2\theta_i-n^2}\). For \(\perp\) polarisation \(r_\perp=\frac{\cos\theta_i-n\cos\theta_t}{\cos\theta_i+n\cos\theta_t}=\frac{\cos\theta_i+jb}{\cos\theta_i-jb}\), \(b=\sqrt{\sin^2\theta_i-n^2}\). Numerator and denominator are conjugates, so \(|r_\perp|=1\) and the phase is twice the argument of the numerator: \(\tan\frac{\phi_\perp}2=\frac{b}{\cos\theta_i}\). The same steps with \(r_\parallel\) bring a factor \(n^2\) under \(\cos\theta_i\). The phase grows from 0 at \(\theta_c\) to \(\pi\) at grazing incidence; \(\phi_\parallel\ne\phi_\perp\), so TIR turns linear light at 45° into elliptical light (Fresnel rhomb: two TIRs at 54.6° in glass give a quarter-wave retarder).
+
+* Picture
+\begin{tikzpicture}[scale=1.1]
+\fill[blue!8] (-3,0) rectangle (3,2.2);
+\node[font=\small] at (-2.3,1.9) {$n_1$};
+\node[font=\small] at (-2.3,-0.4) {$n_2<n_1$};
+\draw[thick] (-3,0)--(3,0);
+\draw[dashed] (0,-1.6)--(0,2.2);
+\draw[-{Latex},thick,red!70!black] (-1.8,2.0)--(0,0);
+\draw[-{Latex},thick,red!70!black] (0.3,0)--(2.1,2.0);
+\draw[{Latex}-{Latex}] (0,-0.1)--(0.3,-0.1);
+\node[font=\scriptsize,below] at (0.15,-0.1) {GH};
+\draw (0,0.7) arc (90:132:0.7); \node[font=\small] at (-0.3,0.95) {$\theta_i$};
+\draw[domain=0:1.5,samples=40,thick,blue!70!black] plot ({1.2+1.2*exp(-2.2*\x)},{-\x});
+\draw[-{Latex}] (1.2,0)--(1.2,-1.6) node[below,font=\small] {$y$};
+\node[font=\small,anchor=west] at (1.6,-0.7) {$|E|\propto e^{-\alpha_2y}$};
+\draw[-{Latex},blue!70!black] (-1.7,-1.1)--(-0.4,-1.1) node[midway,below,font=\scriptsize] {evanescent, along $z$};
+\end{tikzpicture}
+
+* Worked examples
+1. *Glass–air, 633 nm*, \(n_1=1.5\): \(\theta_c=41.8^\circ\); Brewster from inside \(\arctan(1/1.5)=33.7^\circ\). At \(\theta_i=45^\circ\): \(\alpha_2=\frac{2\pi}{0.633\ \mu m}\sqrt{2.25\cdot0.5-1}=3.51\) µm\(^{-1}\), \(\delta=0.285\) µm. Phases: \(b=\sqrt{0.5-0.444}=0.236\), \(\phi_\perp=2\arctan(0.236/0.707)=36.9^\circ\), \(\phi_\parallel=2\arctan\frac{0.236}{0.444\cdot0.707}=73.7^\circ\). Goos–Hänchen shift \(\approx2\delta\tan\theta_i=0.57\) µm.
+2. *Fibre core–cladding*, \(n_1=1.450\), \(n_2=1.430\), 1550 nm: \(\theta_c=80.5^\circ\) (measured from the normal). A ray at \(85^\circ\) penetrates \(\delta=1.2\) µm into the cladding: the field of a guided mode lives partly in the cladding, which is why the cladding must be low-loss and thick (> 10δ).
+3. *Lateral displacement* of a ray crossing a glass plate of thickness \(L=1\) cm (\(n=1.5\)) at \(45^\circ\): \(d=L\sin\theta_i\left(1-\frac{\cos\theta_i}{\sqrt{n^2-\sin^2\theta_i}}\right)=0.33\) cm; the ray leaves parallel to itself.
+
+* Frustrated TIR and beam splitters
+If a second medium of index \(\ge n_1\) is brought within a few \(\delta\) of the interface, the evanescent field becomes propagating again there: part of the light *tunnels* across the gap, with transmission falling roughly as \(e^{-2\alpha_2d}\). The beam-splitter cube is two prisms with a thin low-index layer on the hypotenuse; choosing the gap sets the split ratio. The same physics couples two waveguides in a [[id:directional-couplers][directional coupler]] and is the optical analogue of quantum tunnelling.
+
+* Engineering applications
+Light guiding in [[id:dielectric-slab-waveguide][slab waveguides]] and [[id:optical-fibers][fibres]]; reflecting prisms (binoculars, retroreflectors: no metal coating, 100% reflection); TIR fluorescence microscopy (TIRF) exciting only ≈ 100 nm above a cover slip; evanescent-wave sensors and couplers; fingerprint readers based on frustrated TIR.
+
+* Exam-style exercise
+A right-angle prism of glass \(n=1.5\) is used to turn a 1550 nm beam by 90°. (a) Is the reflection total? (b) Penetration depth? (c) If the prism is immersed in water (\(n=1.33\)), does it still work?
+** Solution
+(a) Incidence on the hypotenuse is \(45^\circ>\theta_c=41.8^\circ\): yes. (b) \(\alpha_2=\frac{2\pi}{1.55}\sqrt{1.125-1}=1.43\) µm\(^{-1}\), \(\delta=0.70\) µm. (c) \(\theta_c=\arcsin(1.33/1.5)=62.5^\circ>45^\circ\): no TIR: \(\theta_t=52.9^\circ\), Fresnel reflectance 1.9% (s) and 0.04% (p), so the beam mostly leaves the prism.
+
+* Pitfall
+The angle in TIR formulas is measured from the normal; in fibre problems the "bounce" angle is often given from the axis (\(90^\circ-\theta_i\)). Check which one the problem uses before computing \(\theta_c\) or the NA.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Total_internal_reflection][Total internal reflection]]
+- [[https://en.wikipedia.org/wiki/Goos%E2%80%93H%C3%A4nchen_effect][Goos–Hänchen effect]]

@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       effective-mass-and-holes
+:DOMAIN:   solid-state
+:AREA:     band-theory
+:KIND:     definition
+:REQUIRES: bloch-theorem-and-energy-bands heisenberg-picture-and-ehrenfest-theorem
+:SEE:      density-of-states-and-fermi-dirac semiconductor-optical-properties
+:ALIASES:  effective mass, group velocity of electrons, holes, direct and indirect band gap, conduction band, valence band, heavy holes, light holes, semiclassical dynamics
+:END:
+#+title: Effective mass, group velocity and holes
+#+summary: A wave packet in band \(E(k)\) moves at \(v_g=\frac1\hbar\frac{\dd E}{\dd k}\) and accelerates as \(\hbar\dot k=F\), so near an extremum it behaves as a free particle of mass \(m^*=\hbar^2/(\dd^2E/\dd k^2)\); an empty state at the top of a full band acts as a positive particle with positive mass: the hole.
+
+* Definition and derivation
+1. Packet of Bloch waves around \(k\): \(v_g=\frac{\partial\omega}{\partial k}=\frac1\hbar\frac{\dd E}{\dd k}\).
+2. Work done by a force: \(\dd E=Fv_g\dd t=\frac{\dd E}{\dd k}\dd k\Rightarrow\hbar\dot k=F\) (Ehrenfest-like, for slowly varying \(F\)).
+3. \(\dot v_g=\frac1\hbar\frac{\dd^2E}{\dd k^2}\dot k=\frac{1}{\hbar^2}\frac{\dd^2E}{\dd k^2}F\equiv F/m^*\). In 3D, \(1/m^*\) is a tensor; Si conduction valleys have \(m_l=0.98\), \(m_t=0.19\) (\(m_e\) units).
+Near a band minimum: \(E=E_c+\frac{\hbar^2k^2}{2m^*}\): electrons in a crystal behave as free particles with modified mass, and the periodic potential disappears from the equations.
+
+* Holes
+In an almost full band, the current of all electrons equals that of a single positive charge moving with the velocity of the missing electron. At the band top \(\frac{\dd^2E}{\dd k^2}<0\): the missing electron has negative mass and charge \(-e\), the hole has \(m_h^*>0\), charge \(+e\), energy increasing downwards. Valence bands of Si/GaAs: heavy holes, light holes, split-off band.
+
+* Direct and indirect gaps
+Direct (GaAs, InP): conduction minimum and valence maximum at the same \(k\) → efficient light emission. Indirect (Si, Ge): minimum at a different \(k\), so a phonon must supply momentum → weak emission, slow absorption edge ([[id:semiconductor-optical-properties][optical properties]]).
+
+* Worked example
+GaAs \(m^*=0.067m_e\): in a field of 1 kV/cm an electron starting at rest gains \(v=eEt/m^*=1.6\times10^{-19}\cdot10^5\cdot10^{-13}/(6.1\times10^{-32})\approx2.6\times10^4\) m/s in 0.1 ps (a typical scattering time). Mobility \(\mu=e\tau/m^*=0.26\) m²/Vs = 2600 cm²/Vs, the right order of real GaAs ([[id:drift-diffusion-and-einstein-relation][drift]]).
+
+* Engineering applications
+Low effective mass → high mobility → fast transistors (InGaAs HEMTs); strain engineering of Si channels reduces \(m^*\) and boosts mobility in modern CMOS; hole effective mass sets PMOS sizing ([[id:cmos-inverter][CMOS sizing ratio]]).
+
+* Pitfall
+\(m^*\) is not a property of the electron but of the band at that point; far from the extremum the parabolic approximation fails (non-parabolicity, velocity saturation).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Effective_mass_(solid-state_physics)][Effective mass (solid-state physics)]]
+- [[https://en.wikipedia.org/wiki/Electron_hole][Electron hole]]

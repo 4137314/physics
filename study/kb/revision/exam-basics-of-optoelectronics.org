@@ -1,0 +1,142 @@
+:PROPERTIES:
+:ID:       exam-basics-of-optoelectronics
+:DOMAIN:   revision
+:AREA:     exam-practice
+:KIND:     example
+:REQUIRES: noise-in-photodetectors fiber-dispersion-and-attenuation optical-fibers semiconductor-laser-diodes gaussian-beams interference-and-fabry-perot
+:SEE:      exam-practice-fields-and-optoelectronics formula-sheet-fields-and-optics photodetectors
+:ALIASES:  basics of optoelectronics exam, opto-electronics exam, esame optoelettronica, past exams optoelectronics, exam 2024 optoelectronics, exam 2025 optoelectronics, optoelectronics exam strategy
+:END:
+#+title: Exam: Basics of Opto-Electronics (all past papers solved)
+#+summary: The written exam recycles eight exercise types (photodiode NEP, link budget with dispersion compensation, step-index fibre, Fabry–Perot laser diode with Gaussian output, DH laser threshold, RC receiver noise, gas and InGaAsP cavities, bandgap and photon counting); every paper from February 2022 to June 2025 is solved here with the course formula sheet, plus the traps that separate 28 from 30 cum laude.
+
+* How the exam works
+- Four exercises of 4–6 sub-questions, calculator allowed, the course formula sheet is handed out (no personal sheet). Constants given: \(h\), \(k_B\), \(q\), \(c\).
+- The papers are almost identical from one session to the next: only the numbers change. Learn the eight methods below and rehearse each with every variant until it takes < 10 minutes.
+- Marks are lost on units (ps/(nm km), dB vs linear, µm vs m), on the half-angle vs full-angle divergence, and on "comment" questions left blank. Always end a numeric answer with one sentence of physics ("thermal noise dominates, use a TIA").
+- Formulas you must know because they are *not* on the sheet: \(\Delta\lambda=\frac{\lambda^2}{c}\Delta\nu\); \(\Delta\lambda_m=\frac{\lambda^2}{2nL}\); \(M\approx\frac{V^2}{2}\) for a step-index fibre (the sheet's \(\mathrm{Int}(2V/\pi)+1\) is the planar guide); \(\lambda_c=\frac{2\pi a\,\mathrm{NA}}{2.405}\); \(R=\left(\frac{n-1}{n+1}\right)^2\); \(\Delta\tau=|D|L\Delta\lambda<T_b=1/B\); \(J_{th}=qdBn_{th}^2\); \(f_c=\frac{1}{2\pi R_LC}\); the dB rule \(L=\frac{10\log_{10}(P_{in}/P_{out})}{\alpha_{dB}}\).
+
+* Type A — photodiode: QE, NEP, dark current, thermal noise
+Asked in every paper. Data: responsivity \(\mathcal R\), NEP, dark current \(I_d\), bandwidth \(B\), \(R_L=500\) Ω.
+1. *External QE*: \(\eta=\mathcal R\frac{hc}{q\lambda}=\mathcal R\frac{1.24}{\lambda[\mu m]}\).
+2. *Minimum power for SNR = 1*: NEP is given per \(\sqrt{\mathrm{Hz}}\), so \(P_1=\mathrm{NEP}\sqrt B\).
+3. *Minimum power set by the dark current*: the dark current's shot noise \(i_d=\sqrt{2qI_dB}\) must be matched by the signal photocurrent, \(P_d=i_d/\mathcal R\). Mention also the cruder estimate \(I_d/\mathcal R\) (photocurrent equal to the dark current): it gives the same order of magnitude.
+4. *Thermal noise of the load*: \(i_{th}=\sqrt{4k_BTB/R_L}\), equivalent optical power \(i_{th}/\mathcal R\).
+5. *Conclusion*: \(i_{th}\) is two orders of magnitude above the dark-current noise, so a 500 Ω load wastes the detector; the receiver is thermal-noise limited. Remedies: a transimpedance amplifier (large feedback resistance, same bandwidth), an APD (gain before the thermal noise), or an optical preamplifier ([[id:noise-in-photodetectors][noise]], [[id:photodetectors][photodiodes]]).
+
+| paper          | λ (nm) | η     | P1 (nW) | i_d (nA) | P_d (nW) | i_th (µA) |
+|----------------+--------+-------+---------+----------+----------+-----------|
+| Feb 2022       | 1550   | 0.760 | 0.266   | 3.58     | 3.77     | 0.576     |
+| Jun 2024       | 1550   | 0.760 | 0.212   | 2.83     | 2.98     | 0.407     |
+| Feb 24, Jun 25 | 1310   | 0.899 | 0.266   | 2.53     | 2.66     | 0.576     |
+
+Data: \(\mathcal R=0.95\) A/W everywhere; NEP \(2.66\times10^{-15}\) W/√Hz (\(3\times10^{-15}\) in June 2024); \(I_d=4\), 5, 2 nA; \(B=10\) GHz (5 GHz in June 2024). The equivalent thermal-noise power \(i_{th}/\mathcal R\) is 0.61, 0.43 and 0.61 µW: over 2000 times \(P_1\). Check of 1 for Feb 2022: \(0.95\cdot1.24/1.55=0.760\).
+
+* Type B — link budget: SNR, loss, dispersion, compensation
+"A communication system uses the previous receiver …".
+1. *SNR*: the course uses the optical-power ratio \(\mathrm{SNR}=P_{in}/P_{noise}\) with \(P_{noise}=P_1=\mathrm{NEP}\sqrt B\) (or the given noise level), and quotes it also in dB: \(10\log_{10}\). Remark for full marks: the *electrical* SNR is the square of this ratio, because the photocurrent is linear in power.
+2. *Fibre length from the loss*: \(L=\frac{10\log_{10}(P_{in}/P_{rx})}{0.2\ \mathrm{dB/km}}\); 1 mW → 1 µW is 30 dB → 150 km; 1 mW → 10 µW is 20 dB → 100 km.
+3. *Does it work?* Chromatic spread \(\Delta\tau=|D|L\Delta\lambda\) against the bit slot \(T_b=1/B\). The course criterion is \(\Delta\tau<T_b\) (stricter rules use \(\Delta\tau<T_b/2\) or \(B\approx0.25/\sigma\); state the one you use).
+4. *How to fix it*: a narrower source (DFB laser, external modulation instead of direct modulation, which also removes chirp), a compensating fibre of opposite \(D\) or a chirped [[id:bragg-gratings][fibre Bragg grating]], operation near the 1310 nm zero-dispersion window, or electronic/coherent DSP.
+5. *Compensating fibre*: the accumulated dispersion must satisfy \(\left|D_fL_f+D_cL_c\right|\Delta\lambda\le T_b\), i.e. \(\left|D_fL_f+D_cL_c\right|\le\frac{T_b}{\Delta\lambda}\). With \(D_f=-18\), \(D_c=+100\) ps/(nm km) this is a *window* of lengths: \(L_c\in\left[\frac{|D_f|L_f-T_b/\Delta\lambda}{D_c},\ \frac{|D_f|L_f+T_b/\Delta\lambda}{D_c}\right]\), with full compensation in the middle at \(|D_f|L_f/D_c\). The *minimum* length is the lower end.
+6. *Repeat at higher rate*: recompute \(T_b\) and \(\Delta\tau\) with the new linewidth.
+
+| paper    | rate, Δλ (nm)  | L (km) | Δτ (ps) | T_b (ps) | works? | L_c (km)   |
+|----------+----------------+--------+---------+----------+--------+------------|
+| Feb 2022 | 2.5 Gb/s, 0.2  | 150    | 540     | 400      | no     | 7–47       |
+| Feb 2022 | 10 Gb/s, 0.02  | 150    | 54      | 100      | yes    | none       |
+| Jun 2024 | 5 Gb/s, 0.4    | 150    | 1080    | 200      | no     | 22–32      |
+| Jun 2024 | 50 Gb/s, 0.01  | 150    | 27      | 20       | no     | 7–47       |
+| Jan 2024 | 2.5 Gb/s, 0.5  | 100    | 900     | 400      | no     | 10–26      |
+| Jan 2024 | 10 Gb/s, 0.025 | 100    | 45      | 100      | yes    | none       |
+
+SNR at 1 µW: Feb 2022 \(10^{-6}/2.66\times10^{-10}=3.8\times10^3\) (35.8 dB); June 2024 \(10^{-6}/2.12\times10^{-10}=4.7\times10^3\) (36.7 dB). January 2024 (10 µW over 20 nW of noise): 500 (27.0 dB).
+
+*Trap in the official correction (January 2024)*: it gives \(L_{min}=\frac{T_b/\Delta\lambda-D_fL_f}{D_c}=\frac{800+1800}{100}=26\) km, which is the *upper* end of the window (the link over-compensated to +800 ps/nm). The shortest compensating fibre is \(\frac{1800-800}{100}=10\) km; 18 km cancels the dispersion exactly. Write the window: it contains the examiner's number and shows you understood the sign.
+
+*Trap at 50 Gb/s (June 2024)*: \(\Delta\tau=27\) ps exceeds \(T_b=20\) ps, so the system does *not* work even with a 0.01 nm laser. Moreover a 50 Gb/s signal has a modulation spectrum of ≈ 50 GHz ≈ 0.4 nm at 1550 nm, much wider than 0.01 nm: the real spread is set by the modulation, which is why high-rate links use coherent detection with DSP compensation.
+
+Related: the effective dispersion of a spliced link is \(D_{eff}=\frac{D_fL_f+D_cL_c}{L_f+L_c}\); January 2024, Exercise 2: \(15\cdot900-110\cdot100=2500\) ps/nm over 1000 km → \(D_{eff}=2.5\) ps/(nm km) ([[id:fiber-dispersion-and-attenuation][fibre dispersion]]).
+
+* Type C — step-index fibre
+1. \(\mathrm{NA}=\sqrt{n_1^2-n_2^2}\approx n_1\sqrt{2\Delta}\), with \(n_2=n_1(1-\Delta)\) when \(\Delta\) is given.
+2. \(V=\frac{2\pi a}{\lambda}\mathrm{NA}\) with the *radius* \(a\) (the paper gives the diameter).
+3. Single mode for \(V<2.405\): \(\lambda_c=\frac{2\pi a\,\mathrm{NA}}{2.405}\).
+4. Acceptance: \(\theta_a=\arcsin\mathrm{NA}\) (from air); the full cone is \(2\theta_a\). Quote both.
+5. Multimode only: \(M\approx V^2/2\); intermodal spread \(\frac{\Delta\tau}{L}\approx\frac{n_1-n_2}{c}\); bit-rate × distance \(BL\approx\frac{0.59}{\Delta\tau/L}\) in the course's (Kasap's) convention for Gaussian pulses, or \(\frac{0.5}{\Delta\tau/L}\) with the simple half-slot rule.
+
+*Single-mode fibre* (Feb 2022, June 2024): \(2a=8.2\) µm, \(\Delta=0.36\%\), \(n_1=1.4682\) → \(n_2=1.46291\), \(\mathrm{NA}=0.1245\), \(V(1.31\ \mu m)=2.448\), \(V(1.55\ \mu m)=2.069\), \(\lambda_c=1.333\) µm, \(\theta_a=7.15^\circ\) (cone \(14.3^\circ\)). Comment worth the honours: at 1310 nm \(V\) is just *above* 2.405, so on paper LP\(_{11}\) is guided too; in a real cabled fibre the LP\(_{11}\) mode is so weakly confined that bends strip it within metres, which is why this fibre (it is Corning SMF-28) is specified single-mode down to ≈ 1260 nm. The MFD (Marcuse) is 8.9 µm at 1310 nm and 10.1 µm at 1550 nm ([[id:optical-fibers][fibres]]).
+
+*Types of dispersion* (the theory sub-question, answer in four lines): intermodal (different modes, different group delays; multimode only, cured by graded index); chromatic = material (\(D_m=-\frac\lambda c\frac{\dd^2n}{\dd\lambda^2}\), silica's \(n(\lambda)\)) + waveguide (\(D_w<0\), the mode's confinement depends on \(\lambda\)), cancelling near 1310 nm in standard fibre, shifted in DSF; polarisation-mode dispersion (random birefringence, grows as \(\sqrt L\)); profile dispersion (\(\Delta\) depends on \(\lambda\)), minor.
+
+*Multimode fibre* (January 2024, official correction): \(2a=100\) µm, \(n_1=1.475\), \(n_2=1.455\), 850 nm: \(V=89.5\), \(M\approx4.0\times10^3\), \(\lambda_c=31.6\) µm (beyond it the fibre would be single mode), \(\mathrm{NA}=0.242\), \(\theta_a=14.0^\circ\) (cone \(28.0^\circ\)), \(\Delta\tau/L=66.7\) ns/km, \(BL\approx8.8\) Mb/s·km. The correction prints "0.0088 GHz": the unit is GHz·km.
+
+* Type D — Fabry–Perot laser diode and coupling to a fibre
+Data: \(\lambda\), spectral width \(\delta\nu\), cavity \(L\), \(n=3.2\).
+1. \(\delta\lambda=\frac{\lambda^2}{c}\delta\nu\).
+2. Mode spacing \(\Delta\nu_m=\frac{c}{2nL}\), \(\Delta\lambda_m=\frac{\lambda^2}{2nL}\).
+3. Mirror reflectance from the width: the sheet gives \(\delta\nu=\Delta\nu_m/\mathcal F\) and \(\mathcal F=\frac{\pi\sqrt R}{1-R}\), so \(\mathcal F=\Delta\nu_m/\delta\nu\) and, with \(x=\sqrt R\), solve \(\mathcal Fx^2+\pi x-\mathcal F=0\): \(\sqrt R=\frac{-\pi+\sqrt{\pi^2+4\mathcal F^2}}{2\mathcal F}\).
+4. How to obtain it: a cleaved facet gives Fresnel \(R=\left(\frac{n-1}{n+1}\right)^2=0.274\) for \(n=3.2\); a lower \(R\) needs an anti-reflection coating (single quarter-wave layer \(d=\frac{\lambda}{4n_c}\), ideal \(n_c=\sqrt{n}\)); a higher \(R\) a dielectric quarter-wave stack ([[id:interference-and-fabry-perot][Bragg mirror]]) or a DBR/DFB grating.
+5. Gaussian output with full divergence \(2\theta=30^\circ\): \(\theta=15^\circ=0.262\) rad, \(w_0=\frac{\lambda}{\pi\theta}\).
+6. Fibre with MFD 9 µm: the beam must not grow beyond the fibre mode, \(w(z)=w_0\sqrt{1+(z/z_0)^2}\le4.5\) µm, so \(z_{max}=z_0\sqrt{(4.5/w_0)^2-1}\); in the far field this is just \(z\approx w_f/\tan\theta\approx17\) µm, independent of \(\lambda\). Comment: the chip must sit ≈ 15 µm from a cleaved fibre, which is impractical; real packages use a lensed fibre or a ball lens to match the mode sizes ([[id:gaussian-beams][Gaussian beams]]).
+
+| paper          | λ   | δν, L    | δλ (nm) | Δν_m (GHz) | Δλ_m (nm) | F     | R     |
+|----------------+-----+----------+---------+------------+-----------+-------+-------|
+| Feb 2022       | 850 | 250, 500 | 0.603   | 93.7       | 0.226     | 0.375 | 0.014 |
+| Jun 2024       | 850 | 50, 800  | 0.121   | 58.6       | 0.141     | 1.17  | 0.110 |
+| Feb 24, Jun 25 | 908 | 50, 400  | 0.138   | 117        | 0.322     | 2.34  | 0.284 |
+
+δν in GHz, \(L\) in µm, \(n=3.2\). Waist: \(w_0=1.03\) µm at 850 nm, 1.10 µm at 908 nm (\(z_0\approx4\) µm); fibre distance \(\approx17\) µm in all papers.
+Interpretation that earns the honours: in the 908 nm paper \(R=0.28\) is just the bare cleaved facet. In February 2022 the "spectral width" 250 GHz is wider than the mode spacing (93.7 GHz), so \(\mathcal F<1\): a resonator with \(\mathcal F<1\) has no resolved modes, and the width is really the multimode envelope of the gain, not one mode's linewidth. Do the computation as asked (\(R\approx1.4\%\), an AR-coated facet, as in a superluminescent diode), then say this in one sentence.
+
+* Type E — double-heterostructure laser threshold
+February 2024 and June 2025: InGaAsP DH laser, 1310 nm, \(L=100\) µm, \(W=10\) µm, \(d=0.1\) µm, \(n=3.7\), \(\alpha_s=20\) cm\(^{-1}\), \(B=10^{-16}\) m³/s, \(\Gamma=1\).
+1. Cleaved facets: \(R=\left(\frac{2.7}{4.7}\right)^2=0.330\). \(g_{th}=\alpha_s+\frac{1}{2L}\ln\frac{1}{R^2}=20+\frac{2.217}{0.02\ \mathrm{cm}}=20+111=131\) cm\(^{-1}\).
+2. Read the InGaAsP (1300 nm) curve of peak gain vs carrier density at 131 cm\(^{-1}\) (log axis: between \(10^2\) and \(2\times10^2\), about a third of the decade): \(n_{th}\approx1.5\times10^{18}\) cm\(^{-3}\). Draw the horizontal line on the graph and state your reading.
+3. Radiative lifetime at strong injection \(\tau_r=\frac{1}{Bn_{th}}=6.7\) ns; \(J_{th}=\frac{qdn_{th}}{\tau_r}=qdBn_{th}^2=1.6\times10^{-19}\cdot10^{-7}\cdot10^{-16}\cdot(1.5\times10^{24})^2=3.6\times10^6\) A/m² \(=360\) A/cm².
+4. \(I_{th}=J_{th}WL=3.6\times10^6\cdot10^{-5}\cdot10^{-4}=3.6\) mA.
+Sensitivity: \(J\propto n_{th}^2\), so reading 1.4 or 1.6 × 10¹⁸ gives 3.1–4.1 mA; any value in this range with the method shown is full marks. Remark: real devices have \(\Gamma<1\) and non-radiative recombination, both raising \(I_{th}\) ([[id:semiconductor-laser-diodes][laser diodes]]).
+
+* Type F — photodiode receiver with an RC front end
+February 2024 and June 2025: InGaAs pin, \(R_L=27\) kΩ, \(C=16\) pF, \(I_d=2\) nA, 25 nW at 1550 nm, \(\mathcal R=0.8\) A/W, 300 K.
+1. \(f_c=\frac{1}{2\pi R_LC}=\frac{1}{2\pi\cdot27\times10^3\cdot16\times10^{-12}}=368\) kHz; use it as the noise bandwidth \(B\).
+2. \(I_{ph}=\mathcal RP=20\) nA.
+3. Shot noise \(\sqrt{2q(I_{ph}+I_d)B}=51\) pA.
+4. Thermal noise \(\sqrt{4k_BTB/R_L}=476\) pA; total \(\sqrt{51^2+476^2}=478\) pA.
+5. \(\mathrm{SNR}=\frac{I_{ph}^2}{i_n^2}=\frac{(20\ \mathrm{nA})^2}{(0.478\ \mathrm{nA})^2}=1.75\times10^3\) (32.4 dB).
+Comment: thermal noise dominates by ≈ 10×; a larger \(R_L\) lowers it as \(1/\sqrt{R_L}\) but also lowers the bandwidth as \(1/R_L\): the transimpedance amplifier breaks this trade-off.
+
+* Type G — cavities: He–Ne and InGaAsP (January 2024, official correction)
+He–Ne, \(L=0.6\) m, \(R_1=R_2=0.99\), 633 nm:
+- \(\Delta\nu_m=\frac{c}{2L}=250\) MHz, \(\Delta\lambda_m=\frac{\lambda^2}{2L}=3.34\times10^{-4}\) nm; \(\mathcal F=\frac{\pi\sqrt{0.99}}{0.01}=313\); \(\delta\lambda=1.07\times10^{-6}\) nm (\(\delta\nu=0.80\) MHz). That is the passive-cavity width; the real laser line is even narrower, but the Doppler gain width (≈ 1.5 GHz) holds several modes.
+- \(2w_0=0.1\) mm: \(\theta=\frac{\lambda}{\pi w_0}=4.03\) mrad (0.231°), \(z_0=12.4\) mm; spot diameter \(2w=8.06\) mm at 1 m and 80.6 mm at 10 m (far field: linear growth).
+InGaAsP FP laser, \(L=250\) µm, \(\lambda=1540\) nm, \(n=3.7\), gain bandwidth 2 nm:
+- \(m=\frac{2nL}{\lambda}=1201\); \(\Delta\nu_m=162\) GHz, \(\Delta\lambda_m=1.28\) nm; modes inside 2 nm: \(2/1.28\approx1.6\), so 1 or 2 depending on where the comb sits.
+- Uncoated facet \(R=0.330\).
+- Coating for a reflection peak at 1540 nm: quarter-wave stack, each layer \(\frac{\lambda}{4n_i}\) thick, period \(\Lambda=\frac{\lambda}{2\bar n}=208\) nm for \(\bar n=3.7\) (first-order Bragg condition \(\lambda_B=2\bar n\Lambda\)).
+- Linewidth: \(R=0.9\): \(\mathcal F=29.8\), \(\delta\lambda=43\) pm, \(\delta\nu=5.4\) GHz; \(R=0.95\): \(\mathcal F=61.2\), \(\delta\lambda=21\) pm, \(\delta\nu=2.6\) GHz.
+*Trap in the official correction*: it also prints 6.5 THz for \(R=0.9\), which is \(\nu/\mathcal F\). The linewidth is \(\Delta\nu_m/\mathcal F=5.4\) GHz, consistent with 43 pm (\(\delta\nu=c\,\delta\lambda/\lambda^2\)); always cross-check frequency against wavelength.
+
+* Type H — bandgap and photon counting (January 2024)
+- Sensitive to 600 nm: \(E_g\le\frac{hc}{\lambda}=2.07\) eV.
+- Area \(4\times10^{-2}\) cm² under 5 mW/cm²: \(P=0.2\) mW; pairs per second \(=\frac{P}{h\nu}=\frac{2\times10^{-4}}{3.31\times10^{-19}}=6.0\times10^{14}\) s\(^{-1}\).
+- GaAs, \(E_g=1.42\) eV: \(\lambda=\frac{1.24}{1.42}\) µm \(=873\) nm, near infrared, not visible.
+- Si detects it: \(\lambda_g=\frac{1.24}{1.12}=1.11\) µm > 873 nm, so \(h\nu>E_g(\mathrm{Si})\); Si is indirect, so absorption is weaker (\(\alpha\approx5\times10^2\) cm\(^{-1}\) at 870 nm) and the absorption region must be tens of µm thick ([[id:semiconductor-optical-properties][semiconductor optics]]).
+
+* Theory questions to have ready
+Each in three or four lines, with one formula and one number.
+- Why a pin instead of a pn photodiode: absorption in the depleted i-layer, drift instead of diffusion → speed and efficiency; smaller capacitance.
+- APD vs pin: internal gain \(M\) beats thermal noise; price: excess noise \(F(M)\), high bias, temperature sensitivity.
+- Why DH lasers: carrier confinement (band offset) and optical confinement (higher index) in the same thin layer → \(J_{th}\) from ~10⁵ to ~10² A/cm².
+- LED vs laser: spontaneous vs stimulated emission; width \(\approx3k_BT\) (tens of nm) vs < 1 nm; incoherent vs coherent; no threshold vs threshold ([[id:light-emitting-diodes][LEDs]]).
+- Single-mode lasers: DFB, DBR, VCSEL, external cavity.
+- 1310 vs 1550 nm: zero dispersion vs minimum loss (0.2 dB/km) and EDFA band ([[id:optical-amplifiers][amplifiers]]).
+- Evanescent wave under total internal reflection: penetration depth \(\delta=1/\alpha_2\), basis of cladding modes and directional couplers.
+
+* Pitfall
+The most expensive mistakes in these papers are (1) using the diameter instead of the radius in \(V\); (2) taking \(2\theta=30^\circ\) as the half-angle (doubles \(w_0\)); (3) forgetting that NEP is per \(\sqrt{\mathrm{Hz}}\); (4) mixing nm and m in \(\Delta\lambda=\lambda^2\Delta\nu/c\); (5) answering "the minimum compensating length" with the upper end of the window.
+
+* Explore
+- [[https://www.rp-photonics.com/noise_equivalent_power.html][RP Photonics: noise-equivalent power]]
+- [[https://www.rp-photonics.com/chromatic_dispersion.html][RP Photonics: chromatic dispersion]]
+- [[https://www.corning.com/optical-communications/worldwide/en/home/products/fiber/optical-fiber-products/smf-28-ultra.html][Corning SMF-28 Ultra fibre]]

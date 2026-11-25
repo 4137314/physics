@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       solid-state
+:DOMAIN:   solid-state
+:AREA:     solid-state
+:KIND:     overview
+:REQUIRES: quantum-mechanics
+:SEE:      digital-electronics optoelectronics power-electronics
+:ALIASES:  semiconductor physics, solid state physics, device physics
+:END:
+#+title: Semiconductor physics: the map of the subject
+#+summary: Electrons in a periodic crystal form bands (Bloch); near the band edges they behave as free particles with effective mass; Fermi–Dirac statistics and doping fix the carrier densities; drift, diffusion and recombination move them; the pn junction is where all of this becomes a device.
+
+* Overview
+| block       | notes                                                         |
+|-------------+---------------------------------------------------------------|
+| band theory | Bloch theorem and bands, effective mass and holes             |
+| carriers    | density of states and Fermi–Dirac, intrinsic and doped        |
+| transport   | drift–diffusion and Einstein relation, generation and recomb. |
+| junctions   | pn electrostatics, diode current, heterojunctions and wells   |
+
+* Key numbers (300 K)
+| quantity          | Si              | GaAs          | Ge              |
+|-------------------+-----------------+---------------+-----------------|
+| E_g (eV)          | 1.12 (indirect) | 1.42 (direct) | 0.66 (indirect) |
+| n_i (cm⁻³)        | 1.0×10¹⁰        | 2.1×10⁶       | 2.0×10¹³        |
+| μ_n, μ_p (cm²/Vs) | 1400, 450       | 8500, 400     | 3900, 1900      |
+| ε_r               | 11.7            | 12.9          | 16.0            |
+| k_BT/q            | 25.9 mV         |               |                 |
+
+* Engineering applications
+MOSFETs and CMOS ([[id:digital-electronics][digital electronics]]), LEDs, lasers, photodiodes and solar cells ([[id:optoelectronics][optoelectronics]]), power devices ([[id:power-electronics][power electronics]]).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Semiconductor_device][Semiconductor device]]
+- [[https://www.pveducation.org/][PVEducation: semiconductor and solar-cell basics]]

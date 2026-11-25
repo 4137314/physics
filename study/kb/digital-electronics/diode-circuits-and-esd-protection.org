@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       diode-circuits-and-esd-protection
+:DOMAIN:   digital-electronics
+:AREA:     mos-devices
+:KIND:     method
+:REQUIRES: pn-junction-diode-current
+:SEE:      mosfet-operation-and-iv power-diodes
+:ALIASES:  diode models, constant voltage drop model, piecewise linear model, load line, rectifier, clamp, ESD, electrostatic discharge, human body model, input protection, Zener regulator
+:END:
+#+title: Diode circuits and ESD protection
+#+summary: Diode circuits are solved by guessing on/off states with a model (ideal, constant drop \(V_{on}\approx0.7\) V, piecewise linear with \(r_d\)) or by iterating the Shockley equation; CMOS inputs are protected against electrostatic discharge by diodes to \(V_{DD}\) and ground that clamp the gate within one diode drop of the rails.
+
+* Method
+1. Assume a state for each diode (on: \(V=V_{on}\), \(I>0\); off: \(I=0\), \(V<V_{on}\)).
+2. Solve the linear circuit.
+3. Check consistency; if violated, flip the assumption.
+For accuracy use the Shockley law \(I=I_s(e^{V/nV_T}-1)\) with a load line \(I=(V_S-V)/R\), iterating \(V\leftarrow nV_T\ln(I/I_s)\).
+
+* ESD protection
+A human body charged to ~2 kV (Human Body Model: 100 pF through 1.5 kΩ, peak ≈ 1.3 A, ~150 ns) would rupture a 2 nm gate oxide (breakdown ≈ 2–3 V). Input pads have diodes D1 (pad → \(V_{DD}\)) and D2 (ground → pad), plus a series resistor and rail clamp: the pad voltage is held within \([-V_{on},V_{DD}+V_{on}]\) and the discharge current flows into the supply network.
+
+* Picture
+\begin{tikzpicture}[scale=0.9, transform shape]
+\draw (0,1) node[left]{pad} -- (1,1) to[R, l=$R_s$] (3,1) -- (4,1) node[right]{gate};
+\draw (1,1) to[D] (1,2.5) node[above]{$V_{DD}$};
+\draw (1,-0.5) node[below]{GND} to[D] (1,1);
+\end{tikzpicture}
+
+* Worked example
+\(V_S=5\) V, \(R=1\) kΩ, diode \(I_s=10^{-14}\) A: start \(V=0.7\) → \(I=4.3\) mA → \(V=0.0259\ln(4.3\times10^{11})=0.698\) V → \(I=4.30\) mA: converged. HBM through the clamp: 1.3 A in a diode with \(r_d\approx2\) Ω gives \(V\approx0.8+2.6=3.4\) V above the rail — hence additional rail clamps and series \(R_s\).
+
+* Engineering applications
+Rectifiers and peak detectors, clamps and level shifters, reverse-polarity protection, ESD networks on every IC pad, TVS diodes on connectors (USB, Ethernet).
+
+* Pitfall
+The constant-drop model hides the temperature coefficient (−2 mV/K) and the logarithmic dependence on current; at µA currents a Si diode drops only ≈ 0.4–0.5 V.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Electrostatic_discharge][Electrostatic discharge]]
+- [[https://en.wikipedia.org/wiki/Diode_modelling][Diode modelling]]

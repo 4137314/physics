@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       angular-momentum-algebra
+:DOMAIN:   quantum-mechanics
+:AREA:     angular-momentum
+:KIND:     theorem
+:REQUIRES: commutators-and-compatible-observables spin-precession-and-rabi-oscillations
+:SEE:      group-representations-and-spin orbital-angular-momentum addition-of-angular-momenta
+:ALIASES:  angular momentum commutation relations, ladder operators J+, J-, rotation operator, spin matrices, Pauli matrices, Wigner D matrix
+:END:
+#+title: Angular momentum: algebra and spectrum
+#+summary: Generators of rotations satisfy \([J_i,J_j]=i\hbar\epsilon_{ijk}J_k\); from this alone, \(\mathbf J^2\) and \(J_z\) have eigenvalues \(\hbar^2j(j+1)\) and \(\hbar m\), \(j\in\{0,\tfrac12,1,\dots\}\), \(m=-j,\dots,j\), and \(J_\pm\ket{j,m}=\hbar\sqrt{(j\mp m)(j\pm m+1)}\ket{j,m\pm1}\).
+
+* Statement
+Rotation by angle \(\phi\) about \(\hat n\): \(\mathcal D(R)=e^{-i\mathbf J\cdot\hat n\phi/\hbar}\). Because rotations about different axes do not commute (\(R_xR_y-R_yR_x=R_z(\epsilon^2)-1\)), the generators obey
+\[ [J_i,J_j]=i\hbar\,\epsilon_{ijk}J_k,\qquad [\mathbf J^2,J_i]=0. \]
+
+* Proof of the spectrum
+1. Ladders \(J_\pm=J_x\pm iJ_y\): \([J_z,J_\pm]=\pm\hbar J_\pm\), \([\mathbf J^2,J_\pm]=0\). So \(J_\pm\ket{a,b}\) has the same \(\mathbf J^2\) eigenvalue \(a\) and \(J_z\) eigenvalue \(b\pm\hbar\).
+2. \(\mathbf J^2-J_z^2=\tfrac12(J_+J_-+J_-J_+)\ge0\) gives \(a\ge b^2\): \(b\) is bounded; there is \(b_{\max}\) with \(J_+\ket{a,b_{\max}}=0\).
+3. \(J_-J_+=\mathbf J^2-J_z^2-\hbar J_z\). Applying to the top state: \(a=b_{\max}(b_{\max}+\hbar)\). Similarly \(a=b_{\min}(b_{\min}-\hbar)\), so \(b_{\min}=-b_{\max}\).
+4. Reaching \(b_{\min}\) from \(b_{\max}\) in integer steps: \(2b_{\max}=n\hbar\). Call \(j=b_{\max}/\hbar=n/2\): \(a=\hbar^2j(j+1)\), \(m=-j..j\).
+5. Norm: \(\|J_+\ket{j,m}\|^2=\bra{j,m}J_-J_+\ket{j,m}=\hbar^2[j(j+1)-m(m+1)]\).
+
+* Matrices
+\(j=\tfrac12\): \(\mathbf S=\tfrac\hbar2\boldsymbol\sigma\) with the Pauli matrices, \(\sigma_i\sigma_j=\delta_{ij}+i\epsilon_{ijk}\sigma_k\), and \(e^{-i\boldsymbol\sigma\cdot\hat n\phi/2}=\cos\frac\phi2-i\boldsymbol\sigma\cdot\hat n\sin\frac\phi2\). \(j=1\): \(J_z=\hbar\,\mathrm{diag}(1,0,-1)\), \(J_+=\hbar\sqrt2\begin{pmatrix}0&1&0\\0&0&1\\0&0&0\end{pmatrix}\).
+
+* Worked example
+For \(j=1\), \(\bra{1,0}J_x\ket{1,1}=\tfrac12\bra{1,0}J_-\ket{1,1}=\tfrac{\hbar}{2}\sqrt{2}=\hbar/\sqrt2\). For spin ½ rotated by \(2\pi\): \(e^{-i\pi\sigma_z}=-1\) — spinors are double valued ([[id:group-representations-and-spin][SU(2) → SO(3)]]).
+
+* Engineering applications
+Spin qubits, NMR pulse sequences (products of rotations), polarisation optics (Jones calculus is the \(j=\tfrac12\) representation: the Poincaré sphere), angular-momentum selection rules in lasers and spectroscopy.
+
+* Pitfall
+Half-integer \(j\) is allowed by the algebra but not by *orbital* angular momentum, where single-valued wave functions force integer \(l\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Angular_momentum_operator][Angular momentum operator]]
+- [[https://en.wikipedia.org/wiki/Pauli_matrices][Pauli matrices]]

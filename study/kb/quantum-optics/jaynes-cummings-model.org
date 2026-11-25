@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       jaynes-cummings-model
+:DOMAIN:   quantum-optics
+:AREA:     light-matter
+:KIND:     model
+:REQUIRES: quantization-of-the-electromagnetic-field spin-precession-and-rabi-oscillations radiative-transitions-and-selection-rules
+:SEE:      qubits-and-quantum-gates spontaneous-emission-and-purcell-effect
+:ALIASES:  Jaynes-Cummings Hamiltonian, vacuum Rabi oscillations, dressed states, cavity QED, circuit QED, dispersive regime, collapse and revival
+:END:
+#+title: The Jaynes–Cummings model
+#+summary: A two-level atom coupled to one cavity mode in the rotating-wave approximation, \(H=\hbar\omega_c a^\dagger a+\tfrac{\hbar\omega_a}{2}\sigma_z+\hbar g(a\sigma_++a^\dagger\sigma_-)\), splits into 2×2 blocks \(\{\ket{e,n},\ket{g,n+1}\}\) with Rabi frequency \(2g\sqrt{n+1}\); even the vacuum drives Rabi oscillations.
+
+* Model
+Dipole coupling \(-\mathbf d\cdot\mathbf E\) with \(\mathbf E\propto a+a^\dagger\) and \(\mathbf d\propto\sigma_++\sigma_-\); dropping the energy-non-conserving terms \(a\sigma_-\), \(a^\dagger\sigma_+\) (RWA, \(g\ll\omega\)) leaves the JC Hamiltonian, which conserves \(N=a^\dagger a+\sigma_+\sigma_-\).
+
+* Solution
+In the block with \(n\) excitations, detuning \(\Delta=\omega_a-\omega_c\):
+\[ H_n=\hbar\begin{pmatrix}\omega_c(n+\tfrac12)+\Delta/2 & g\sqrt{n+1}\\ g\sqrt{n+1} & \omega_c(n+\tfrac12)-\Delta/2\end{pmatrix}, \quad E_{n,\pm}=\hbar\omega_c(n+\tfrac12)\pm\frac\hbar2\sqrt{\Delta^2+4g^2(n+1)}. \]
+On resonance the dressed states \(\ket{n,\pm}=(\ket{e,n}\pm\ket{g,n+1})/\sqrt2\) are split by \(2\hbar g\sqrt{n+1}\) (vacuum Rabi splitting \(2\hbar g\) for \(n=0\)). An excited atom in the empty cavity: \(P_e(t)=\cos^2(gt)\) — reversible exchange of one photon. With a coherent field the different \(\sqrt{n+1}\) frequencies dephase and rephase: collapse and revival, a direct proof of field quantisation.
+
+* Dispersive regime
+\(|\Delta|\gg g\): second-order perturbation gives \(H\approx\hbar(\omega_c+\chi\sigma_z)a^\dagger a+\tfrac\hbar2(\omega_a+\chi)\sigma_z\), \(\chi=g^2/\Delta\). The cavity frequency depends on the qubit state: non-destructive read-out of superconducting qubits.
+
+* Worked example
+Transmon–resonator: \(g/2\pi=100\) MHz, \(\Delta/2\pi=1\) GHz: \(\chi/2\pi=10\) MHz, larger than a resonator linewidth \(\kappa/2\pi\sim1\) MHz, so the two qubit states shift the resonator by \(2\chi\) — well resolved. Strong coupling requires \(g>\kappa,\gamma\).
+
+* Engineering applications
+Circuit QED (qubit read-out and two-qubit gates via a bus resonator), cavity-QED single-photon sources, polariton lasers, Rydberg-atom masers.
+
+* Pitfall
+The RWA fails in ultrastrong coupling (\(g/\omega\gtrsim0.1\)): the counter-rotating terms then shift and mix levels (Bloch–Siegert shift, Rabi model).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Jaynes%E2%80%93Cummings_model][Jaynes–Cummings model]]
+- [[https://en.wikipedia.org/wiki/Circuit_quantum_electrodynamics][Circuit quantum electrodynamics]]

@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       addition-of-angular-momenta
+:DOMAIN:   quantum-mechanics
+:AREA:     angular-momentum
+:KIND:     theorem
+:REQUIRES: angular-momentum-algebra
+:SEE:      fine-structure-and-zeeman-effect identical-particles-and-pauli-principle entanglement-and-bell-inequalities
+:ALIASES:  Clebsch-Gordan coefficients, coupled basis, singlet, triplet, spin-orbit coupling, Wigner-Eckart theorem
+:END:
+#+title: Addition of angular momenta
+#+summary: \(j_1\otimes j_2=|j_1-j_2|\oplus\dots\oplus(j_1+j_2)\): the coupled kets \(\ket{j,m}=\sum C^{jm}_{m_1m_2}\ket{m_1,m_2}\) are reached by lowering from the top state and orthogonalising; two spins ½ give a triplet (symmetric) and a singlet \(\tfrac1{\sqrt2}(\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow})\).
+
+* Theorem
+\(\mathbf J=\mathbf J_1+\mathbf J_2\) satisfies the angular-momentum algebra. In \(\mathcal H_{j_1}\otimes\mathcal H_{j_2}\) of dimension \((2j_1+1)(2j_2+1)\) the allowed \(j\) are \(|j_1-j_2|,\dots,j_1+j_2\), each once; check: \(\sum_j(2j+1)=(2j_1+1)(2j_2+1)\). Coefficients are non-zero only for \(m=m_1+m_2\).
+
+* Construction (two spins ½)
+1. Top state \(\ket{1,1}=\ket{\uparrow\uparrow}\).
+2. Lower with \(J_-=J_{1-}+J_{2-}\): \(\sqrt2\hbar\ket{1,0}=\hbar(\ket{\downarrow\uparrow}+\ket{\uparrow\downarrow})\), and \(\ket{1,-1}=\ket{\downarrow\downarrow}\).
+3. The state with \(m=0\) orthogonal to \(\ket{1,0}\) is \(\ket{0,0}=\tfrac1{\sqrt2}(\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow})\).
+Using \(\mathbf S_1\cdot\mathbf S_2=\tfrac12(\mathbf S^2-\mathbf S_1^2-\mathbf S_2^2)\): \(\mathbf S_1\cdot\mathbf S_2=\hbar^2/4\) on the triplet, \(-3\hbar^2/4\) on the singlet.
+
+* Spin–orbit example
+\(l=1\), \(s=\tfrac12\): \(j=\tfrac32\) (4 states) and \(j=\tfrac12\) (2 states). \(\mathbf L\cdot\mathbf S=\tfrac{\hbar^2}2[j(j+1)-l(l+1)-s(s+1)]=\hbar^2/2\) and \(-\hbar^2\): the \(2p_{3/2}\)/\(2p_{1/2}\) splitting. Also \(\ket{\tfrac12,\tfrac12}=-\sqrt{\tfrac13}\ket{0,\uparrow}+\sqrt{\tfrac23}\ket{1,\downarrow}\).
+
+* Wigner–Eckart theorem
+For a rank-\(k\) spherical tensor \(T^{(k)}_q\): \(\bra{j'm'}T^{(k)}_q\ket{jm}=\braket{j\,m;k\,q|j'm'}\frac{\bra{j'}\|T^{(k)}\|\ket{j}}{\sqrt{2j'+1}}\). Geometry (Clebsch–Gordan) is separated from dynamics (reduced element): selection rules \(|j-k|\le j'\le j+k\), \(m'=m+q\).
+
+* Worked example
+Hydrogen hyperfine: \(\mathbf S_e\cdot\mathbf S_p\) splits triplet and singlet by \(\Delta E=5.9\) µeV, i.e. 1420 MHz, \(\lambda=21\) cm, the hydrogen-maser frequency.
+
+* Engineering applications
+Hyperfine clock transitions (Cs 9.19 GHz defines the second), heteronuclear coupling in NMR, exchange interaction (\(J\mathbf S_1\cdot\mathbf S_2\)) used for two-qubit gates in spin qubits.
+
+* Pitfall
+\(\ket{1,0}\) is entangled although it is "a triplet state", and \(\ket{\uparrow\downarrow}\) is not an eigenstate of \(\mathbf S^2\): it is a mixture of singlet and triplet in the coupled basis.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Clebsch%E2%80%93Gordan_coefficients][Clebsch–Gordan coefficients]]
+- [[https://en.wikipedia.org/wiki/Wigner%E2%80%93Eckart_theorem][Wigner–Eckart theorem]]

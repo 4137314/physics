@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       electrostatics-and-gauss-law
+:DOMAIN:   electromagnetic-fields
+:AREA:     static-fields
+:KIND:     theorem
+:REQUIRES: vector-calculus-and-field-theorems
+:SEE:      capacitance-and-laplace-equation pn-junction-electrostatics
+:ALIASES:  Coulomb's law, Gauss's law, electric potential, electric displacement, dielectric, polarization, permittivity, energy density, electric field of charges
+:END:
+#+title: Electrostatics and Gauss's law
+#+summary: Static charges produce \(\mathbf E=-\nabla V\) with \(\nabla\cdot\mathbf D=\rho\), \(\mathbf D=\epsilon\mathbf E=\epsilon_0\mathbf E+\mathbf P\); Gauss's law \(\oint\mathbf D\cdot\dd\mathbf S=Q_{enc}\) solves symmetric problems in one line, and the stored energy is \(\tfrac12\int\mathbf D\cdot\mathbf E\,\dd V\).
+
+* Statement
+Coulomb: \(\mathbf E=\frac{Q}{4\pi\epsilon_0R^2}\hat R\). Superposition and the divergence theorem give
+\[ \nabla\cdot\mathbf D=\rho_v,\qquad \nabla\times\mathbf E=0,\qquad \mathbf E=-\nabla V,\qquad V(\mathbf r)=\int\frac{\rho_v\,\dd V'}{4\pi\epsilon|\mathbf r-\mathbf r'|}. \]
+In matter, bound charges \(\rho_b=-\nabla\cdot\mathbf P\); for linear media \(\mathbf P=\epsilon_0\chi_e\mathbf E\), \(\epsilon_r=1+\chi_e\).
+
+* Derivation: standard symmetric fields
+| source                         | field               |
+|--------------------------------+---------------------|
+| point charge Q                 | Q/(4πεR²)           |
+| infinite line, ρ_l             | ρ_l/(2πεr)          |
+| infinite sheet, ρ_s            | ρ_s/(2ε), each side |
+| uniform sphere, inside (r < a) | ρ r/(3ε)            |
+Each follows by choosing a Gaussian surface on which \(D\) is constant and normal.
+
+* Boundary conditions and energy
+Across an interface: \(E_{t1}=E_{t2}\), \(D_{n1}-D_{n2}=\rho_s\). Conductors: \(\mathbf E=0\) inside, surface field \(\rho_s/\epsilon\) normal. Energy \(W=\tfrac12\int\rho V\,\dd V=\tfrac12\int\epsilon E^2\,\dd V\); force by virtual work \(F=-\partial W/\partial x|_Q\).
+
+* Worked example
+Gate oxide 2 nm SiO\(_2\) (\(\epsilon_r=3.9\)) at 1 V: \(E=V/d=1/(2\times10^{-9})=5\times10^8\) V/m, i.e. 5 MV/cm, half the breakdown field of SiO\(_2\) (~10 MV/cm). Charge density \(\rho_s=\epsilon E=3.9\cdot8.85\times10^{-12}\cdot5\times10^8=1.7\times10^{-2}\) C/m² ≈ \(1.1\times10^{13}\) electrons/cm² — the inversion charge of a MOSFET ([[id:mosfet-operation-and-iv][MOSFET]]).
+
+* Engineering applications
+Capacitive touch screens and MEMS accelerometers, ESD and high-voltage insulation design (field crowding at sharp edges), electrostatic precipitators, depletion regions of [[id:pn-junction-electrostatics][pn junctions]] (Poisson's equation with dopant charge).
+
+* Pitfall
+Gauss's law is always true but only *useful* with symmetry: for a finite line or a square plate the field is not constant on any simple surface.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Gauss%27s_law][Gauss's law]]
+- [[http://hyperphysics.phy-astr.gsu.edu/hbase/electric/gaulaw.html][HyperPhysics: Gauss's law]]

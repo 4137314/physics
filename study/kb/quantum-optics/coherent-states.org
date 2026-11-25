@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       coherent-states
+:DOMAIN:   quantum-optics
+:AREA:     states-of-light
+:KIND:     definition
+:REQUIRES: fock-states uncertainty-relation
+:SEE:      squeezed-states stimulated-emission-and-lasers noise-in-photodetectors
+:ALIASES:  Glauber states, displacement operator, Poisson statistics, laser light, shot noise, quasi-classical state
+:END:
+#+title: Coherent states
+#+summary: \(\ket\alpha=e^{-|\alpha|^2/2}\sum\frac{\alpha^n}{\sqrt{n!}}\ket n=D(\alpha)\ket0\) is the eigenstate of \(a\) with eigenvalue \(\alpha\); it has Poisson photon statistics (\(\Delta n=\sqrt{\bar n}\)), minimum uncertainty, and its mean field oscillates classically: the quantum description of an ideal laser.
+
+* Definition and properties
+\(a\ket\alpha=\alpha\ket\alpha\). Expanding in Fock states, \(\braket{n|\alpha}=\braket{n-1|\alpha}\alpha/\sqrt n\), so
+\[ \ket\alpha=e^{-|\alpha|^2/2}\sum_{n=0}^\infty\frac{\alpha^n}{\sqrt{n!}}\ket n,\qquad P(n)=e^{-\bar n}\frac{\bar n^n}{n!},\quad\bar n=|\alpha|^2. \]
+- Displacement: \(D(\alpha)=e^{\alpha a^\dagger-\alpha^*a}\), \(D^\dagger aD=a+\alpha\), \(\ket\alpha=D(\alpha)\ket0\) (Baker–Campbell–Hausdorff).
+- Quadratures \(X_1=\frac{a+a^\dagger}2\), \(X_2=\frac{a-a^\dagger}{2i}\): \(\Delta X_1=\Delta X_2=\tfrac12\), the vacuum noise, minimum uncertainty.
+- Evolution under \(H=\hbar\omega a^\dagger a\): \(\ket{\alpha e^{-i\omega t}}\), stays coherent; \(\braket E\) is a classical sinusoid.
+- Overcomplete: \(\frac1\pi\int\ket\alpha\bra\alpha\dd^2\alpha=1\), \(|\braket{\beta|\alpha}|^2=e^{-|\alpha-\beta|^2}\).
+
+* Why a classical current produces one
+\(H=\hbar\omega a^\dagger a-\mathbf J(t)\cdot\mathbf A\) is linear in \(a\): the interaction-picture evolution is a displacement, so any classical antenna or a laser well above threshold radiates coherent states.
+
+* Worked example
+1 mW at 1550 nm, 1 ns window: \(\bar n=P\tau/\hbar\omega=10^{-12}/1.28\times10^{-19}=7.8\times10^6\) photons, \(\Delta n=2.8\times10^3\), relative fluctuation \(3.6\times10^{-4}\) — the shot-noise limit of [[id:noise-in-photodetectors][photodetection]], \(i_n^2=2qI\Delta f\).
+
+* Engineering applications
+Coherent optical communications (QPSK/QAM constellations are coherent states \(\alpha\) in phase space, with vacuum-noise-limited error rates), continuous-variable QKD, the standard quantum limit of interferometers.
+
+* Pitfall
+Coherent states with different \(\alpha\) are not orthogonal: their overlap is small only when \(|\alpha-\beta|\gg1\). Perfect discrimination of weak signals is impossible (Helstrom bound).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Coherent_state][Coherent state]]

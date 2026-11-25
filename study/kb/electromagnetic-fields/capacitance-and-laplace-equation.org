@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       capacitance-and-laplace-equation
+:DOMAIN:   electromagnetic-fields
+:AREA:     static-fields
+:KIND:     method
+:REQUIRES: electrostatics-and-gauss-law
+:SEE:      transmission-lines mosfet-capacitances-and-scaling
+:ALIASES:  Poisson equation, Laplace equation, uniqueness theorem, method of images, capacitance, coaxial capacitor, parallel plate capacitor, separation of variables, finite differences
+:END:
+#+title: Poisson, Laplace and capacitance
+#+summary: The potential obeys \(\nabla^2V=-\rho/\epsilon\) (Poisson), \(\nabla^2V=0\) in charge-free regions (Laplace); by uniqueness any solution meeting the boundary conditions is the solution, so images and separation of variables are legitimate; capacitance \(C=Q/V\) follows: \(\epsilon A/d\), \(2\pi\epsilon/\ln(b/a)\) per metre, \(4\pi\epsilon ab/(b-a)\).
+
+* Method
+1. Write \(\nabla^2V=-\rho/\epsilon\) and the boundary values (conductors at fixed \(V\), or \(\partial V/\partial n\) given).
+2. *Uniqueness*: if \(V_1,V_2\) satisfy both, \(W=V_1-V_2\) is harmonic with zero boundary data; \(\int|\nabla W|^2=\oint W\partial_nW=0\), so \(W=0\).
+3. Solve: direct integration (1D), images, separation of variables, conformal maps, or numerics (finite differences: \(V_{i,j}=\tfrac14(V_{i\pm1,j}+V_{i,j\pm1})\)).
+4. \(C=Q/V\) with \(Q=\oint\rho_s\dd S\), or from energy \(W=\tfrac12CV^2\).
+
+* Standard capacitances
+| geometry                    | C                      |
+|-----------------------------+------------------------|
+| parallel plates             | εA/d                   |
+| coaxial, per length         | 2πε/ln(b/a)            |
+| concentric spheres          | 4πε ab/(b − a)         |
+| two wires d apart, radius a | πε/arccosh(d/2a) per m |
+
+* Method of images
+Charge \(q\) at height \(h\) over a grounded plane: replace the plane by \(-q\) at \(-h\); the plane is then at \(V=0\), uniqueness does the rest. Force \(F=\frac{q^2}{4\pi\epsilon(2h)^2}\) (attractive), induced surface charge \(\rho_s=-\frac{qh}{2\pi(x^2+h^2)^{3/2}}\), total \(-q\).
+
+* Worked example
+Coax RG-58: \(a=0.45\) mm, \(b=1.47\) mm, polyethylene \(\epsilon_r=2.3\): \(C=\frac{2\pi\cdot2.3\cdot8.85\times10^{-12}}{\ln3.27}=108\) pF/m; with \(L=\frac{\mu_0}{2\pi}\ln\frac ba=0.24\) µH/m, \(Z_0=\sqrt{L/C}=47\) Ω ≈ 50 Ω ([[id:transmission-lines][transmission lines]]).
+
+* Engineering applications
+Interconnect capacitance in ICs (dominant load for [[id:cmos-propagation-delay][gate delay]]), MOS gate capacitance, capacitive sensors, field solvers for PCB stack-ups, Poisson solvers in device simulation (TCAD).
+
+* Pitfall
+Fringing fields make \(\epsilon A/d\) an underestimate when plate dimensions are not \(\gg d\) — important for narrow IC wires, where fringe capacitance can exceed the plate term.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Method_of_image_charges][Method of image charges]]
+- [[https://en.wikipedia.org/wiki/Laplace%27s_equation][Laplace's equation]]

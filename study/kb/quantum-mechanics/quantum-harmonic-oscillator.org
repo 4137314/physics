@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       quantum-harmonic-oscillator
+:DOMAIN:   quantum-mechanics
+:AREA:     one-dimensional-systems
+:KIND:     theorem
+:REQUIRES: heisenberg-picture-and-ehrenfest-theorem
+:SEE:      quantization-of-the-electromagnetic-field coherent-states fock-states
+:ALIASES:  harmonic oscillator, ladder operators, creation and annihilation operators, number operator, zero-point energy, Hermite functions, phonons
+:END:
+#+title: The quantum harmonic oscillator
+#+summary: With \(a=\sqrt{\frac{m\omega}{2\hbar}}\left(x+\frac{ip}{m\omega}\right)\), \([a,a^\dagger]=1\) and \(H=\hbar\omega(a^\dagger a+\tfrac12)\), so \(E_n=\hbar\omega(n+\tfrac12)\), \(a^\dagger\ket n=\sqrt{n+1}\ket{n+1}\), \(a\ket n=\sqrt n\ket{n-1}\); the same algebra quantises light, phonons and LC circuits.
+
+* Statement
+\(H=\frac{p^2}{2m}+\frac12m\omega^2x^2\). Define \(a\) as above and \(N=a^\dagger a\). Then
+\[ [a,a^\dagger]=1,\quad H=\hbar\omega\left(N+\tfrac12\right),\quad [N,a]=-a,\quad [N,a^\dagger]=a^\dagger. \]
+Spectrum \(E_n=\hbar\omega(n+\tfrac12)\), \(n=0,1,2,\dots\), \(\ket n=\frac{(a^\dagger)^n}{\sqrt{n!}}\ket0\).
+
+* Proof
+1. \(a^\dagger a=\frac{m\omega}{2\hbar}\left(x^2+\frac{p^2}{m^2\omega^2}\right)+\frac{i}{2\hbar}[x,p]=\frac{H}{\hbar\omega}-\frac12\).
+2. \(N(a\ket n)=(aN-a)\ket n=(n-1)a\ket n\): \(a\) lowers \(n\) by one, \(a^\dagger\) raises it.
+3. \(\|a\ket n\|^2=\bra nN\ket n=n\ge0\). Lowering repeatedly from a non-integer \(n\) would reach a negative norm, impossible; so the sequence must stop at \(a\ket0=0\), forcing \(n\in\mathbb N\).
+4. Normalisation: \(a\ket n=\sqrt n\ket{n-1}\), \(a^\dagger\ket n=\sqrt{n+1}\ket{n+1}\).
+5. Ground state from \(a\ket0=0\): \((x+\frac{\hbar}{m\omega}\partial_x)\psi_0=0\Rightarrow\psi_0=\left(\frac{m\omega}{\pi\hbar}\right)^{1/4}e^{-m\omega x^2/2\hbar}\); higher states are Hermite functions \(\psi_n\propto H_n(\xi)e^{-\xi^2/2}\), \(\xi=x\sqrt{m\omega/\hbar}\).
+
+* Useful matrix elements
+\(x=\sqrt{\frac{\hbar}{2m\omega}}(a+a^\dagger)\), \(p=i\sqrt{\frac{m\hbar\omega}{2}}(a^\dagger-a)\). In \(\ket n\): \(\braket x=\braket p=0\), \(\braket{x^2}=\frac{\hbar}{m\omega}(n+\tfrac12)\), so \(\Delta x\Delta p=\hbar(n+\tfrac12)\). Heisenberg picture: \(a(t)=a\,e^{-i\omega t}\).
+
+* Worked example
+Vibration of CO, \(\tilde\nu=2143\) cm\(^{-1}\): \(\hbar\omega=0.266\) eV. At 300 K, \(k_BT=0.026\) eV, so the population of \(n=1\) is \(e^{-10.3}\approx3\times10^{-5}\): molecules sit in the ground state, and IR absorption is the \(0\to1\) line (selection rule \(\Delta n=\pm1\) because \(x\propto a+a^\dagger\)).
+
+* Engineering applications
+- *Quantised LC circuit*: \(H=\frac{Q^2}{2C}+\frac{\Phi^2}{2L}\) with \([\Phi,Q]=i\hbar\): microwave resonators of circuit QED, the transmon as an anharmonic oscillator.
+- *Phonons* (heat capacity, thermal conductivity), *photons* ([[id:quantization-of-the-electromagnetic-field][field quantisation]]), trapped-ion motional modes.
+- Zero-point fluctuations set the vacuum noise floor of amplifiers (\(\hbar\omega/2\) per mode).
+
+* Pitfall
+The ground state is not at rest: \(E_0=\hbar\omega/2\neq0\) and \(\Delta x\neq0\). Also \(a\) is not Hermitian: it is not an observable.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Quantum_harmonic_oscillator][Quantum harmonic oscillator]]
+- [[https://en.wikipedia.org/wiki/Hermite_polynomials][Hermite polynomials]]

@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       hydrogen-atom
+:DOMAIN:   quantum-mechanics
+:AREA:     angular-momentum
+:KIND:     theorem
+:REQUIRES: orbital-angular-momentum
+:SEE:      fine-structure-and-zeeman-effect lamb-shift variational-method
+:ALIASES:  hydrogen spectrum, Bohr radius, Rydberg energy, principal quantum number, Balmer series, hydrogenic donor
+:END:
+#+title: The hydrogen atom
+#+summary: For \(V=-e^2/4\pi\epsilon_0r\), \(E_n=-\frac{m e^4}{2(4\pi\epsilon_0)^2\hbar^2n^2}=-\frac{13.6\text{ eV}}{n^2}\), degeneracy \(n^2\) (\(2n^2\) with spin), ground state \(\psi_{100}=e^{-r/a_0}/\sqrt{\pi a_0^3}\), \(a_0=0.529\) Å.
+
+* Statement
+With reduced mass \(\mu\) and \(\alpha=e^2/4\pi\epsilon_0\hbar c\approx1/137\):
+\[ E_n=-\frac{\mu c^2\alpha^2}{2n^2},\qquad a_0=\frac{4\pi\epsilon_0\hbar^2}{\mu e^2},\qquad l=0,\dots,n-1,\quad m=-l..l. \]
+
+* Derivation
+1. Radial equation with dimensionless \(\rho=2\kappa r\), \(\kappa=\sqrt{-2\mu E}/\hbar\), \(\lambda=1/(\kappa a_0)\): \(u''-\frac{l(l+1)}{\rho^2}u+\left(\frac\lambda\rho-\frac14\right)u=0\).
+2. Asymptotics: \(u\sim e^{-\rho/2}\) at infinity, \(u\sim\rho^{l+1}\) at the origin. Write \(u=\rho^{l+1}e^{-\rho/2}w(\rho)\).
+3. \(w\) satisfies the confluent hypergeometric (Laguerre) equation; its power series grows like \(e^{\rho}\) unless it terminates. Termination requires \(\lambda=n=n_r+l+1\), an integer.
+4. Then \(\kappa=1/(na_0)\) and \(E=-\hbar^2\kappa^2/2\mu=-\hbar^2/(2\mu a_0^2n^2)\).
+The "accidental" \(l\)-degeneracy comes from a hidden SO(4) symmetry (the conserved Runge–Lenz vector).
+
+* Picture
+\begin{tikzpicture}[yscale=0.6]
+\foreach \n/\c in {1/kbcyan,2/kbmagenta,3/kbamber,4/kbviolet}{\draw[\c,thick] (0,{-13.6/(\n*\n)}) -- (3,{-13.6/(\n*\n)}) node[right,black,font=\small]{$n=\n$};}
+\draw[thick] (0,0) -- (3,0) node[right,font=\small]{$0$};
+\draw[-{Latex}] (0.6,-3.4) -- (0.6,-13.6) node[midway,left,font=\small]{Ly$\alpha$};
+\draw[-{Latex}] (1.6,-1.51) -- (1.6,-3.4) node[midway,left,font=\small]{H$\alpha$};
+\node[font=\small] at (1.5,-15) {energies in eV (scaled)};
+\end{tikzpicture}
+
+* Worked example
+H\(\alpha\) (\(3\to2\)): \(\Delta E=13.6(1/4-1/9)=1.89\) eV, \(\lambda=hc/\Delta E=656\) nm. *Hydrogenic donor* in silicon: replace \(\mu\to m^*=0.26m_e\), \(\epsilon_0\to11.7\epsilon_0\): \(E_d\approx13.6\cdot0.26/11.7^2=26\) meV (P in Si: 45 meV with central-cell corrections), \(a^*=a_0\cdot11.7/0.26\approx2.4\) nm. This is why donors are ionised at room temperature ([[id:intrinsic-and-doped-semiconductors][doping]]).
+
+* Engineering applications
+Spectroscopy and gas sensing, hydrogen masers (21 cm hyperfine line), shallow dopants and excitons in semiconductors (exciton binding in GaAs ≈ 4 meV), Rydberg-atom electrometers.
+
+* Pitfall
+\(n\) counts radial nodes plus \(l\) plus one; the 2s state has one radial node, 2p none.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Hydrogen_atom][Hydrogen atom]]
+- [[http://hyperphysics.phy-astr.gsu.edu/hbase/hyde.html][HyperPhysics: hydrogen energies]]

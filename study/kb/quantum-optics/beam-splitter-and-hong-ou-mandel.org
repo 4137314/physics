@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       beam-splitter-and-hong-ou-mandel
+:DOMAIN:   quantum-optics
+:AREA:     coherence
+:KIND:     example
+:REQUIRES: photon-statistics-and-glauber-correlations identical-particles-and-pauli-principle
+:SEE:      directional-couplers mach-zehnder-interferometers entanglement-and-bell-inequalities
+:ALIASES:  beam splitter, Hong-Ou-Mandel dip, two-photon interference, photon bunching, vacuum port, balanced homodyne detection
+:END:
+#+title: The quantum beam splitter and Hong–Ou–Mandel interference
+#+summary: A lossless beam splitter is a unitary on mode operators, \(b_1=ta_1+ra_2\), \(b_2=ra_1+ta_2\) with \(|t|^2+|r|^2=1\), \(tr^*+rt^*=0\); for 50:50 and one photon in each input, \(\ket{1,1}\to\frac{1}{\sqrt2}(\ket{2,0}-\ket{0,2})\): the photons always leave together (HOM dip).
+
+* Model
+Unitarity of the mode transformation preserves \([b_i,b_j^\dagger]=\delta_{ij}\). The unused port carries vacuum, which is why splitting a beam adds partition noise. Symmetric 50:50 choice: \(t=1/\sqrt2\), \(r=i/\sqrt2\).
+
+* Derivation of HOM
+Invert: \(a_1^\dagger=\frac{1}{\sqrt2}(b_1^\dagger+ib_2^\dagger)\), \(a_2^\dagger=\frac{1}{\sqrt2}(ib_1^\dagger+b_2^\dagger)\). Then
+\[ a_1^\dagger a_2^\dagger\ket0=\tfrac12\left(ib_1^{\dagger2}+ib_2^{\dagger2}+b_1^\dagger b_2^\dagger-b_2^\dagger b_1^\dagger\right)\ket0=\frac{i}{\sqrt2}\left(\ket{2,0}+\ket{0,2}\right). \]
+The two amplitudes for "one photon in each output" (both transmitted, both reflected) cancel: \(t^2+r^2=0\). Distinguishable photons (delay \(\tau\gg\tau_c\)) give 50% coincidences; the dip has the width of the photon wave packet.
+
+* Picture
+\begin{tikzpicture}
+\begin{axis}[width=7cm,height=4cm,axis lines=left,xlabel={delay $\tau/\tau_c$},ylabel={coincidences},ymin=0,ymax=0.6,xmin=-3,xmax=3]
+\addplot+[no marks,domain=-3:3,samples=120]{0.5*(1-exp(-x^2))}; \addlegendentry{HOM dip}
+\end{axis}
+\end{tikzpicture}
+
+* Balanced homodyne detection
+Mix the signal with a strong local oscillator \(\beta\) on a 50:50 splitter and subtract the photocurrents: \(n_1-n_2\propto|\beta|(a e^{-i\phi}+a^\dagger e^{i\phi})\), a quadrature of the signal; LO intensity noise cancels. This is how [[id:squeezed-states][squeezing]] and coherent-receiver constellations are measured.
+
+* Worked example
+Visibility \(V=(C_{max}-C_{min})/C_{max}=0.95\) for photons from two quantum dots means their indistinguishability \(\approx0.95\). A delay stage scanned over \(\pm1\) ps resolves a dip of width \(\sim0.5\) ps for 1 nm-bandwidth SPDC photons at 800 nm (\(\tau_c=\lambda^2/c\Delta\lambda\approx2\) ps).
+
+* Engineering applications
+Linear-optical quantum computing and boson sampling (networks of beam splitters on chips, see [[id:directional-couplers][directional couplers]] and [[id:mach-zehnder-interferometers][MZIs]]), Bell-state measurements in quantum repeaters, coherent optical receivers.
+
+* Pitfall
+In the classical description the input field of the dark port can be ignored; quantum mechanically its vacuum fluctuations are what makes the beam-splitter output noisy and the transformation unitary.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Hong%E2%80%93Ou%E2%80%93Mandel_effect][Hong–Ou–Mandel effect]]

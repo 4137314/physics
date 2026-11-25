@@ -1,0 +1,49 @@
+:PROPERTIES:
+:ID:       stern-gerlach-experiment
+:DOMAIN:   quantum-mechanics
+:AREA:     postulates
+:KIND:     example
+:REQUIRES: quantum-mechanics
+:SEE:      kets-bras-and-operators measurement-postulate spin-precession-and-rabi-oscillations
+:ALIASES:  Stern-Gerlach, sequential Stern-Gerlach, spin one-half
+:END:
+#+title: The Stern–Gerlach experiment
+#+summary: Silver atoms through an inhomogeneous field \(\partial B_z/\partial z\) split into exactly two beams, \(S_z=\pm\hbar/2\); sequential filters show that measuring \(S_x\) destroys the information on \(S_z\), which forces a complex vector-space description of states.
+
+* Setup
+An atom with magnetic moment \(\boldsymbol{\mu}\) in a field \(\mathbf{B}\) has energy \(U=-\boldsymbol\mu\cdot\mathbf B\), so it feels the force
+\[ F_z=\frac{\partial}{\partial z}(\boldsymbol\mu\cdot\mathbf B)\simeq \mu_z\frac{\partial B_z}{\partial z}. \]
+For silver the moment comes from the single 5s electron, \(\boldsymbol\mu = -\frac{g e}{2m_e}\mathbf S\) with \(g\simeq2\). Classically \(\mu_z\) is continuous and the beam should smear; the experiment shows *two* spots: \(S_z\) takes only the values \(\pm\hbar/2\).
+
+* Sequential experiments
+1. SG\(\hat z\) → keep \(S_z+\) → SG\(\hat z\): only \(S_z+\) comes out. Measurement is repeatable.
+2. SG\(\hat z\) → keep \(S_z+\) → SG\(\hat x\): \(S_x\pm\) in equal parts.
+3. SG\(\hat z\) → \(S_z+\) → SG\(\hat x\) → keep \(S_x+\) → SG\(\hat z\): **both** \(S_z\pm\) reappear, 50/50.
+Selecting \(S_x+\) erased the earlier knowledge of \(S_z\): \(S_x\) and \(S_z\) cannot be known together.
+
+* Why complex vectors
+Write \(\ket{S_x;\pm}=\tfrac{1}{\sqrt2}(\ket{+}\pm\ket{-})\). The \(S_y\) states must also be 50/50 in both the \(z\) and the \(x\) basis:
+\[ |\braket{S_y;\pm|S_x;\pm}|^2=\tfrac12 \;\Rightarrow\; \ket{S_y;\pm}=\tfrac{1}{\sqrt2}\left(\ket{+}\pm i\ket{-}\right). \]
+No real two-dimensional choice satisfies all three conditions: complex amplitudes are required, exactly as polarisation of light requires circular states.
+
+* Picture
+\begin{tikzpicture}[font=\small]
+\draw[fill=kbcyan!25] (0,0) rectangle (1.4,1) node[midway]{oven};
+\draw[-{Latex}] (1.4,0.5) -- (2.4,0.5);
+\draw[fill=kbmagenta!25] (2.4,0) rectangle (3.6,1) node[midway]{SG$\hat z$};
+\draw[-{Latex}] (3.6,0.7) -- (4.8,1.2) node[right]{$S_z+$};
+\draw[-{Latex}] (3.6,0.3) -- (4.8,-0.2) node[right]{$S_z-$ (blocked)};
+\end{tikzpicture}
+
+* Worked example
+\(\partial B_z/\partial z=10^{3}\) T/m, magnet length \(L=3.5\) cm, silver at \(v=500\) m/s, \(m=1.79\times10^{-25}\) kg. Force \(F=\mu_B\,\partial_z B=9.27\times10^{-24}\cdot10^3=9.3\times10^{-21}\) N; time in magnet \(t=L/v=70\) µs; deflection \(z=\tfrac12(F/m)t^2=\tfrac12\cdot5.2\times10^{4}\cdot4.9\times10^{-9}\approx0.13\) mm per beam — the 0.2–0.3 mm splitting seen in 1922.
+
+* Engineering applications
+Spin filtering is the principle of spin valves and GMR read heads, of atomic-beam clocks (state selection of Cs atoms) and of spin-polarised electron sources.
+
+* Pitfall
+The force needs an *inhomogeneous* field. A uniform \(\mathbf B\) only produces a torque (precession), no deflection.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Stern%E2%80%93Gerlach_experiment][Stern–Gerlach experiment]]
+- [[https://www.feynmanlectures.caltech.edu/III_05.html][Feynman III-5: Spin one]]

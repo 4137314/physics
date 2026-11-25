@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       josephson-junction-and-rcsj-model
+:DOMAIN:   superconducting-electronics
+:AREA:     josephson
+:KIND:     theorem
+:REQUIRES: superconductivity-and-flux-quantization tunnelling-and-wkb lti-systems-and-convolution
+:SEE:      rsfq-logic qubits-and-quantum-gates
+:ALIASES:  Josephson junction, DC Josephson effect, AC Josephson effect, Josephson relations, RCSJ model, Stewart-McCumber parameter, plasma frequency, washboard potential, SQUID, Shapiro steps, Josephson inductance, critical current
+:END:
+#+title: The Josephson junction and the RCSJ model
+#+summary: Two superconductors separated by a thin barrier obey \(I=I_c\sin\varphi\) and \(V=\frac{\Phi_0}{2\pi}\dot\varphi\) (\(\varphi\) = phase difference); in a circuit it behaves as a nonlinear inductor \(L_J=\frac{\Phi_0}{2\pi I_c\cos\varphi}\); the resistively and capacitively shunted junction model \(C\frac{\Phi_0}{2\pi}\ddot\varphi+\frac{\Phi_0}{2\pi R}\dot\varphi+I_c\sin\varphi=I\) is a damped pendulum, overdamped when \(\beta_c=\frac{2\pi I_cR^2C}{\Phi_0}\lesssim1\).
+
+* Josephson relations (derivation, Feynman's two-level model)
+Amplitudes \(\psi_{1,2}=\sqrt{n_{1,2}}e^{i\theta_{1,2}}\) coupled by tunnelling \(K\) ([[id:tunnelling-and-wkb][tunnelling]]): \(i\hbar\dot\psi_1=\mu_1\psi_1+K\psi_2\), \(i\hbar\dot\psi_2=\mu_2\psi_2+K\psi_1\), with \(\mu_2-\mu_1=2eV\). Separating real and imaginary parts: \(\dot n_1=\frac{2K}{\hbar}\sqrt{n_1n_2}\sin\varphi\) → \(I=I_c\sin\varphi\) (DC effect); \(\dot\varphi=\frac{2eV}{\hbar}\) → \(V=\frac{\hbar}{2e}\dot\varphi\) (AC effect: \(f=V/\Phi_0=483.6\) GHz/mV). Ambegaokar–Baratoff: \(I_cR_n=\frac{\pi\Delta}{2e}\) (≈ 2 mV for Nb).
+
+* RCSJ model and washboard
+Kirchhoff with a shunt \(R\) and capacitance \(C\) gives the equation in the summary, i.e. a particle in the tilted washboard \(U(\varphi)=-\frac{\Phi_0}{2\pi}(I_c\cos\varphi+I\varphi)\). Plasma frequency \(\omega_p=\sqrt{2\pi I_c/\Phi_0C}\). For \(I<I_c\) the particle rests in a well (\(V=0\)); for \(I>I_c\) it runs: average voltage \(\bar V=R\sqrt{I^2-I_c^2}\) (overdamped). Each \(2\pi\) slip of \(\varphi\) produces a voltage pulse with \(\int V\dd t=\Phi_0\): the **SFQ pulse**, ~1 ps wide and ~1 mV high.
+
+* Picture
+\begin{tikzpicture}
+\begin{axis}[width=7.5cm,height=4.3cm,axis lines=left,xlabel={$\varphi/2\pi$},ylabel={$U$ (a.u.)},xmin=0,xmax=3,ymin=-14,ymax=2]
+\addplot+[no marks,domain=0:3,samples=200]{-cos(deg(2*pi*x))}; \addlegendentry{$I=0$}
+\addplot+[no marks,domain=0:3,samples=200]{-cos(deg(2*pi*x))-0.6*2*pi*x}; \addlegendentry{$I=0.6I_c$}
+\end{axis}
+\end{tikzpicture}
+
+* Worked example
+\(I_c=100\) µA: \(L_J(0)=\frac{2.07\times10^{-15}}{2\pi\cdot10^{-4}}=3.3\) pH; switching energy \(\approx I_c\Phi_0=2\times10^{-19}\) J. With \(C=0.5\) pF: \(\omega_p=\sqrt{\frac{2\pi\cdot10^{-4}}{2.07\times10^{-15}\cdot5\times10^{-13}}}=7.8\times10^{11}\) rad/s (\(f_p=124\) GHz); critical damping \(\beta_c=1\) needs \(R=\sqrt{\frac{\Phi_0}{2\pi I_cC}}=2.6\) Ω.
+
+* SQUID
+Two junctions in a loop: \(I_{c,tot}=2I_c\left|\cos\frac{\pi\Phi}{\Phi_0}\right|\) — critical current periodic in flux with period \(\Phi_0\): the most sensitive magnetometer (\(\sim10^{-6}\Phi_0/\sqrt{\mathrm{Hz}}\)).
+
+* Engineering applications
+SFQ logic ([[id:rsfq-logic][RSFQ]]), transmon qubits (Josephson nonlinear inductance makes the oscillator anharmonic, see [[id:qubits-and-quantum-gates][qubits]]), Josephson parametric amplifiers, the Josephson voltage standard (Shapiro steps \(V=nf\Phi_0\)), SQUID sensors.
+
+* Pitfall
+Underdamped junctions (\(\beta_c\gg1\)) are hysteretic: once switched they stay in the voltage state; SFQ logic needs \(\beta_c\approx1\) (shunted) to return to zero voltage after each pulse.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Josephson_effect][Josephson effect]]
+- [[https://www.feynmanlectures.caltech.edu/III_21.html][Feynman III-21: superconductivity and the Josephson junction]]

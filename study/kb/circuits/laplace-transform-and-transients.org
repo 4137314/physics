@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       laplace-transform-and-transients
+:DOMAIN:   circuits
+:AREA:     transforms
+:KIND:     theorem
+:REQUIRES: lti-systems-and-convolution fourier-series-and-transform
+:SEE:      frequency-response-and-filters green-functions-and-feynman-propagator
+:ALIASES:  Laplace transform, s-domain, transfer function, poles and zeros, initial value theorem, final value theorem, partial fractions, inverse Laplace, stability, s-domain impedance, initial conditions
+:END:
+#+title: The Laplace transform and circuit transients
+#+summary: \(X(s)=\int_{0^-}^\infty x(t)e^{-st}\dd t\) turns differential equations with initial conditions into algebra: \(\mathcal L[\dot x]=sX-x(0^-)\); impedances become \(R\), \(sL\), \(1/sC\) (with initial-condition sources), the transfer function \(H(s)\) has poles whose real parts decide stability, and partial fractions give the time response.
+
+* Key transforms and theorems
+| x(t)                | X(s)                     |
+|---------------------+--------------------------|
+| δ(t)                | 1                        |
+| u(t)                | 1/s                      |
+| e^{−at} u(t)        | 1/(s + a)                |
+| t e^{−at} u(t)      | 1/(s + a)²               |
+| sin ω₀t u(t)        | ω₀/(s² + ω₀²)            |
+| e^{−at}cos ω₀t u(t) | (s + a)/((s + a)² + ω₀²) |
+Initial value \(x(0^+)=\lim_{s\to\infty}sX(s)\); final value \(x(\infty)=\lim_{s\to0}sX(s)\) (only if poles of \(sX\) are in the left half-plane). \(H(j\omega)=H(s)|_{s=j\omega}\) for stable systems.
+
+* Method
+1. Determine \(v_C(0^-)\), \(i_L(0^-)\).
+2. Transform the circuit: \(L\to sL\) in series with a source \(Li_L(0^-)\) (opposing), \(C\to\frac1{sC}\) in series with \(v_C(0^-)/s\).
+3. Solve algebraically for \(X(s)\).
+4. Partial fractions: \(X=\sum\frac{r_k}{s-p_k}\), \(r_k=\lim_{s\to p_k}(s-p_k)X\); invert term by term.
+
+* Worked example
+RC charged to \(V_0=5\) V discharging into \(R\) while a step \(V_s=10\) V is applied at \(t=0\) (series RC to the source): \(I(s)=\frac{V_s/s-V_0/s}{R+1/sC}=\frac{(V_s-V_0)/R}{s+1/RC}\) → \(i=\frac{5}{R}e^{-t/RC}\), \(v_C=10-5e^{-t/RC}\). Final value: \(\lim s\cdot V_C(s)=10\) V ✓.
+
+* Stability
+Poles in the left half-plane → decaying modes; on the axis → oscillation; right half-plane → instability. Feedback amplifiers and oscillators are designed by placing poles (root locus, Nyquist).
+
+* Engineering applications
+Switching transients (inrush, ringing), control-loop design of power converters and PLLs, step response specs (rise time, overshoot) of amplifiers, transient analysis in SPICE, the Green's-function view of [[id:green-functions-and-feynman-propagator][propagators]].
+
+* Pitfall
+The final-value theorem gives nonsense for oscillating or unstable systems (e.g. \(\sin t\)): check pole locations first.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Laplace_transform][Laplace transform]]

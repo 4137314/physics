@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       power-generation-and-distribution
+:DOMAIN:   circuits
+:AREA:     power-systems
+:KIND:     model
+:REQUIRES: transformer ac-power-and-power-factor
+:SEE:      faraday-law-and-induction switching-converters
+:ALIASES:  three-phase system, alternator, generator, transmission line losses, high voltage transmission, star connection, delta connection, line voltage, phase voltage, balanced load, neutral current
+:END:
+#+title: Generation and distribution of electric power
+#+summary: Alternators convert rotation into sinusoidal emf; transmitting power \(P\) at voltage \(V\) costs \(P_{loss}=\left(\frac{P}{V\cos\varphi}\right)^2r\), so transformers raise \(V\); three-phase systems deliver constant instantaneous power, need no return current for balanced loads, and use about half the conductor of an equivalent single-phase system.
+
+* Generation
+A rotor magnet (or field winding) spinning at \(\Omega\) in a stator coil gives \(e=NBA\Omega\sin\Omega t\) ([[id:faraday-law-and-induction][Faraday]]). Three coils at 120° give three emfs \(V_m\cos(\omega t)\), \(V_m\cos(\omega t-2\pi/3)\), \(V_m\cos(\omega t+2\pi/3)\).
+
+* Why high voltage and three phases (derivation)
+- Losses: line current \(I=P/V\cos\varphi\) → \(P_{loss}=2I^2r\propto1/V^2\): 10× the voltage → 1/100 of the losses.
+- Three phases, balanced loads \(R\): the currents sum to zero, so the return (neutral) wire carries no current and can be thin or omitted. Example of three resistors fed by one generator via 2 wires (current \(3I\)): \(P_{diss}=2(3I)^2r=18I^2r\); with three generators at 120° and three wires (current \(I\) each, neutral current 0): \(P_{diss}=3I^2r\) — six times less loss for the same load power.
+- Instantaneous power \(\sum v_ki_k=\frac32V_mI_m\cos\varphi\) is constant: no torque ripple in motors.
+
+* Star and delta
+Star (Y): \(V_{line}=\sqrt3V_{phase}\) (400 V / 230 V in Europe), \(I_{line}=I_{phase}\). Delta: \(V_{line}=V_{phase}\), \(I_{line}=\sqrt3I_{phase}\). Total power \(P=\sqrt3V_LI_L\cos\varphi\) in both.
+
+* Worked example
+Deliver 100 MW over 100 km of line with \(r=0.05\) Ω/km per conductor (5 Ω), PF 1, three-phase: at 20 kV line voltage \(I=\frac{10^8}{\sqrt3\cdot2\times10^4}=2887\) A, loss \(3I^2r=125\) MW (impossible); at 380 kV, \(I=152\) A, loss \(3\cdot152^2\cdot5=0.35\) MW (0.35%).
+
+* Engineering applications
+Grid design (generation 10–25 kV, transmission 220–400 kV, distribution 15–20 kV, users 400/230 V), motors (rotating field from three phases), HVDC for very long links and cables, renewable inverters synchronising to the grid.
+
+* Pitfall
+Line voltage vs phase voltage: 400 V is between two phases, 230 V phase-to-neutral; power formulas with \(\sqrt3\) use line quantities.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Three-phase_electric_power][Three-phase electric power]]
+- [[https://en.wikipedia.org/wiki/Electric_power_transmission][Electric power transmission]]

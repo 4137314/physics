@@ -1,0 +1,47 @@
+:PROPERTIES:
+:ID:       holography
+:DOMAIN:   optoelectronics
+:AREA:     wave-optics
+:KIND:     model
+:REQUIRES: interference-and-fabry-perot diffraction-and-gratings coherence-of-light
+:SEE:      gaussian-beams
+:ALIASES:  hologram, holography, wavefront reconstruction, Gabor, reference beam, object beam, volume hologram, holographic grating, digital holography
+:END:
+#+title: Holography: recording and reconstructing a wavefront
+#+summary: A hologram records the interference \(|O+R|^2=|O|^2+|R|^2+OR^*+O^*R\) of an object wave \(O\) and a coherent reference \(R\); illuminating the developed plate with \(R\) regenerates a term \(\propto|R|^2O\), the object wave itself with amplitude *and* phase, so the image is three-dimensional; the fringe spacing \(\Lambda=\frac{\lambda}{2\sin(\theta/2)}\) demands sub-µm film resolution and a source coherent over the path differences.
+
+* Principle (derivation)
+Exposure is proportional to intensity: \(I=|O|^2+|R|^2+OR^*+O^*R\). With a linear response the transmittance is \(t=t_0+\beta I\). Re-illuminate with \(R\): \(tR=(t_0+\beta|O|^2+\beta|R|^2)R+\beta|R|^2O+\beta R^2O^*\). The first group is the attenuated reference (zero order); \(\beta|R|^2O\) is a copy of the object wave (virtual image, seen behind the plate where the object was); \(\beta R^2O^*\) is the conjugate wave (real image). With an off-axis reference (Leith–Upatnieks) the three waves leave at different angles and do not overlap — Gabor's in-line hologram (1948) suffered from that overlap.
+
+* Picture: recording
+\begin{tikzpicture}[scale=0.95]
+\draw[thick] (0,0) rectangle (0.6,0.4); \node[font=\scriptsize,below] at (0.3,0) {laser};
+\draw[thick] (1.3,-0.1)--(1.7,0.5); \node[font=\scriptsize,below] at (1.5,-0.1) {BS};
+\draw[-{Latex},red!70!black] (0.6,0.2)--(1.5,0.2);
+\draw[-{Latex},red!70!black] (1.5,0.2)--(5.0,0.2) node[midway,below,font=\scriptsize]{reference $R$};
+\draw[-{Latex},red!70!black] (1.5,0.2)--(1.5,1.8);
+\draw[fill=gray!30] (1.5,2.1) circle (0.3); \node[font=\scriptsize] at (1.5,2.6) {object};
+\draw[-{Latex},red!70!black] (1.8,2.0)--(5.0,1.0) node[midway,above,font=\scriptsize]{object wave $O$};
+\draw[very thick,blue!60!black] (5.2,-0.3)--(5.2,1.8); \node[font=\scriptsize,anchor=west] at (5.3,0.8) {plate};
+\node[font=\scriptsize] at (4.6,0.6) {$\theta$};
+\end{tikzpicture}
+
+* Worked examples
+1. *Fringe spacing* at 633 nm: \(\theta=30^\circ\) between the beams gives \(\Lambda=1.22\) µm (820 lines/mm); \(\theta=60^\circ\): 0.633 µm; counter-propagating beams (reflection hologram, \(\theta=180^\circ\)): \(\lambda/2=0.32\) µm, 3160 lines/mm. Ordinary photographic film resolves ~100 lines/mm: holograms need special emulsions or photopolymers.
+2. *Stability*: fringes must not move by more than ≈ \(\Lambda/4\) during exposure. A 1 s exposure tolerates relative drifts of ≈ 0.1 µm: a vibration-isolated table, or a pulsed laser (ns) for living subjects.
+3. *Coherence*: an object 20 cm deep needs path differences up to ≈ 40 cm to stay within the coherence length: a single-longitudinal-mode laser (\(l_c=c/\Delta\nu\) of metres), not a multimode He–Ne with \(l_c\approx20\) cm ([[id:coherence-of-light][coherence]]).
+
+* Engineering applications
+Security holograms on banknotes (embossed surface relief), holographic interferometry (compare a wavefront before and after loading: fringes map µm deformations), volume holographic gratings and Bragg filters, head-up and AR displays (holographic waveguides), holographic data storage, digital holography (record on a camera, reconstruct numerically) for microscopy.
+
+* Exam-style exercise
+Two 532 nm beams at 40° record a transmission hologram. (a) Fringe period. (b) A 650 nm beam reads it: at what angle is the first-order diffraction relative to the reading beam if it hits the grating normally?
+** Solution
+(a) \(\Lambda=\frac{0.532}{2\sin20^\circ}=0.778\) µm. (b) Grating equation ([[id:diffraction-and-gratings][gratings]]) with normal incidence: \(\sin\theta_1=\frac{0.650}{0.778}=0.836\), \(\theta_1=56.7^\circ\). A thick (volume) hologram would diffract efficiently only at the Bragg angle; reading at another wavelength mismatches it.
+
+* Pitfall
+A hologram is not a picture of the object: it stores the interference pattern, whose spacing is set by the beam angle, not by the object's detail; cutting a hologram in pieces keeps the whole scene, with less resolution.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Holography][Holography]]
+- [[https://www.nobelprize.org/prizes/physics/1971/gabor/facts/][Nobel Prize 1971: Dennis Gabor]]

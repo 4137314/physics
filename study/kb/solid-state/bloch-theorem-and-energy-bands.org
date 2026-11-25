@@ -1,0 +1,47 @@
+:PROPERTIES:
+:ID:       bloch-theorem-and-energy-bands
+:DOMAIN:   solid-state
+:AREA:     band-theory
+:KIND:     theorem
+:REQUIRES: solid-state symmetries-and-conservation-laws square-well-potentials
+:SEE:      photonic-crystals effective-mass-and-holes tunnelling-and-wkb
+:ALIASES:  Bloch theorem, energy bands, band gap, Kronig-Penney model, Brillouin zone, crystal momentum, nearly free electron, tight binding, metals insulators semiconductors
+:END:
+#+title: Bloch's theorem and energy bands
+#+summary: In a periodic potential \(V(x+a)=V(x)\) the eigenstates are \(\psi_k(x)=e^{ikx}u_k(x)\) with \(u_k\) periodic, \(k\) in the Brillouin zone \((-\pi/a,\pi/a]\); allowed energies form bands \(E_n(k)\) separated by gaps that open where Bragg reflection \(k=\pm\pi/a\) occurs.
+
+* Theorem and proof
+The translation \(T_a\psi(x)=\psi(x+a)\) commutes with \(H\) ([[id:symmetries-and-conservation-laws][symmetry]]), so common eigenstates exist with \(T_a\psi=\lambda\psi\), \(|\lambda|=1\) (bounded states; or periodic boundary conditions over \(N\) cells, \(\lambda^N=1\)): \(\lambda=e^{ika}\), \(k=2\pi m/Na\). Then \(u_k(x)=e^{-ikx}\psi_k(x)\) is periodic. \(\hbar k\) is the *crystal momentum*, conserved modulo \(\hbar G\), \(G=2\pi/a\).
+
+* Kronig–Penney model
+Square wells (width \(b\)) and barriers (\(V_0\), width \(c\)), \(a=b+c\). Matching as in [[id:tunnelling-and-wkb][tunnelling]] with the Bloch condition gives (for \(E<V_0\))
+\[ \cos ka=\cos\alpha b\cosh\beta c+\frac{\beta^2-\alpha^2}{2\alpha\beta}\sin\alpha b\sinh\beta c,\qquad \alpha=\frac{\sqrt{2mE}}\hbar,\ \beta=\frac{\sqrt{2m(V_0-E)}}\hbar. \]
+Energies where the right side exceeds 1 in magnitude have no real \(k\): band gaps.
+
+* Picture
+\begin{tikzpicture}
+\begin{axis}[width=7.5cm,height=4.5cm,axis lines=left,xlabel={$\alpha a$},ylabel={$f(E)$},xmin=0.01,xmax=12,ymin=-4,ymax=6]
+\addplot+[no marks,domain=0.01:12,samples=400]{cos(deg(x))+3*sin(deg(x))/x}; \addlegendentry{$\cos\alpha a+P\frac{\sin\alpha a}{\alpha a}$}
+\addplot+[no marks,domain=0:12]{1}; \addplot+[no marks,domain=0:12]{-1};
+\end{axis}
+\end{tikzpicture}
+Delta-barrier limit with \(P=3\): bands are where the curve lies between \(\pm1\).
+
+* Nearly free and tight binding
+Weak \(V\): free parabola folded into the zone, gaps \(2|V_G|\) at \(k=\pm G/2\) (degenerate perturbation theory between \(k\) and \(k-G\)). Strong \(V\) (atomic orbitals, hopping \(t\)): \(E(k)=E_0-2t\cos ka\), bandwidth \(4t\) — the band is broad when neighbours overlap strongly.
+
+* Filling and classification
+Each band holds \(2N\) electrons (spin). Full bands carry no current. Partially filled → metal; full with gap \(E_g\gg k_BT\) → insulator; \(E_g\sim1\) eV → semiconductor (thermally and optically excitable carriers).
+
+* Worked example
+1D tight-binding chain, \(a=0.3\) nm, \(t=1\) eV: bandwidth 4 eV; near \(k=0\), \(E\approx E_0-2t+ta^2k^2\), effective mass \(m^*=\hbar^2/(2ta^2)=0.42m_e\) — strong overlap gives light carriers ([[id:effective-mass-and-holes][effective mass]]).
+
+* Engineering applications
+Band engineering of semiconductors and alloys, superlattices and quantum-cascade lasers, Bloch oscillations, [[id:photonic-crystals][photonic crystals]] (same theorem for light), phononic crystals.
+
+* Pitfall
+\(\hbar k\) is not the electron's real momentum: \(\psi_k\) is not a momentum eigenstate, and crystal momentum is conserved only up to reciprocal-lattice vectors (Umklapp).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Bloch%27s_theorem][Bloch's theorem]]
+- [[https://en.wikipedia.org/wiki/Particle_in_a_one-dimensional_lattice][Kronig–Penney model]]

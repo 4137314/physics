@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       cmos-propagation-delay
+:DOMAIN:   digital-electronics
+:AREA:     inverters
+:KIND:     method
+:REQUIRES: cmos-inverter mosfet-capacitances-and-scaling lti-systems-and-convolution
+:SEE:      cmos-power-dissipation static-cmos-logic-gates dynamic-logic-and-pass-transistors
+:ALIASES:  propagation delay, tPHL, tPLH, rise time, fall time, on resistance, equivalent resistance, load capacitance, fan-out, logical effort, buffer chain, Elmore delay
+:END:
+#+title: CMOS propagation delay
+#+summary: Switching an inverter discharges (charges) its load \(C\) through the NMOS (PMOS); modelling each device by \(R_{eq}=1.7R_{on}\), \(R_{on}=\frac{1}{K(V_{DD}-|V_T|)}\), gives \(t_{PHL}=0.69\cdot1.7R_{on,n}C=1.2R_{on,n}C\), fall time \(t_f=2.2\cdot1.7R_{on,n}C=3.7R_{on,n}C\), and the average \(\tau_P=\frac{t_{PHL}+t_{PLH}}{2}\); delay scales as \(C/K\), so wider transistors or smaller loads are faster.
+
+* Derivation
+Ideal step input: for \(t>0\) the NMOS is on and the PMOS off; \(C\) discharges from \(V_{DD}\). The NMOS starts saturated (constant current) and enters triode at \(v_O=V_{DD}-V_{TN}\); integrating \(C\dd v_O/\dd t=-i_D(v_O)\) to \(v_O=V_{DD}/2\) gives a time equal to that of an RC discharge with an effective resistance \(\approx1.7R_{on}\) (for \(V_{TN}\approx0.2\)–\(0.25V_{DD}\)). An RC reaches 50% in \(0.69RC\) and goes 90%→10% in \(2.2RC\) ([[id:lti-systems-and-convolution][first-order step response]]).
+
+* Sizing rules
+| goal                         | rule                                                |
+|------------------------------+-----------------------------------------------------|
+| equal t_PHL and t_PLH        | K_p = K_n → (W/L)_p = (K'_n/K'_p)(W/L)_n            |
+| target delay τ with load C   | K = 1.2C/(τ(V_DD − V_T)) for each device            |
+| n devices in series          | each n times wider than the single equivalent       |
+| big load C_L from small gate | buffer chain, stage ratio ≈ e … 4, N ≈ ln(C_L/C_in) |
+
+* Worked example
+\(C=100\) fF, \(V_{DD}=2.5\) V, \(V_{TN}=-V_{TP}=0.6\) V, \(K'_n=100\), \(K'_p=40\) µA/V², target \(t_{PHL}=t_{PLH}=100\) ps. \(R_{on,n}=\frac{100\text{ ps}}{1.2\cdot100\text{ fF}}=833\) Ω → \(K_n=\frac{1}{833\cdot1.9}=632\) µA/V² → \((W/L)_n=6.3\); \((W/L)_p=6.3\cdot2.5=15.8\). Fall time \(t_f=3.7\cdot833\cdot100\) fF \(=308\) ps.
+
+* Engineering applications
+Static timing analysis (gate delay ≈ intrinsic + \(R\cdot C_{load}\)), standard-cell drive strengths (X1, X2, X4), clock-tree buffering, interconnect RC (Elmore delay \(\sum R_iC_{downstream}\)), logical-effort optimisation of critical paths.
+
+* Pitfall
+Using \(R_{on}\) (small-\(V_{DS}\) resistance) without the factor 1.7 underestimates delay by ~40%; and the input slope matters: a slow input adds delay and short-circuit power.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Propagation_delay][Propagation delay]]
+- [[https://en.wikipedia.org/wiki/Logical_effort][Logical effort]]

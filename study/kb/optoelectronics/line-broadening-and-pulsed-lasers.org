@@ -1,0 +1,61 @@
+:PROPERTIES:
+:ID:       line-broadening-and-pulsed-lasers
+:DOMAIN:   optoelectronics
+:AREA:     light-sources
+:KIND:     model
+:REQUIRES: stimulated-emission-and-lasers gas-and-solid-state-lasers
+:SEE:      coherence-of-light semiconductor-laser-diodes
+:ALIASES:  homogeneous broadening, inhomogeneous broadening, natural linewidth, collision broadening, Doppler broadening, Lorentzian, Gaussian lineshape, spectral hole burning, Q-switching, mode locking, ultrafast laser, femtosecond pulse, time-bandwidth product, gain switching, pulse repetition rate, peak power
+:END:
+#+title: Line broadening, Q-switching and mode-locking
+#+summary: A transition has a finite width: homogeneous (every atom has the same Lorentzian line, natural \(\Delta\nu=\frac{1}{2\pi\tau}\) or collisional) or inhomogeneous (atoms differ, e.g. Doppler, Gaussian line); inhomogeneous media burn spectral holes and lase on many modes. Q-switching stores inversion and dumps it in ns pulses of peak power \(\sim E/\tau_p\); mode-locking phases \(N\) modes into pulses of width \(\approx\frac{1}{N\Delta\nu_{FSR}}\approx\frac{1}{\Delta\nu_{gain}}\) repeating every \(\frac{2nL}{c}\).
+
+* Broadening mechanisms
+- *Natural*: an upper level of lifetime \(\tau\) gives a field \(e^{-t/2\tau}\cos\omega_0t\), whose spectrum is Lorentzian of FWHM \(\Delta\nu=\frac{1}{2\pi\tau}\).
+- *Collisional (pressure)*: collisions interrupt the phase, shortening the effective \(\tau\): also Lorentzian, homogeneous.
+- *Doppler*: thermal velocities shift each atom's frequency by \(\nu_0v_x/c\): a Gaussian of FWHM \(2\nu_0\sqrt{2k_BT\ln2/Mc^2}\), inhomogeneous ([[id:gas-and-solid-state-lasers][He–Ne]]).
+- *Crystal fields* in glasses (Er:fibre) and alloy disorder: inhomogeneous.
+In a homogeneous medium one mode saturates the whole gain curve and the others die (single mode is natural); in an inhomogeneous one each mode saturates only its own velocity class: a *spectral hole* of homogeneous width, and several modes coexist.
+
+* Picture: line shapes of equal FWHM
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.2cm,axis lines=left,xlabel={$(\nu-\nu_0)/\Delta\nu$},ylabel={$g(\nu)$ (norm.)},xmin=-3,xmax=3,ymin=0,ymax=1.1]
+\addplot+[no marks,thick,domain=-3:3,samples=200]{1/(1+4*x^2)}; \addlegendentry{Lorentzian}
+\addplot+[no marks,thick,domain=-3:3,samples=200]{exp(-4*ln(2)*x^2)}; \addlegendentry{Gaussian}
+\end{axis}
+\end{tikzpicture}
+
+* Q-switching
+Keep the cavity loss high (Pockels cell plus polariser, acousto-optic modulator, or saturable absorber) while the pump builds an inversion far above normal threshold; then switch the loss low. Gain greatly exceeds loss, photons build up in a few round trips and dump the stored energy in a pulse of a few cavity lifetimes (ns). Energy \(E\approx\frac12(\Delta N_i-\Delta N_f)h\nu V\); peak power \(E/\tau_p\).
+
+* Mode-locking (derivation)
+\(N\) modes of equal amplitude, spacing \(\Delta\nu=c/2nL\), locked in phase: \(E(t)=\sum_{m}E_0e^{j2\pi(\nu_0+m\Delta\nu)t}\), a geometric sum, gives
+\[ I(t)\propto\frac{\sin^2(N\pi\Delta\nu t)}{\sin^2(\pi\Delta\nu t)}. \]
+Peaks of height \(N^2\) (vs \(N\) for random phases) every \(T=1/\Delta\nu=2nL/c\), width \(\approx\frac{1}{N\Delta\nu}\). The broader the gain, the shorter the pulse.
+
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.2cm,axis lines=left,xlabel={$t\,\Delta\nu$},ylabel={$I/N^2$},xmin=0,xmax=3,ymin=0,ymax=1.05]
+\addplot+[no marks,thick,domain=0.001:2.999,samples=601]{(sin(deg(8*pi*x))^2/sin(deg(pi*x))^2)/64}; \addlegendentry{$N=8$ locked modes}
+\end{axis}
+\end{tikzpicture}
+
+* Worked examples
+1. *Natural width*: \(\tau=10\) ns → 16 MHz; He–Ne Doppler width 1.5 GHz is 100× larger.
+2. *Q-switched Nd:YAG*: 100 mJ in 10 ns → 10 MW peak, from a laser averaging 1 W at 10 Hz.
+3. *Ti:sapphire*: 30 nm bandwidth at 800 nm → \(\Delta\nu=c\Delta\lambda/\lambda^2=14\) THz; transform limit for Gaussian pulses \(\tau\Delta\nu=0.441\) → 31 fs. Cavity 1.5 m → 100 MHz repetition.
+4. *Mode-locked He–Ne* (if it were): 1.5 GHz gain → pulses ≈ 0.66 ns: gas lasers are poor at ultrafast pulses.
+
+* Engineering applications
+Q-switched lasers: marking, LiDAR ranging, tattoo removal, pumping nonlinear crystals. Mode-locked lasers: femtosecond micromachining, multiphoton microscopy, frequency combs (Nobel 2005) for optical clocks, eye surgery (LASIK flap). Semiconductor lasers make short pulses by gain switching and are mode-locked in monolithic cavities for optical clocks in datacom.
+
+* Exam-style exercise
+An Nd:YAG laser has gain bandwidth 120 GHz, cavity 1.5 m (\(n\approx1\)) and 1 W average output when mode-locked. (a) Mode spacing and number of modes. (b) Pulse width and period. (c) Energy and peak power per pulse.
+** Solution
+(a) \(c/2L=100\) MHz, \(N=1200\). (b) \(\tau\approx1/120\) GHz \(=8.3\) ps; \(T=10\) ns. (c) \(E=1\ \mathrm W\cdot10\ \mathrm{ns}=10\) nJ; \(P_{peak}\approx10\ \mathrm{nJ}/8.3\ \mathrm{ps}=1.2\) kW (1200× the average, the duty-cycle inverse).
+
+* Pitfall
+Mode-locking is not "more modes": a free-running multimode laser has the same modes with random phases, giving noisy CW output of average power \(N\); locking only redistributes that power into short pulses.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Mode_locking][Mode locking]]
+- [[https://www.rp-photonics.com/q_switching.html][RP Photonics: Q switching]]

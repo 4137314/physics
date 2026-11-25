@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       diffraction-and-gratings
+:DOMAIN:   optoelectronics
+:AREA:     wave-optics
+:KIND:     theorem
+:REQUIRES: interference-and-fabry-perot
+:SEE:      grating-couplers fourier-series-and-transform position-momentum-and-wave-functions
+:ALIASES:  Fraunhofer diffraction, single slit, Airy disk, Rayleigh criterion, diffraction grating, grating equation, resolving power, Huygens-Fresnel, angular spectrum
+:END:
+#+title: Diffraction and diffraction gratings
+#+summary: Far from an aperture (Fraunhofer) the field is the Fourier transform of the aperture: a slit of width \(a\) gives \(I\propto\mathrm{sinc}^2(\pi a\sin\theta/\lambda)\), a circular aperture of diameter \(D\) the Airy pattern with first zero at \(\sin\theta=1.22\lambda/D\); a grating of period \(d\) sends order \(m\) to \(d(\sin\theta_m-\sin\theta_i)=m\lambda\) with resolving power \(mN\).
+
+* Statement and derivation
+Huygens–Fresnel: each point of the aperture emits a spherical wavelet. Far away (\(z\gg a^2/\lambda\)) the path difference is linear in the aperture coordinate, so
+\[ E(\theta)\propto\int_{\text{aperture}}A(y)\,e^{jky\sin\theta}\dd y, \]
+a Fourier transform with spatial frequency \(\sin\theta/\lambda\). Slit: \(E\propto\mathrm{sinc}(\beta)\), \(\beta=\pi a\sin\theta/\lambda\), zeros at \(a\sin\theta=m\lambda\). Same mathematics as [[id:position-momentum-and-wave-functions][position–momentum duality]] and [[id:fourier-series-and-transform][time–frequency]].
+
+* Resolution
+Rayleigh criterion: two points are resolved when the maximum of one falls on the first zero of the other: \(\theta_{min}=1.22\lambda/D\). Microscopy: \(d_{min}\approx0.61\lambda/\mathrm{NA}\).
+
+* Gratings
+\(N\) slits of period \(d\): \(I=I_{slit}(\theta)\left[\frac{\sin(N\gamma)}{\sin\gamma}\right]^2\), \(\gamma=\pi d\sin\theta/\lambda\). Principal maxima obey the grating equation; peak width \(\propto1/N\); resolving power \(\lambda/\Delta\lambda=mN\). Blazing tilts facets to concentrate power in one order.
+
+* Worked example
+1200 lines/mm grating (\(d=833\) nm), normal incidence, \(\lambda=633\) nm: \(\sin\theta_1=0.76\), \(\theta_1=49.5^\circ\); \(m=2\) impossible (\(\sin>1\)). Illuminating 10 mm (\(N=12000\)) resolves \(\Delta\lambda=633/12000=0.05\) nm in first order. A 10 cm lens at 550 nm resolves \(6.7\) µrad (1.22λ/D).
+
+* Picture: single-slit pattern
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$a\sin\theta/\lambda$},ylabel={$I/I_0$},xmin=-3,xmax=3,ymin=0,ymax=1.05]
+\addplot+[no marks,thick,domain=-3:3,samples=200]{(sin(deg(pi*x))/(pi*x))^2}; \addlegendentry{$\mathrm{sinc}^2$}
+\end{axis}
+\end{tikzpicture}
+Zeros at \(a\sin\theta=m\lambda\); the central lobe (between the first zeros) is twice as wide as the others and holds ≈ 90% of the power.
+
+* Engineering applications
+Spectrometers and wavelength demultiplexers (arrayed-waveguide gratings), [[id:grating-couplers][grating couplers]] on photonic chips, lithography resolution limits, laser beam shaping with diffractive optics, CD/DVD pits, beam steering in LiDAR (optical phased arrays).
+
+* Exam-style exercise
+A transmission grating has 600 lines/mm. (a) First- and second-order angles of the sodium lines 589.0 and 589.6 nm at normal incidence. (b) Minimum number of illuminated lines to resolve them in first and second order. (c) First-order angles at 30° incidence. (d) A 50 µm slit at 633 nm: width of the central lobe on a screen 1 m away.
+** Solution
+(a) \(d=1.667\) µm: \(\theta_1=20.70^\circ\) and \(20.72^\circ\); \(\theta_2=44.98^\circ\) and \(45.03^\circ\) — the separation doubles in second order. (b) \(\frac{\lambda}{\Delta\lambda}=982=mN\): \(N\ge982\) (\(m=1\)), \(\ge491\) (\(m=2\)). (c) \(\sin\theta_m=\sin30^\circ+m\lambda/d\): \(m=+1\): \(\sin\theta=0.854\), \(58.6^\circ\); \(m=-1\): \(8.4^\circ\). (d) First zeros at \(\sin\theta=\lambda/a=0.0127\): central lobe \(2\cdot0.0127\cdot1\) m \(=25\) mm.
+
+* Pitfall
+The Fraunhofer approximation needs \(z\gg a^2/\lambda\) (or a lens focal plane); close to the aperture (Fresnel regime) the pattern is not a Fourier transform.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Fraunhofer_diffraction][Fraunhofer diffraction]]
+- [[https://en.wikipedia.org/wiki/Diffraction_grating][Diffraction grating]]

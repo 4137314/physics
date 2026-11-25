@@ -1,0 +1,51 @@
+:PROPERTIES:
+:ID:       optoelectronics
+:DOMAIN:   optoelectronics
+:AREA:     optoelectronics
+:KIND:     overview
+:REQUIRES: electromagnetic-fields
+:SEE:      photonics solid-state quantum-optics
+:ALIASES:  optoelectronics and photonics, Kasap, basics of optoelectronics, fiber optics
+:END:
+#+title: Optoelectronics: the map of the subject
+#+summary: Wave optics (dispersion, Fresnel, Gaussian beams, interference, diffraction, coherence), dielectric waveguides and fibres (modes, dispersion, attenuation), semiconductor emitters (LEDs, lasers, amplifiers), detectors and solar cells, and modulators: the chain transmitter → channel → receiver of every optical link.
+
+* Overview
+| block          | notes                                                            |
+|----------------+------------------------------------------------------------------|
+| wave optics    | dispersion, complex index, Gaussian beams, TIR, thin films       |
+| interference   | Fabry–Perot, diffraction and gratings, coherence, holography     |
+| guided waves   | slab waveguide, fibre modes, dispersion, couplers, link design   |
+| fibre systems  | scattering and OTDR, fibre sensors (FBG, gyroscopes)             |
+| semiconductors | optical properties, LEDs, LED efficiency and photometry          |
+| lasers         | stimulated emission, gas and solid-state, pulses, laser diodes   |
+| single mode    | DFB, DBR, VCSEL, quantum wells, optical amplifiers               |
+| detection      | photodiodes, APDs, photoconductors, circuits, noise, imaging     |
+| energy, modul. | solar cells, polarisation and wave plates, electro-optics        |
+
+Chapter by chapter:
+- *Wave nature of light*: [[id:dispersion-and-group-velocity][dispersion and group velocity]], [[id:gaussian-beams][Gaussian beams]], [[id:total-internal-reflection-and-evanescent-waves][TIR and evanescent waves]], [[id:thin-film-optics-and-coatings][AR coatings and dielectric mirrors]], [[id:complex-refractive-index-and-absorption][complex refractive index]], [[id:interference-and-fabry-perot][Fabry–Perot]], [[id:diffraction-and-gratings][diffraction]], [[id:coherence-of-light][coherence]], [[id:holography][holography]].
+- *Waveguides and fibres*: [[id:dielectric-slab-waveguide][slab waveguide]], [[id:optical-fibers][fibres]], [[id:fiber-dispersion-and-attenuation][dispersion and attenuation]], [[id:optical-link-design][bit rate and link budgets]], [[id:fiber-couplers][couplers]], [[id:fiber-scattering-and-otdr][scattering and OTDR]], [[id:fiber-optic-sensors][FBG sensors and gyroscopes]].
+- *Semiconductors and LEDs*: [[id:semiconductor-optical-properties][absorption and band gaps]], [[id:light-emitting-diodes][LEDs]], [[id:led-efficiency-and-photometry][LED efficiency, photometry and driving]].
+- *Lasers*: [[id:stimulated-emission-and-lasers][stimulated emission]], [[id:gas-and-solid-state-lasers][three- and four-level lasers]], [[id:line-broadening-and-pulsed-lasers][broadening, Q-switching, mode-locking]], [[id:optical-amplifiers][EDFA and SOA]], [[id:semiconductor-laser-diodes][laser diodes]], [[id:single-mode-laser-diodes][DFB, VCSEL, QW lasers]].
+- *Photodetectors*: [[id:photodetectors][pn and pin photodiodes]], [[id:avalanche-photodiodes][APDs]], [[id:photoconductors-and-phototransistors][photoconductors and phototransistors]], [[id:photodiode-circuits-and-bandwidth][circuits and speed]], [[id:noise-in-photodetectors][noise and NEP]], [[id:image-sensors][image sensors]], [[id:solar-cells][solar cells]].
+- *Polarisation and modulation*: [[id:polarization-and-birefringence][polarisation and wave plates]], [[id:electro-optic-modulators][electro-optic modulators]].
+
+* Picture: an optical link
+\begin{tikzpicture}[node distance=1.2cm, every node/.style={draw, rounded corners, font=\small, align=center}]
+\node (s) {laser diode\\+ modulator};
+\node (f) [right=of s] {fibre\\(loss, dispersion)};
+\node (a) [right=of f] {EDFA};
+\node (d) [right=of a] {photodiode\\+ TIA};
+\draw[-{Latex}] (s)--(f); \draw[-{Latex}] (f)--(a); \draw[-{Latex}] (a)--(d);
+\end{tikzpicture}
+
+* Exam preparation
+All past papers of the written exam, solved and grouped by exercise type with the traps of each: [[id:exam-basics-of-optoelectronics][Basics of Opto-Electronics exam]]. Thirty further problems over the whole programme, in the same style: [[id:exam-practice-optoelectronics-syllabus][full-syllabus problem set]].
+
+* Engineering applications
+Telecom and datacom links, LiDAR, displays and solid-state lighting, imaging sensors, photovoltaics, fibre sensors (gyroscopes, FBG strain gauges), laser machining and medicine.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Optoelectronics][Optoelectronics]]
+- [[https://www.rp-photonics.com/encyclopedia.html][RP Photonics Encyclopedia]]

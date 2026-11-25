@@ -1,0 +1,52 @@
+:PROPERTIES:
+:ID:       avalanche-photodiodes
+:DOMAIN:   optoelectronics
+:AREA:     photodetectors
+:KIND:     model
+:REQUIRES: photodetectors noise-in-photodetectors
+:SEE:      photodiode-circuits-and-bandwidth optical-link-design
+:ALIASES:  APD, avalanche photodiode, multiplication factor, impact ionization, ionization coefficient, ionization ratio k, excess noise factor, McIntyre, Miller formula, breakdown voltage, reach-through APD, SAM APD, separate absorption and multiplication, superlattice APD, optimum gain, SPAD, Geiger mode, gain-bandwidth product
+:END:
+#+title: Avalanche photodiodes
+#+summary: A high-field region multiplies each photogenerated carrier by impact ionisation: \(I_{ph}=MI_{ph0}\), with \(M\approx\frac{1}{1-(V_r/V_{br})^n}\) near breakdown; the randomness of the avalanche adds an excess noise factor \(F(M)=kM+(1-k)\left(2-\frac1M\right)\) (\(k=\alpha_h/\alpha_e\)), so the SNR \(\frac{(MI_{ph0})^2}{2q(I_{ph0}+I_d)M^2FB+4k_BTB/R_L}\) has an optimum gain; low \(k\) (Si) is quiet, InGaAs/InP uses a separate absorption and multiplication (SAM) structure.
+
+* Multiplication
+An electron accelerated in a field \(\sim3\times10^5\) V/cm gains more than \(\approx\frac32E_g\) between collisions and creates a new electron–hole pair. Ionisation coefficients \(\alpha_e\), \(\alpha_h\) (per unit length) grow steeply with field. If only electrons ionise (\(k=0\)), \(M=e^{\alpha_ew}\) grows smoothly and there is no feedback; if holes also ionise, holes travelling back trigger new electrons: positive feedback, larger fluctuations, slower avalanche build-up and breakdown when \(\int\alpha\,\dd x\) reaches 1. Empirically \(M=\left[1-(V_r/V_{br})^n\right]^{-1}\), \(n\approx3\)–6; \(V_{br}\) rises with temperature (phonons steal energy), so APDs need bias or temperature control.
+
+* Structures
+- *Reach-through Si APD* (n⁺-p-π-p⁺): light absorbed in the wide π region, electrons drift to a thin high-field p–n⁺ layer where they multiply; electrons only, \(k\approx0.02\).
+- *SAM InGaAs/InP*: absorption in narrow-gap InGaAs (1.3–1.6 µm) at low field (no tunnelling dark current), multiplication in wide-gap InP at high field; an InGaAsP grading layer smooths the band offset (SAGM). Holes multiply, \(k\approx0.4\)–0.5 → noisier.
+- Superlattice and InAlAs multipliers lower \(k\); Ge-on-Si APDs use Si for multiplication.
+- *SPAD*: biased above breakdown (Geiger mode), each photon triggers a macroscopic pulse, then quenched: single-photon counting (LiDAR, quantum optics).
+
+* Picture: SNR versus gain (InGaAs APD, 100 nW, 1 GHz, 1 kΩ)
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.4cm,axis lines=left,xlabel={$M$},ylabel={SNR (dB)},xmin=1,xmax=60,ymin=-5,ymax=16]
+\addplot+[no marks,thick,domain=1:60,samples=200]{10*log10(765.6*x^2/(2.8035*x^2.7+1657))}; \addlegendentry{$F=M^{0.7}$}
+\addplot+[no marks,dashed,domain=1:60]{-3.36}; \addlegendentry{pin ($M=1$)}
+\end{axis}
+\end{tikzpicture}
+
+* Optimum gain (derivation)
+At low \(M\) thermal noise dominates and the SNR grows as \(M^2\); at high \(M\) the multiplied shot noise grows as \(M^{2+x}\) (with \(F\approx M^x\), \(x\approx0.3\) Si, 0.7 InGaAs) and the SNR falls as \(M^{-x}\). Setting \(\frac{\dd\,\mathrm{SNR}}{\dd M}=0\): \(M_{opt}^{2+x}=\frac{4k_BT/R_L}{x\,q(I_{ph0}+I_d)}\). APDs therefore help only when thermal noise dominates, and the gain-bandwidth product (≈ 100–300 GHz) limits fast APDs to \(M\approx10\).
+
+* Worked examples
+1. *Gain*: \(V_{br}=50\) V, \(n=4\): \(M=2.9\), 6.6, 12.9 at 45, 48, 49 V — the last volt matters most.
+2. *Responsivity*: Si APD at 850 nm, \(\eta=0.8\), \(M=100\): \(\mathcal R=0.8\cdot\frac{0.85}{1.24}\cdot100=55\) A/W.
+3. *Excess noise*: Si (\(k=0.02\)) at \(M=100\): \(F=0.02\cdot100+0.98(2-0.01)=3.95\); InGaAs/InP (\(k=0.4\)) at \(M=10\): \(F=4+0.6\cdot1.9=5.14\).
+4. *Receiver*: 100 nW at 1550 nm, \(\eta=0.7\) (\(\mathcal R_0=0.875\) A/W, \(I_{ph0}=87.5\) nA), \(B=1\) GHz, 1 kΩ (thermal 0.129 µA rms): pin SNR \(=0.46\) (−3.4 dB). APD with \(F=M^{0.7}\): 10.1 dB at \(M=5\), 14.0 dB at \(M=10\), maximum 14.7 dB at \(M\approx16\), 13.8 dB at \(M=30\).
+
+* Engineering applications
+Long-reach and 10G-PON receivers (≈ 8–10 dB more sensitivity than pin), LiDAR (linear APDs and SPAD arrays), laser rangefinders, PET scanners (SiPM: arrays of SPADs), photon counting for QKD and fluorescence lifetime.
+
+* Exam-style exercise
+A Si APD at 800 nm has \(\eta=0.75\) at \(M=1\), dark current (primary, unmultiplied) 1 nA, \(k=0.02\), and is operated at \(M=50\) in a 100 MHz receiver with 50 kΩ load at 300 K, receiving 10 nW. (a) Multiplied photocurrent. (b) Excess noise factor. (c) Shot and thermal noise currents. (d) SNR, and SNR of the same diode at \(M=1\).
+** Solution
+(a) \(\mathcal R_0=0.75\cdot0.8/1.24=0.484\) A/W, \(I_{ph0}=4.84\) nA, \(MI_{ph0}=242\) nA. (b) \(F=1+0.98\cdot1.98=2.94\). (c) Shot: \(\sqrt{2q(4.84+1)\times10^{-9}\cdot50^2\cdot2.94\cdot10^8}=37\) nA; thermal \(\sqrt{4\cdot4.14\times10^{-21}\cdot10^8/5\times10^4}=5.8\) nA. (d) \(\mathrm{SNR}=\frac{242^2}{37^2+5.8^2}=42\) (16.2 dB). At \(M=1\): shot \(\sqrt{2q\cdot5.84\times10^{-9}\cdot10^8}=0.43\) nA, \(\mathrm{SNR}=\frac{4.84^2}{0.43^2+5.8^2}=0.70\) (−1.5 dB). The APD gains ≈ 18 dB, but \(M=50\) is already past the optimum: at \(M=50\) shot noise is 6× the thermal noise; the maximum is at \(M\approx25\) (16.7 dB), and \(M=10\) gives 15.1 dB. Choose the gain where the multiplied shot noise is comparable to the thermal noise.
+
+* Pitfall
+Dark current has two parts: the *bulk* part flows through the multiplication region and is multiplied (with its excess noise), the *surface* leakage is not. Use the unmultiplied primary dark current inside \(M^2F\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Avalanche_photodiode][Avalanche photodiode]]
+- [[https://www.rp-photonics.com/avalanche_photodiodes.html][RP Photonics: avalanche photodiodes]]

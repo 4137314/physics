@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       quantum-electrodynamics
+:DOMAIN:   quantum-electrodynamics
+:AREA:     quantum-electrodynamics
+:KIND:     overview
+:REQUIRES: quantum-mechanics
+:SEE:      quantum-optics electromagnetic-fields
+:ALIASES:  QED, quantum electrodynamics, Greiner Reinhardt, propagator approach
+:END:
+#+title: Quantum electrodynamics: the map of the subject
+#+summary: QED is the relativistic quantum theory of electrons, positrons and photons with coupling \(e\gamma^\mu A_\mu\); in the propagator approach every process is a sum of Feynman diagrams built from \(S_F\), \(D_F\) and vertices, giving cross sections as power series in \(\alpha\approx1/137\) that agree with experiment to parts per trillion.
+
+* Overview
+| block                       | notes                                               |
+|-----------------------------+-----------------------------------------------------|
+| relativistic wave equations | four-vectors, Klein–Gordon, Dirac, free solutions   |
+| propagators and S matrix    | Green's functions, Feynman propagator, S matrix     |
+| processes (order e²)        | Mott, Møller/Bhabha, μ pairs, Compton, annihilation |
+| rules                       | Feynman rules in momentum space, traces             |
+| radiative corrections       | vacuum polarisation, self-energy, vertex, g−2, Lamb |
+| strong fields               | supercritical fields, Schwinger pair creation, E–H  |
+
+* Recipe for an exam problem
+1. Draw all diagrams of the lowest order (relative signs for exchanged fermions).
+2. Write \(-i\mathcal M\) with the [[id:feynman-rules-of-qed][Feynman rules]].
+3. Average over initial spins (\(\tfrac14\)), sum over final ones: turn \(|\mathcal M|^2\) into [[id:gamma-matrix-traces][traces]].
+4. Evaluate in the centre-of-mass or lab frame with Mandelstam variables.
+5. Insert in the [[id:s-matrix-and-cross-sections][cross-section formula]] and check limits (non-relativistic → Rutherford, \(m\to0\)).
+
+* Picture
+\begin{tikzpicture}[font=\small]
+\draw[thick,-{Latex}] (0,0) -- (1,1); \draw[thick,-{Latex}] (1,1) -- (2,2);
+\draw[thick,-{Latex}] (4,0) -- (3,1); \draw[thick,-{Latex}] (3,1) -- (2,2);
+\draw[decorate,decoration={snake,amplitude=2pt,segment length=6pt}] (2,2) -- (2,3.4);
+\node at (2,-0.5) {vertex $-ie\gamma^\mu$: the only interaction of QED};
+\end{tikzpicture}
+
+* Engineering applications
+QED predicts the electron g-factor (metrology of \(\alpha\)), atomic level shifts used by optical clocks, X-ray and gamma interactions with matter (Compton scattering in medical imaging and radiotherapy dosimetry, pair production in PET detectors and shielding), synchrotron light sources.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Quantum_electrodynamics][Quantum electrodynamics]]
+- [[https://www.feynmanlectures.caltech.edu/][Feynman, QED: The Strange Theory of Light and Matter (also the online volumes)]]
+- [[https://pdg.lbl.gov/][Particle Data Group: constants and cross sections]]

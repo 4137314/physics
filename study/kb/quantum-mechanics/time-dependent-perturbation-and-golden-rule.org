@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       time-dependent-perturbation-and-golden-rule
+:DOMAIN:   quantum-mechanics
+:AREA:     approximation-methods
+:KIND:     theorem
+:REQUIRES: time-independent-perturbation-theory spin-precession-and-rabi-oscillations
+:SEE:      s-matrix-and-cross-sections spontaneous-emission-and-purcell-effect scattering-and-born-approximation
+:ALIASES:  Fermi's golden rule, Dyson series, transition probability, transition rate, harmonic perturbation, density of final states
+:END:
+#+title: Time-dependent perturbation theory and Fermi's golden rule
+#+summary: To first order \(c_f(t)=\frac{1}{i\hbar}\int_0^t\bra fV(t')\ket ie^{i\omega_{fi}t'}\dd t'\); a constant or harmonic perturbation coupling to a continuum gives the constant rate \(\Gamma_{i\to f}=\frac{2\pi}\hbar|V_{fi}|^2\rho(E_f)\) with \(E_f=E_i\pm\hbar\omega\).
+
+* Dyson series
+In the interaction picture \(i\hbar\partial_tU_I=V_IU_I\), iterated:
+\[ U_I(t)=1+\frac1{i\hbar}\int_0^t\dd t_1V_I(t_1)+\frac1{(i\hbar)^2}\int_0^t\dd t_1\int_0^{t_1}\dd t_2V_I(t_1)V_I(t_2)+\dots \]
+First order amplitude \(c_f^{(1)}=\frac1{i\hbar}\int_0^te^{i\omega_{fi}t'}V_{fi}(t')\dd t'\), \(\omega_{fi}=(E_f-E_i)/\hbar\).
+
+* Derivation of the golden rule
+Constant \(V\) switched on at \(t=0\):
+\[ |c_f|^2=\frac{|V_{fi}|^2}{\hbar^2}\frac{\sin^2(\omega_{fi}t/2)}{(\omega_{fi}/2)^2}. \]
+For large \(t\), \(\frac{\sin^2(\omega t/2)}{(\omega/2)^2}\to2\pi t\,\delta(\omega)\): the probability grows linearly in time. Summing over a continuum with density of states \(\rho(E)\):
+\[ \Gamma=\frac{\dd}{\dd t}\sum_f|c_f|^2=\frac{2\pi}\hbar|V_{fi}|^2\rho(E_f)\Big|_{E_f=E_i}. \]
+For \(V(t)=Fe^{-i\omega t}+F^\dagger e^{i\omega t}\): absorption with \(E_f=E_i+\hbar\omega\) (matrix element of \(F\)) and stimulated emission with \(E_f=E_i-\hbar\omega\) (of \(F^\dagger\)).
+
+* Validity
+\(t\) long compared with \(1/\Delta\omega\) of the continuum (so the delta is well defined) but short enough that \(|c_f|^2\ll1\) (initial state not depleted); otherwise exponential decay (Weisskopf–Wigner) or Rabi oscillation (discrete final state).
+
+* Worked example
+Photoelectric absorption in a semiconductor: \(\alpha(\hbar\omega)\propto|p_{cv}|^2\rho_{joint}(\hbar\omega)\), and the 3D joint density of states \(\propto\sqrt{\hbar\omega-E_g}\) gives the square-root absorption edge of [[id:semiconductor-optical-properties][direct-gap semiconductors]].
+
+* Engineering applications
+Absorption and gain in lasers, radiative and Auger recombination rates in LEDs, electron–phonon scattering times (mobility), tunnelling currents (Bardeen), decay rates and cross sections in [[id:s-matrix-and-cross-sections][QED]].
+
+* Pitfall
+\(\rho\) is the density of *final* states at the energy fixed by energy conservation; for photons it includes polarisation and direction, for electrons spin.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Fermi%27s_golden_rule][Fermi's golden rule]]
+- [[https://en.wikipedia.org/wiki/Dyson_series][Dyson series]]

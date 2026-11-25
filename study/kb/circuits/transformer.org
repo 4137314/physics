@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       transformer
+:DOMAIN:   circuits
+:AREA:     power-systems
+:KIND:     model
+:REQUIRES: impedance-and-ac-circuit-analysis faraday-law-and-induction magnetostatics-and-ampere-law
+:SEE:      power-generation-and-distribution smith-chart-and-impedance-matching
+:ALIASES:  ideal transformer, turns ratio, impedance reflection, coupled inductors, magnetizing inductance, leakage inductance, core losses, copper losses, equivalent circuit, dot convention
+:END:
+#+title: The transformer
+#+summary: An ideal transformer (no losses, no leakage, infinite self-inductance) obeys \(\frac{v_2}{v_1}=\frac{n_2}{n_1}\), \(\frac{i_2}{i_1}=-\frac{n_1}{n_2}\) (associated reference directions), conserves power and reflects a load as \(Z_{in}=\left(\frac{n_1}{n_2}\right)^2Z_L\); a real transformer adds magnetising and leakage inductances, winding resistances and core losses.
+
+* Ideal model (derivation)
+Same flux \(\Phi\) links both windings (no leakage): \(v_1=n_1\dot\Phi\), \(v_2=n_2\dot\Phi\Rightarrow v_2/v_1=n_2/n_1\). Ampère around the core: \(n_1i_1+n_2i_2=\mathcal R\Phi\to0\) for infinite permeability (infinite self-inductance): \(i_2/i_1=-n_1/n_2\). Hence \(v_1i_1+v_2i_2=0\): no stored or dissipated energy. With load \(Z_L\) on the secondary (\(\mathbf V_2=-Z_L\mathbf I_2\)): \(Z_{in}=\frac{\mathbf V_1}{\mathbf I_1}=\left(\frac{n_1}{n_2}\right)^2Z_L\).
+
+* Coupled inductors and real transformer
+\(v_1=L_1\dot i_1+M\dot i_2\), \(v_2=M\dot i_1+L_2\dot i_2\), \(M=k\sqrt{L_1L_2}\). Equivalent circuit: \(R_1\), leakage \(L_{\sigma1}\), magnetising \(L_m\) in parallel with core-loss \(R_c\), ideal transformer, \(R_2'\), \(L_{\sigma2}'\). Open-circuit test → \(L_m,R_c\); short-circuit test → \(R_{eq},L_{\sigma}\). Efficiency of large units > 99%.
+
+* Picture
+\begin{tikzpicture}[scale=0.9, transform shape]
+\draw (0,0) to[sV, l=$v_1$] (0,2) -- (1,2) to[L, l=$n_1$] (1,0) -- (0,0);
+\draw (2,2) to[L, l_=$n_2$] (2,0); \draw (2,2) -- (3.5,2) to[R, l=$Z_L$] (3.5,0) -- (2,0);
+\draw[thick] (1.45,0.2) -- (1.45,1.8); \draw[thick] (1.55,0.2) -- (1.55,1.8);
+\fill (1.25,1.7) circle (1.5pt); \fill (1.75,1.7) circle (1.5pt);
+\end{tikzpicture}
+
+* Worked example
+Audio output: 8 Ω speaker to look like 800 Ω for a tube amplifier: \((n_1/n_2)^2=100\), turns ratio 10:1. Mains transformer 230 V → 12 V, 2 A secondary: \(n_1/n_2=19.2\), primary current ≈ 0.104 A plus magnetising current (lagging, typically 2–10% of rated).
+
+* Engineering applications
+Voltage conversion and isolation in power grids and supplies ([[id:power-generation-and-distribution][distribution]]), flyback/forward converters ([[id:switching-converters][switching converters]]), impedance matching (baluns, RF transformers), current transformers for metering, galvanic isolation in gate drivers.
+
+* Pitfall
+Transformers do not work at DC: a DC component saturates the core (\(L_m\) collapses). And the ideal current relation fails at light load, where the magnetising current dominates.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Transformer][Transformer]]

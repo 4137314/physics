@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       generation-recombination-and-continuity
+:DOMAIN:   solid-state
+:AREA:     carriers
+:KIND:     theorem
+:REQUIRES: drift-diffusion-and-einstein-relation
+:SEE:      pn-junction-diode-current light-emitting-diodes photodetectors solar-cells
+:ALIASES:  recombination, generation, minority carrier lifetime, diffusion length, continuity equation, SRH recombination, Auger recombination, radiative recombination, quasi-Fermi levels, low-level injection
+:END:
+#+title: Generation, recombination and the continuity equation
+#+summary: Excess minority carriers obey \(\frac{\partial\Delta p}{\partial t}=D_p\frac{\partial^2\Delta p}{\partial x^2}-\mu_pE\frac{\partial\Delta p}{\partial x}-\frac{\Delta p}{\tau_p}+G\); they recombine radiatively (\(Bnp\)), through traps (Shockley–Read–Hall) or by Auger processes, and diffuse a distance \(L_p=\sqrt{D_p\tau_p}\) before recombining.
+
+* Continuity equation
+Conservation: \(\frac{\partial p}{\partial t}=-\frac1q\frac{\partial J_p}{\partial x}+G-R\). With the drift–diffusion current and low-level injection in n-type material (\(R-G_{th}=\Delta p/\tau_p\)), the equation in the summary follows.
+
+* Recombination mechanisms
+| mechanism   | rate                              | dominant in                    |
+|-------------+-----------------------------------+--------------------------------|
+| radiative   | B(np − n_i²)                      | direct gap (GaAs): LEDs        |
+| SRH (traps) | (np − n_i²)/(τ_p(n+n₁)+τ_n(p+p₁)) | indirect gap (Si), defects     |
+| Auger       | (C_n n + C_p p)(np − n_i²)        | high density: lasers, emitters |
+| surface     | S·Δp at the surface               | solar cells, small devices     |
+SRH is fastest for traps near mid-gap (\(n_1\approx p_1\approx n_i\)): gold and iron are lifetime killers.
+
+* Diffusion length (derivation)
+Steady state, no field, no generation for \(x>0\), \(\Delta p(0)\) fixed: \(D_p\Delta p''=\Delta p/\tau_p\Rightarrow\Delta p(x)=\Delta p(0)e^{-x/L_p}\), \(L_p=\sqrt{D_p\tau_p}\). Diffusion current at \(x=0\): \(qD_p\Delta p(0)/L_p\) — the building block of the [[id:pn-junction-diode-current][diode equation]].
+
+* Worked example
+Si, \(\tau_p=1\) µs, \(D_p=12\) cm²/s: \(L_p=\sqrt{12\times10^{-6}}\) cm \(=35\) µm. A solar-cell wafer of 180 µm needs \(L\gtrsim\) wafer thickness for good collection: \(\tau\sim\)100 µs–1 ms, i.e. very clean silicon. GaAs radiative lifetime at \(n=10^{18}\) cm\(^{-3}\): \(1/(Bn)=1/(7\times10^{-10}\cdot10^{18})\approx1.4\) ns.
+
+* Engineering applications
+Photoconductive detectors (gain \(=\tau/t_{transit}\)), LED internal quantum efficiency \(\eta=R_{rad}/R_{tot}\) ([[id:light-emitting-diodes][LEDs]]), solar-cell collection ([[id:solar-cells][solar cells]]), reverse-recovery time of power diodes (lifetime control by Pt/He implantation), DRAM retention (generation current).
+
+* Pitfall
+\(\tau\) depends on injection level and temperature; a single "lifetime" is only valid in low-level injection.
+
+* Explore
+- [[https://www.pveducation.org/pvcdrom/pn-junctions/types-of-recombination][PVEducation: types of recombination]]
+- [[https://en.wikipedia.org/wiki/Carrier_generation_and_recombination][Carrier generation and recombination]]

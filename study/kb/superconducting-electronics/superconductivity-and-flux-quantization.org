@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       superconductivity-and-flux-quantization
+:DOMAIN:   superconducting-electronics
+:AREA:     josephson
+:KIND:     theorem
+:REQUIRES: superconducting-electronics electromagnetic-potentials-and-gauge-invariance identical-particles-and-pauli-principle
+:SEE:      josephson-junction-and-rcsj-model stone-and-stone-von-neumann-theorems
+:ALIASES:  superconductivity, Meissner effect, London equations, London penetration depth, Cooper pairs, BCS theory, energy gap, macroscopic wave function, fluxoid quantization, flux quantum, critical temperature, critical current
+:END:
+#+title: Superconductivity and flux quantisation
+#+summary: Below \(T_c\) electrons bind in Cooper pairs (charge \(2e\)) condensed into one macroscopic wave function \(\psi=\sqrt{n_s}e^{i\theta}\); the supercurrent \(\mathbf J_s=\frac{n_s(2e)}{m^*}(\hbar\nabla\theta-2e\mathbf A)\) gives the London equations (field expelled within \(\lambda_L\approx50\)–100 nm) and single-valuedness of \(\theta\) around a ring quantises the fluxoid in units \(\Phi_0=\frac{h}{2e}=2.068\times10^{-15}\) Wb.
+
+* London equations (derivation)
+Take the current of a charged condensate from minimal coupling ([[id:electromagnetic-potentials-and-gauge-invariance][gauge invariance]]): \(\mathbf J_s=-\frac{n_sq^2}{m^*}\left(\mathbf A-\frac{\hbar}{q}\nabla\theta\right)\), \(q=-2e\). Taking the curl: \(\nabla\times\mathbf J_s=-\frac{n_sq^2}{m^*}\mathbf B\); with Ampère, \(\nabla^2\mathbf B=\mathbf B/\lambda_L^2\), \(\lambda_L=\sqrt{\frac{m^*}{\mu_0n_sq^2}}\): fields decay exponentially inside (Meissner effect). Taking \(\partial_t\): \(\partial_t\mathbf J_s=\frac{n_sq^2}{m^*}\mathbf E\) — free acceleration, zero DC resistance.
+
+* Flux quantisation
+Inside a thick ring, deep in the metal \(\mathbf J_s=0\), so \(\hbar\nabla\theta=q\mathbf A\). Integrate around: \(\oint\nabla\theta\cdot\dd\mathbf l=2\pi n\) (single-valued \(\psi\)), hence
+\[ \Phi=\oint\mathbf A\cdot\dd\mathbf l=n\frac{h}{|q|}=n\frac{h}{2e}=n\Phi_0. \]
+The measured period \(h/2e\) (Deaver–Fairbank, Doll–Näbauer 1961) proved pairing.
+
+* BCS in one paragraph
+Phonon-mediated attraction binds electrons of opposite momentum and spin near \(E_F\) into Cooper pairs (bosonic composites, see [[id:identical-particles-and-pauli-principle][statistics]]); the ground state has an energy gap \(2\Delta\approx3.5k_BT_c\). Nb: \(T_c=9.2\) K, \(\Delta\approx1.5\) meV; the gap sets the maximum frequency of Nb Josephson circuits (\(2\Delta/h\approx700\) GHz).
+
+* Worked example
+Ring of area 100 µm²: one flux quantum corresponds to \(B=\Phi_0/A=2.07\times10^{-15}/10^{-10}=20.7\) µT (about half the Earth's field). Storing a fluxon in a loop of inductance \(L=10\) pH needs a circulating current \(I=\Phi_0/L=0.2\) mA.
+
+* Engineering applications
+SFQ memory cells (a stored flux quantum = a bit), SQUIDs, superconducting magnets (MRI, accelerators), lossless microwave resonators (\(Q>10^6\)) for qubits, superconducting nanowire single-photon detectors.
+
+* Pitfall
+It is the *fluxoid* (flux plus the \(\mathbf J_s\) term) that is quantised; in thin rings (\(\lesssim\lambda_L\)) the enclosed flux alone is not an integer multiple of \(\Phi_0\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Flux_quantization][Flux quantization]]
+- [[https://en.wikipedia.org/wiki/London_equations][London equations]]

@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       klein-gordon-equation
+:DOMAIN:   quantum-electrodynamics
+:AREA:     relativistic-wave-equations
+:KIND:     theorem
+:REQUIRES: four-vectors-and-lorentz-transformations schrodinger-equation-and-time-evolution
+:SEE:      dirac-equation green-functions-and-feynman-propagator
+:ALIASES:  Klein-Gordon equation, relativistic Schrodinger equation, negative energy, scalar electrodynamics, Feshbach-Villars, pion
+:END:
+#+title: The Klein–Gordon equation
+#+summary: Quantising \(E^2=\mathbf p^2+m^2\) gives \((\Box+m^2)\phi=0\); its conserved density \(\rho=i(\phi^*\partial_t\phi-\phi\partial_t\phi^*)\) is not positive and solutions with \(E<0\) appear: a one-particle interpretation fails, and the equation describes charged spin-0 particles together with their antiparticles.
+
+* Derivation
+\(E\to i\partial_t\), \(\mathbf p\to-i\nabla\) in \(E^2=\mathbf p^2+m^2\):
+\[ \left(\partial_t^2-\nabla^2+m^2\right)\phi=(\partial_\mu\partial^\mu+m^2)\phi=0. \]
+Plane waves \(e^{-ip\cdot x}\) with \(p^0=\pm\sqrt{\mathbf p^2+m^2}\): both signs.
+Current: multiply by \(\phi^*\), subtract the conjugate: \(\partial_\mu j^\mu=0\) with \(j^\mu=i(\phi^*\partial^\mu\phi-\phi\partial^\mu\phi^*)\). For \(e^{-iEt}\), \(\rho=2E|\phi|^2\): negative for \(E<0\). Interpreted as a *charge* density (\(\times e\)), negative-energy solutions describe antiparticles of opposite charge (Pauli–Weisskopf).
+
+* Coupling and non-relativistic limit
+Minimal coupling \(\partial_\mu\to D_\mu=\partial_\mu+ieA_\mu\). Writing \(\phi=\varphi e^{-imt}\) and neglecting \(\ddot\varphi\) gives back the Schrödinger equation with rest energy removed.
+
+* Worked example
+Pionic atom (π⁻ bound to a nucleus \(Z\)): the KG Coulomb problem gives \(E_{nl}=m\left[1+\frac{Z^2\alpha^2}{(n-\delta_l)^2}\right]^{-1/2}\), \(\delta_l=l+\tfrac12-\sqrt{(l+\tfrac12)^2-Z^2\alpha^2}\). Expanding: Bohr levels plus a relativistic correction that depends on \(l\) differently from the Dirac result — measured X-rays from pionic atoms confirm KG for spin 0.
+
+* Engineering applications
+Scalar fields model pions and the Higgs; the KG equation with an imaginary mass describes evanescent fields, and \((\nabla^2+k^2)\) form equations of the same family govern waveguide modes (the transverse Helmholtz equation in [[id:rectangular-waveguides][waveguides]] is a KG equation with cutoff playing the role of mass).
+
+* Pitfall
+\(\rho\) is not a probability density; trying to keep a one-particle interpretation leads to the Klein paradox. The resolution is field theory with particles and antiparticles.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Klein%E2%80%93Gordon_equation][Klein–Gordon equation]]

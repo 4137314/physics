@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID:       formula-sheet-quantum
+:DOMAIN:   revision
+:AREA:     formula-sheets
+:KIND:     overview
+:REQUIRES: physics-study-map
+:SEE:      exam-practice-quantum-mechanics exam-practice-qed
+:ALIASES:  quantum formula sheet, QM formulas, QED formulas, quantum optics formulas, cheat sheet
+:END:
+#+title: Formula sheet: quantum mechanics, quantum optics and QED
+#+summary: The formulas to know by heart for quantum mechanics, quantum optics and QED, grouped by topic with the note where each is derived.
+
+* Constants
+| constant  | value                               |
+|-----------+-------------------------------------|
+| ħ         | 1.0546×10⁻³⁴ J s = 6.582×10⁻¹⁶ eV s |
+| ħc        | 197.33 MeV fm = 1239.84/(2π) eV nm  |
+| α         | 1/137.036                           |
+| a₀        | 0.5292 Å; Ry = 13.606 eV            |
+| μ_B       | 5.788×10⁻⁵ eV/T                     |
+| m_e c²    | 0.511 MeV; r_e = 2.818 fm           |
+| Φ₀ = h/2e | 2.068×10⁻¹⁵ Wb                      |
+
+* Postulates and dynamics
+\[ \braket A=\bra\psi A\ket\psi,\qquad \Delta A\Delta B\ge\tfrac12|\braket{[A,B]}|,\qquad [x,p]=i\hbar,\qquad \braket{x|p}=\frac{e^{ipx/\hbar}}{\sqrt{2\pi\hbar}} \]
+\[ i\hbar\partial_t\ket\psi=H\ket\psi,\qquad \frac{\dd A_H}{\dd t}=\frac{1}{i\hbar}[A_H,H],\qquad \mathbf j=\frac\hbar m\mathrm{Im}(\psi^*\nabla\psi),\qquad \rho=\sum w_i\ket{\psi_i}\bra{\psi_i} \]
+Notes: [[id:measurement-postulate][measurement]], [[id:uncertainty-relation][uncertainty]], [[id:schrodinger-equation-and-time-evolution][Schrödinger]], [[id:density-operator][density operator]].
+
+* Exactly solvable systems
+\[ E_n^{box}=\frac{n^2\pi^2\hbar^2}{2mL^2},\quad E_n^{HO}=\hbar\omega(n+\tfrac12),\quad a=\sqrt{\tfrac{m\omega}{2\hbar}}\left(x+\tfrac{ip}{m\omega}\right),\quad E_n^{H}=-\frac{13.6\text{ eV}}{n^2} \]
+\[ T_{barrier}\approx16\frac E{V_0}\left(1-\frac E{V_0}\right)e^{-2\kappa a},\qquad P_{Rabi}=\frac{\Omega^2}{\Omega^2+\Delta^2}\sin^2\frac{\sqrt{\Omega^2+\Delta^2}\,t}{2} \]
+
+* Angular momentum
+\[ \mathbf J^2\ket{jm}=\hbar^2j(j+1)\ket{jm},\quad J_\pm\ket{jm}=\hbar\sqrt{(j\mp m)(j\pm m+1)}\ket{j,m\pm1},\quad \mathbf L\cdot\mathbf S=\tfrac{\hbar^2}2[j(j+1)-l(l+1)-s(s+1)] \]
+\[ g_J=1+\frac{j(j+1)+s(s+1)-l(l+1)}{2j(j+1)},\qquad \Delta E_Z=g_J\mu_BBm_j \]
+
+* Approximation methods
+\[ E_n^{(1)}=V_{nn},\quad E_n^{(2)}=\sum_{k\neq n}\frac{|V_{kn}|^2}{E_n-E_k},\quad \Gamma=\frac{2\pi}\hbar|V_{fi}|^2\rho(E_f),\quad A_{21}=\frac{\omega^3|d_{21}|^2}{3\pi\epsilon_0\hbar c^3} \]
+\[ \frac{\dd\sigma}{\dd\Omega}=|f|^2,\quad f^{Born}=-\frac{m}{2\pi\hbar^2}\int e^{-i\mathbf q\cdot\mathbf r}V\dd^3r,\quad \text{selection rules: }\Delta l=\pm1,\ \Delta m=0,\pm1 \]
+
+* Quantum optics
+\[ \mathcal E_1=\sqrt{\frac{\hbar\omega}{2\epsilon_0V}},\quad \ket\alpha=e^{-|\alpha|^2/2}\sum\frac{\alpha^n}{\sqrt{n!}}\ket n,\quad g^{(2)}(0)=\frac{\braket{a^{\dagger2}a^2}}{\braket{a^\dagger a}^2},\quad F_P=\frac{3}{4\pi^2}\left(\frac\lambda n\right)^3\frac QV \]
+\[ E_{n,\pm}^{JC}=\hbar\omega_c(n+\tfrac12)\pm\tfrac\hbar2\sqrt{\Delta^2+4g^2(n+1)},\qquad \chi=g^2/\Delta,\qquad \Delta X_{1,2}=\tfrac12e^{\mp r} \]
+
+* QED
+\[ (i\gamma^\mu\partial_\mu-m)\psi=0,\quad \{\gamma^\mu,\gamma^\nu\}=2g^{\mu\nu},\quad \sum_su\bar u=\slashed p+m,\quad S_F=\frac{\slashed p+m}{p^2-m^2+i\epsilon},\quad D_F^{\mu\nu}=\frac{-g^{\mu\nu}}{q^2+i\epsilon} \]
+\[ \Tr(\slashed a\slashed b)=4a\cdot b,\quad \Tr(\slashed a\slashed b\slashed c\slashed d)=4[(ab)(cd)-(ac)(bd)+(ad)(bc)],\quad \left(\frac{\dd\sigma}{\dd\Omega}\right)_{CM}=\frac{\overline{|\mathcal M|^2}}{64\pi^2s}\frac{|\mathbf p_f|}{|\mathbf p_i|} \]
+\[ \frac{\dd\sigma}{\dd\Omega}_{Mott}=\frac{Z^2\alpha^2E^2}{4p^4\sin^4\frac\theta2}\left(1-\beta^2\sin^2\tfrac\theta2\right),\quad \sigma(e^+e^-\to\mu^+\mu^-)=\frac{4\pi\alpha^2}{3s},\quad a_e=\frac\alpha{2\pi},\quad \omega'=\frac{\omega}{1+\frac\omega m(1-\cos\theta)} \]

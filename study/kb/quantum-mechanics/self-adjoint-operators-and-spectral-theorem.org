@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       self-adjoint-operators-and-spectral-theorem
+:DOMAIN:   quantum-mechanics
+:AREA:     mathematical-foundations
+:KIND:     theorem
+:REQUIRES: position-momentum-and-wave-functions observables-and-spectral-decomposition
+:SEE:      stone-and-stone-von-neumann-theorems algebraic-quantum-theory
+:ALIASES:  unbounded operator, domain, self-adjoint extension, spectral measure, projection-valued measure, continuous spectrum, essential self-adjointness
+:END:
+#+title: Self-adjoint operators and the spectral theorem
+#+summary: Observables in infinite dimensions are self-adjoint operators \(A=A^*\) including equality of domains; the spectral theorem writes each as \(A=\int_{\sigma(A)}\lambda\,\dd P(\lambda)\) with a projection-valued measure, which gives Born probabilities \(\mu_\psi(\Delta)=\bra\psi P(\Delta)\ket\psi\) also for continuous spectra.
+
+* Definitions
+- An operator \(A\) with dense domain \(D(A)\subset\mathcal H\). Its adjoint: \(D(A^*)=\{\phi:\psi\mapsto\braket{\phi|A\psi}\text{ bounded}\}\), \(\braket{A^*\phi|\psi}=\braket{\phi|A\psi}\).
+- *Symmetric*: \(\braket{\phi|A\psi}=\braket{A\phi|\psi}\) on \(D(A)\), i.e. \(A\subset A^*\). *Self-adjoint*: \(A=A^*\) (same domain). *Essentially self-adjoint*: closure is self-adjoint.
+- Hellinger–Toeplitz: a symmetric operator defined on all of \(\mathcal H\) is bounded. Hence \(x\) and \(p\) are necessarily defined on proper domains.
+
+* Theorem (spectral)
+For every self-adjoint \(A\) there is a unique projection-valued measure \(P\) on the Borel sets of \(\mathbb R\), supported on \(\sigma(A)\subset\mathbb R\), with
+\[ A=\int_{\sigma(A)}\lambda\,\dd P(\lambda),\qquad f(A)=\int f(\lambda)\,\dd P(\lambda). \]
+Physically: the probability that a measurement of \(A\) in state \(\psi\) gives a value in \(\Delta\) is \(\bra\psi P(\Delta)\ket\psi\). For position, \((P(\Delta)\psi)(x)=\chi_\Delta(x)\psi(x)\): no eigenvectors needed.
+
+* Example: why domains matter
+\(p=-i\hbar\,\dd/\dd x\) on \(L^2[0,1]\). On functions vanishing at both ends it is symmetric but *not* self-adjoint; its self-adjoint extensions are labelled by \(\psi(1)=e^{i\theta}\psi(0)\), each with spectrum \(\hbar(\theta+2\pi n)\). The boundary condition is physics (a ring threaded by flux \(\propto\theta\): [[id:electromagnetic-potentials-and-gauge-invariance][Aharonov–Bohm]]). On the half line \([0,\infty)\) there is *no* self-adjoint extension: no momentum observable.
+
+* Spectrum
+\(\sigma(A)=\sigma_p\cup\sigma_c\): point spectrum (eigenvalues, bound states) and continuous spectrum (scattering states). Hydrogen: \(\sigma_p=\{-13.6/n^2\}\), \(\sigma_c=[0,\infty)\).
+
+* Engineering applications
+Numerical solvers discretise a self-adjoint problem into a Hermitian matrix: the choice of boundary conditions (periodic, absorbing, perfectly matched layers in photonic mode solvers) is the choice of extension, and non-self-adjoint absorbing boundaries give complex eigenvalues (leaky modes).
+
+* Pitfall
+"Hermitian" (symmetric) is not enough: only self-adjoint operators generate unitary dynamics ([[id:stone-and-stone-von-neumann-theorems][Stone]]) and have a spectral decomposition.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Self-adjoint_operator][Self-adjoint operator]]
+- [[https://en.wikipedia.org/wiki/Projection-valued_measure][Projection-valued measure]]

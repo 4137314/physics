@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       stimulated-emission-and-lasers
+:DOMAIN:   optoelectronics
+:AREA:     light-sources
+:KIND:     theorem
+:REQUIRES: radiative-transitions-and-selection-rules interference-and-fabry-perot
+:SEE:      semiconductor-laser-diodes coherent-states master-equation-and-open-systems optical-amplifiers
+:ALIASES:  laser, stimulated emission, population inversion, optical gain, threshold condition, three-level laser, four-level laser, He-Ne laser, Doppler broadening, homogeneous broadening, inhomogeneous broadening, Q-switching, mode locking, photon lifetime
+:END:
+#+title: Stimulated emission and the laser
+#+summary: Gain requires population inversion \(N_2>\frac{g_2}{g_1}N_1\), with gain coefficient \(g(\nu)=\left(N_2-\frac{g_2}{g_1}N_1\right)\frac{\lambda^2}{8\pi n^2\tau_{sp}}\mathcal{L}(\nu)\); oscillation starts when gain balances losses, \(g_{th}=\alpha_s+\frac{1}{2L}\ln\frac{1}{R_1R_2}\), and above threshold the gain clamps while output grows linearly with pumping.
+
+* Gain (derivation)
+From the [[id:radiative-transitions-and-selection-rules][Einstein relations]], the net stimulated rate for a beam of intensity \(I\) in a line of shape \(\mathcal L(\nu)\) (\(\int\mathcal L=1\)) gives \(\frac{\dd I}{\dd z}=g(\nu)I\) with \(g\) as in the summary; the emission cross section is \(\sigma=\frac{\lambda^2}{8\pi n^2\tau_{sp}}\mathcal L(\nu)\). Inversion is impossible in a two-level system with optical pumping (saturation gives at most \(N_2=N_1\)): three-level (ruby) or four-level (Nd:YAG, He-Ne) schemes are needed; four-level lasers have a nearly empty lower level and low threshold.
+
+* Threshold
+Round trip: \(R_1R_2e^{2(g-\alpha_s)L}=1\) (amplitude) and phase \(2kL=2\pi m\) (frequency, the [[id:interference-and-fabry-perot][cavity modes]]). Hence \(g_{th}=\alpha_s+\frac1{2L}\ln\frac1{R_1R_2}\). Photon lifetime \(\frac1{\tau_{ph}}=\frac{c}{n}g_{th}\).
+
+* Rate equations and clamping
+\(\frac{\dd N}{\dd t}=P-\frac{N}{\tau_{sp}}-BN\Phi\), \(\frac{\dd\Phi}{\dd t}=BN\Phi-\frac{\Phi}{\tau_{ph}}+\beta\frac{N}{\tau_{sp}}\). Steady state above threshold: \(N=N_{th}=1/B\tau_{ph}\) (clamped), \(\Phi\propto P-P_{th}\).
+
+* Broadening
+Homogeneous (natural, collisions): Lorentzian, all atoms share the line. Inhomogeneous (Doppler in gases): Gaussian, \(\Delta\nu_D=\frac{2\nu_0}{c}\sqrt{\frac{2k_BT\ln2}{M}}\); several longitudinal modes can lase independently.
+
+* Worked example
+He-Ne at 632.8 nm, \(T=400\) K, Ne mass 20 u: \(\Delta\nu_D=\frac{2\cdot4.74\times10^{14}}{3\times10^8}\sqrt{\frac{2\cdot1.38\times10^{-23}\cdot400\cdot0.693}{20\cdot1.66\times10^{-27}}}=1.5\) GHz. Cavity \(L=40\) cm: mode spacing \(c/2L=375\) MHz → about 4 modes under the gain curve. Losses: \(R_1=0.999\), \(R_2=0.99\): \(g_{th}\approx\frac{1}{0.8}\ln\frac1{0.989}=0.014\) m\(^{-1}\); \(\tau_{ph}=1/(cg_{th})\approx240\) ns.
+
+* Pulsed operation
+*Q-switching*: hold the cavity loss high while pumping builds a large inversion, then switch the loss off: ns pulses of high peak power. *Mode-locking*: lock the phases of \(N\) longitudinal modes: pulses of duration \(\approx1/(N\Delta\nu_{FSR})\) (fs in Ti:sapphire), repetition \(c/2L\).
+
+* Picture: output and gain versus pump
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={pump rate (units of threshold)},ylabel={a.u.},xmin=0,xmax=3,ymin=0,ymax=2.2]
+\addplot+[no marks,thick,domain=0:3,samples=60]{(x<1)*0.02*x+(x>=1)*(0.02+1.0*(x-1))}; \addlegendentry{output power}
+\addplot+[no marks,thick,dashed,domain=0:3,samples=60]{(x<1)*x+(x>=1)*1}; \addlegendentry{gain (clamped)}
+\end{axis}
+\end{tikzpicture}
+Above threshold every additional pumped atom is converted into a photon: gain and inversion stay at their threshold values while the output grows linearly.
+
+* Engineering applications
+Laser machining (Q-switched Nd:YAG), surgery, LiDAR, metrology (stabilised He-Ne), frequency combs (mode-locked lasers), telecom transmitters ([[id:semiconductor-laser-diodes][laser diodes]]).
+
+* Exam-style exercise
+(a) Ratio of stimulated to spontaneous emission rates for a body in thermal equilibrium at 300 K, at 633 nm, 10.6 µm and 10 GHz. (b) What does it imply for building lasers and masers?
+** Solution
+(a) \(\frac{R_{st}}{R_{sp}}=\frac{1}{e^{h\nu/k_BT}-1}\): \(1.3\times10^{-33}\) at 633 nm, 0.011 at 10.6 µm, 625 at 10 GHz. (b) At optical frequencies thermal light is overwhelmingly spontaneous: stimulated emission dominates only with a population inversion and a cavity that stores photons; microwave masers were easier because \(h\nu\ll k_BT\).
+
+* Pitfall
+Above threshold the *gain* does not increase with pumping: extra pump goes into photons. Measuring gain to estimate pump level only works below threshold.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Laser][Laser]]
+- [[https://www.rp-photonics.com/q_switching.html][RP Photonics: Q-switching]]

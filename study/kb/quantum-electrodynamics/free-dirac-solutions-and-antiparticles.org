@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       free-dirac-solutions-and-antiparticles
+:DOMAIN:   quantum-electrodynamics
+:AREA:     relativistic-wave-equations
+:KIND:     construction
+:REQUIRES: dirac-equation
+:SEE:      gamma-matrix-traces green-functions-and-feynman-propagator
+:ALIASES:  Dirac spinors, u and v spinors, positrons, hole theory, Dirac sea, charge conjugation, completeness relations, helicity, Feynman-Stueckelberg interpretation
+:END:
+#+title: Free Dirac solutions, completeness relations and antiparticles
+#+summary: Plane waves \(u(p,s)e^{-ip\cdot x}\) and \(v(p,s)e^{+ip\cdot x}\) with \((\slashed p-m)u=0\), \((\slashed p+m)v=0\), \(\bar uu=2m\); the spin sums \(\sum_su\bar u=\slashed p+m\), \(\sum_sv\bar v=\slashed p-m\) turn spin-averaged amplitudes into traces; negative-energy solutions propagating backward in time are positrons.
+
+* Construction
+\(u(p,s)=\sqrt{E+m}\begin{pmatrix}\chi_s\\\frac{\boldsymbol\sigma\cdot\mathbf p}{E+m}\chi_s\end{pmatrix}\), \(v(p,s)=\sqrt{E+m}\begin{pmatrix}\frac{\boldsymbol\sigma\cdot\mathbf p}{E+m}\eta_s\\\eta_s\end{pmatrix}\), normalised to \(\bar uu=-\bar vv=2m\), \(u^\dagger u=2E\).
+Projectors: \(\Lambda_\pm=\frac{\pm\slashed p+m}{2m}\). Completeness:
+\[ \sum_su(p,s)\bar u(p,s)=\slashed p+m,\qquad \sum_sv(p,s)\bar v(p,s)=\slashed p-m. \]
+Proof: both sides are \(4\times4\) matrices; check on the rest frame (\(\gamma^0m+m=\mathrm{diag}(2m,2m,0,0)\)) and boost covariantly.
+
+* Antiparticles
+- *Hole theory*: all negative-energy states filled; a hole behaves as a particle of charge \(+e\), energy \(+|E|\): the positron (Anderson 1932). Pair creation = lifting an electron out of the sea.
+- *Feynman–Stückelberg*: a negative-energy solution moving backward in time equals a positive-energy antiparticle moving forward. This is built into the [[id:green-functions-and-feynman-propagator][Feynman propagator]] and needs no sea.
+- *Charge conjugation*: \(\psi^c=C\bar\psi^T\), \(C=i\gamma^2\gamma^0\), maps solutions of charge \(e\) to \(-e\).
+
+* Helicity
+\(h=\boldsymbol\Sigma\cdot\hat{\mathbf p}/2\) commutes with the free Hamiltonian; for \(m\to0\), chirality \(\gamma^5\) = helicity: right- and left-handed components decouple (neutrinos, chiral structure of weak interactions).
+
+* Worked example
+\(\bar u(p',s')\gamma^0u(p,s)\) for \(\mathbf p'=-\mathbf p\) (backscattering), \(m\to0\), same helicity: vanishes. Helicity conservation in vector couplings suppresses backward scattering in Mott scattering at high energy (factor \(1-\beta^2\sin^2\theta/2\)).
+
+* Engineering applications
+Positron emission tomography (annihilation photons), positron annihilation spectroscopy of vacancies in semiconductors, spin-polarised electron beams (helicity) for accelerators.
+
+* Pitfall
+\(v(p,s)\) describes an antiparticle of momentum \(\mathbf p\) and *opposite* spin label; keep track when summing spins only through the completeness relations.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Dirac_spinor][Dirac spinor]]
+- [[https://en.wikipedia.org/wiki/Dirac_sea][Dirac sea]]

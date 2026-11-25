@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       maxwell-equations
+:DOMAIN:   electromagnetic-fields
+:AREA:     maxwell
+:KIND:     theorem
+:REQUIRES: faraday-law-and-induction
+:SEE:      potentials-and-gauges poynting-theorem plane-waves-in-media four-vectors-and-lorentz-transformations
+:ALIASES:  Maxwell's equations, displacement current, constitutive relations, boundary conditions, continuity equation, time-harmonic fields, phasor form, wave equation
+:END:
+#+title: Maxwell's equations
+#+summary: \(\nabla\cdot\mathbf D=\rho\), \(\nabla\cdot\mathbf B=0\), \(\nabla\times\mathbf E=-\partial_t\mathbf B\), \(\nabla\times\mathbf H=\mathbf J+\partial_t\mathbf D\); the displacement current makes charge conservation consistent and predicts waves at \(c=1/\sqrt{\mu_0\epsilon_0}\); in phasor form \(\partial_t\to j\omega\).
+
+* Statement
+| law       | differential    | integral                 |
+|-----------+-----------------+--------------------------|
+| Gauss (E) | ∇·D = ρ         | ∮ D·dS = Q               |
+| Gauss (B) | ∇·B = 0         | ∮ B·dS = 0               |
+| Faraday   | ∇×E = −∂B/∂t    | ∮ E·dl = −dΦ/dt          |
+| Ampère–M. | ∇×H = J + ∂D/∂t | ∮ H·dl = I + d/dt ∫ D·dS |
+Constitutive: \(\mathbf D=\epsilon\mathbf E\), \(\mathbf B=\mu\mathbf H\), \(\mathbf J=\sigma\mathbf E\) (linear isotropic media).
+
+* Derivation: why the displacement current
+Taking the divergence of Ampère's static law gives \(\nabla\cdot\mathbf J=0\), false when charge accumulates (charging capacitor). Continuity \(\nabla\cdot\mathbf J=-\partial_t\rho=-\partial_t\nabla\cdot\mathbf D\) requires adding \(\partial_t\mathbf D\). Then in vacuum, \(\nabla\times\nabla\times\mathbf E=-\mu_0\epsilon_0\partial_t^2\mathbf E\) and \(\nabla\cdot\mathbf E=0\) give
+\[ \nabla^2\mathbf E=\mu_0\epsilon_0\frac{\partial^2\mathbf E}{\partial t^2},\qquad c=\frac{1}{\sqrt{\mu_0\epsilon_0}}=2.998\times10^8\text{ m/s}. \]
+
+* Boundary conditions
+\(\hat n\times(\mathbf E_1-\mathbf E_2)=0\), \(\hat n\times(\mathbf H_1-\mathbf H_2)=\mathbf J_s\), \(\hat n\cdot(\mathbf D_1-\mathbf D_2)=\rho_s\), \(\hat n\cdot(\mathbf B_1-\mathbf B_2)=0\). Perfect conductor: \(\mathbf E_t=0\), \(\mathbf B_n=0\).
+
+* Time-harmonic form
+With \(\mathbf E(\mathbf r,t)=\mathrm{Re}[\mathbf E(\mathbf r)e^{j\omega t}]\): \(\nabla\times\mathbf E=-j\omega\mu\mathbf H\), \(\nabla\times\mathbf H=(\sigma+j\omega\epsilon)\mathbf E\). Complex permittivity \(\epsilon_c=\epsilon-j\sigma/\omega\); loss tangent \(\tan\delta=\sigma/\omega\epsilon\). Helmholtz equation \(\nabla^2\mathbf E+k^2\mathbf E=0\), \(k=\omega\sqrt{\mu\epsilon_c}\).
+
+* Worked example
+Capacitor charged at \(I=1\) A: between the plates, \(\partial_tD\cdot A=I\), so Ampère's loop around the gap still encloses 1 A — of displacement current. For copper at 1 GHz, \(\sigma/\omega\epsilon_0=5.8\times10^7/(2\pi\cdot10^9\cdot8.85\times10^{-12})\approx10^9\): conduction current dominates; in sea water (\(\sigma=4\) S/m, \(\epsilon_r=81\)) at 1 MHz, \(\sigma/\omega\epsilon\approx900\), at 10 GHz \(\approx0.09\).
+
+* Engineering applications
+Every EM simulator (FDTD, FEM, MoM) solves these four equations; signal integrity, antennas, waveguides, optical fibres, wireless power and EMC all start here. Quantising the free field gives [[id:quantization-of-the-electromagnetic-field][photons]].
+
+* Pitfall
+Phasor convention: engineering uses \(e^{j\omega t}\) (waves \(e^{-jkz}\)), physics \(e^{-i\omega t}\) (waves \(e^{ikz}\)); signs of imaginary parts (losses, \(\epsilon''\)) flip between texts.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Maxwell%27s_equations][Maxwell's equations]]
+- [[https://www.feynmanlectures.caltech.edu/II_18.html][Feynman II-18: The Maxwell equations]]

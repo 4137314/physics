@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       poynting-theorem
+:DOMAIN:   electromagnetic-fields
+:AREA:     maxwell
+:KIND:     theorem
+:REQUIRES: maxwell-equations
+:SEE:      plane-waves-in-media antennas-and-radiation ac-power-and-power-factor
+:ALIASES:  Poynting vector, energy conservation, electromagnetic power flow, complex Poynting vector, intensity, radiation pressure
+:END:
+#+title: Poynting's theorem and electromagnetic power
+#+summary: \(-\oint(\mathbf E\times\mathbf H)\cdot\dd\mathbf S=\frac{\dd}{\dd t}\int\left(\tfrac12\epsilon E^2+\tfrac12\mu H^2\right)\dd V+\int\mathbf J\cdot\mathbf E\,\dd V\): power entering a volume is stored or dissipated; \(\mathbf S=\mathbf E\times\mathbf H\) is the power flux, time average \(\tfrac12\mathrm{Re}(\mathbf E\times\mathbf H^*)\) in phasors.
+
+* Proof
+Using \(\nabla\cdot(\mathbf E\times\mathbf H)=\mathbf H\cdot\nabla\times\mathbf E-\mathbf E\cdot\nabla\times\mathbf H\) and Maxwell:
+\[ \nabla\cdot(\mathbf E\times\mathbf H)=-\mathbf H\cdot\partial_t\mathbf B-\mathbf E\cdot\mathbf J-\mathbf E\cdot\partial_t\mathbf D=-\partial_t\left(\tfrac12\epsilon E^2+\tfrac12\mu H^2\right)-\mathbf J\cdot\mathbf E. \]
+Integrate over \(V\) and apply the divergence theorem.
+
+* Time-harmonic fields
+\(\braket{\mathbf S}=\tfrac12\mathrm{Re}(\mathbf E\times\mathbf H^*)\). The complex theorem: \(-\oint\tfrac12\mathbf E\times\mathbf H^*\cdot\dd\mathbf S=P_{loss}+2j\omega(W_m-W_e)\): the imaginary part is reactive power, the same split as \(P+jQ\) in [[id:ac-power-and-power-factor][AC circuits]].
+
+* Worked example: power in a wire
+DC current \(I\) in a wire of radius \(a\), resistance per length \(R'\): at the surface \(E=IR'\) along the wire, \(H=I/2\pi a\) around it. \(\mathbf S\) points *radially inward* with magnitude \(EH\); through the surface of length \(\ell\): \(EH\cdot2\pi a\ell=I^2R'\ell\). The energy dissipated in the wire flows in from the surrounding field, not along the copper.
+
+* Plane-wave intensity
+In free space \(E/H=\eta_0=377\) Ω, \(I=\frac{E_0^2}{2\eta_0}\). Sunlight 1 kW/m²: \(E_0=\sqrt{2\cdot377\cdot1000}=870\) V/m. Radiation pressure \(I/c=3.3\) µPa (absorbed).
+
+* Engineering applications
+Link budgets and power density limits (RF exposure in W/m²), antenna radiated power, laser intensity and damage thresholds, power flow in transmission lines and coax (\(\mathbf S\) concentrated in the dielectric), solar sails.
+
+* Pitfall
+\(\mathbf E\times\mathbf H\) is defined up to a curl; only its flux through closed surfaces is unambiguous. A static charge next to a magnet has \(\mathbf S\neq0\) but no net energy flow.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Poynting_vector][Poynting vector]]
+- [[https://www.feynmanlectures.caltech.edu/II_27.html][Feynman II-27: Field energy and field momentum]]

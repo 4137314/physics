@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       scattering-and-born-approximation
+:DOMAIN:   quantum-mechanics
+:AREA:     many-particles
+:KIND:     method
+:REQUIRES: time-dependent-perturbation-and-golden-rule orbital-angular-momentum
+:SEE:      coulomb-scattering-and-the-mott-formula s-matrix-and-cross-sections
+:ALIASES:  scattering amplitude, differential cross section, Born approximation, Lippmann-Schwinger, partial waves, Rutherford formula, Yukawa potential, optical theorem
+:END:
+#+title: Scattering theory and the Born approximation
+#+summary: Far from the target \(\psi\to e^{ikz}+f(\theta,\phi)\frac{e^{ikr}}r\) and \(\dd\sigma/\dd\Omega=|f|^2\); to first order \(f=-\frac{m}{2\pi\hbar^2}\int e^{-i\mathbf q\cdot\mathbf r}V(\mathbf r)\dd^3r\), the Fourier transform of the potential at momentum transfer \(\hbar q=2\hbar k\sin(\theta/2)\); Coulomb gives Rutherford's law.
+
+* Lippmann–Schwinger equation
+\(\ket\psi=\ket\phi+\frac{1}{E-H_0+i\epsilon}V\ket\psi\) (\(+i\epsilon\): outgoing waves). In position space the Green's function is \(-\frac{m}{2\pi\hbar^2}\frac{e^{ik|\mathbf r-\mathbf r'|}}{|\mathbf r-\mathbf r'|}\); for \(r\to\infty\), \(|\mathbf r-\mathbf r'|\simeq r-\hat r\cdot\mathbf r'\) gives
+\[ f(\mathbf k',\mathbf k)=-\frac{m}{2\pi\hbar^2}\bra{\mathbf k'}V\ket\psi,\qquad \frac{\dd\sigma}{\dd\Omega}=|f|^2. \]
+
+* Born approximation
+Replace \(\ket\psi\to\ket{\mathbf k}\) inside: \(f^{(1)}=-\frac{m}{2\pi\hbar^2}\tilde V(\mathbf q)\), \(\mathbf q=\mathbf k'-\mathbf k\). For a spherical \(V\): \(f^{(1)}=-\frac{2m}{\hbar^2q}\int_0^\infty rV(r)\sin(qr)\dd r\). The same result follows from the [[id:time-dependent-perturbation-and-golden-rule][golden rule]] with box-normalised plane waves.
+
+* Worked example: Yukawa → Rutherford
+\(V=V_0e^{-\mu r}/(\mu r)\): \(f=-\frac{2mV_0}{\mu\hbar^2}\frac{1}{q^2+\mu^2}\). Take \(\mu\to0\), \(V_0/\mu\to ZZ'e^2/4\pi\epsilon_0\):
+\[ \frac{\dd\sigma}{\dd\Omega}=\left(\frac{ZZ'e^2}{4\pi\epsilon_0}\right)^2\frac{1}{16E^2\sin^4(\theta/2)}, \]
+exactly Rutherford's classical formula. Its relativistic, spin-½ version is the [[id:coulomb-scattering-and-the-mott-formula][Mott formula]].
+
+* Partial waves and optical theorem
+\(f=\frac1k\sum_l(2l+1)e^{i\delta_l}\sin\delta_lP_l(\cos\theta)\), \(\sigma=\frac{4\pi}{k^2}\sum(2l+1)\sin^2\delta_l\) and \(\mathrm{Im}f(0)=\frac{k\sigma}{4\pi}\) (optical theorem: flux removed from the forward beam). At low energy only \(l=0\) matters: \(\sigma\to4\pi a^2\) (scattering length \(a\)).
+
+* Engineering applications
+Ionized-impurity scattering limits mobility in doped semiconductors (Brooks–Herring is the screened-Coulomb Born result); electron and X-ray diffraction (form factors are Fourier transforms of densities); neutron scattering for materials; radar cross sections are the electromagnetic analogue.
+
+* Pitfall
+Born works when \(V\) is weak compared with the kinetic energy (fast particles); it fails for low-energy resonances and bound-state-supporting potentials.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Born_approximation][Born approximation]]
+- [[https://en.wikipedia.org/wiki/Optical_theorem][Optical theorem]]

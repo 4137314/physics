@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       power-diodes
+:DOMAIN:   power-electronics
+:AREA:     power-devices
+:KIND:     model
+:REQUIRES: power-electronics pn-junction-diode-current pn-junction-electrostatics
+:SEE:      power-mosfets-and-igbts switching-converters
+:ALIASES:  pin diode, power diode, drift region, punch-through design, conductivity modulation, reverse recovery, stored charge, soft recovery, Schottky diode, forward voltage, avalanche ruggedness
+:END:
+#+title: Power pin diodes: blocking, conduction and reverse recovery
+#+summary: A lightly doped drift region \(n^-\) of width \(W\) between p\(^+\) and n\(^+\) blocks \(V_{BR}\approx\frac{\epsilon E_c^2}{2qN_D}\) (non-punch-through) with \(W\gtrsim\frac{2V_{BR}}{E_c}\); in forward conduction high-level injection floods the drift region (conductivity modulation), keeping \(V_F\) near 1 V, but the stored charge \(Q_s=\tau I_F\) must be removed at turn-off, producing a reverse-recovery current peak and loss.
+
+* Blocking (derivation)
+One-sided junction, triangular field ([[id:pn-junction-electrostatics][pn electrostatics]]); avalanche when \(E_{max}=E_c\) (Si \(\approx2\)–\(3\times10^5\) V/cm, weakly doping-dependent). \(V_{BR}=\frac{\epsilon E_c^2}{2qN_D}\), depletion width at breakdown \(W=\frac{2V_{BR}}{E_c}\). Punch-through design: the field reaches the n\(^+\) region and becomes trapezoidal: thinner drift region for the same voltage, lower \(V_F\).
+
+* Conduction
+Electrons and holes injected into the drift region at density \(n\approx p\gg N_D\): resistance falls (conductivity modulation). \(V_F\approx\frac{2k_BT}{q}\ln\frac{n}{n_i}+V_{drift}\), and \(V_{drift}\) depends on \(W/L_a\) (ambipolar diffusion length): minimal when \(W\approx2L_a\).
+
+* Reverse recovery
+Commutating at \(\dd i/\dd t=-a\): current crosses zero and goes negative while stored charge is extracted; peak \(I_{RRM}\approx\sqrt{\frac{2Q_{rr}a}{1+s}}\), \(t_{rr}\), softness \(s=t_b/t_a\). Loss \(\approx Q_{rr}V_Rf\) in the diode plus extra turn-on loss in the switch. Lifetime control (Pt, e\(^-\)/He irradiation) trades \(V_F\) for \(Q_{rr}\). Schottky and SiC Schottky diodes have no stored minority charge.
+
+* Worked example
+1.2 kV diode, Si with \(E_c=2.5\times10^5\) V/cm: \(N_D=\frac{1.04\times10^{-12}\cdot6.25\times10^{10}}{2\cdot1.6\times10^{-19}\cdot1200}=1.7\times10^{14}\) cm\(^{-3}\), \(W=\frac{2400}{2.5\times10^5}=96\) µm. With \(Q_{rr}=2\) µC, \(V_R=600\) V, \(f=20\) kHz: \(P\approx Q_{rr}V_Rf=24\) W of recovery-related loss — why fast-recovery or SiC diodes are used.
+
+* Engineering applications
+Freewheeling diodes in inverters, rectifiers, snubbers, PFC boost diodes (SiC Schottky), HV stacks.
+
+* Pitfall
+A fast but "snappy" diode (abrupt end of recovery) produces large \(L\,\dd i/\dd t\) overvoltages and EMI; softness matters as much as \(t_{rr}\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/PIN_diode][PIN diode]]
+- [[https://en.wikipedia.org/wiki/Power_semiconductor_device][Power semiconductor device]]

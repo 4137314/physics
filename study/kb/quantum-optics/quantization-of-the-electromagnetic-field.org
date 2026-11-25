@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       quantization-of-the-electromagnetic-field
+:DOMAIN:   quantum-optics
+:AREA:     field-quantization
+:KIND:     theorem
+:REQUIRES: quantum-optics quantum-harmonic-oscillator maxwell-equations potentials-and-gauges
+:SEE:      feynman-rules-of-qed spontaneous-emission-and-purcell-effect
+:ALIASES:  photon, mode expansion, vacuum energy, zero-point fluctuations, Coulomb gauge quantization, Casimir effect, field operator
+:END:
+#+title: Quantisation of the electromagnetic field
+#+summary: In Coulomb gauge the free field is a sum of independent modes \(\mathbf k,\lambda\), each an oscillator: \(H=\sum\hbar\omega_k(a^\dagger_{k\lambda}a_{k\lambda}+\tfrac12)\), \(\mathbf E(\mathbf r,t)=i\sum\sqrt{\frac{\hbar\omega_k}{2\epsilon_0V}}\boldsymbol\epsilon_{k\lambda}\left(a_{k\lambda}e^{i(\mathbf k\cdot\mathbf r-\omega t)}-\text{h.c.}\right)\); a photon is one quantum of excitation of a mode.
+
+* Derivation
+1. Coulomb gauge \(\nabla\cdot\mathbf A=0\), no sources: \(\Box\mathbf A=0\), \(\mathbf E=-\dot{\mathbf A}\), \(\mathbf B=\nabla\times\mathbf A\).
+2. In a box of volume \(V\) with periodic conditions, expand \(\mathbf A=\sum_{\mathbf k,\lambda}\left(\mathcal A_{k\lambda}(t)\boldsymbol\epsilon_{k\lambda}e^{i\mathbf k\cdot\mathbf r}+\text{c.c.}\right)\), two transverse polarisations \(\boldsymbol\epsilon\perp\mathbf k\).
+3. The energy \(\frac12\int(\epsilon_0E^2+B^2/\mu_0)\dd^3r\) becomes \(\sum_{k\lambda}\frac12(P_{k\lambda}^2+\omega_k^2Q_{k\lambda}^2)\) with real canonical pairs built from \(\mathcal A\): one oscillator per mode.
+4. Quantise each oscillator, \([Q,P]=i\hbar\), and introduce \(a_{k\lambda}\) with \([a_{k\lambda},a^\dagger_{k'\lambda'}]=\delta_{kk'}\delta_{\lambda\lambda'}\):
+\[ \mathbf A=\sum_{k\lambda}\sqrt{\frac{\hbar}{2\epsilon_0\omega_kV}}\left(a_{k\lambda}\boldsymbol\epsilon_{k\lambda}e^{i(\mathbf k\cdot\mathbf r-\omega_kt)}+\text{h.c.}\right),\qquad H=\sum_{k\lambda}\hbar\omega_k\left(a^\dagger_{k\lambda}a_{k\lambda}+\tfrac12\right). \]
+Momentum \(\mathbf P=\sum\hbar\mathbf k\,a^\dagger a\): photons carry \(\hbar\omega\) and \(\hbar\mathbf k\).
+
+* Vacuum fluctuations
+\(\bra0\mathbf E\ket0=0\) but \(\bra0E^2\ket0=\sum\hbar\omega_k/2\epsilon_0V\neq0\). The "electric field per photon" \(\mathcal E_1=\sqrt{\hbar\omega/2\epsilon_0V}\) sets the atom–cavity coupling \(g=d\mathcal E_1/\hbar\). Differences of zero-point energy between boundary conditions give the Casimir force \(F/A=-\pi^2\hbar c/240d^4\).
+
+* Worked example
+Visible photon (\(\lambda=500\) nm) in a 1 µm\(^3\) microcavity: \(\mathcal E_1=\sqrt{\hbar\omega/2\epsilon_0V}=\sqrt{4\times10^{-19}/(1.8\times10^{-29})}\approx1.5\times10^5\) V/m. With \(d=ea_0\), \(g/2\pi=d\mathcal E_1/h\approx1.9\) GHz: strong coupling becomes possible in small cavities. Casimir pressure at \(d=100\) nm: \(\approx13\) Pa — relevant for MEMS stiction.
+
+* Engineering applications
+Shot noise and the standard quantum limit in photodetection, spontaneous emission (vacuum-stimulated) setting LED/laser noise, Casimir forces in MEMS, microwave photons in superconducting resonators.
+
+* Pitfall
+A photon is not a localised particle with a wave function in the Schrödinger sense; it is an excitation of a mode, which may be spread over the whole cavity.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Quantization_of_the_electromagnetic_field][Quantization of the electromagnetic field]]
+- [[https://en.wikipedia.org/wiki/Casimir_effect][Casimir effect]]

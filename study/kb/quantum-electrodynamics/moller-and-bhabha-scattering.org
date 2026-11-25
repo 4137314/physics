@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       moller-and-bhabha-scattering
+:DOMAIN:   quantum-electrodynamics
+:AREA:     qed-processes
+:KIND:     example
+:REQUIRES: feynman-rules-of-qed coulomb-scattering-and-the-mott-formula identical-particles-and-pauli-principle
+:SEE:      compton-scattering-and-pair-annihilation
+:ALIASES:  Moller scattering, Bhabha scattering, electron-electron scattering, electron-positron scattering, muon pair production, exchange diagram, annihilation diagram
+:END:
+#+title: Møller and Bhabha scattering, and muon pair production
+#+summary: \(e^-e^-\to e^-e^-\) has t- and u-channel diagrams with a relative minus sign (Fermi statistics); \(e^+e^-\to e^+e^-\) has t-channel scattering and s-channel annihilation; at high energy \(\overline{|\mathcal M|^2}_{\rm Bhabha}=2e^4\left[\frac{s^2+u^2}{t^2}+\frac{2u^2}{st}+\frac{u^2+t^2}{s^2}\right]\).
+
+* Møller scattering
+\(\mathcal M=\mathcal M_t-\mathcal M_u\): exchanging the two outgoing electrons swaps \(p_3\leftrightarrow p_4\). In the ultrarelativistic limit
+\[ \overline{|\mathcal M|^2}=2e^4\left[\frac{s^2+u^2}{t^2}+\frac{2s^2}{tu}+\frac{s^2+t^2}{u^2}\right],\qquad \frac{\dd\sigma}{\dd\Omega}=\frac{\alpha^2}{2s}\frac{(3+\cos^2\theta)^2}{\sin^4\theta}. \]
+Symmetric under \(\theta\to\pi-\theta\) (identical particles); the interference term is the quantum signature of indistinguishability.
+
+* Bhabha scattering
+Diagrams: t-channel (as Møller with one line reversed) and s-channel annihilation \(e^+e^-\to\gamma^*\to e^+e^-\), with a relative minus sign. Crossing the Møller result (\(s\leftrightarrow u\)) gives the formula in the summary; in the CM frame
+\[ \frac{\dd\sigma}{\dd\Omega}=\frac{\alpha^2}{2s}\left[\frac{1+\cos^4(\theta/2)}{\sin^4(\theta/2)}-\frac{2\cos^4(\theta/2)}{\sin^2(\theta/2)}+\frac{1+\cos^2\theta}{2}\right]. \]
+
+* Muon pairs
+\(e^+e^-\to\mu^+\mu^-\): only the s-channel. Lepton tensors \(L^{\mu\nu}_eL_{\mu\nu}^\mu/s^2\) give \(\overline{|\mathcal M|^2}=e^4(1+\cos^2\theta)\) (\(m\to0\)), \(\sigma=4\pi\alpha^2/3s\). Measuring \(R=\sigma(e^+e^-\to\text{hadrons})/\sigma(\mu\mu)=3\sum Q_q^2\) counted quark colours.
+
+* Worked example
+Bhabha at small angle is dominated by the t-channel, \(\frac{\dd\sigma}{\dd\Omega}\approx\frac{16\alpha^2}{s\theta^4}\): huge and precisely calculable, so colliders use it as the *luminosity monitor*. At \(\sqrt s=91\) GeV, between 30 and 50 mrad: \(\sigma\approx\frac{16\pi\alpha^2}{s}\left(\frac1{\theta_1^2}-\frac1{\theta_2^2}\right)=\frac{16\pi}{137^2\cdot8281}\cdot(1111-400)\,\mathrm{GeV^{-2}}\approx2.3\times10^{-4}\,\mathrm{GeV^{-2}}\approx90\) nb, comparable to the hadronic Z peak (≈ 41 nb): a high, precisely known rate.
+
+* Engineering applications
+Luminosity calibration, polarimetry of electron beams (Møller polarimeters use the spin dependence), positron-annihilation-based imaging and material analysis.
+
+* Pitfall
+Forgetting the relative minus sign between direct and exchange diagrams changes the interference term and violates the Pauli principle.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/M%C3%B8ller_scattering][Møller scattering]]
+- [[https://en.wikipedia.org/wiki/Bhabha_scattering][Bhabha scattering]]

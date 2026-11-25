@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       circuits
+:DOMAIN:   circuits
+:AREA:     circuits
+:KIND:     overview
+:REQUIRES: electromagnetic-fields
+:SEE:      digital-electronics solid-state
+:ALIASES:  circuit theory, teoria dei circuiti, Fisica 2, lumped circuits, network analysis, LTI systems
+:END:
+#+title: Circuit theory: the map of the subject
+#+summary: Lumped circuits (size ≪ wavelength) obey Kirchhoff's laws; linear time-invariant networks are fully described by their impulse response or, equivalently, by a transfer function analysed with phasors (sinusoids), Fourier (spectra) and Laplace (transients); transformers and three-phase systems carry the power.
+
+* Overview
+| block       | notes                                                 |
+|-------------+-------------------------------------------------------|
+| foundations | lumped elements and Kirchhoff, network theorems       |
+| time domain | LTI systems, impulse response, convolution, RC/RL/RLC |
+| AC          | complex numbers and phasors, impedance, AC power      |
+| transforms  | Fourier series/transform, frequency response, Laplace |
+| power       | transformer, generation and three-phase distribution  |
+| analog      | operational-amplifier circuits                        |
+
+* Picture
+\begin{tikzpicture}[scale=0.9, transform shape]
+\draw (0,0) to[V, v=$v_s$] (0,2) to[R, l=$R$] (3,2) to[C, l=$C$, v=$v_C$] (3,0) -- (0,0);
+\end{tikzpicture}
+The RC circuit: the reference example for every method in this domain.
+
+* Method selection
+| question                            | tool                             |
+|-------------------------------------+----------------------------------|
+| DC operating point                  | KCL/KVL, Thévenin, superposition |
+| sinusoidal steady state             | phasors and impedances           |
+| response to periodic signal         | Fourier series × H(jω)           |
+| transient after a switch, stability | Laplace transform, poles         |
+| arbitrary input, time domain        | convolution with h(t)            |
+
+* Engineering applications
+Every electronic system: filters, amplifiers, power supplies, grids, sensors, the small-signal models of [[id:digital-electronics][transistors]] and the lumped limit of [[id:transmission-lines][transmission lines]].
+
+* Explore
+- [[https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/][MIT 6.002 Circuits and electronics]]
+- [[https://www.falstad.com/circuit/][Falstad interactive circuit simulator]]

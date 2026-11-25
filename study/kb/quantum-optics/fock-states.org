@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       fock-states
+:DOMAIN:   quantum-optics
+:AREA:     states-of-light
+:KIND:     definition
+:REQUIRES: quantization-of-the-electromagnetic-field
+:SEE:      coherent-states photon-statistics-and-glauber-correlations identical-particles-and-pauli-principle
+:ALIASES:  number states, photon number states, single photon, Fock space, thermal light, Bose-Einstein distribution
+:END:
+#+title: Fock states and thermal light
+#+summary: The number states \(\ket n=\frac{(a^\dagger)^n}{\sqrt{n!}}\ket0\) have exactly \(n\) photons and \(\braket{\mathbf E}=0\); thermal light is the mixture \(\rho=\sum\frac{\bar n^n}{(1+\bar n)^{n+1}}\ket n\bra n\) with \(\bar n=1/(e^{\hbar\omega/kT}-1)\) and variance \(\bar n^2+\bar n\).
+
+* Definition
+Fock space \(\mathcal F=\bigotimes_{\text{modes}}\{\ket{n_k}\}\). Single mode: \(N\ket n=n\ket n\), \(\Delta n=0\). The mean field vanishes for every \(n\), \(\bra nE\ket n=0\), but \(\bra nE^2\ket n=\mathcal E_1^2(2n+1)\): a phase-randomised wave with definite energy.
+
+* Thermal state
+Maximising entropy at fixed \(\braket N\) gives \(\rho=e^{-\beta\hbar\omega N}/Z\):
+\[ P(n)=\frac{\bar n^n}{(1+\bar n)^{n+1}},\qquad \bar n=\frac{1}{e^{\hbar\omega/k_BT}-1},\qquad \Delta n^2=\bar n^2+\bar n. \]
+The Bose–Einstein (geometric) distribution: noisier than Poisson (\(\Delta n^2=\bar n\)) by the "wave noise" term \(\bar n^2\). Multiplying \(\bar n\) by the mode density \(\omega^2/\pi^2c^3\) and \(\hbar\omega\) gives Planck's law.
+
+* Worked example
+At 300 K: an optical mode (\(\lambda=1\) µm, \(\hbar\omega=1.24\) eV) has \(\bar n=e^{-48}\approx10^{-21}\) — optical modes are in vacuum at room temperature. A 5 GHz microwave mode has \(\bar n=1/(e^{0.0008}-1)\approx1250\); at 10 mK, \(\bar n\approx4\times10^{-11}\). This is why superconducting qubits must be cooled to millikelvin.
+
+* Engineering applications
+Heralded single-photon sources (SPDC: detect one photon of a pair to announce the other), quantum dots and NV centres as on-demand emitters, photon-number-resolving transition-edge sensors; thermal photon occupation sets the noise temperature of microwave receivers.
+
+* Pitfall
+A strongly attenuated laser is *not* a single-photon source: it remains a coherent (Poisson) state with a probability \(\approx\bar n^2/2\) of two photons, the loophole exploited by photon-number-splitting attacks on QKD.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Fock_state][Fock state]]

@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       smith-chart-and-impedance-matching
+:DOMAIN:   electromagnetic-fields
+:AREA:     transmission-lines
+:KIND:     method
+:REQUIRES: transmission-lines
+:SEE:      scattering-parameters impedance-and-ac-circuit-analysis
+:ALIASES:  Smith chart, impedance matching, L-network, single-stub tuner, quarter-wave transformer, conjugate matching, Bode-Fano limit
+:END:
+#+title: The Smith chart and impedance matching
+#+summary: The Smith chart plots \(\Gamma=\frac{z-1}{z+1}\) (with \(z=Z/Z_0\)) in the unit disk, where moving along a lossless line is a rotation by \(-2\beta\ell\); matching transforms \(Z_L\) to \(Z_0\) (or \(Z_s^*\) for maximum power) with L-networks, stubs or quarter-wave sections.
+
+* Method
+1. Normalise \(z_L=Z_L/Z_0\); plot on the constant-\(r\) circles and constant-\(x\) arcs.
+2. Towards the generator: rotate clockwise by \(2\beta\ell\) (half a turn = \(\lambda/4\)); \(|\Gamma|\) and VSWR stay constant.
+3. Admittance = point reflected through the centre.
+4. Design: reach the \(r=1\) (or \(g=1\)) circle, then cancel the remaining reactance.
+
+* L-network (lumped) design
+For \(R_L>R_s\): shunt element at the load, series at the source. \(Q=\sqrt{R_L/R_s-1}\), \(X_{series}=QR_s\), \(B_{shunt}=Q/R_L\). Bandwidth \(\approx f_0/Q\): high transformation ratios are narrowband (Bode–Fano limit \(\int\ln\frac1{|\Gamma|}\dd\omega\le\pi/RC\)).
+
+* Single shunt stub (derivation sketch)
+Move a distance \(d\) from the load until \(y=1+jb\) (on the \(g=1\) circle); place a short-circuited stub of length \(\ell_s\) with susceptance \(-b\): \(\cot\beta\ell_s=b\). Two solutions per wavelength; choose the shorter for bandwidth.
+
+* Worked example
+Match \(Z_L=25-j25\) Ω to 50 Ω at 1 GHz. Since \(R_L=25<50\), put the series element at the load and the shunt element at the source: \(Q=\sqrt{50/25-1}=1\). Series reactance must turn \(-j25\) into \(+jQR_L=+j25\): add \(X=+50\) Ω, an inductor \(L=50/(2\pi\cdot10^9)=8.0\) nH. Now \(Z=25+j25\), \(Y=1/Z=0.02-j0.02\) S. A shunt capacitor with \(B=+0.02\) S (\(C=0.02/(2\pi\cdot10^9)=3.2\) pF) leaves \(Y=0.02\) S, i.e. 50 Ω. Matched.
+
+* Engineering applications
+Matching LNAs and power amplifiers, antenna feeds, RFID and NFC coils, impedance tuners in load-pull, broadband matching with multisection (Chebyshev) transformers.
+
+* Pitfall
+Maximum power transfer needs \(Z_L=Z_s^*\) (conjugate), which is not the same as minimum reflection on a line unless \(Z_s=Z_0\) real; for amplifiers, noise matching and power matching are different targets.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Smith_chart][Smith chart]]
+- [[https://en.wikipedia.org/wiki/Impedance_matching][Impedance matching]]

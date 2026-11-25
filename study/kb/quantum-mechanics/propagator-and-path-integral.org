@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       propagator-and-path-integral
+:DOMAIN:   quantum-mechanics
+:AREA:     dynamics
+:KIND:     theorem
+:REQUIRES: heisenberg-picture-and-ehrenfest-theorem
+:SEE:      green-functions-and-feynman-propagator tunnelling-and-wkb
+:ALIASES:  propagator, Feynman path integral, kernel, Green's function, sum over histories, classical action
+:END:
+#+title: The propagator and Feynman's path integral
+#+summary: The amplitude to go from \(x_0\) at \(t_0\) to \(x\) at \(t\) is \(K(x,t;x_0,t_0)=\bra xU(t,t_0)\ket{x_0}\), so \(\psi(x,t)=\int K\psi(x_0,t_0)\dd x_0\); splitting time into slices gives \(K=\int\mathcal Dx\,e^{iS[x]/\hbar}\), a sum over all paths weighted by the classical action.
+
+* Statement
+\[ \psi(x,t)=\int\dd x_0\,K(x,t;x_0,t_0)\,\psi(x_0,t_0),\qquad K=\sum_E\braket{x|E}\braket{E|x_0}e^{-iE(t-t_0)/\hbar}. \]
+\(K\) solves the Schrödinger equation in \((x,t)\) with \(K\to\delta(x-x_0)\) as \(t\to t_0\). Free particle:
+\[ K=\sqrt{\frac{m}{2\pi i\hbar(t-t_0)}}\exp\!\left[\frac{im(x-x_0)^2}{2\hbar(t-t_0)}\right]. \]
+Multiplying by \(\theta(t-t_0)\) gives the retarded Green's function: \(\left(i\hbar\partial_t-H\right)G=i\hbar\,\delta(x-x_0)\delta(t-t_0)\).
+
+* Derivation of the path integral
+Split \(t-t_0=N\varepsilon\) and insert \(N-1\) position completeness relations. For a short step \(\bra{x_{k+1}}e^{-iH\varepsilon/\hbar}\ket{x_k}\approx\sqrt{\frac{m}{2\pi i\hbar\varepsilon}}\exp\left[\frac{i\varepsilon}\hbar\left(\frac m2\frac{(x_{k+1}-x_k)^2}{\varepsilon^2}-V(x_k)\right)\right]\) (Trotter). The exponent is \(i/\hbar\) times the discretised action, so
+\[ K=\lim_{N\to\infty}\left(\frac{m}{2\pi i\hbar\varepsilon}\right)^{N/2}\int\prod_{k=1}^{N-1}\dd x_k\,e^{iS/\hbar}\equiv\int\mathcal Dx\,e^{iS[x(t)]/\hbar}. \]
+
+* Classical limit
+When \(S\gg\hbar\), the phases of neighbouring paths cancel except near the path with \(\delta S=0\): Hamilton's principle emerges by stationary phase. Semiclassical (WKB) propagators keep this path plus Gaussian fluctuations.
+
+* Worked example
+Free propagator check: at \(t-t_0\to0\) the Gaussian \(\propto e^{im(x-x_0)^2/2\hbar\tau}\) has width \(\sqrt{\hbar\tau/m}\to0\) and unit integral, so \(K\to\delta\). For an electron and \(\tau=1\) fs, the spreading scale is \(\sqrt{\hbar\tau/m}\approx0.34\) nm.
+
+* Engineering applications
+Path integrals underpin the Feynman diagrams of [[id:feynman-rules-of-qed][QED]], quantum Monte Carlo in imaginary time (materials simulation), instanton tunnelling rates, and the Aharonov–Bohm phase \(e^{i(q/\hbar)\int\mathbf A\cdot\dd\mathbf l}\) used in SQUIDs.
+
+* Pitfall
+The "measure" \(\mathcal Dx\) is not a true measure on paths in real time; the expression is defined as the limit of the time-sliced integrals (rigorous in imaginary time: Feynman–Kac).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Path_integral_formulation][Path integral formulation]]
+- [[https://www.feynmanlectures.caltech.edu/II_19.html][Feynman II-19: the principle of least action]]

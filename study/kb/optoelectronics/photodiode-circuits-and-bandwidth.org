@@ -1,0 +1,60 @@
+:PROPERTIES:
+:ID:       photodiode-circuits-and-bandwidth
+:DOMAIN:   optoelectronics
+:AREA:     photodetectors
+:KIND:     method
+:REQUIRES: photodetectors pn-junction-diode-current
+:SEE:      noise-in-photodetectors avalanche-photodiodes solar-cells
+:ALIASES:  photodiode circuit, photovoltaic mode, photoconductive mode, load line, photodiode equivalent circuit, junction capacitance, shunt resistance, cutoff frequency, rise time, fall time, transit time, diffusion time, transimpedance amplifier, TIA, photoreceiver, Shockley-Ramo, pulsed response
+:END:
+#+title: Photodiode circuits, equivalent circuit and speed
+#+summary: An illuminated diode follows \(I=I_0\left(e^{V/\eta V_T}-1\right)-I_{ph}\): with zero bias (photovoltaic mode) the open-circuit voltage is logarithmic in power, with reverse bias \(V_r\) through \(R_L\) (photoconductive mode) the output \(I_{ph}R_L\) is linear until it approaches \(V_r\); speed is set by carrier transit \(t_{tr}=W/v_d\), diffusion from undepleted regions, and the circuit \(f_c=\frac{1}{2\pi R_LC_j}\), with rise time \(t_r\approx\frac{0.35}{f_{3dB}}\); the transimpedance amplifier gives gain \(R_f\) without the \(R_LC\) penalty.
+
+* Equivalent circuit
+A current source \(I_{ph}=\mathcal RP\) in parallel with the ideal diode, the junction capacitance \(C_j=\epsilon A/W\) (falls with reverse bias as \(W\) grows), a large shunt resistance \(R_{sh}\) (leakage), and a small series resistance \(R_s\); the load or amplifier input follows. Bandwidth \(\frac{1}{2\pi(R_s+R_L)C_{tot}}\), with \(C_{tot}\) including the amplifier input and parasitics.
+
+\begin{circuitikz}[scale=0.9]
+\draw (0,0) to[I, l=$I_{ph}$] (0,2.5) -- (2,2.5) to[D, l=$D$, *-*] (2,0) -- (0,0);
+\draw (2,2.5) -- (3.6,2.5) to[C, l=$C_j$] (3.6,0) -- (2,0);
+\draw (3.6,2.5) -- (5.2,2.5) to[R, l=$R_{sh}$] (5.2,0) -- (3.6,0);
+\draw (5.2,2.5) to[R, l=$R_s$] (7.4,2.5) to[R, l=$R_L$, *-*] (7.4,0) -- (5.2,0);
+\end{circuitikz}
+
+* Operating modes and load line
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.8cm,axis lines=left,xlabel={$V$ (V)},ylabel={$I$ (mA)},xmin=-2.6,xmax=0.75,ymin=-2.6,ymax=1.3]
+\addplot+[no marks,thick,domain=-2.5:0.5,samples=150]{1e-8*(exp(x/0.0259)-1)}; \addlegendentry{dark}
+\addplot+[no marks,thick,domain=-2.5:0.53,samples=150]{1e-8*(exp(x/0.0259)-1)-1}; \addlegendentry{$I_{ph}=1$}
+\addplot+[no marks,thick,domain=-2.5:0.55,samples=150]{1e-8*(exp(x/0.0259)-1)-2}; \addlegendentry{$I_{ph}=2$}
+\addplot+[no marks,dashed,domain=-2:0]{-(x+2)}; \addlegendentry{load line}
+\end{axis}
+\end{tikzpicture}
+
+The third quadrant (\(V<0\), \(I<0\)) is the *photoconductive* mode: the curves are flat, current proportional to power, low capacitance, fast; the load line \(I=-\frac{V+V_r}{R_L}\) (here \(V_r=2\) V, \(R_L=1\) kΩ) crosses each curve at the operating point. The fourth quadrant (\(V>0\), \(I<0\)) is the *photovoltaic* mode: power is delivered (a [[id:solar-cells][solar cell]]), no dark current noise at zero bias, open-circuit voltage \(V_{oc}=\eta V_T\ln\left(1+I_{ph}/I_0\right)\), logarithmic: good for wide dynamic range light meters, poor for linear detection.
+
+* Speed (derivation of the rise time)
+A single-pole system with time constant \(\tau=RC\) answers a step with \(1-e^{-t/\tau}\); from 10% to 90% takes \(\tau\ln9=2.2\tau\), and \(f_{3dB}=\frac{1}{2\pi\tau}\), so \(t_r=\frac{2.2}{2\pi f_{3dB}}=\frac{0.35}{f_{3dB}}\). Independent limits add roughly in quadrature: \(t_r^2\approx t_{RC}^2+t_{tr}^2+t_{diff}^2\). Carriers generated outside the depletion region must diffuse, \(t_{diff}\approx\frac{l^2}{2D}\) (µs over tens of µm): the slow tail of pn diodes, removed in pin diodes by absorbing inside the i-layer. By the Shockley–Ramo theorem the external current flows while the carriers move, not when they arrive.
+
+* Transimpedance amplifier
+An op-amp with feedback resistor \(R_f\) holds the diode at virtual ground: \(V_{out}=-I_{ph}R_f\). The diode capacitance sees \(R_f/A\) instead of \(R_f\), so the bandwidth is \(\approx\frac{A}{2\pi R_fC_d}\) (in practice limited by the op-amp gain-bandwidth to \(\approx\sqrt{\frac{\mathrm{GBW}}{2\pi R_fC_d}}\)); the thermal noise is that of \(R_f\), \(\sqrt{4k_BT/R_f}\) per √Hz (1.3 pA/√Hz for 10 kΩ) ([[id:noise-in-photodetectors][noise]]).
+
+* Worked examples
+1. *RC limit*: \(C_j=4\) pF, \(R_L=50\) Ω: \(f_c=796\) MHz, \(t_r=0.44\) ns; with \(R_L=10\) kΩ (200× more signal voltage): \(f_c=4\) MHz, \(t_r=88\) ns.
+2. *Transit*: i-layer \(W=10\) µm, saturated drift \(10^5\) m/s: \(t_{tr}=100\) ps, \(f\approx0.45/t_{tr}=4.5\) GHz.
+3. *TIA*: \(R_f=10\) kΩ, \(C_d=1\) pF: plain resistor bandwidth 16 MHz; with loop gain \(A=100\) the input pole moves to 1.6 GHz (amplifier permitting).
+4. *Photovoltaic mode*: \(I_0=1\) nA, \(I_{ph}=5\) µA: \(V_{oc}=0.0259\ln5001=0.22\) V; ten times more light adds only 60 mV.
+
+* Engineering applications
+Fibre-optic receivers (pin + TIA, ROSA modules), light meters and solar irradiance sensors (photovoltaic mode), LiDAR front ends, optical power meters (zero bias for low noise), pulse and rise-time measurements.
+
+* Exam-style exercise
+A Si pin (\(\mathcal R=0.5\) A/W at 850 nm, \(C_j=2\) pF at 5 V reverse bias) is read across \(R_L=1\) kΩ with \(V_r=5\) V. (a) Output for 10 µW. (b) Bandwidth and rise time. (c) Largest power before the diode leaves the linear region. (d) A 1 GHz bandwidth is required: what \(R_L\)? What do you lose and how do you recover it?
+** Solution
+(a) \(I_{ph}=5\) µA → 5 mV. (b) \(f_c=\frac{1}{2\pi\cdot10^3\cdot2\times10^{-12}}=80\) MHz, \(t_r=4.4\) ns. (c) The diode must stay reverse biased: \(I_{ph}R_L<V_r\) → \(I_{ph}<5\) mA → \(P<10\) mW. (d) \(R_L=\frac{1}{2\pi\cdot10^9\cdot2\times10^{-12}}=80\) Ω; the signal falls to 0.4 mV and thermal noise rises as \(1/\sqrt{R_L}\): use a TIA with \(R_f\) of a few kΩ.
+
+* Pitfall
+The "bandwidth" of a photodiode on a datasheet is measured with 50 Ω; the same diode on a 10 kΩ load is hundreds of times slower. Always recompute \(f_c\) with the real load and amplifier capacitance.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Transimpedance_amplifier][Transimpedance amplifier]]
+- [[https://www.rp-photonics.com/photodiodes.html][RP Photonics: photodiodes]]

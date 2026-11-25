@@ -1,0 +1,52 @@
+:PROPERTIES:
+:ID:       complex-refractive-index-and-absorption
+:DOMAIN:   optoelectronics
+:AREA:     wave-optics
+:KIND:     model
+:REQUIRES: dispersion-and-group-velocity plane-waves-in-media
+:SEE:      semiconductor-optical-properties thin-film-optics-and-coatings fiber-dispersion-and-attenuation
+:ALIASES:  complex refractive index, extinction coefficient, absorption coefficient, Beer-Lambert law, Lorentz oscillator, reststrahlen, lattice absorption, Kramers-Kronig relations, metal reflectance, skin depth optics, complex permittivity
+:END:
+#+title: Complex refractive index, absorption and reflectance of absorbing media
+#+summary: In an absorbing medium \(N=n-jK=\sqrt{\epsilon_r'-j\epsilon_r''}\); the wave decays as \(e^{-kKz}\), so the intensity absorption coefficient is \(\alpha=\frac{4\pi K}{\lambda}\) (Beer–Lambert \(I=I_0e^{-\alpha z}\)); normal-incidence reflectance becomes \(R=\frac{(n-1)^2+K^2}{(n+1)^2+K^2}\), close to 1 when \(K\gg n\) (metals, reststrahlen band); \(n\) and \(K\) are linked by the Kramers–Kronig relations.
+
+* Model
+- \(\epsilon_r=\epsilon_r'-j\epsilon_r''\) and \(N^2=\epsilon_r\): \(n^2-K^2=\epsilon_r'\), \(2nK=\epsilon_r''\).
+- Plane wave \(E=E_0e^{j(\omega t-k_0Nz)}=E_0e^{-k_0Kz}e^{j(\omega t-k_0nz)}\): phase set by \(n\), decay by \(K\). Intensity \(\propto|E|^2\), hence the factor 2: \(\alpha=2k_0K=\frac{4\pi K}{\lambda}\).
+- Fresnel at normal incidence with complex \(N\): \(r=\frac{1-N}{1+N}\), \(R=|r|^2\) as in the summary.
+- *Lorentz oscillator* (bound charges with resonance \(\omega_0\) and damping \(\gamma\)): \(\epsilon_r=1+\frac{\omega_p^2}{\omega_0^2-\omega^2+j\gamma\omega}\). Below resonance \(n\) rises with \(\omega\) (normal dispersion, [[id:dispersion-and-group-velocity][Sellmeier]]); at resonance \(\epsilon''\) peaks (absorption) and \(n\) falls (anomalous dispersion).
+
+* Picture: one Lorentz resonance
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$\omega/\omega_0$},ylabel={$\epsilon_r$},xmin=0.5,xmax=1.5,ymin=-0.2,ymax=2.2]
+\addplot+[no marks,thick,domain=0.5:1.5,samples=300]{1+0.2*(1-x^2)/((1-x^2)^2+(0.1*x)^2)}; \addlegendentry{$\epsilon_r'$}
+\addplot+[no marks,thick,domain=0.5:1.5,samples=300]{0.2*0.1*x/((1-x^2)^2+(0.1*x)^2)}; \addlegendentry{$\epsilon_r''$}
+\end{axis}
+\end{tikzpicture}
+
+* Reststrahlen band
+In ionic crystals (NaCl, CdTe, GaAs) the transverse optical phonon at \(\omega_T\) is a Lorentz resonance in the far infrared. Between \(\omega_T\) and the longitudinal frequency \(\omega_L\) the real part \(\epsilon_r'<0\): \(N\) is almost purely imaginary and \(R\to1\) — "residual rays" (Reststrahlen) were isolated by multiple reflections on such crystals. Lattice absorption of Si–O bonds is also the infrared wall of [[id:fiber-dispersion-and-attenuation][fibre attenuation]] beyond 1.6 µm.
+
+* Worked examples
+1. *Silicon at 633 nm*: \(n=3.88\), \(K=0.019\): \(\alpha=\frac{4\pi\cdot0.019}{633\times10^{-9}}=3.8\times10^5\) m\(^{-1}\) \(=3.8\times10^3\) cm\(^{-1}\); absorption depth \(1/\alpha=2.7\) µm; \(R=\frac{2.88^2+0.019^2}{4.88^2+0.019^2}=34.8\%\) — \(K\) is too small to change \(R\).
+2. *Silver at 633 nm*: \(n\approx0.06\), \(K\approx4.2\): \(R=\frac{0.94^2+17.6}{1.06^2+17.6}=98.7\%\); field decays in \(\lambda/2\pi K\approx24\) nm, intensity in 12 nm: metals reflect because \(K\gg n\).
+3. *Reststrahlen peak* with \(n\approx3\), \(K\approx6\) at \(\lambda\approx70\) µm: \(R=\frac{4+36}{16+36}=77\%\), although the material absorbs strongly (\(\alpha\approx1.1\times10^4\) cm\(^{-1}\)): strong absorption and strong reflection go together.
+4. *Beer–Lambert*: a filter with \(\alpha=20\) cm\(^{-1}\), 1 mm thick, transmits \(e^{-2}=13.5\%\) (ignoring the two surface reflections, which multiply by \((1-R)^2\)).
+
+* Kramers–Kronig
+Causality (the polarisation cannot precede the field) makes \(\epsilon_r(\omega)\) analytic in the lower half-plane, so \(\epsilon'\) and \(\epsilon''\) are Hilbert transforms of each other, \(n(\omega)-1=\frac{2}{\pi}\mathcal P\!\int_0^\infty\frac{\omega'K(\omega')}{\omega'^2-\omega^2}\dd\omega'\): measuring absorption at all frequencies determines the refractive index. Every transparent material is dispersive because it absorbs somewhere else.
+
+* Engineering applications
+Choice of detector and solar-cell thickness from \(\alpha(\lambda)\) ([[id:semiconductor-optical-properties][semiconductor optics]]), metal mirrors and plasmonics, ellipsometry (measures \(n,K\) of thin films), far-infrared filters, optical constants for [[id:thin-film-optics-and-coatings][thin-film design]].
+
+* Exam-style exercise
+A semiconductor has \(n=3.5\), \(K=0.1\) at 1 µm. (a) Absorption coefficient. (b) Thickness absorbing 90% of the light entering it. (c) Fraction of incident light absorbed in that thickness, including front reflection.
+** Solution
+(a) \(\alpha=\frac{4\pi\cdot0.1}{10^{-6}}=1.26\times10^6\) m\(^{-1}\) = \(1.26\times10^4\) cm\(^{-1}\). (b) \(e^{-\alpha d}=0.1\) → \(d=\ln10/\alpha=1.83\) µm. (c) \(R=\frac{2.5^2+0.01}{4.5^2+0.01}=0.309\); absorbed \(=(1-R)\cdot0.9=62\%\): an AR coating matters as much as thickness.
+
+* Pitfall
+Two conventions exist: \(N=n-jK\) (engineering, \(e^{j\omega t}\)) and \(N=n+i\kappa\) (physics, \(e^{-i\omega t}\)); \(K\) is positive in both. And \(\alpha\) in absorption formulas is the *intensity* coefficient, twice the field one.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Refractive_index#Complex_refractive_index][Complex refractive index]]
+- [[https://refractiveindex.info/][refractiveindex.info database]]

@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       commutators-and-compatible-observables
+:DOMAIN:   quantum-mechanics
+:AREA:     postulates
+:KIND:     theorem
+:REQUIRES: measurement-postulate
+:SEE:      uncertainty-relation angular-momentum-algebra
+:ALIASES:  commutator, compatible observables, simultaneous eigenkets, complete set of commuting observables, CSCO
+:END:
+#+title: Commutators and compatible observables
+#+summary: Two observables are compatible when \([A,B]=AB-BA=0\); then they share a basis of eigenkets \(\ket{a,b}\), their measurements do not disturb each other, and a maximal set of them (a CSCO) labels the states uniquely.
+
+* Theorem
+If \([A,B]=0\) and \(A\) is non-degenerate, every eigenket of \(A\) is an eigenket of \(B\). In general (degenerate \(A\)) one can choose a common orthonormal eigenbasis \(\ket{a,b}\). Conversely, a common eigenbasis implies \([A,B]=0\).
+
+* Proof
+\(0=\bra{a''}[A,B]\ket{a'}=(a''-a')\bra{a''}B\ket{a'}\). For \(a''\neq a'\) the matrix element vanishes: \(B\) is block-diagonal on the eigenspaces of \(A\). In each block \(B\) is Hermitian, so it can be diagonalised there without leaving the block, and the new basis is still an eigenbasis of \(A\). Conversely, \(AB\ket{a,b}=ab\ket{a,b}=BA\ket{a,b}\) on a basis.
+
+* Commutator algebra
+\[ [A,BC]=[A,B]C+B[A,C],\qquad [AB,C]=A[B,C]+[A,C]B,\qquad [A,[B,C]]+[B,[C,A]]+[C,[A,B]]=0. \]
+\([A,B]^\dagger=[B^\dagger,A^\dagger]\): the commutator of two Hermitian operators is anti-Hermitian, so \([A,B]=iC\) with \(C\) Hermitian.
+
+* Physical meaning
+Measure \(A\) (get \(a'\)), then \(B\), then \(A\) again. If \([A,B]=0\) the third result is \(a'\) with certainty. If not, the \(B\) measurement scrambles \(A\): this is the third Stern–Gerlach experiment, with \([S_x,S_z]=-i\hbar S_y\neq0\).
+
+* Worked example
+For hydrogen without spin, \(\{H,\mathbf L^2,L_z\}\) is a CSCO: \(\ket{n,l,m}\). Adding spin, \(\{H,\mathbf L^2,\mathbf J^2,J_z\}\) or \(\{H,\mathbf L^2,L_z,S_z\}\) are two alternative CSCOs (see [[id:addition-of-angular-momenta][addition of angular momenta]]).
+
+* Pitfall
+\([A,B]=0\) on one state (e.g. \(\braket{[A,B]}=0\)) does not make the observables compatible: compatibility is an operator identity.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Complete_set_of_commuting_observables][Complete set of commuting observables]]

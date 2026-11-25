@@ -1,0 +1,54 @@
+:PROPERTIES:
+:ID:       photoconductors-and-phototransistors
+:DOMAIN:   optoelectronics
+:AREA:     photodetectors
+:KIND:     model
+:REQUIRES: photodetectors drift-diffusion-and-einstein-relation
+:SEE:      photodiode-circuits-and-bandwidth avalanche-photodiodes
+:ALIASES:  photoconductor, photoconductive detector, photoresistor, LDR, light dependent resistor, CdS cell, photoconductive gain, photoconductivity, transit time, phototransistor, Schottky photodiode, Schottky barrier, internal photoemission, metal-semiconductor-metal detector, MSM photodetector
+:END:
+#+title: Photoconductors, phototransistors and Schottky photodiodes
+#+summary: Light raises the conductivity of a semiconductor slab by \(\Delta\sigma=e\Delta n(\mu_e+\mu_h)\) with \(\Delta n=\frac{\eta I\lambda\tau}{hcD}\); because a carrier leaving one electrode is replaced at the other until it recombines, the photoconductive gain is \(G=\frac{\tau}{\tau_t}\) with \(\tau_t=\frac{L^2}{\mu V}\) — high gain, low speed (gain × bandwidth ≈ const); a phototransistor amplifies its base photocurrent by \(\beta\); a Schottky photodiode avoids slow minority-carrier diffusion and detects below the gap by internal photoemission.
+
+* Photoconductor (derivation of the gain)
+A slab of thickness \(D\), length \(L\) between electrodes, absorbs intensity \(I\): generation rate per volume \(\frac{\eta I}{h\nu D}\), steady excess density \(\Delta n=\frac{\eta I\lambda\tau}{hcD}\) (\(\tau\) = carrier lifetime). With bias \(V\) an electron crosses in \(\tau_t=L/v=\frac{L^2}{\mu_eV}\). Charge neutrality: when it leaves at the anode another enters at the cathode, so each absorbed photon lets \(\tau/\tau_t\) electrons through the circuit before recombination: \(I_{ph}=e\,\frac{\eta P}{h\nu}\,\frac{\tau}{\tau_t}\). The response time is \(\tau\) itself, so \(G\cdot B\approx\frac{1}{2\pi\tau_t}\) is fixed by geometry and bias.
+
+* Picture
+\begin{tikzpicture}[scale=0.95]
+\fill[orange!20] (0,0) rectangle (5,0.6);
+\fill[gray!60] (-0.4,0) rectangle (0,0.9); \fill[gray!60] (5,0) rectangle (5.4,0.9);
+\foreach \x in {1,2,3,4} \draw[-{Latex},thick,yellow!60!black] (\x,1.6)--(\x,0.65);
+\node[font=\small] at (2.5,1.85) {light $I$, $\lambda$};
+\draw (-0.2,0)--(-0.2,-0.8)--(1.9,-0.8); \draw (5.2,0)--(5.2,-0.8)--(3.1,-0.8);
+\draw (1.9,-0.55)--(1.9,-1.05); \draw (2.1,-0.7)--(2.1,-0.9); \node[font=\small] at (2.0,-1.3) {$V$};
+\draw (2.1,-0.8)--(2.4,-0.8); \draw (2.4,-0.6) rectangle (3.1,-1.0); \node[font=\small] at (2.75,-0.8) {A};
+\draw[{Latex}-{Latex}] (0,1.0)--(5,1.0) node[midway,above,font=\scriptsize]{$L$};
+\draw[{Latex}-{Latex}] (5.6,0)--(5.6,0.6) node[midway,right,font=\scriptsize]{$D$};
+\draw[-{Latex},blue!70!black] (1.0,0.3)--(2.2,0.3) node[right,font=\scriptsize]{$e^-$};
+\end{tikzpicture}
+
+* Phototransistor
+A bipolar transistor with a large, exposed base–collector junction: the photocurrent \(I_{ph}\) acts as base current and the collector current is \((\beta+1)I_{ph}\). Gain 100–1000 at the cost of speed (large junction capacitance multiplied by the Miller effect: tens of kHz to a few MHz). Used in optocouplers, slotted interrupters and reflective sensors.
+
+* Schottky photodiode
+A thin semi-transparent metal on a semiconductor forms a barrier \(\Phi_B\) with a depletion region at the surface. Photons absorbed near the surface give carriers that are swept by drift — no slow diffusion tail — so Schottky and metal–semiconductor–metal (MSM) detectors reach > 100 GHz; good UV response (absorption near the surface, e.g. GaN, SiC). Photons with \(\Phi_B<h\nu<E_g\) excite electrons in the metal over the barrier (internal photoemission): PtSi/Si arrays detect 3–5 µm infrared.
+
+* Worked examples
+1. *Gain*: Si photoconductor \(L=100\) µm, \(\mu_e=1350\) cm²/(V s), \(V=10\) V: \(\tau_t=\frac{(10^{-2})^2}{1350\cdot10}=7.4\) ns; with \(\tau=1\) µs, \(G=135\), bandwidth ≈ \(\frac{1}{2\pi\tau}=160\) kHz.
+2. *CdS light-dependent resistor*: 1 µm film, \(\mu_e=0.03\) m²/(V s), \(\tau=1\) ms, 10 W/m² of 550 nm light (bright room): \(\Delta n=\frac{10\cdot0.55\times10^{-6}\cdot10^{-3}}{hc\cdot10^{-6}}=2.8\times10^{22}\) m\(^{-3}\), \(\Delta\sigma=133\) S/m. Electrodes 2 mm apart, 5 mm wide: \(R=\frac{L}{\Delta\sigma Wd}=3\) kΩ (MΩ in the dark); \(\tau_t=13\) µs at 10 V, \(G=75\). Typical LDRs follow \(R\propto E^{-\gamma}\), \(\gamma\approx0.7\), and need tens of ms to respond.
+3. *Phototransistor*: \(I_{ph}=1\) µA, \(\beta=100\): \(I_C=101\) µA, into 10 kΩ: 1 V swing without an amplifier.
+
+* Engineering applications
+Light sensors in street lamps and cameras (CdS, being phased out for RoHS), IR detectors (PbS, PbSe, HgCdTe photoconductors), optocouplers and encoders (phototransistors), UV flame and solar-blind detectors (Schottky GaN, SiC), high-speed MSM detectors.
+
+* Exam-style exercise
+An InSb photoconductor (\(\mu_e=7\) m²/(V s), \(\tau=10^{-7}\) s), electrodes 1 mm apart, biased at 1 V, receives 1 µW at 4 µm with \(\eta=0.6\). (a) Transit time and gain. (b) Photocurrent. (c) Bandwidth.
+** Solution
+(a) \(\tau_t=\frac{(10^{-3})^2}{7\cdot1}=1.43\times10^{-7}\) s; \(G=0.7\) (no gain: InSb lifetime is short). (b) \(I=e\eta\frac{P\lambda}{hc}G=1.6\times10^{-19}\cdot0.6\cdot\frac{10^{-6}\cdot4\times10^{-6}}{1.99\times10^{-25}}\cdot0.7=1.35\) µA. (c) \(\approx\frac{1}{2\pi\tau}=1.6\) MHz. Raising \(V\) increases \(G\) until heating or sweep-out limits it.
+
+* Pitfall
+Gain larger than 1 in a photoconductor does not mean more photons are absorbed: it is the same carrier circulating; noise (generation–recombination) is amplified too, and speed drops in proportion.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Photoresistor][Photoresistor]]
+- [[https://en.wikipedia.org/wiki/Phototransistor][Phototransistor]]

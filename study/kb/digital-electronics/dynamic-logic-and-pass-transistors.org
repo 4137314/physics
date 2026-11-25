@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       dynamic-logic-and-pass-transistors
+:DOMAIN:   digital-electronics
+:AREA:     logic-gates
+:KIND:     method
+:REQUIRES: static-cmos-logic-gates cmos-power-dissipation
+:SEE:      latches-and-flip-flops dram-cell
+:ALIASES:  dynamic logic, precharge, evaluate, domino logic, charge sharing, charge leakage, keeper, pass transistor, transmission gate, threshold drop, NMOS pass gate, footed gate
+:END:
+#+title: Dynamic logic and pass-transistor logic
+#+summary: Dynamic gates store the output on the load capacitance: a clocked PMOS precharges to \(V_{DD}\), then a clocked NMOS foot evaluates through the pull-down network; only \(N+2\) transistors and no ratio, but charge sharing, leakage and the monotonic-input rule (domino) must be handled; pass transistors steer signals but an NMOS passes a "1" only up to \(V_{DD}-V_{TN}\), a transmission gate passes both levels fully.
+
+* Dynamic gate operation
+- *Precharge* (CLK = 0): PMOS on, foot NMOS off → \(v_O=V_{DD}\).
+- *Evaluate* (CLK = 1): PMOS off, foot on → output discharges if the pull-down network conducts, otherwise floats high.
+Inputs must be stable (or only rise) during evaluation: cascading requires *domino* logic (dynamic gate + static inverter) so that all inputs are low during precharge.
+
+* Design (exam style)
+Make precharge rise time equal to worst-case evaluation delay:
+\[ 2.2\cdot1.7R_{on,p}C_L=0.69\cdot1.7R_{on,n,eq}C_L. \]
+Then \(R_{on,n,eq}=\frac{2.2}{0.69}R_{on,p}\); the worst path has \(k\) series devices (pull-down + foot), each \(k\) times the equivalent width. Clock period \(T=t_{pre}+t_{eval}\).
+
+* Worked example (exam July 2024)
+\(Y=\overline{AB+CD}\), \(V_{DD}=3\) V, \(V_{TN}=-V_{TP}=0.5\) V, \(K'_n=100\), \(K'_p=40\) µA/V², \((W/L)_p=5\), \(C_L=500\) fF. \(R_{on,p}=\frac{1}{40\mu\cdot5\cdot2.5}=2\) kΩ. Equivalent NMOS: \((W/L)_{eq}=\frac{0.69}{2.2}\cdot\frac{40\cdot5}{100}=0.63\). Worst path: 2 series + foot = 3 → each \(3\cdot0.63=1.88\). \(t_r=t_{PHL}=2.2\cdot1.7\cdot2\text{ k}\cdot500\text{ fF}=3.74\) ns; \(T=7.48\) ns, \(f_{max}=134\) MHz.
+
+* Charge sharing and leakage
+If an internal node \(C_x\) was discharged and connects to the output \(C_L\) without a full path to ground: \(V_O=V_{DD}\frac{C_L}{C_L+C_x}\). Leakage slowly discharges the floating output: minimum clock frequency, or a weak *keeper* PMOS.
+
+* Pass transistors
+NMOS pass gate: passes 0 well; passing 1 the output stops at \(V_{DD}-V_{TN}\) (with body effect), so the next inverter may leak. Transmission gate (NMOS ∥ PMOS, complementary gates): full swing, \(R\approx\) parallel of the two. Used in multiplexers, XORs, latches.
+
+* Engineering applications
+High-speed datapaths (domino adders in older CPUs), register files, memory decoders, precharged bit lines in [[id:sram-cell][SRAM]] and [[id:dram-cell][DRAM]] (same precharge/evaluate idea), transmission-gate latches.
+
+* Pitfall
+Dynamic gates consume power on every clock (precharge) even if the output does not logically change; activity factor can exceed that of static logic.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Dynamic_logic_(digital_electronics)][Dynamic logic]]
+- [[https://en.wikipedia.org/wiki/Domino_logic][Domino logic]]

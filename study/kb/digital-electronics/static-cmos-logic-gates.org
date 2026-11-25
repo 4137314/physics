@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       static-cmos-logic-gates
+:DOMAIN:   digital-electronics
+:AREA:     logic-gates
+:KIND:     method
+:REQUIRES: cmos-propagation-delay
+:SEE:      pseudo-nmos-logic dynamic-logic-and-pass-transistors
+:ALIASES:  CMOS NAND, CMOS NOR, complex gates, pull-up network, pull-down network, duality, equivalent inverter, transistor sizing, worst case delay, AOI, OAI, fan-in
+:END:
+#+title: Static CMOS logic gates and sizing
+#+summary: A static CMOS gate has an NMOS pull-down network realising \(\overline{F}\) (series = AND, parallel = OR) and the dual PMOS pull-up network; each network is sized so that its *worst-case* conducting path equals the reference inverter: \(n\) devices in series need \(n\) times the width, so NAND (series NMOS) is preferred over NOR (series PMOS).
+
+* Method
+1. Write \(Y=\overline{F}\) with \(F\) in AND/OR form; pull-down: AND → series NMOS, OR → parallel NMOS.
+2. Pull-up: the dual (series ↔ parallel) with PMOS.
+3. Reference inverter \((W/L)_n=r_n\), \((W/L)_p=r_p\) gives the target delay ([[id:cmos-propagation-delay][delay]]).
+4. For each network find the longest series chain \(k\) in any conducting path: size those devices \(k\cdot r\). Parallel devices each get the single-device size (worst case = only one conducting).
+5. Delay estimate: equivalent inverter with \(C_L\) including internal diffusion capacitances.
+
+* Examples
+| gate          | NMOS (pull-down)         | PMOS (pull-up)            |
+|---------------+--------------------------+---------------------------|
+| NAND2         | 2 in series, each 2r_n   | 2 in parallel, each r_p   |
+| NOR2          | 2 in parallel, each r_n  | 2 in series, each 2r_p    |
+| NAND3         | 3 series, each 3r_n      | 3 parallel, each r_p      |
+| AB + CD (AOI) | 2 parallel branches of 2 | 2 series groups of 2 par. |
+For \(Y=\overline{AB+CD}\): NMOS each \(2r_n\); PMOS: (A∥B) in series with (C∥D), each \(2r_p\).
+
+* Worked example
+Reference \(r_n=2\), \(r_p=5\) (\(K'_n/K'_p=2.5\)). NAND3: NMOS 6/1 each, PMOS 5/1 each, total width \(18+15=33\). NOR3: NMOS 2/1, PMOS 15/1 each, total \(6+45=51\) — NOR3 is 55% larger and has more input capacitance (slower for the previous stage).
+
+* Engineering applications
+Standard-cell libraries (NAND/NOR/AOI/OAI/XOR cells in several drive strengths), synthesis technology mapping, critical-path optimisation (reordering inputs: the late-arriving signal on the transistor nearest the output).
+
+* Pitfall
+Internal node capacitances in series stacks add delay and can cause charge sharing; and the "worst case" for rise and fall are different input combinations.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/NAND_gate#Implementations][NAND gate implementations]]

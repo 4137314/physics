@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       plane-waves-in-media
+:DOMAIN:   electromagnetic-fields
+:AREA:     waves
+:KIND:     theorem
+:REQUIRES: poynting-theorem
+:SEE:      reflection-and-transmission-at-interfaces dispersion-and-group-velocity coherence-of-light
+:ALIASES:  uniform plane wave, intrinsic impedance, propagation constant, attenuation constant, skin depth, polarization, good conductor, lossy dielectric, refractive index
+:END:
+#+title: Plane waves in lossless and lossy media
+#+summary: A uniform plane wave \(\mathbf E=\hat x E_0e^{-\gamma z}\), \(\gamma=\alpha+j\beta=\sqrt{j\omega\mu(\sigma+j\omega\epsilon)}\), has \(\mathbf H=\hat z\times\mathbf E/\eta\) with \(\eta=\sqrt{j\omega\mu/(\sigma+j\omega\epsilon)}\); lossless: \(\beta=\omega\sqrt{\mu\epsilon}\), \(\eta=\sqrt{\mu/\epsilon}\); good conductor: \(\alpha=\beta=1/\delta\), \(\delta=\sqrt{2/\omega\mu\sigma}\).
+
+* Statement and derivation
+From the Helmholtz equation \(\frac{\dd^2E_x}{\dd z^2}=\gamma^2E_x\), \(\gamma^2=j\omega\mu(\sigma+j\omega\epsilon)\). Faraday gives \(H_y=E_x/\eta\).
+| medium         | condition | α           | β       | η             |
+|----------------+-----------+-------------+---------+---------------|
+| lossless       | σ = 0     | 0           | ω√(με)  | √(μ/ε)        |
+| low-loss       | σ ≪ ωε    | (σ/2)√(μ/ε) | ω√(με)  | √(μ/ε)        |
+| good conductor | σ ≫ ωε    | √(πfμσ)     | √(πfμσ) | (1+j)√(πfμ/σ) |
+Phase velocity \(v_p=\omega/\beta=c/n\), \(n=\sqrt{\epsilon_r\mu_r}\); wavelength \(\lambda=2\pi/\beta\).
+
+* Polarisation
+\(\mathbf E=(\hat xE_x+\hat yE_ye^{j\phi})e^{-j\beta z}\): linear (\(\phi=0,\pi\)), circular (\(E_x=E_y\), \(\phi=\pm\pi/2\)), elliptical otherwise. Handedness by IEEE convention: viewed from behind the wave, counter-clockwise rotation is right-hand circular.
+
+* Skin effect
+In a good conductor fields decay as \(e^{-z/\delta}\) and the current flows in a layer \(\delta\); the AC resistance of a wire of radius \(a\gg\delta\) is \(R_{ac}\approx\frac{\ell}{2\pi a\delta\sigma}\), surface resistance \(R_s=1/\sigma\delta\).
+
+* Worked example
+Copper (\(\sigma=5.8\times10^7\) S/m): \(\delta=66/\sqrt{f}\) mm → 9.3 mm at 50 Hz, 66 µm at 1 MHz, 2.1 µm at 1 GHz. Sea water at 1 kHz (\(\sigma=4\)): \(\delta\approx8\) m — submarine communication uses VLF/ELF. A 1 GHz wave in a dielectric \(\epsilon_r=4\): \(\lambda=15\) cm, \(\eta=188\) Ω.
+
+* Engineering applications
+Shielding effectiveness (absorption \(8.7\,t/\delta\) dB), litz wire and PCB conductor loss at GHz, microwave heating (loss tangent of water), ground-penetrating radar depth, polarisation diversity in antennas and the polarisation optics of [[id:optoelectronics][optoelectronics]].
+
+* Pitfall
+In a lossy medium \(\mathbf E\) and \(\mathbf H\) are not in phase (\(\eta\) complex, 45° for good conductors); power must be computed with \(\tfrac12\mathrm{Re}(\mathbf E\times\mathbf H^*)\), not \(E^2/2\eta\) with complex \(\eta\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Skin_effect][Skin effect]]
+- [[https://en.wikipedia.org/wiki/Polarization_(waves)][Polarization]]

@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       anomalous-magnetic-moment
+:DOMAIN:   quantum-electrodynamics
+:AREA:     radiative-corrections
+:KIND:     theorem
+:REQUIRES: radiative-corrections-and-renormalization dirac-equation
+:SEE:      fine-structure-and-zeeman-effect spin-precession-and-rabi-oscillations
+:ALIASES:  g-2, anomalous magnetic moment, Schwinger term, Gordon decomposition, form factor F2, Penning trap
+:END:
+#+title: The anomalous magnetic moment of the electron
+#+summary: The vertex correction adds a Pauli form factor: \(\bar u'\left[\gamma^\mu F_1(q^2)+\frac{i\sigma^{\mu\nu}q_\nu}{2m}F_2(q^2)\right]u\), and \(g=2[F_1(0)+F_2(0)]=2+\frac\alpha\pi+\dots\): \(a_e=\frac{g-2}2=\frac{\alpha}{2\pi}\approx0.00116\) (Schwinger), now known to 12 digits.
+
+* Statement
+Most general vertex consistent with Lorentz invariance, parity and current conservation:
+\[ \Gamma^\mu=\gamma^\mu F_1(q^2)+\frac{i\sigma^{\mu\nu}q_\nu}{2m}F_2(q^2). \]
+\(F_1(0)=1\) is charge normalisation (Ward identity). The Gordon decomposition \(\bar u'\gamma^\mu u=\bar u'\left[\frac{(p+p')^\mu}{2m}+\frac{i\sigma^{\mu\nu}q_\nu}{2m}\right]u\) shows that the \(\sigma^{\mu\nu}\) term is a magnetic coupling; in a static field the interaction is \(-\boldsymbol\mu\cdot\mathbf B\) with \(\boldsymbol\mu=\frac{e}{m}[F_1(0)+F_2(0)]\mathbf S\).
+
+* Derivation of α/2π (outline)
+One-loop vertex with Feynman parameters \(x,y,z\): \(F_2(q^2)=\frac{\alpha}{\pi}\int_0^1\dd x\dd y\dd z\,\delta(x+y+z-1)\frac{2m^2z(1-z)}{m^2(1-z)^2-q^2xy}\). At \(q^2=0\): \(F_2(0)=\frac\alpha\pi\int_0^1\dd z\int_0^{1-z}\dd y\frac{z}{1-z}=\frac{\alpha}{\pi}\int_0^1z\,\dd z=\frac\alpha{2\pi}\). UV finite: no counterterm needed — a genuine prediction.
+
+* Comparison with experiment
+\(a_e^{th}=\frac{\alpha}{2\pi}-0.328\left(\frac\alpha\pi\right)^2+1.18\left(\frac\alpha\pi\right)^3+\dots\); measured \(a_e=0.001\,159\,652\,180\,59(13)\) in a one-electron Penning trap. Comparing gives the most precise determination of \(\alpha\) (with atom-interferometry values agreeing at the \(10^{-10}\) level). For the muon, hadronic loops matter and \(a_\mu\) is a probe of new physics.
+
+* Worked example
+Penning trap: cyclotron \(\nu_c=\frac{eB}{2\pi m}\) and spin precession \(\nu_s=\frac g2\nu_c\); the anomaly frequency \(\nu_a=\nu_s-\nu_c=a_e\nu_c\). At \(B=5.36\) T, \(\nu_c=150\) GHz, \(\nu_a=174\) MHz — measuring a ratio of two frequencies gives \(a_e\) directly.
+
+* Engineering applications
+Defines \(\alpha\) for the SI (via \(h\), \(e\) fixed, \(\alpha\) links electrical and atomic units), EPR/ESR spectroscopy uses \(g\approx2.0023\) as reference, precision tests underpin the reliability of QED-based atomic clocks.
+
+* Pitfall
+\(g=2\) is not a prediction of spin alone but of the Dirac equation with minimal coupling; adding a Pauli term by hand could give any \(g\). QED fixes the corrections.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Anomalous_magnetic_dipole_moment][Anomalous magnetic dipole moment]]
+- [[https://physics.nist.gov/cuu/Constants/][NIST CODATA fundamental constants]]

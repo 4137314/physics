@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       superconducting-electronics
+:DOMAIN:   superconducting-electronics
+:AREA:     superconducting-electronics
+:KIND:     overview
+:REQUIRES: quantum-mechanics digital-electronics
+:SEE:      quantum-electrodynamics
+:ALIASES:  superconducting electronics, single flux quantum, SFQ, RSFQ, Josephson digital logic, cryogenic electronics
+:END:
+#+title: Superconducting electronics: the map of the subject
+#+summary: Superconductors carry current without resistance and quantise magnetic flux in units of \(\Phi_0=h/2e\); Josephson junctions switch in picoseconds dissipating \(\sim10^{-19}\) J, so logic that stores and moves single flux quanta (SFQ) runs at tens of GHz with orders of magnitude less energy per operation than CMOS — and it is the natural control electronics for superconducting qubits.
+
+* Overview
+| block   | notes                                                   |
+|---------+---------------------------------------------------------|
+| physics | superconductivity, London equations, flux quantisation  |
+| device  | Josephson junction, RCSJ model, SQUID                   |
+| logic   | SFQ pulses, JTL, DFF, clocked gates, timing and biasing |
+
+* Comparison with CMOS
+| quantity         | CMOS (≈ 5 nm)         | RSFQ / ERSFQ             |
+|------------------+-----------------------+--------------------------|
+| switching energy | ≈ 10⁻¹⁶ J incl. wires | ≈ 2×10⁻¹⁹ J (I_c·Φ₀)     |
+| clock            | 3–5 GHz               | 20–100 GHz demonstrated  |
+| interconnect     | RC lines              | ballistic microstrip     |
+| temperature      | 300 K                 | 4.2 K (cooling overhead) |
+| density          | ≈ 10⁸ gates/mm²       | ≈ 10⁵–10⁶ JJ/cm²         |
+
+* Engineering applications
+Ultra-fast digital signal processing (RF digital receivers), cryogenic control and read-out of [[id:qubits-and-quantum-gates][qubits]], SQUID magnetometry (MEG brain imaging), voltage standards (Josephson arrays define the volt).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Rapid_single_flux_quantum][Rapid single flux quantum]]
+- [[https://en.wikipedia.org/wiki/Superconducting_logic][Superconducting logic]]

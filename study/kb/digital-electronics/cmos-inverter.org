@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       cmos-inverter
+:DOMAIN:   digital-electronics
+:AREA:     inverters
+:KIND:     theorem
+:REQUIRES: inverter-static-characteristics effective-mass-and-holes
+:SEE:      cmos-propagation-delay cmos-power-dissipation static-cmos-logic-gates
+:ALIASES:  CMOS inverter, complementary MOS, switching threshold VM, symmetric inverter, PMOS sizing, rail-to-rail, regions of the VTC
+:END:
+#+title: The CMOS inverter: VTC, switching threshold and sizing
+#+summary: An NMOS pull-down and a PMOS pull-up with common gate: rail-to-rail outputs (\(V_{OH}=V_{DD}\), \(V_{OL}=0\)), no static current, and switching threshold \(V_M=\frac{V_{TN}+\sqrt{K_p/K_n}\,(V_{DD}+V_{TP})}{1+\sqrt{K_p/K_n}}\); a symmetric inverter (\(V_M=V_{DD}/2\), equal rise/fall) needs \(K_p=K_n\), i.e. \((W/L)_p=\frac{K'_n}{K'_p}(W/L)_n\approx2\)–\(2.5\times\).
+
+* Derivation of \(V_M\)
+At \(v_I=v_O=V_M\) both transistors are saturated; equate \(\frac{K_n}2(V_M-V_{TN})^2=\frac{K_p}2(V_{DD}-V_M+V_{TP})^2\) (\(V_{TP}<0\)). Taking square roots: \(\sqrt{K_n}(V_M-V_{TN})=\sqrt{K_p}(V_{DD}-V_M+V_{TP})\), which gives the formula above. Gain at \(V_M\) is infinite in the square-law model (finite with \(\lambda\)): a nearly ideal VTC.
+
+* Regions along the VTC
+| v_I range          | NMOS       | PMOS       | v_O           |
+|--------------------+------------+------------+---------------|
+| 0 … V_TN           | cutoff     | triode     | V_DD          |
+| V_TN … V_M         | saturation | triode     | high, falling |
+| V_M                | saturation | saturation | steep drop    |
+| V_M … V_DD + V_TP  | triode     | saturation | low, falling  |
+| V_DD + V_TP … V_DD | triode     | cutoff     | 0             |
+Noise margins for a symmetric inverter (square law): \(V_{IL}=\frac{3V_{DD}+2V_{TN}}{8}\), \(NM_L=NM_H=\frac{3V_{DD}+2V_{TN}}{8}\).
+
+* Worked example
+\(V_{DD}=2.5\) V, \(V_{TN}=-V_{TP}=0.6\) V, \(K'_n=100\), \(K'_p=40\) µA/V², \((W/L)_n=2/1\). Symmetric: \((W/L)_p=5/1\). With \((W/L)_p=2/1\) instead: \(\sqrt{K_p/K_n}=0.632\), \(V_M=\frac{0.6+0.632\cdot1.9}{1.632}=1.10\) V (< 1.25 V: weak PMOS shifts the threshold down). Noise margins symmetric case: \(\frac{7.5+1.2}{8}=1.09\) V.
+
+* Engineering applications
+The universal building block: buffers, clock trees, ring oscillators (process monitors), level restoration; a biased CMOS inverter is also a simple high-gain amplifier.
+
+* Pitfall
+Equal \(W/L\) for N and P does *not* give a symmetric inverter: holes are ~2–3 times less mobile ([[id:effective-mass-and-holes][hole effective mass]]).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Inverter_(logic_gate)][Inverter (logic gate)]]

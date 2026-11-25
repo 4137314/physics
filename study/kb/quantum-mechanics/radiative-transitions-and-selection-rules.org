@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       radiative-transitions-and-selection-rules
+:DOMAIN:   quantum-mechanics
+:AREA:     approximation-methods
+:KIND:     theorem
+:REQUIRES: time-dependent-perturbation-and-golden-rule orbital-angular-momentum symmetries-and-conservation-laws
+:SEE:      stimulated-emission-and-lasers spontaneous-emission-and-purcell-effect jaynes-cummings-model
+:ALIASES:  electric dipole approximation, selection rules, Einstein coefficients, oscillator strength, absorption cross section, natural linewidth
+:END:
+#+title: Radiative transitions, dipole approximation and selection rules
+#+summary: In the dipole approximation \(H'=e\mathbf r\cdot\mathbf E(t)\); transitions require \(\Delta l=\pm1\), \(\Delta m=0,\pm1\), \(\Delta s=0\); Einstein's relations \(A_{21}=\frac{\hbar\omega^3}{\pi^2c^3}B_{21}\), \(g_1B_{12}=g_2B_{21}\) and \(A_{21}=\frac{\omega^3|\mathbf d_{21}|^2}{3\pi\epsilon_0\hbar c^3}\) link absorption, stimulated and spontaneous emission.
+
+* Dipole approximation
+\(H'=-\frac{q}{m}\mathbf A\cdot\mathbf p\) with \(\mathbf A\propto\boldsymbol\epsilon e^{i\mathbf k\cdot\mathbf r}\). For atoms \(ka_0\sim10^{-3}\), so \(e^{i\mathbf k\cdot\mathbf r}\simeq1\). Using \(\mathbf p=\frac{im}\hbar[H_0,\mathbf r]\), \(\bra f\mathbf p\ket i=im\omega_{fi}\bra f\mathbf r\ket i\): equivalent to \(H'=-\mathbf d\cdot\mathbf E\), \(\mathbf d=q\mathbf r\).
+
+* Selection rules (proof sketch)
+- Parity: \(\mathbf r\) is odd, so initial and final states must have opposite parity: \(\Delta l\) odd.
+- \(\mathbf r\) is a rank-1 tensor: by [[id:addition-of-angular-momenta][Wigner–Eckart]] \(\Delta l=0,\pm1\), \(\Delta m=0,\pm1\); combined with parity, \(\Delta l=\pm1\).
+- \(\mathbf r\) does not act on spin: \(\Delta s=0\).
+\(\Delta m=0\) couples to \(\pi\) (linear, along \(z\)) light, \(\Delta m=\pm1\) to \(\sigma^\pm\) circular light.
+
+* Einstein coefficients
+Rates per atom: absorption \(B_{12}u(\omega)\), stimulated emission \(B_{21}u(\omega)\), spontaneous \(A_{21}\). Equilibrium with blackbody \(u(\omega)\) and Boltzmann populations forces \(g_1B_{12}=g_2B_{21}\) and \(A_{21}/B_{21}=\hbar\omega^3/\pi^2c^3\). The quantum calculation ([[id:spontaneous-emission-and-purcell-effect][Weisskopf–Wigner]]) gives
+\[ A_{21}=\frac{\omega^3\,|\bra2\mathbf d\ket1|^2}{3\pi\epsilon_0\hbar c^3}. \]
+
+* Worked example
+Hydrogen \(2p\to1s\): \(|\bra{1s}z\ket{2p_0}|=\frac{128\sqrt2}{243}a_0=0.745a_0\), \(\omega=1.55\times10^{16}\) s\(^{-1}\): \(A\approx6.3\times10^8\) s\(^{-1}\), lifetime 1.6 ns, natural linewidth \(A/2\pi=100\) MHz. The \(2s\) state cannot decay by dipole emission (\(\Delta l=0\)): it lives 0.12 s.
+
+* Engineering applications
+\(\omega^3\) scaling explains why X-ray lasers are hard (spontaneous emission dominates). Forbidden transitions give long-lived metastable levels used as upper laser levels (Nd:YAG, Er\(^{3+}\) in EDFAs) and optical clocks (Sr, Yb).
+
+* Pitfall
+"Forbidden" means forbidden *in the dipole approximation*: magnetic dipole and quadrupole transitions still occur, \((ka)^2\sim10^{-6}\) times slower.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Einstein_coefficients][Einstein coefficients]]
+- [[https://en.wikipedia.org/wiki/Selection_rule][Selection rule]]

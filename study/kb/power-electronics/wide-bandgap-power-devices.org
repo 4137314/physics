@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       wide-bandgap-power-devices
+:DOMAIN:   power-electronics
+:AREA:     power-devices
+:KIND:     model
+:REQUIRES: power-mosfets-and-igbts heterojunctions-and-quantum-wells
+:SEE:      switching-converters intrinsic-and-doped-semiconductors
+:ALIASES:  silicon carbide, SiC MOSFET, gallium nitride, GaN HEMT, 2DEG, critical field, Baliga figure of merit, high temperature operation, dynamic Ron, current collapse
+:END:
+#+title: Wide-bandgap power devices: SiC and GaN
+#+summary: A larger gap gives a ~10× higher critical field: for the same \(V_{BR}\) the drift region is 10× thinner and 100× more doped, so \(R_{on,sp}\) falls by \(\sim10^2\)–\(10^3\); SiC MOSFETs dominate 650 V–3.3 kV, GaN HEMTs (2DEG channel) dominate fast switching below 650 V; low intrinsic density allows operation above 200 °C.
+
+* Material comparison
+| property              | Si   | 4H-SiC | GaN         |
+|-----------------------+------+--------+-------------|
+| E_g (eV)              | 1.12 | 3.26   | 3.4         |
+| E_c (MV/cm)           | 0.3  | 2.5    | 3.3         |
+| μ_n (cm²/Vs)          | 1350 | 950    | 2000 (2DEG) |
+| thermal cond. (W/cmK) | 1.5  | 4.9    | 1.3         |
+| BFOM (rel. to Si)     | 1    | ≈ 500  | ≈ 1000+     |
+
+* Why (derivation)
+From the [[id:power-mosfets-and-igbts][unipolar limit]] \(R_{on,sp}=\frac{4V_{BR}^2}{\epsilon\mu E_c^3}\): \(E_c\) enters cubed. 8× higher \(E_c\) → 512× lower drift resistance (mobility and permittivity similar). Higher \(E_g\) also reduces \(n_i\) by many orders ([[id:intrinsic-and-doped-semiconductors][intrinsic density]]), so the extrinsic range extends to high temperature.
+
+* Device specifics
+- *SiC MOSFET*: gate-oxide interface traps lower channel mobility (channel resistance matters at 650 V), threshold drift; body diode with high \(V_F\) (~3 V) but negligible recovery.
+- *GaN HEMT*: AlGaN/GaN polarisation creates a 2DEG (\(n_s\approx10^{13}\) cm\(^{-2}\)) — normally-on; normally-off by p-GaN gate or cascode; lateral device on Si substrates; no body diode (reverse conduction through the channel); issues: dynamic \(R_{on}\) (trapping), gate robustness.
+
+* Worked example
+1200 V drift region: Si needs ~100 µm at \(1.7\times10^{14}\) cm\(^{-3}\) ([[id:power-diodes][power diodes]]); SiC with \(E_c=2.5\) MV/cm: \(W=\frac{2\cdot1200}{2.5\times10^6}=9.6\) µm, \(N_D=\frac{9.7\cdot8.85\times10^{-14}\cdot6.25\times10^{12}}{2\cdot1.6\times10^{-19}\cdot1200}=1.4\times10^{16}\) cm\(^{-3}\): \(R_{on,sp}\approx\frac{9.6\times10^{-4}}{1.6\times10^{-19}\cdot950\cdot1.4\times10^{16}}=0.45\) mΩ cm² vs ≈ 260 mΩ cm² for Si with the same formula.
+
+* Engineering applications
+EV traction inverters (SiC, 800 V batteries), on-board chargers, solar inverters, compact USB-C chargers and data-centre PSUs (GaN at MHz), RF power amplifiers (GaN HEMT for 5G and radar).
+
+* Pitfall
+Faster switching (\(\dd v/\dd t>50\) V/ns) moves the problem to the package and layout: parasitic inductance causes ringing and EMI; device gains are lost without low-inductance design.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Silicon_carbide][Silicon carbide]]
+- [[https://en.wikipedia.org/wiki/Gallium_nitride][Gallium nitride]]

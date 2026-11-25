@@ -1,0 +1,47 @@
+:PROPERTIES:
+:ID:       electro-optic-modulators
+:DOMAIN:   optoelectronics
+:AREA:     modulators
+:KIND:     model
+:REQUIRES: interference-and-fabry-perot dispersion-and-group-velocity
+:SEE:      mach-zehnder-interferometers silicon-modulators squeezed-states
+:ALIASES:  Pockels effect, Kerr effect, electro-optic coefficient, half-wave voltage, phase modulator, Mach-Zehnder modulator, lithium niobate, electro-absorption modulator, Franz-Keldysh, quantum-confined Stark effect, birefringence, acousto-optic modulator
+:END:
+#+title: Electro-optic modulators
+#+summary: An applied field changes the index: linearly, \(\Delta n=-\tfrac12n^3rE\) (Pockels, non-centrosymmetric crystals such as LiNbO\(_3\)), or quadratically (Kerr); a phase modulator gives \(\phi=\frac{2\pi}{\lambda}\Delta nL\) and a Mach–Zehnder converts it to intensity, \(T=\cos^2\frac{\pi V}{2V_\pi}\), with half-wave voltage \(V_\pi=\frac{\lambda d}{n^3rL\Gamma}\).
+
+* Model
+Index ellipsoid \(\left(\frac{1}{n^2}\right)_{ij}\to\left(\frac{1}{n^2}\right)_{ij}+r_{ijk}E_k\). For LiNbO\(_3\) with field and polarisation along \(z\) (\(r_{33}=30.8\) pm/V, \(n_e=2.14\)): \(\Delta n=-\tfrac12n_e^3r_{33}E\). Electrode gap \(d\), length \(L\), overlap \(\Gamma\).
+
+* Mach–Zehnder intensity modulator
+Split, phase-shift the arms by \(\pm\phi/2\) (push–pull), recombine: \(E_{out}=E_{in}\cos(\Delta\phi/2)\), \(T=\cos^2(\Delta\phi/2)\). Bias at quadrature (\(T=1/2\)) for linear analogue modulation; bias at null and drive \(2V_\pi\) for BPSK/QAM (IQ modulators nest two MZMs). Chirp-free in balanced push–pull.
+
+* Electro-absorption
+In semiconductors near the band edge the field shifts and broadens absorption: Franz–Keldysh (bulk) and the quantum-confined Stark effect in QWs (strong, a few volts). EAMs integrate with DFB lasers (EML).
+
+* Worked example
+LiNbO\(_3\), \(\lambda=1.55\) µm, \(d=10\) µm, \(L=2\) cm, \(\Gamma=0.5\), push–pull (factor 2): \(V_\pi=\frac{1.55\times10^{-6}\cdot10^{-5}}{2\cdot2.14^3\cdot30.8\times10^{-12}\cdot0.02\cdot0.5}=\frac{1.55\times10^{-11}}{6.04\times10^{-12}}\approx2.6\) V. Bandwidth is limited by velocity mismatch between microwave and optical waves: travelling-wave electrodes, and thin-film LiNbO\(_3\) reaching > 100 GHz.
+
+* Picture: Mach–Zehnder transfer function
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$V/V_\pi$},ylabel={$T$},xmin=0,xmax=2,ymin=0,ymax=1.05]
+\addplot+[no marks,thick,domain=0:2,samples=100]{cos(deg(pi*x/2))^2}; \addlegendentry{$\cos^2(\pi V/2V_\pi)$}
+\addplot+[only marks,mark=*] coordinates {(0.5,0.5)}; \addlegendentry{quadrature bias}
+\end{axis}
+\end{tikzpicture}
+Biased at \(V_\pi/2\) the response is steepest and most linear (analogue links, OOK); biased at the null (\(V=V_\pi\)) and driven by \(\pm V_\pi\) the field changes sign (BPSK, QAM in IQ modulators).
+
+* Engineering applications
+Coherent transmitters (IQ modulators for QAM), analogue RF-over-fibre links, Q-switches and pulse pickers (Pockels cells), optical phase-locked loops, quantum optics (fast phase control, [[id:squeezed-states][squeezing]] measurements); in silicon, carrier-based [[id:silicon-modulators][plasma-dispersion modulators]] replace the Pockels effect.
+
+* Exam-style exercise
+A LiNbO\(_3\) Mach–Zehnder at 1550 nm uses \(r_{33}=30.8\) pm/V, \(n_e=2.138\), electrode gap \(d=10\) µm, length 2 cm, overlap \(\Gamma=0.5\), push-pull arms. (a) \(V_\pi\) for one arm. (b) With push-pull? (c) Bias for linear operation and transmission there.
+** Solution
+(a) \(V_\pi=\frac{\lambda d}{n_e^3r_{33}L\Gamma}=\frac{1.55\times10^{-6}\cdot10^{-5}}{9.77\cdot30.8\times10^{-12}\cdot0.02\cdot0.5}=5.1\) V. (b) Both arms shift by opposite amounts: \(V_\pi\) halves to 2.6 V. (c) Quadrature, \(V=V_\pi/2\), \(T=50\%\).
+
+* Pitfall
+Silicon is centrosymmetric: no Pockels effect. Its weak Kerr effect is useless for modulators, which is why silicon modulators use free carriers.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Pockels_effect][Pockels effect]]
+- [[https://en.wikipedia.org/wiki/Electro-optic_modulator][Electro-optic modulator]]

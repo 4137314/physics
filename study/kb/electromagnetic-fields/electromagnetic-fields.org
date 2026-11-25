@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       electromagnetic-fields
+:DOMAIN:   electromagnetic-fields
+:AREA:     electromagnetic-fields
+:KIND:     overview
+:REQUIRES:
+:SEE:      quantum-electrodynamics optoelectronics circuits
+:ALIASES:  electromagnetism, campi elettromagnetici, engineering electromagnetics, Maxwell, microwave engineering
+:END:
+#+title: Electromagnetic fields: the map of the subject
+#+summary: From Coulomb, Ampère and Faraday to Maxwell's equations; then waves (plane waves, reflection, polarisation), guided waves (transmission lines, waveguides, S-parameters) and radiation (antennas): the classical limit of QED and the physics under every circuit and optical device.
+
+* Overview
+| block         | notes                                                     |
+|---------------+-----------------------------------------------------------|
+| static fields | vector calculus, Gauss, Laplace and capacitance, Ampère   |
+| Maxwell       | Faraday, Maxwell's equations, potentials, Poynting        |
+| waves         | plane waves in media, reflection and transmission         |
+| guided waves  | transmission lines, Smith chart, S-parameters, waveguides |
+| radiation     | dipoles, antenna parameters, Friis link budget            |
+
+* Picture
+\begin{tikzpicture}[node distance=1.3cm, every node/.style={draw, rounded corners, font=\small, align=center}]
+\node (s) {statics\\$\nabla\cdot\mathbf D=\rho$, $\nabla\times\mathbf H=\mathbf J$};
+\node (m) [right=of s] {Maxwell\\$+\partial_t$ terms};
+\node (w) [right=of m] {waves\\$k=\omega\sqrt{\mu\epsilon}$};
+\node (g) [below=of m] {guided waves\\$Z_0$, $\Gamma$, cutoff};
+\node (r) [below=of w] {radiation\\$G$, Friis};
+\draw[-{Latex}] (s)--(m); \draw[-{Latex}] (m)--(w); \draw[-{Latex}] (w)--(g); \draw[-{Latex}] (w)--(r);
+\end{tikzpicture}
+
+* Engineering applications
+Capacitive sensors, motors and transformers, signal integrity on PCBs, RF front ends and antennas, microwave links, EMC, optical fibres and integrated photonics.
+
+* Explore
+- [[https://ocw.mit.edu/courses/6-013-electromagnetics-and-applications-spring-2009/][MIT 6.013 Electromagnetics and applications]]
+- [[https://www.feynmanlectures.caltech.edu/II_toc.html][The Feynman volume II online]]

@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       algebraic-quantum-theory
+:DOMAIN:   quantum-mechanics
+:AREA:     mathematical-foundations
+:KIND:     theorem
+:REQUIRES: stone-and-stone-von-neumann-theorems density-operator
+:SEE:      quantum-electrodynamics
+:ALIASES:  C*-algebra, GNS construction, states as positive functionals, Gleason theorem, Kochen-Specker, local quantum physics, Haag-Kastler axioms, classical limit
+:END:
+#+title: Algebraic quantum theory: C*-algebras, GNS and Gleason
+#+summary: Abstractly, observables form a C*-algebra \(\mathfrak A\) and states are positive normalised linear functionals \(\omega\); the GNS construction rebuilds a Hilbert space with \(\omega(A)=\braket{\Omega|\pi(A)\Omega}\); Gleason's theorem shows that in dimension \(\ge3\) Born's rule \(\Tr(\rho P)\) is the only consistent probability on projections.
+
+* Definitions
+- *C*-algebra*: Banach *-algebra with \(\|A^*A\|=\|A\|^2\). Commutative examples: \(C_0(X)\), the classical observables on phase space \(X\) (Gelfand: every commutative C*-algebra is of this form). Non-commutative: \(B(\mathcal H)\), the compact operators, the Weyl algebra.
+- *State*: linear \(\omega:\mathfrak A\to\mathbb C\) with \(\omega(A^*A)\ge0\), \(\omega(1)=1\). Pure states are extreme points of the convex set of states.
+
+* GNS construction
+Given \(\omega\), define \(\braket{A|B}=\omega(A^*B)\) on \(\mathfrak A\); quotient by null vectors \(N=\{A:\omega(A^*A)=0\}\) and complete: \(\mathcal H_\omega\). \(\mathfrak A\) acts by left multiplication \(\pi_\omega(A)[B]=[AB]\), and \(\Omega=[1]\) is cyclic with \(\omega(A)=\braket{\Omega|\pi_\omega(A)\Omega}\). \(\pi_\omega\) is irreducible iff \(\omega\) is pure. Density matrices are the normal states of \(B(\mathcal H)\).
+
+* Gleason's theorem
+If \(\dim\mathcal H\ge3\) and \(\mu\) assigns to each projection a number in \([0,1]\), additive on orthogonal families with \(\mu(1)=1\), then \(\mu(P)=\Tr(\rho P)\) for a unique density operator \(\rho\). Consequence (Kochen–Specker): no assignment of definite values \(\{0,1\}\) to all projections is possible — non-contextual hidden variables are excluded.
+
+* Local quantum physics (Haag–Kastler)
+To each bounded spacetime region \(\mathcal O\) a C*-algebra \(\mathfrak A(\mathcal O)\): isotony \(\mathcal O_1\subset\mathcal O_2\Rightarrow\mathfrak A(\mathcal O_1)\subset\mathfrak A(\mathcal O_2)\), *Einstein causality* (spacelike-separated algebras commute), covariance under Poincaré. Different vacua are inequivalent GNS representations of the same algebra ([[id:stone-and-stone-von-neumann-theorems][Stone–von Neumann fails]] for fields).
+
+* Worked example
+Qubit: \(\mathfrak A=M_2(\mathbb C)\), state \(\omega(A)=\Tr(\rho A)\) with \(\rho=\tfrac12(1+\mathbf r\cdot\boldsymbol\sigma)\). For \(|\mathbf r|<1\) the GNS space is \(\mathbb C^4\) (two copies of \(\mathbb C^2\), a purification); for \(|\mathbf r|=1\) it is \(\mathbb C^2\) and irreducible.
+
+* Engineering applications
+Thermal states of infinite systems (KMS states) underpin quantum statistical mechanics of solids and lasers; Gleason/Kochen–Specker contextuality is a resource certified in quantum-computing benchmarks; the classical limit \(\hbar\to0\) as a deformation of algebras (Landsman) justifies semiclassical device models.
+
+* Pitfall
+Gleason fails in dimension 2 (a qubit admits non-Born measures on projections); Bell/CHSH arguments are needed there.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Gelfand%E2%80%93Naimark%E2%80%93Segal_construction][GNS construction]]
+- [[https://en.wikipedia.org/wiki/Gleason%27s_theorem][Gleason's theorem]]
+- [[https://en.wikipedia.org/wiki/Haag%E2%80%93Kastler_axioms][Haag–Kastler axioms]]

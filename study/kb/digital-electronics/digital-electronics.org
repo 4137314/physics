@@ -1,0 +1,46 @@
+:PROPERTIES:
+:ID:       digital-electronics
+:DOMAIN:   digital-electronics
+:AREA:     digital-electronics
+:KIND:     overview
+:REQUIRES: solid-state circuits
+:SEE:      power-electronics superconducting-electronics
+:ALIASES:  digital electronic circuits, circuiti elettronici digitali, CED, MOS logic, CMOS design, Jaeger Blalock
+:END:
+#+title: Digital electronic circuits: the map of the subject
+#+summary: From the MOSFET square-law model to logic gates: NMOS inverters with resistive, saturated and depletion loads, pseudo-NMOS, static CMOS (VTC, noise margins, sizing, delay, power), dynamic and pass-transistor logic, latches and flip-flops, SRAM and DRAM cells — each with the quantitative design questions typical of the exam.
+
+* Overview
+| block       | notes                                                        |
+|-------------+--------------------------------------------------------------|
+| devices     | MOSFET I–V and body effect, capacitances and scaling, diodes |
+| inverters   | static characteristics, NMOS loads, CMOS inverter            |
+| CMOS timing | propagation delay, power dissipation                         |
+| logic       | static CMOS gates, pseudo-NMOS, dynamic and pass logic       |
+| sequential  | latches and flip-flops                                       |
+| memories    | SRAM, DRAM                                                   |
+
+* Course conventions (used in every note)
+| symbol         | meaning                                           |
+|----------------+---------------------------------------------------|
+| K'n = μn·Cox   | process transconductance (µA/V²)                  |
+| Kn = K'n·(W/L) | device transconductance                           |
+| saturation     | I_D = (Kn/2)(V_GS − V_TN)², if V_DS ≥ V_GS − V_TN |
+| triode         | I_D = Kn(V_GS − V_TN − V_DS/2)V_DS                |
+| body effect    | V_TN = V_TO + γ(√(V_SB + 2φF) − √(2φF))           |
+| on-resistance  | R_on = 1/(Kn(V_DD − V_TN)), R_eq ≈ 1.7·R_on       |
+| delays         | t_PHL = 0.69·1.7·R_on·C, t_f = 2.2·1.7·R_on·C     |
+
+* How to solve an exam exercise
+1. Guess the region of each transistor (saturated if \(V_{GS}=V_{DS}\); triode if the output is "low").
+2. Equate the currents of devices in series; solve the quadratic; discard the root that violates the region.
+3. Verify the guessed regions a posteriori.
+4. For timing, replace each conducting path by its equivalent resistance and use \(0.69RC\) / \(2.2RC\).
+5. Power: static \(V_{DD}I_{DD}\) (ratioed logic), dynamic \(\alpha CV_{DD}^2f\).
+
+* Engineering applications
+Microprocessors, memories, FPGAs, mixed-signal SoCs; the [[id:exam-practice-digital-electronics][exam practice]] contains full solved problems.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/CMOS][CMOS]]
+- [[https://ngspice.sourceforge.io/][ngspice: open-source SPICE simulator]]

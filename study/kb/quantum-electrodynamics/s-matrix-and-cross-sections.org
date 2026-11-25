@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       s-matrix-and-cross-sections
+:DOMAIN:   quantum-electrodynamics
+:AREA:     scattering-theory
+:KIND:     definition
+:REQUIRES: green-functions-and-feynman-propagator time-dependent-perturbation-and-golden-rule
+:SEE:      coulomb-scattering-and-the-mott-formula scattering-and-born-approximation
+:ALIASES:  S matrix, scattering matrix, invariant amplitude, cross section, decay rate, phase space, flux factor, unitarity, Lorentz-invariant phase space
+:END:
+#+title: The S matrix, cross sections and decay rates
+#+summary: \(S_{fi}=\delta_{fi}-i(2\pi)^4\delta^4(P_f-P_i)\prod(\text{norm.})\,\mathcal M_{fi}\); squaring and dividing by flux and time gives \(\dd\sigma=\frac{|\mathcal M|^2}{4\sqrt{(p_1\cdot p_2)^2-m_1^2m_2^2}}\dd\Phi\), and in the CM frame for \(2\to2\): \(\frac{\dd\sigma}{\dd\Omega}=\frac{1}{64\pi^2s}\frac{|\mathbf p_f|}{|\mathbf p_i|}|\mathcal M|^2\).
+
+* Definition
+\(S_{fi}=\lim_{t\to\infty}\braket{f|U_I(t,-t)|i}\); unitarity \(S^\dagger S=1\) (probability conservation, optical theorem). Write \(S=1+iT\) and extract energy–momentum conservation: \(\braket{f|iT|i}=(2\pi)^4\delta^4(\sum p_f-\sum p_i)\,i\mathcal M\), with the invariant amplitude \(\mathcal M\) given by [[id:feynman-rules-of-qed][Feynman rules]].
+
+* Derivation of the cross section
+Square: \([(2\pi)^4\delta^4]^2=(2\pi)^4\delta^4\cdot VT\). Divide by time \(T\), by the incident flux \(|\mathbf v_1-\mathbf v_2|/V\) and by the target density \(1/V\); with relativistic normalisation \(2E\) particles per volume:
+\[ \dd\sigma=\frac{(2\pi)^4\delta^4(P_f-P_i)}{4\sqrt{(p_1\cdot p_2)^2-m_1^2m_2^2}}\,\overline{|\mathcal M|^2}\prod_f\frac{\dd^3p_f}{(2\pi)^32E_f}. \]
+The flux factor is Lorentz invariant (\(4E_1E_2|\mathbf v_1-\mathbf v_2|\) in collinear frames). Decay rate: \(\dd\Gamma=\frac{1}{2M}\overline{|\mathcal M|^2}\dd\Phi\).
+
+* Two-body phase space
+In the CM frame, \(\int\dd\Phi_2=\frac{|\mathbf p_f|}{16\pi^2\sqrt s}\int\dd\Omega\), so
+\[ \left(\frac{\dd\sigma}{\dd\Omega}\right)_{CM}=\frac{1}{64\pi^2s}\frac{|\mathbf p_f|}{|\mathbf p_i|}\overline{|\mathcal M|^2}. \]
+
+* Worked example
+\(e^+e^-\to\mu^+\mu^-\) at high energy: \(\overline{|\mathcal M|^2}=e^4(1+\cos^2\theta)\) gives \(\frac{\dd\sigma}{\dd\Omega}=\frac{\alpha^2}{4s}(1+\cos^2\theta)\), \(\sigma=\frac{4\pi\alpha^2}{3s}=\frac{86.8\text{ nb}}{s/\mathrm{GeV}^2}\). At \(\sqrt s=10\) GeV: 0.87 nb. Unit check with \(0.3894\) mb GeV\(^2\).
+
+* Engineering applications
+Cross sections set detector rates (\(R=\sigma\mathcal L\)), radiation shielding and dosimetry (attenuation \(\mu=n\sigma\)), interaction lengths in calorimeters, and photon interaction probabilities in X-ray imaging.
+
+* Pitfall
+Average over *initial* spins/polarisations (divide by their number), sum over *final* ones; and for identical final particles divide the total cross section by 2 (or integrate over half the solid angle).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/S-matrix][S-matrix]]
+- [[https://en.wikipedia.org/wiki/Cross_section_(physics)][Cross section]]

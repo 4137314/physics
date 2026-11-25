@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       photonics
+:DOMAIN:   photonics
+:AREA:     photonics
+:KIND:     overview
+:REQUIRES: optoelectronics
+:SEE:      electromagnetic-fields quantum-optics
+:ALIASES:  silicon photonics, integrated photonics, photonic integrated circuits, PIC, Chrostowski Hochberg
+:END:
+#+title: Integrated photonics: the map of the subject
+#+summary: Silicon-on-insulator (Si core \(n\approx3.48\), SiO\(_2\) cladding \(n\approx1.44\)) confines light in sub-micron waveguides; from them one builds couplers, interferometers, rings, Bragg gratings, grating couplers, carrier-based modulators and Ge detectors — photonic integrated circuits fabricated in CMOS foundries.
+
+* Overview
+| block      | notes                                                      |
+|------------+------------------------------------------------------------|
+| waveguides | effective index method, strip/rib waveguides, group index  |
+| passive    | directional couplers, MZI, ring resonators, Bragg gratings |
+| I/O        | grating couplers (and edge couplers)                       |
+| active     | silicon modulators, Ge photodetectors                      |
+| structures | photonic crystals                                          |
+
+* Design flow
+Mode solver (FDE) → propagation (FDTD/EME) → compact models (S-parameters, [[id:scattering-parameters][same formalism as microwaves]]) → circuit simulation → layout (GDS) → fabrication tolerance analysis (±10 nm width changes \(n_{eff}\) noticeably).
+
+* Picture
+\begin{tikzpicture}[font=\small]
+\fill[kbguide!20] (0,0) rectangle (6,0.6); \node at (3,0.3) {Si substrate};
+\fill[kbcyan!20] (0,0.6) rectangle (6,1.6); \node at (1,1.1) {BOX SiO$_2$ 2 µm};
+\fill[kbmagenta!60] (2.6,1.6) rectangle (3.4,1.82); \node[right] at (3.5,1.72) {Si 500×220 nm};
+\fill[kbcyan!10] (0,1.6) rectangle (2.6,2.4); \fill[kbcyan!10] (3.4,1.6) rectangle (6,2.4); \fill[kbcyan!10] (2.6,1.82) rectangle (3.4,2.4);
+\node at (5,2.15) {cladding};
+\end{tikzpicture}
+
+* Engineering applications
+Datacenter transceivers (400G/800G), coherent transceivers, LiDAR (optical phased arrays), biosensors (ring resonance shift), quantum photonic chips, optical interconnects for AI accelerators.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Silicon_photonics][Silicon photonics]]
+- [[https://github.com/SiEPIC][SiEPIC open-source silicon-photonics design tools]]

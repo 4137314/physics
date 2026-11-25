@@ -1,0 +1,41 @@
+:PROPERTIES:
+:ID:       exam-practice-qed
+:DOMAIN:   revision
+:AREA:     exam-practice
+:KIND:     example
+:REQUIRES: formula-sheet-quantum compton-scattering-and-pair-annihilation lamb-shift strong-field-qed-and-pair-creation anomalous-magnetic-moment
+:SEE:      exam-practice-quantum-mechanics
+:ALIASES:  QED exercises, quantum electrodynamics problems, Feynman diagram exercises, cross section exercises
+:END:
+#+title: Exam practice: quantum electrodynamics (solved)
+#+summary: Six problems on Dirac algebra, kinematics, propagators, cross sections and radiative corrections, with complete solutions and the typical oral-exam follow-up question for each.
+
+* Problem 1 — Dirac algebra
+Show \(\gamma^\mu\slashed a\gamma_\mu=-2\slashed a\) and compute \(\Tr[(\slashed p+m)\gamma^\mu(\slashed p'+m)\gamma_\mu]\).
+** Solution
+\(\gamma^\mu\gamma^\nu\gamma_\mu=\gamma^\mu(2g^\nu_\mu-\gamma_\mu\gamma^\nu)=2\gamma^\nu-4\gamma^\nu=-2\gamma^\nu\). Then \(\gamma^\mu(\slashed p'+m)\gamma_\mu=-2\slashed p'+4m\); trace \(\Tr[(\slashed p+m)(-2\slashed p'+4m)]=-8p\cdot p'+16m^2\). Follow-up: why do odd traces vanish? (\(\gamma^5\) argument.)
+
+* Problem 2 — kinematics
+Positron at rest annihilating with an electron of kinetic energy 1 MeV into two photons, one emitted along the electron direction. Photon energies?
+** Solution
+\(E=1.511\), \(p=\sqrt{E^2-m^2}=1.422\) MeV. Total energy 2.022 MeV, momentum 1.422 MeV. Collinear: \(\omega_1+\omega_2=2.022\), \(\omega_1-\omega_2=1.422\) → \(\omega_1=1.722\), \(\omega_2=0.300\) MeV. Follow-up: why can one free electron not annihilate into a single photon? (\(s=m_\gamma^2=0\) impossible.)
+
+* Problem 3 — propagator poles
+Explain the \(i\epsilon\) prescription of \(S_F(p)\) and what happens if \(-i\epsilon\) is used.
+** Solution
+Poles at \(p^0=\pm(E-i\epsilon)\): closing below for \(t>0\) picks positive energy (forward propagation), above for \(t<0\) picks negative energy (backward = antiparticles). With \(-i\epsilon\) the roles swap: advanced propagation, acausal. See [[id:green-functions-and-feynman-propagator][Feynman propagator]].
+
+* Problem 4 — muon pair cross section
+Compute \(\sigma(e^+e^-\to\mu^+\mu^-)\) at \(\sqrt s=3\) GeV and the forward–backward symmetry.
+** Solution
+\(\sigma=\frac{4\pi\alpha^2}{3s}=\frac{86.8\text{ nb}}{9}=9.6\) nb. Distribution \(1+\cos^2\theta\) symmetric (pure QED; Z exchange adds an asymmetry growing with \(s\)). Follow-up: derive \(1+\cos^2\theta\) from helicity conservation (each helicity configuration gives \((1\pm\cos\theta)^2\)).
+
+* Problem 5 — Compton
+A 1.33 MeV photon (Co-60) scatters at 180°. Energy of the scattered photon and the electron kinetic energy; Klein–Nishina vs Thomson total cross section ratio.
+** Solution
+\(\omega'=\frac{1.33}{1+2\cdot2.60}=0.214\) MeV, electron 1.116 MeV (Compton edge). For \(k=\omega/m=2.6\), \(\sigma_{KN}/\sigma_T\approx\frac{3}{8k}\left(\ln2k+\frac12\right)=0.144\cdot2.15=0.31\) (high-energy approximation; the exact Klein–Nishina formula gives 0.27, i.e. 0.18 b per electron).
+
+* Problem 6 — radiative corrections
+Explain why \(F_2(0)=\alpha/2\pi\) is a prediction while \(F_1(0)=1\) is not, and how the Lamb shift separates \(2s_{1/2}\) from \(2p_{1/2}\).
+** Solution
+\(F_1(0)\) is fixed by charge renormalisation (definition of \(e\), Ward identity); \(F_2\) has no counterterm (a Pauli term is non-renormalisable), so it is UV finite and calculable. The Lamb shift: self-energy (vacuum fluctuations smear the electron, affecting \(s\) states with \(\psi(0)\neq0\)) dominates (+1017 MHz), anomalous moment +68, vacuum polarisation −27 MHz: total 1058 MHz ([[id:lamb-shift][Lamb shift]]).

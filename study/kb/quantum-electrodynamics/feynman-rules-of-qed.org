@@ -1,0 +1,42 @@
+:PROPERTIES:
+:ID:       feynman-rules-of-qed
+:DOMAIN:   quantum-electrodynamics
+:AREA:     scattering-theory
+:KIND:     method
+:REQUIRES: s-matrix-and-cross-sections quantization-of-the-electromagnetic-field
+:SEE:      moller-and-bhabha-scattering compton-scattering-and-pair-annihilation radiative-corrections-and-renormalization
+:ALIASES:  Feynman diagrams, Feynman rules, momentum space, vertex factor, external lines, fermion loop sign, crossing symmetry
+:END:
+#+title: Feynman rules of QED in momentum space
+#+summary: \(-i\mathcal M\) is read off a diagram: \(u,\bar u,v,\bar v\) for external fermions, \(\epsilon_\mu,\epsilon^*_\mu\) for photons, \(-ie\gamma^\mu\) per vertex, \(\frac{i(\slashed p+m)}{p^2-m^2}\) per internal fermion, \(\frac{-ig_{\mu\nu}}{q^2}\) per internal photon, \(\int\frac{\dd^4k}{(2\pi)^4}\) per loop, \(-1\) per fermion loop and relative signs for exchanged fermions.
+
+* Rules (Feynman gauge, electron charge \(-e\))
+| element                    | factor                                 |
+|----------------------------+----------------------------------------|
+| incoming / outgoing e⁻     | u(p,s) / ū(p,s)                        |
+| incoming / outgoing e⁺     | v̄(p,s) / v(p,s)                       |
+| incoming / outgoing photon | ε_μ(k) / ε*_μ(k)                       |
+| vertex                     | −ieγ^μ, momentum conserved             |
+| internal electron          | i(p̸ + m)/(p² − m² + iε)               |
+| internal photon            | −i g_μν/(q² + iε)                      |
+| loop                       | ∫ d⁴k/(2π)⁴, and −1 for a fermion loop |
+Follow each fermion line *against* the arrow when writing spinors and matrices. Diagrams differing by exchange of identical external fermions get a relative minus sign.
+
+* Derivation sketch
+Expand \(S=T\exp(-i\int\mathcal H_I)\) with \(\mathcal H_I=e\bar\psi\gamma^\mu\psi A_\mu\) to order \(n\); Wick's theorem pairs fields into propagators (contractions) and external states; integrating vertex positions gives momentum conservation at each vertex. The \(1/n!\) cancels against the permutations of vertices.
+
+* Crossing symmetry
+Moving a particle from initial to final state turns it into its antiparticle with \(p\to-p\): \(e^-\mu^-\to e^-\mu^-\) (t-channel) and \(e^+e^-\to\mu^+\mu^-\) (s-channel) have the same \(\overline{|\mathcal M|^2}\) with \(s\leftrightarrow t\).
+
+* Worked example
+\(e^-\mu^-\to e^-\mu^-\): \(i\mathcal M=\bar u(p_3)(-ie\gamma^\mu)u(p_1)\frac{-ig_{\mu\nu}}{q^2}\bar u(p_4)(-ie\gamma^\nu)u(p_2)\). Spin-averaged, high energy: \(\overline{|\mathcal M|^2}=2e^4\frac{s^2+u^2}{t^2}\). Crossing \(s\leftrightarrow t\): \(2e^4\frac{t^2+u^2}{s^2}=e^4(1+\cos^2\theta)\) for \(e^+e^-\to\mu^+\mu^-\).
+
+* Engineering applications
+Monte Carlo event generators for detector design, radiation transport codes (Geant4) that tabulate QED cross sections, Feynman-diagram reasoning in condensed matter (electron–phonon diagrams for mobility and superconductivity).
+
+* Pitfall
+Polarisation sums: \(\sum\epsilon_\mu\epsilon^*_\nu\to-g_{\mu\nu}\) is valid only for gauge-invariant (current-conserving) amplitudes with all diagrams included.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Feynman_diagram][Feynman diagram]]
+- [[https://en.wikipedia.org/wiki/Quantum_electrodynamics][Quantum electrodynamics]]

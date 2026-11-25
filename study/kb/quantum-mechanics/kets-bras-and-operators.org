@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       kets-bras-and-operators
+:DOMAIN:   quantum-mechanics
+:AREA:     postulates
+:KIND:     definition
+:REQUIRES: stern-gerlach-experiment
+:SEE:      observables-and-spectral-decomposition self-adjoint-operators-and-spectral-theorem
+:ALIASES:  Dirac notation, ket, bra, inner product, outer product, completeness relation, matrix representation
+:END:
+#+title: Kets, bras and operators
+#+summary: A state is a ket \(\ket{\alpha}\) in a complex Hilbert space; bras \(\bra{\beta}\) are the dual (antilinear) vectors, \(\braket{\beta|\alpha}=\overline{\braket{\alpha|\beta}}\); the completeness relation \(\sum_n\ket{n}\bra{n}=1\) turns every operator into a matrix \(A_{mn}=\bra{m}A\ket{n}\).
+
+* Definition
+- *Kets* \(\ket{\alpha}\in\mathcal H\), a complex vector space with inner product, complete in its norm (Hilbert space). \(\ket\alpha\) and \(c\ket\alpha\), \(c\neq0\), describe the same physical state.
+- *Bras*: to every ket the dual correspondence \(\ket\alpha\leftrightarrow\bra\alpha\), antilinear: \(c_1\ket\alpha+c_2\ket\beta\leftrightarrow \bar c_1\bra\alpha+\bar c_2\bra\beta\).
+- *Inner product* \(\braket{\beta|\alpha}\): linear in the ket, \(\braket{\beta|\alpha}=\overline{\braket{\alpha|\beta}}\), \(\braket{\alpha|\alpha}\ge0\) with equality only for the null ket.
+- *Operators* act from the left on kets, \(X\ket\alpha\), from the right on bras; the adjoint is defined by \(X\ket\alpha\leftrightarrow\bra\alpha X^\dagger\). The *outer product* \(\ket\beta\bra\alpha\) is an operator.
+- *Associative axiom*: \((\ket\beta\bra\alpha)\ket\gamma=\ket\beta\braket{\alpha|\gamma}\). Hence \(\bra\beta X\ket\alpha=\overline{\bra\alpha X^\dagger\ket\beta}\).
+
+* Derivation: matrix representation
+Given an orthonormal basis \(\{\ket{n}\}\), \(\braket{m|n}=\delta_{mn}\), expand \(\ket\alpha=\sum_n c_n\ket n\). Multiplying by \(\bra m\) gives \(c_m=\braket{m|\alpha}\), so
+\[ \ket\alpha=\sum_n\ket n\braket{n|\alpha}\quad\Rightarrow\quad \sum_n\ket n\bra n=1. \]
+Insert the identity twice: \(X=\sum_{m,n}\ket m\bra m X\ket n\bra n\), i.e. \(X\) is the matrix \(X_{mn}=\bra mX\ket n\). Products become matrix products, \((XY)_{mn}=\sum_k X_{mk}Y_{kn}\), and \((X^\dagger)_{mn}=\overline{X_{nm}}\).
+
+* Worked example
+Spin ½ in the basis \(\ket\pm\) of \(S_z\): \(S_z=\tfrac\hbar2(\ket+\bra+-\ket-\bra-)\), \(S_x=\tfrac\hbar2(\ket+\bra-+\ket-\bra+)\), so
+\[ S_x=\frac\hbar2\begin{pmatrix}0&1\\1&0\end{pmatrix},\quad S_y=\frac\hbar2\begin{pmatrix}0&-i\\ i&0\end{pmatrix},\quad S_z=\frac\hbar2\begin{pmatrix}1&0\\0&-1\end{pmatrix}. \]
+Check: \(S_x\ket{S_x;+}=\tfrac\hbar2\ket{S_x;+}\) with \(\ket{S_x;+}=(1,1)^T/\sqrt2\).
+
+* Intuition
+A ket is a column vector, a bra the conjugate row vector; the projector \(\ket n\bra n\) "keeps the component along \(n\)".
+
+* Pitfall
+\(\ket{c\alpha}=c\ket\alpha\) but \(\bra{c\alpha}=\bar c\bra\alpha\): forgetting the complex conjugate in the bra is the most common algebraic error in exams.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Bra%E2%80%93ket_notation][Bra–ket notation]]

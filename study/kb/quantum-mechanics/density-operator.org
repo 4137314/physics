@@ -1,0 +1,39 @@
+:PROPERTIES:
+:ID:       density-operator
+:DOMAIN:   quantum-mechanics
+:AREA:     quantum-information
+:KIND:     definition
+:REQUIRES: measurement-postulate
+:SEE:      entanglement-and-bell-inequalities master-equation-and-open-systems algebraic-quantum-theory
+:ALIASES:  density matrix, mixed state, statistical operator, purity, Bloch sphere, von Neumann entropy, partial trace, thermal state
+:END:
+#+title: The density operator: pure and mixed states
+#+summary: An ensemble with weights \(w_i\) of states \(\ket{\psi_i}\) is the operator \(\rho=\sum_i w_i\ket{\psi_i}\bra{\psi_i}\): positive, trace one, \(\braket A=\Tr(\rho A)\); it is pure iff \(\Tr\rho^2=1\), and for a qubit \(\rho=\tfrac12(1+\mathbf r\cdot\boldsymbol\sigma)\) with \(|\mathbf r|\le1\).
+
+* Definition
+\(\rho=\sum_iw_i\ket{\psi_i}\bra{\psi_i}\), \(w_i\ge0\), \(\sum w_i=1\). Properties: \(\rho=\rho^\dagger\), \(\rho\ge0\), \(\Tr\rho=1\). Expectation: \(\braket A=\sum_iw_i\bra{\psi_i}A\ket{\psi_i}=\Tr(\rho A)\). Evolution: \(i\hbar\,\dot\rho=[H,\rho]\) (von Neumann). Measurement of \(a\): \(p(a)=\Tr(\rho P_a)\), \(\rho\to P_a\rho P_a/p(a)\).
+
+* Purity and entropy
+\(\Tr\rho^2=\sum_iw_i^2\le1\) in an eigenbasis, with equality iff one weight is 1 (pure state). Von Neumann entropy \(S=-\Tr\rho\ln\rho\ge0\), zero only for pure states, maximal \(\ln N\) for \(\rho=1/N\).
+
+* Qubit: the Bloch ball
+Any \(2\times2\) Hermitian matrix of trace 1 is \(\rho=\tfrac12(1+\mathbf r\cdot\boldsymbol\sigma)\); its eigenvalues are \(\tfrac12(1\pm|\mathbf r|)\), so positivity means \(|\mathbf r|\le1\). Pure states lie on the sphere, \(\braket{\boldsymbol\sigma}=\mathbf r\).
+
+* Partial trace
+For \(\rho_{AB}\) on \(\mathcal H_A\otimes\mathcal H_B\), the reduced state is \(\rho_A=\Tr_B\rho_{AB}=\sum_j\bra{j_B}\rho_{AB}\ket{j_B}\); it gives all statistics of observables \(A\otimes1\). For the singlet, \(\rho_A=1/2\): a pure global state can have maximally mixed parts ([[id:entanglement-and-bell-inequalities][entanglement]]).
+
+* Thermal state
+\(\rho=e^{-\beta H}/Z\), \(Z=\Tr e^{-\beta H}\), maximises \(S\) at fixed \(\braket H\). Example: spin ½ in \(B\), \(H=-\mu B\sigma_z\): \(\braket{\sigma_z}=\tanh(\beta\mu B)\), Curie paramagnetism.
+
+* Worked example
+Unpolarised beam: \(\rho=\tfrac12(\ket+\bra++\ket-\bra-)=1/2\). A 50/50 mixture of \(S_x\pm\) gives the *same* \(\rho\): ensembles with equal \(\rho\) are physically indistinguishable. Compare with the pure \(\ket{S_x;+}\): \(\rho=\tfrac12\begin{pmatrix}1&1\\1&1\end{pmatrix}\); the off-diagonal "coherences" are what distinguishes superposition from mixture.
+
+* Engineering applications
+Decoherence of qubits is the decay of off-diagonal elements (time \(T_2\)) and relaxation of populations (\(T_1\)); NMR, laser rate equations and [[id:master-equation-and-open-systems][master equations]] are all written for \(\rho\).
+
+* Pitfall
+A mixture is not a superposition: \(\tfrac12(\ket+\bra++\ket-\bra-)\neq\ket{S_x;+}\bra{S_x;+}\), and measuring \(S_x\) tells them apart.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Density_matrix][Density matrix]]
+- [[https://en.wikipedia.org/wiki/Bloch_sphere][Bloch sphere]]

@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       effective-index-method
+:DOMAIN:   photonics
+:AREA:     silicon-photonics
+:KIND:     method
+:REQUIRES: photonics dielectric-slab-waveguide
+:SEE:      silicon-photonic-waveguides variational-method
+:ALIASES:  effective index method, EIM, mode solver, 2D waveguide approximation, finite difference eigenmode, Marcatili
+:END:
+#+title: The effective index method
+#+summary: A 2D-confined waveguide is reduced to two 1D slab problems: solve the vertical slab to get \(n_{eff,1}\) inside and outside the ridge, then solve a horizontal slab with those indices (opposite polarisation) to get the mode index \(n_{eff}\); accurate when the field is well confined, and the starting point for numerical mode solvers.
+
+* Method
+1. Divide the cross-section into vertical regions (ridge, sides).
+2. For each region solve a vertical slab ([[id:dielectric-slab-waveguide][slab waveguide]]) for the chosen polarisation (TE: \(E\) horizontal → solve the vertical slab as TE).
+3. Build a horizontal slab with core index \(n_{eff,ridge}\) and cladding \(n_{eff,side}\) (for a strip guide the sides are just cladding).
+4. Solve it with the *other* polarisation (TM-like boundary conditions for the TE mode) to get \(n_{eff}\).
+5. Group index \(n_g=n_{eff}-\lambda\,\dd n_{eff}/\dd\lambda\) by repeating at two wavelengths.
+
+* Justification
+Separation of variables \(E(x,y)\approx X(x)Y(y)\) inserted in the scalar Helmholtz equation; the variational principle ([[id:variational-method][variational method]]) shows the estimate is stationary, so errors are second order in the field error. It overestimates \(n_{eff}\) for small, high-contrast guides; full-vector solvers (finite differences, FEM) are needed for design.
+
+* Worked example
+SOI strip 500×220 nm, \(\lambda=1550\) nm, TE. Vertical slab Si(220 nm) in SiO\(_2\): TE \(n_{eff,1}\approx2.85\). Horizontal slab of width 500 nm, core 2.85, cladding 1.44, TM boundary conditions: \(n_{eff}\approx2.45\) (full-vector solvers give ≈ 2.44). Group index ≈ 4.2 because of strong waveguide dispersion.
+
+* Engineering applications
+Quick design of ridge lasers, rib modulators, AWG slab regions, MMI couplers; sanity checks of numerical solvers; designing single-mode width limits.
+
+* Pitfall
+EIM fails near cutoff and for modes with strong hybrid (TE/TM mixed) character, e.g. in slot waveguides or at sharp bends.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Waveguide_(optics)][Waveguide (optics)]]

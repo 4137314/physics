@@ -1,0 +1,55 @@
+:PROPERTIES:
+:ID:       fiber-dispersion-and-attenuation
+:DOMAIN:   optoelectronics
+:AREA:     fibers
+:KIND:     theorem
+:REQUIRES: optical-fibers dispersion-and-group-velocity
+:SEE:      optical-amplifiers bragg-gratings
+:ALIASES:  chromatic dispersion, material dispersion, waveguide dispersion, dispersion parameter D, intermodal dispersion, polarization mode dispersion, bit rate distance product, attenuation, Rayleigh scattering, bending loss, fiber Bragg grating, dispersion-shifted fiber
+:END:
+#+title: Fibre dispersion, bit-rate limit and attenuation
+#+summary: A pulse of spectral width \(\Delta\lambda\) spreads by \(\Delta\tau=|D|L\Delta\lambda\) with \(D=D_m+D_w\) (ps nm\(^{-1}\) km\(^{-1}\), zero near 1310 nm in standard fibre and ≈ 17 at 1550 nm); the maximum bit rate is roughly \(B\approx0.25/\sigma\) (RZ; twice for NRZ, see [[id:optical-link-design][link design]]) (\(\sigma\) = rms pulse spread); loss is ≈ 0.2 dB/km at 1550 nm, limited by Rayleigh scattering \(\propto\lambda^{-4}\) and infrared absorption.
+
+* Dispersion
+- *Intermodal* (multimode): \(\Delta\tau/L\approx n_1\Delta/c\) (step), \(n_1\Delta^2/8c\) (graded).
+- *Chromatic* (single-mode): group delay per length \(\tau/L=1/v_g\); \(D=\frac{\dd(\tau/L)}{\dd\lambda}=-\frac\lambda c\frac{\dd^2n}{\dd\lambda^2}\) for material dispersion, plus waveguide dispersion \(D_w<0\) from the \(\lambda\)-dependence of mode confinement. Dispersion-shifted fibre moves the zero to 1550 nm; non-zero DSF keeps \(|D|\) small but non-zero to suppress four-wave mixing in DWDM.
+- *Polarisation mode dispersion*: random birefringence, \(\Delta\tau=\mathrm{PMD}\sqrt L\) (≈ 0.1 ps/√km).
+Bit-rate rule (Gaussian pulses): \(B\approx\frac{0.25}{\sigma}\) for RZ and twice that for NRZ, with rms spread \(\sigma\approx0.425\,\Delta\tau_{1/2}\).
+
+* Attenuation
+\(\alpha_{dB}=\frac{10}{L}\log\frac{P_{in}}{P_{out}}=4.34\,\alpha\). Mechanisms: Rayleigh scattering \(\alpha_R\approx\frac{8\pi^3}{3\lambda^4}(n^2-1)^2\beta_Tk_BT_f\) (density fluctuations frozen at \(T_f\)), OH absorption at 1383 nm (removed in low-water-peak fibre), IR absorption of Si–O beyond 1.6 µm, micro- and macro-bending loss.
+
+* Worked example
+1550 nm, \(D=17\) ps/(nm km), DFB laser modulated at 10 Gb/s with \(\Delta\lambda\approx0.1\) nm (modulation-broadened): over 80 km, \(\Delta\tau=17\cdot80\cdot0.1=136\) ps, more than one bit period (100 ps): dispersion compensation (DCF, FBG, or digital coherent DSP) is needed. Loss over 80 km at 0.2 dB/km: 16 dB — amplified by an [[id:optical-amplifiers][EDFA]].
+
+* Dispersion budget and compensation
+A link works if the accumulated spread stays inside the bit slot, \(|D|L\Delta\lambda<T_b=1/B\). A compensating fibre of opposite sign \(D_c\) and length \(L_c\) adds \(D_cL_c\): the condition \(|D_fL_f+D_cL_c|\le T_b/\Delta\lambda\) gives a window of lengths around full compensation \(L_c=|D_fL_f|/|D_c|\), and the effective coefficient of the spliced link is \(D_{eff}=\frac{D_fL_f+D_cL_c}{L_f+L_c}\).
+Numbers: 100 km with \(D_f=-18\) ps/(nm km), \(\Delta\lambda=0.5\) nm, 2.5 Gb/s: \(\Delta\tau=900\) ps > 400 ps. With \(D_c=+100\): \(|{-1800}+100L_c|\le800\) → \(10\le L_c\le26\) km (18 km cancels exactly). The minimum is 10 km, not 26 ([[id:exam-basics-of-optoelectronics][solved exam papers]]).
+
+* Fibre Bragg gratings
+Periodic index change \(\Lambda\) written by UV: reflects \(\lambda_B=2n_{eff}\Lambda\). \(\lambda_B\) shifts ~1.2 pm/µε and ~10 pm/K: strain and temperature sensors; chirped FBGs compensate dispersion ([[id:bragg-gratings][Bragg gratings]]).
+
+* Picture: dispersion of standard single-mode fibre
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$\lambda$ (nm)},ylabel={$D$ (ps nm$^{-1}$km$^{-1}$)},xmin=1200,xmax=1650,ymin=-12,ymax=30]
+\addplot+[no marks,thick,domain=1200:1650,samples=60]{0.092/4*(x-1310^4/x^3)}; \addlegendentry{$D_{ch}$}
+\addplot+[no marks,thick,dashed] coordinates {(1200,-7.91) (1250,-2.33) (1300,2.65) (1350,7.15) (1400,11.25) (1450,15.05) (1500,18.58) (1550,21.91) (1600,25.07) (1650,28.10)}; \addlegendentry{$D_m$}
+\addplot+[no marks,thick,dotted] coordinates {(1200,-3.69) (1250,-3.60) (1300,-3.58) (1350,-3.63) (1400,-3.74) (1450,-3.92) (1500,-4.15) (1550,-4.45) (1600,-4.81) (1650,-5.22)}; \addlegendentry{$D_w$}
+\end{axis}
+\end{tikzpicture}
+\(D_{ch}=\frac{S_0}{4}\left(\lambda-\frac{\lambda_0^4}{\lambda^3}\right)\) with \(S_0=0.092\) ps nm\(^{-2}\)km\(^{-1}\), \(\lambda_0=1310\) nm (the ITU fit for G.652 fibre); \(D_m\) from the silica Sellmeier equation, \(D_w=D_{ch}-D_m\) negative.
+
+* Engineering applications
+Link design (power and dispersion budgets), choice of 1310 vs 1550 nm, DWDM channel plans, FBG sensing in structures and aircraft, distributed sensing by Rayleigh/Brillouin backscatter (OTDR).
+
+* Exam-style exercise
+G.652 fibre (\(S_0=0.092\), \(\lambda_0=1310\) nm). (a) \(D\) at 1550 and 1625 nm. (b) Dispersion-limited length at 10 Gb/s with 0.1 nm source width (criterion \(\Delta\tau<T_b\)). (c) At 1310 nm, what then limits the length?
+** Solution
+(a) \(D(1550)=0.023(1550-790.9)=17.5\), \(D(1625)=21.6\) ps/(nm km). (b) \(L<\frac{100\ \mathrm{ps}}{17.5\cdot0.1}=57\) km. (c) Dispersion nearly vanishes: loss (0.33 dB/km) limits the span, and without EDFAs at 1310 nm long links need 1550 nm plus dispersion compensation ([[id:optical-link-design][link design]]).
+
+* Pitfall
+\(D\) is in ps/(nm km): multiply by length in km and spectral width in nm. Using the laser linewidth instead of the *modulated* spectral width underestimates spread at high bit rates.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Dispersion_(optics)][Dispersion (optics)]]
+- [[https://en.wikipedia.org/wiki/Fiber_Bragg_grating][Fiber Bragg grating]]

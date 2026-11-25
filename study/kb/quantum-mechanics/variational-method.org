@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       variational-method
+:DOMAIN:   quantum-mechanics
+:AREA:     approximation-methods
+:KIND:     method
+:REQUIRES: time-independent-perturbation-theory hydrogen-atom
+:SEE:      identical-particles-and-pauli-principle
+:ALIASES:  Rayleigh-Ritz, variational principle, trial wave function, ground-state upper bound, helium atom
+:END:
+#+title: The variational method
+#+summary: For any normalisable trial state, \(E_0\le\frac{\bra\psi H\ket\psi}{\braket{\psi|\psi}}\); minimising over parameters of \(\ket\psi\) gives an upper bound to the ground energy whose error is second order in the error of the wave function.
+
+* Theorem
+Expand \(\ket\psi=\sum c_n\ket n\) in energy eigenkets: \(\bra\psi H\ket\psi=\sum|c_n|^2E_n\ge E_0\sum|c_n|^2\). Equality iff \(\ket\psi\propto\ket0\). If \(\ket\psi=\ket0+\epsilon\ket\delta\), the energy error is \(O(\epsilon^2)\): rough wave functions give good energies.
+
+* Method
+1. Choose a family \(\psi(\mathbf r;\alpha,\beta,\dots)\) with the right symmetry and boundary behaviour.
+2. Compute \(\bar H(\alpha)=\braket{H}/\braket{\psi|\psi}\).
+3. Minimise: \(\partial_\alpha\bar H=0\). The minimum is the best estimate in the family.
+Linear combinations \(\psi=\sum c_i\phi_i\) give the generalised eigenproblem \(Hc=ESc\) (Rayleigh–Ritz), the basis of quantum chemistry and of finite elements.
+
+* Worked example: helium
+Trial \(\psi=\frac{Z_e^3}{\pi a_0^3}e^{-Z_e(r_1+r_2)/a_0}\) with effective charge \(Z_e\). Kinetic \(2\cdot Z_e^2\,\mathrm{Ry}\), nuclear \(-2\cdot2\cdot2Z_e\,\mathrm{Ry}\), repulsion \(\frac54Z_e\,\mathrm{Ry}\) (Ry = 13.6 eV):
+\[ \bar H=\left(2Z_e^2-8Z_e+\tfrac54Z_e\right)\mathrm{Ry}\;\Rightarrow\;Z_e=\tfrac{27}{16},\quad E\approx-2\left(\tfrac{27}{16}\right)^2\mathrm{Ry}=-77.5\text{ eV}, \]
+against the measured \(-78.98\) eV (2% error). Each electron screens the nucleus from the other.
+
+* Engineering applications
+Density-functional theory (variational in the electron density) designs semiconductors and catalysts; finite-element solvers for waveguide modes ([[id:effective-index-method][photonic modes]]) minimise a Rayleigh quotient; hydrogen-molecule bonding (LCAO).
+
+* Pitfall
+The method bounds only the *lowest* energy of a given symmetry; excited states need trial functions orthogonal to the lower ones.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Variational_method_(quantum_mechanics)][Variational method]]

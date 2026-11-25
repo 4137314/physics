@@ -1,0 +1,62 @@
+:PROPERTIES:
+:ID:       optical-link-design
+:DOMAIN:   optoelectronics
+:AREA:     fibers
+:KIND:     method
+:REQUIRES: fiber-dispersion-and-attenuation noise-in-photodetectors
+:SEE:      fiber-couplers optical-amplifiers exam-basics-of-optoelectronics
+:ALIASES:  optical link, link budget, power budget, rise time budget, bit rate, maximum bit rate, RZ, NRZ, return to zero, non return to zero, Nyquist, Shannon capacity, TDM, WDM, DWDM, graded index fiber bit rate, combining dispersions, bit rate distance product, regeneration, repeater
+:END:
+#+title: Optical link design: bit rate, power budget and rise-time budget
+#+summary: Dispersion spreads a pulse to rms width \(\sigma\), and two pulses stay distinguishable if \(B\approx\frac{0.25}{\sigma}=\frac{0.59}{\Delta\tau_{1/2}}\) for return-to-zero (twice that for NRZ); independent spreads add in quadrature \(\sigma^2=\sigma_{inter}^2+\sigma_{intra}^2\); a link is designed with a power budget (\(P_{tx}-P_{rx}\ge\sum\) losses + margin, in dB) and a rise-time budget \(t_{sys}=\sqrt{\sum t_i^2}\le\frac{0.7}{B}\) (NRZ); Shannon caps any channel at \(C=W\log_2(1+\mathrm{SNR})\).
+
+* Bit rate and pulse spreading (derivation)
+For a Gaussian output pulse of rms width \(\sigma\), the FWHM is \(\Delta\tau_{1/2}=2.355\sigma\). Requiring adjacent RZ pulses, one bit slot \(T=1/B\) apart, to be resolved with \(T\approx4\sigma\) gives \(B=\frac{0.25}{\sigma}=\frac{0.59}{\Delta\tau_{1/2}}\). NRZ uses the full slot for each bit: the same channel carries twice the bit rate. The bit-rate × distance product of a dispersion-limited link is constant because \(\sigma\propto L\).
+- Step-index multimode: \(\Delta\tau\approx\frac{Ln_1\Delta}{c}\); a uniform spread of delays has \(\sigma=\frac{\Delta\tau}{2\sqrt3}\).
+- Graded index (optimal profile): \(\sigma_{inter}=\frac{Ln_1\Delta^2}{20\sqrt3c}\), a factor \(\Delta/10\) smaller.
+- Chromatic: \(\sigma_{intra}=|D|L\sigma_\lambda\) with \(\sigma_\lambda\) the rms source width (\(\Delta\lambda_{1/2}=2.355\sigma_\lambda\)).
+
+* Picture: RZ and NRZ, and why spreading closes the eye
+\begin{tikzpicture}[scale=0.85]
+\draw[-{Latex}] (0,0)--(8.4,0) node[right,font=\scriptsize]{$t$};
+\node[font=\small,anchor=east] at (-0.1,0.5) {NRZ};
+\draw[thick,blue!70!black] (0,0)--(0,1)--(2,1)--(2,0)--(3,0)--(3,1)--(5,1)--(5,0)--(6,0)--(6,1)--(7,1)--(7,0)--(8,0);
+\foreach \x/\b in {0.5/1,1.5/1,2.5/0,3.5/1,4.5/1,5.5/0,6.5/1,7.5/0} \node[font=\scriptsize] at (\x,1.25) {\b};
+\draw[-{Latex}] (0,-2)--(8.4,-2) node[right,font=\scriptsize]{$t$};
+\node[font=\small,anchor=east] at (-0.1,-1.5) {RZ};
+\draw[thick,red!70!black] (0,-2)--(0,-1)--(0.5,-1)--(0.5,-2)--(1,-2)--(1,-1)--(1.5,-1)--(1.5,-2)--(3,-2)--(3,-1)--(3.5,-1)--(3.5,-2)--(4,-2)--(4,-1)--(4.5,-1)--(4.5,-2)--(6,-2)--(6,-1)--(6.5,-1)--(6.5,-2)--(8,-2);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.2cm,axis lines=left,xlabel={$t/T$},ylabel={power},xmin=-1,xmax=2,ymin=0,ymax=1.3,ytick=\empty]
+\addplot+[no marks,thick,domain=-1:2,samples=200]{exp(-x^2/(2*0.12^2))+exp(-(x-1)^2/(2*0.12^2))}; \addlegendentry{$\sigma=0.12T$}
+\addplot+[no marks,thick,domain=-1:2,samples=200]{0.48*(exp(-x^2/(2*0.25^2))+exp(-(x-1)^2/(2*0.25^2)))}; \addlegendentry{$\sigma=0.25T$}
+\addplot+[no marks,thick,domain=-1:2,samples=200]{0.3*(exp(-x^2/(2*0.4^2))+exp(-(x-1)^2/(2*0.4^2)))}; \addlegendentry{$\sigma=0.4T$}
+\end{axis}
+\end{tikzpicture}
+
+* Capacity limits
+Nyquist: a channel of bandwidth \(W\) carries at most \(2W\) independent symbols per second. Shannon: with Gaussian noise \(C=W\log_2(1+\mathrm{SNR})\). Example: 10 GHz with SNR 30 dB → \(C=10\log_2(1001)=99.7\) Gb/s, reached only with multilevel coherent formats (QAM). Capacity is multiplied by *time*-division multiplexing (faster electronics), *wavelength*-division multiplexing (DWDM: 80+ channels at 50–100 GHz spacing in the C band, one EDFA amplifies them all), polarisation and space (multicore fibre).
+
+* Worked examples
+1. *Step vs graded index*, \(n_1=1.48\), \(\Delta=1\%\), 1 km: step \(\Delta\tau=49.4\) ns, \(\sigma=14.3\) ns, \(B_{RZ}=17.5\) Mb/s. Graded: \(\sigma_{inter}=14.3\) ps (1000× less). With a 1310 nm laser, \(\sigma_\lambda=0.85\) nm and \(|D|=5\) ps/(nm km): \(\sigma_{intra}=4.25\) ps; \(\sigma=\sqrt{14.3^2+4.25^2}=14.9\) ps → \(B_{RZ}=16.8\) Gb/s, \(B_{NRZ}=33.6\) Gb/s over 1 km.
+2. *Power budget* at 1310 nm: transmitter 0 dBm, receiver sensitivity −28 dBm, two connectors 0.5 dB each, splices 0.1 dB every 2 km, fibre 0.35 dB/km, margin 3 dB: \(28-1-3=24\) dB available, \(0.35+0.05=0.40\) dB/km → \(L_{max}=60\) km.
+3. *Rise-time budget*, 50 km at 1550 nm, \(D=17\) ps/(nm km), \(\Delta\lambda=0.1\) nm: \(t_{disp}=85\) ps; transmitter 100 ps, receiver 150 ps: \(t_{sys}=\sqrt{100^2+85^2+150^2}=199\) ps → \(B_{NRZ}\le0.7/t_{sys}=3.5\) Gb/s.
+
+* Regeneration and amplification
+Losses are compensated by optical amplifiers (EDFA every 80–100 km, all channels at once) instead of electronic 3R regenerators (re-amplify, re-shape, re-time, one per channel). Amplifiers do not undo dispersion or noise: those are handled by dispersion management and coherent DSP ([[id:optical-amplifiers][amplifiers]]).
+
+* Engineering applications
+Designing datacenter links (multimode, VCSEL, 100 m), access networks ([[id:fiber-couplers][PON]]), metro and long-haul DWDM systems, submarine cables (amplified spans of 50–80 km over 10 000 km).
+
+* Exam-style exercise
+An 850 nm LED (\(\Delta\lambda_{1/2}=40\) nm) drives a graded-index fibre (\(n_1=1.47\), \(\Delta=0.01\)) with \(|D_m|=100\) ps/(nm km) at 850 nm. (a) \(\sigma_{inter}\) and \(\sigma_{intra}\) per km. (b) Maximum NRZ bit rate over 2 km. (c) What changes with a VCSEL (\(\Delta\lambda_{1/2}=0.5\) nm)?
+** Solution
+(a) \(\sigma_{inter}=\frac{1000\cdot1.47\cdot10^{-4}}{20\sqrt3\cdot3\times10^8}=14.1\) ps/km; \(\sigma_\lambda=40/2.355=17\) nm → \(\sigma_{intra}=100\cdot17=1.70\) ns/km. (b) Over 2 km \(\sigma\approx3.40\) ns (chromatic dominates) → \(B_{NRZ}=0.5/3.40\) ns \(=147\) Mb/s. (c) \(\sigma_{intra}=100\cdot0.212\cdot2=42.5\) ps, \(\sigma_{inter}=28.3\) ps, \(\sigma=51\) ps → \(B_{NRZ}\approx9.8\) Gb/s: the narrow source is what makes 10G datacenter links possible.
+
+* Pitfall
+Use rms widths (\(\sigma\)) when adding in quadrature and FWHM only with the matching 0.59 factor; mixing them overestimates the bit rate by 2.35×. State RZ or NRZ: they differ by a factor 2.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Link_budget][Link budget]]
+- [[https://en.wikipedia.org/wiki/Shannon%E2%80%93Hartley_theorem][Shannon–Hartley theorem]]

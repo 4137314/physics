@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       observables-and-spectral-decomposition
+:DOMAIN:   quantum-mechanics
+:AREA:     postulates
+:KIND:     theorem
+:REQUIRES: kets-bras-and-operators
+:SEE:      self-adjoint-operators-and-spectral-theorem commutators-and-compatible-observables
+:ALIASES:  Hermitian operator, eigenvalues are real, spectral decomposition, change of basis, unitary transformation
+:END:
+#+title: Observables, eigenvalues and spectral decomposition
+#+summary: A Hermitian operator \(A=A^\dagger\) has real eigenvalues and orthogonal eigenkets that form a basis, so \(A=\sum_a a\ket a\bra a\); two such bases are connected by a unitary \(U\), and trace and eigenvalues are basis independent.
+
+* Theorem
+Let \(A=A^\dagger\) on a finite-dimensional \(\mathcal H\) (the infinite case is in [[id:self-adjoint-operators-and-spectral-theorem][the spectral theorem]]).
+1. Its eigenvalues are real.
+2. Eigenkets of distinct eigenvalues are orthogonal.
+3. The normalised eigenkets can be chosen to form an orthonormal basis and \(A=\sum_a a\,\ket a\bra a\).
+
+* Proof
+From \(A\ket{a'}=a'\ket{a'}\) and the adjoint of \(A\ket{a''}=a''\ket{a''}\), namely \(\bra{a''}A=\bar a''\bra{a''}\), sandwich:
+\[ \bra{a''}A\ket{a'}=a'\braket{a''|a'}=\bar a''\braket{a''|a'}\;\Rightarrow\;(a'-\bar a'')\braket{a''|a'}=0. \]
+With \(a''=a'\) and \(\braket{a'|a'}>0\): \(a'=\bar a'\), eigenvalues are real. With \(a'\neq a''\): \(\braket{a''|a'}=0\). For completeness: the eigenspace \(V\) of one eigenvalue is invariant, and so is \(V^\perp\) (if \(w\perp V\), \(\braket{v|Aw}=\braket{Av|w}=a\braket{v|w}=0\)); induction on dimension on \(V^\perp\) gives a basis.
+
+* Change of basis
+If \(\{\ket{a}\}\) and \(\{\ket{b}\}\) are two orthonormal bases, \(U=\sum_k\ket{b^{(k)}}\bra{a^{(k)}}\) is unitary, \(U^\dagger U=1\). Matrix elements transform as \(X'=U^\dagger XU\). Trace \(\Tr X=\sum_a\bra aX\ket a\) and the eigenvalues are invariant, since \(\det(U^\dagger XU-\lambda)=\det(X-\lambda)\).
+
+* Worked example
+Diagonalise \(\mathbf S\cdot\hat n\) for \(\hat n=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)\):
+\[ \mathbf S\cdot\hat n=\frac\hbar2\begin{pmatrix}\cos\theta&\sin\theta e^{-i\phi}\\ \sin\theta e^{i\phi}&-\cos\theta\end{pmatrix},\quad \ket{\hat n;+}=\cos\tfrac\theta2\ket++e^{i\phi}\sin\tfrac\theta2\ket-. \]
+Eigenvalues \(\pm\hbar/2\) for every direction: the trace is 0 and the determinant \(-\hbar^2/4\).
+
+* Engineering applications
+Every measurable quantity of a device — qubit energy, spin, photon number, polarisation — is modelled by a Hermitian matrix; numerically, finding allowed energies of a quantum well or of a waveguide mode is an eigenvalue problem for a Hermitian matrix.
+
+* Pitfall
+"Hermitian" in finite dimension is enough; in infinite dimension (position, momentum) one needs *self-adjoint* with the right domain, otherwise eigenvalues may be complex or the decomposition may fail.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Hermitian_matrix][Hermitian matrix]]
+- [[https://en.wikipedia.org/wiki/Spectral_theorem][Spectral theorem]]

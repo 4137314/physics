@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       faraday-law-and-induction
+:DOMAIN:   electromagnetic-fields
+:AREA:     maxwell
+:KIND:     theorem
+:REQUIRES: magnetostatics-and-ampere-law electrostatics-and-gauss-law
+:SEE:      maxwell-equations transformer
+:ALIASES:  Faraday's law, Lenz's law, electromotive force, motional emf, transformer emf, eddy currents, mutual inductance, self inductance
+:END:
+#+title: Faraday's law and electromagnetic induction
+#+summary: A changing magnetic flux induces \(\mathrm{emf}=\oint\mathbf E\cdot\dd\mathbf l=-\frac{\dd\Phi}{\dd t}\), i.e. \(\nabla\times\mathbf E=-\partial_t\mathbf B\); the minus sign (Lenz) makes induced currents oppose the change, which gives inductance \(v=L\,\dd i/\dd t\), transformers, generators and eddy-current losses.
+
+* Statement
+\[ \mathrm{emf}=\oint_C(\mathbf E+\mathbf v\times\mathbf B)\cdot\dd\mathbf l=-\frac{\dd}{\dd t}\int_S\mathbf B\cdot\dd\mathbf S. \]
+Two contributions: *transformer emf* (\(\partial_t\mathbf B\), stationary loop) and *motional emf* (\(\mathbf v\times\mathbf B\), moving conductor). Differential form for fixed contours: \(\nabla\times\mathbf E=-\partial_t\mathbf B\): \(\mathbf E\) is no longer conservative.
+
+* Inductance
+Self: \(L=N\Phi/I\), \(v=L\,\dd i/\dd t\). Mutual: \(M_{21}=N_2\Phi_{21}/I_1=M_{12}\) (Neumann formula, reciprocity), coupling \(k=M/\sqrt{L_1L_2}\le1\). Energy \(W=\tfrac12\int\mathbf B\cdot\mathbf H\,\dd V=\tfrac12LI^2\).
+
+* Derivation: generator
+Loop of area \(A\), \(N\) turns, rotating at \(\omega\) in uniform \(B\): \(\Phi=NBA\cos\omega t\), emf \(=NBA\omega\sin\omega t\). Every synchronous generator is this ([[id:power-generation-and-distribution][power systems]]).
+
+* Eddy currents and skin effect
+A conductor in a time-varying field carries induced currents that oppose the field: losses \(\propto\sigma\omega^2B^2t^2\) in a lamination of thickness \(t\) (hence laminated cores) and current crowding near the surface within the skin depth \(\delta=\sqrt{2/\omega\mu\sigma}\) (see [[id:plane-waves-in-media][plane waves in conductors]]).
+
+* Worked example
+Rod of length 0.5 m sliding at 2 m/s on rails in \(B=0.4\) T, circuit resistance 1 Ω: emf \(=Blv=0.4\) V, current 0.4 A, retarding force \(IlB=0.08\) N, mechanical power \(Fv=0.16\) W = \(I^2R\): energy conservation (Lenz).
+
+* Engineering applications
+Transformers, induction motors and generators, induction cooking and heating, wireless charging (Qi, coupling \(k\sim0.3\)–0.6), Rogowski coils and current transformers, eddy-current braking and non-destructive testing, crosstalk between PCB traces (mutual inductance).
+
+* Pitfall
+The emf depends on the surface's flux, but the *voltage* read by a voltmeter in a time-varying field depends on the path of the leads: Kirchhoff's voltage law is only an approximation when flux links the circuit.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Faraday%27s_law_of_induction][Faraday's law of induction]]
+- [[https://www.feynmanlectures.caltech.edu/II_17.html][Feynman II-17: The laws of induction]]

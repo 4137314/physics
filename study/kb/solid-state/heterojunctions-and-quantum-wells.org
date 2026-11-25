@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       heterojunctions-and-quantum-wells
+:DOMAIN:   solid-state
+:AREA:     junctions
+:KIND:     model
+:REQUIRES: pn-junction-electrostatics square-well-potentials density-of-states-and-fermi-dirac
+:SEE:      semiconductor-laser-diodes light-emitting-diodes
+:ALIASES:  heterojunction, band offset, Anderson rule, double heterostructure, quantum well, 2DEG, HEMT, lattice matching, strain, carrier confinement, optical confinement
+:END:
+#+title: Heterojunctions and quantum wells
+#+summary: Joining semiconductors of different gaps creates band offsets \(\Delta E_c,\Delta E_v\) (\(\Delta E_c+\Delta E_v=\Delta E_g\)); a narrow-gap layer between wide-gap ones confines carriers (double heterostructure), and if thinner than ~20 nm quantises their motion into subbands \(E_n\) with a step-like 2D density of states — the basis of efficient lasers, LEDs and HEMTs.
+
+* Model
+- *Anderson rule* (first approximation): \(\Delta E_c=\chi_1-\chi_2\) (electron affinities). GaAs/Al\(_{0.3}\)Ga\(_{0.7}\)As: \(\Delta E_g\approx0.37\) eV, \(\Delta E_c\approx0.6\Delta E_g\).
+- *Lattice matching*: AlGaAs/GaAs and InGaAsP/InP are matched; mismatched layers below a critical thickness are strained (strain shifts and splits bands — used in strained-QW lasers and strained-Si CMOS).
+- *Double heterostructure*: carriers trapped in the active layer (carrier confinement) which also has higher \(n\), forming a [[id:dielectric-slab-waveguide][slab waveguide]] (optical confinement).
+
+* Quantum wells
+Width \(L_z\lesssim\) de Broglie wavelength: \(E=E_c+E_n+\frac{\hbar^2k_\parallel^2}{2m^*}\), \(E_n\approx\frac{\hbar^2\pi^2n^2}{2m^*L_z^2}\) (finite-well corrections from [[id:square-well-potentials][square wells]]). DOS per subband \(g_{2D}=\frac{m^*}{\pi\hbar^2}\), independent of energy: a staircase rather than \(\sqrt E\). Consequences: emission wavelength set by \(L_z\), sharper gain spectrum, lower threshold current density.
+
+* HEMT
+Modulation doping: donors in AlGaAs, electrons transfer into undoped GaAs at the interface and form a 2DEG in a triangular well, spatially separated from the ionised impurities: mobility up to \(10^6\) cm²/Vs at low \(T\), ~8000 at 300 K. GaN/AlGaN HEMTs get the 2DEG from polarisation charge, with \(n_s\sim10^{13}\) cm\(^{-2}\) — the basis of GaN power and RF transistors.
+
+* Worked example
+In\(_{0.2}\)Ga\(_{0.8}\)As well (gap ≈ 1.2 eV, \(m_e^*\approx0.06\), \(m_{hh}^*\approx0.45\)), \(L_z=8\) nm: \(E_{1e}=\frac{0.376\text{ eV}}{0.06\cdot64}=98\) meV (infinite-well estimate, real ≈ 50–60 meV because of finite barriers), \(E_{1hh}\approx13\) meV: emission near \(1.2+0.07\approx1.27\) eV → ≈ 980 nm, the pump wavelength of erbium amplifiers.
+
+* Engineering applications
+Double-heterostructure and QW [[id:semiconductor-laser-diodes][laser diodes]], high-brightness [[id:light-emitting-diodes][LEDs]] (InGaN/GaN QWs), HEMTs for 5G and radar, HBTs (wide-gap emitter blocks hole injection), quantum-cascade lasers, QW electro-absorption modulators.
+
+* Pitfall
+Anderson's rule ignores interface dipoles and is often off by 0.1–0.2 eV; measured offsets should be used for design.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Heterojunction][Heterojunction]]
+- [[https://en.wikipedia.org/wiki/Quantum_well][Quantum well]]
+- [[https://en.wikipedia.org/wiki/High-electron-mobility_transistor][HEMT]]

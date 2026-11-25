@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       power-mosfets-and-igbts
+:DOMAIN:   power-electronics
+:AREA:     power-devices
+:KIND:     model
+:REQUIRES: power-diodes mosfet-operation-and-iv
+:SEE:      wide-bandgap-power-devices switching-converters thyristors
+:ALIASES:  power MOSFET, DMOS, trench MOSFET, superjunction, specific on-resistance, unipolar limit, Baliga figure of merit, IGBT, insulated gate bipolar transistor, latch-up, tail current, gate charge, safe operating area
+:END:
+#+title: Power MOSFETs and IGBTs
+#+summary: A vertical MOSFET adds a drift region whose resistance dominates at high voltage: \(R_{on,sp}=\frac{4V_{BR}^2}{\epsilon\mu_nE_c^3}\propto V_{BR}^{2.5}\) (unipolar limit); superjunctions break this limit by charge compensation, and the IGBT injects holes from a p\(^+\) collector to modulate the drift region, giving low conduction loss at high voltage at the price of a turn-off tail current.
+
+* Unipolar limit (derivation)
+Drift region with \(N_D=\frac{\epsilon E_c^2}{2qV_{BR}}\) and \(W=\frac{2V_{BR}}{E_c}\): \(R_{on,sp}=\frac{W}{q\mu_nN_D}=\frac{4V_{BR}^2}{\epsilon\mu_nE_c^3}\). Since \(E_c\) grows weakly with lower doping, empirically \(R_{on,sp}\propto V_{BR}^{2.5}\). Baliga's figure of merit \(\epsilon\mu E_c^3\): SiC is ~400×, GaN ~1000× better than Si ([[id:wide-bandgap-power-devices][wide-bandgap]]).
+
+* MOSFET structures and switching
+DMOS/trench cells in parallel (millions per chip); body diode inherent. Switching is governed by gate charge \(Q_G\) (Miller plateau): \(t_{sw}\approx Q_{GD}R_G/(V_{drive}-V_{plateau})\). Loss \(P=I_{rms}^2R_{on}+\tfrac12VI(t_r+t_f)f+Q_GV_{GS}f\).
+
+* IGBT
+MOS gate controls an electron current that drives a wide-base pnp: holes injected from the collector flood the drift region (like a [[id:power-diodes][pin diode]]): \(V_{CE,sat}\approx0.7\) V + small drift drop, independent of \(V_{BR}\) to first order. Turn-off: the MOS channel stops instantly but stored holes recombine → tail current, \(E_{off}\) grows with stored charge. Parasitic thyristor (pnpn) latch-up must be avoided by layout (p\(^+\) body under the emitter).
+
+* Worked example
+Si, \(V_{BR}=600\) V, \(\mu_n=1350\) cm²/Vs, \(E_c=2.5\times10^5\) V/cm: \(R_{on,sp}=\frac{4\cdot3.6\times10^5}{1.04\times10^{-12}\cdot1350\cdot1.56\times10^{16}}=66\) mΩ cm² (drift only). For 20 A at 1 V drop (20 W): area \(=66\,\mathrm{m\Omega\,cm^2}/50\,\mathrm{m\Omega}=1.3\) cm² — impractical; an IGBT does it in ~0.2 cm² with \(V_{CE}\approx1.7\) V, a superjunction MOSFET in ~0.3 cm².
+
+* Engineering applications
+Low-voltage MOSFETs in CPU VRMs and synchronous rectifiers, superjunction MOSFETs in 400 V PFC stages, IGBT modules in traction, wind and industrial drives.
+
+* Pitfall
+\(R_{on}\) of Si MOSFETs roughly doubles from 25 °C to 150 °C (mobility drop): design conduction loss at hot temperature. IGBTs have a knee voltage (~0.7 V): poor at light load.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Power_MOSFET][Power MOSFET]]
+- [[https://en.wikipedia.org/wiki/Insulated-gate_bipolar_transistor][IGBT]]

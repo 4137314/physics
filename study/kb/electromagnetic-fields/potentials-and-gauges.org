@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       potentials-and-gauges
+:DOMAIN:   electromagnetic-fields
+:AREA:     maxwell
+:KIND:     definition
+:REQUIRES: maxwell-equations
+:SEE:      electromagnetic-potentials-and-gauge-invariance antennas-and-radiation quantization-of-the-electromagnetic-field
+:ALIASES:  scalar potential, vector potential, Lorenz gauge, Coulomb gauge, retarded potentials, gauge transformation, wave equation for potentials
+:END:
+#+title: Potentials, gauges and retarded potentials
+#+summary: \(\mathbf B=\nabla\times\mathbf A\), \(\mathbf E=-\nabla\phi-\partial_t\mathbf A\) solve the homogeneous Maxwell equations; the gauge freedom \(\mathbf A\to\mathbf A+\nabla\Lambda\), \(\phi\to\phi-\partial_t\Lambda\) allows the Lorenz condition, in which \(\Box\phi=\rho/\epsilon_0\), \(\Box\mathbf A=\mu_0\mathbf J\), solved by retarded potentials evaluated at \(t-R/c\).
+
+* Definition
+\(\nabla\cdot\mathbf B=0\Rightarrow\mathbf B=\nabla\times\mathbf A\); then Faraday gives \(\nabla\times(\mathbf E+\partial_t\mathbf A)=0\Rightarrow\mathbf E=-\nabla\phi-\partial_t\mathbf A\). Fields are unchanged by gauge transformations.
+
+* Derivation in Lorenz gauge
+Substituting into the inhomogeneous equations and choosing \(\nabla\cdot\mathbf A+\frac{1}{c^2}\partial_t\phi=0\):
+\[ \nabla^2\phi-\frac{1}{c^2}\partial_t^2\phi=-\frac{\rho}{\epsilon_0},\qquad \nabla^2\mathbf A-\frac{1}{c^2}\partial_t^2\mathbf A=-\mu_0\mathbf J. \]
+The causal Green's function of the wave operator gives the retarded potentials
+\[ \phi(\mathbf r,t)=\frac{1}{4\pi\epsilon_0}\int\frac{\rho(\mathbf r',t-R/c)}{R}\dd V',\qquad \mathbf A(\mathbf r,t)=\frac{\mu_0}{4\pi}\int\frac{\mathbf J(\mathbf r',t-R/c)}{R}\dd V'. \]
+Phasor form: \(\mathbf A=\frac{\mu}{4\pi}\int\mathbf J\frac{e^{-jkR}}{R}\dd V'\), the starting point of [[id:antennas-and-radiation][antenna theory]].
+
+* Coulomb gauge
+\(\nabla\cdot\mathbf A=0\): \(\phi\) is the instantaneous Coulomb potential and \(\mathbf A\) is purely transverse, \(\Box\mathbf A=-\mu_0\mathbf J_\perp\). Natural for quantising radiation ([[id:quantization-of-the-electromagnetic-field][photons]]) and for non-relativistic atoms.
+
+* Worked example
+Oscillating dipole \(p_0\cos\omega t\) along \(z\) (current \(I\,\dd l=j\omega p_0\)): \(A_z=\frac{\mu_0 j\omega p_0}{4\pi r}e^{-jkr}\). Far field \(\mathbf E=-j\omega\mathbf A_\perp\): \(E_\theta=-\frac{\omega^2\mu_0p_0\sin\theta}{4\pi r}e^{-jkr}\), the radiation of the Hertzian dipole.
+
+* Engineering applications
+Antenna and scattering codes (method of moments solves an integral equation for \(\mathbf J\) with this Green's function), magnetostatic \(\mathbf A\)-formulations of motor FEM, the Aharonov–Bohm phase and SQUIDs ([[id:electromagnetic-potentials-and-gauge-invariance][gauge invariance]]).
+
+* Pitfall
+In Coulomb gauge \(\phi\) changes instantaneously everywhere — not a causality violation, because \(\mathbf A\) compensates so that \(\mathbf E\) and \(\mathbf B\) are retarded.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Retarded_potential][Retarded potential]]
+- [[https://en.wikipedia.org/wiki/Gauge_fixing][Gauge fixing]]

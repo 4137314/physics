@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       formula-sheet-electronics
+:DOMAIN:   revision
+:AREA:     formula-sheets
+:KIND:     overview
+:REQUIRES: physics-study-map
+:SEE:      exam-practice-digital-electronics exam-practice-circuits
+:ALIASES:  electronics formula sheet, semiconductor formulas, MOSFET formulas, circuit formulas, power device formulas
+:END:
+#+title: Formula sheet: semiconductors, circuits and electronics
+#+summary: Carrier statistics and junctions; circuit theory and transforms; MOSFET, inverter, delay and power formulas in the course conventions; power and superconducting devices.
+
+* Semiconductors (300 K, Si)
+\[ n=N_ce^{-(E_c-E_F)/k_BT},\quad np=n_i^2,\quad \sigma=q(n\mu_n+p\mu_p),\quad \frac{D}{\mu}=\frac{k_BT}{q}=25.9\text{ mV},\quad L=\sqrt{D\tau} \]
+\[ V_{bi}=\frac{k_BT}q\ln\frac{N_AN_D}{n_i^2},\quad W=\sqrt{\frac{2\epsilon(V_{bi}-V)}{q}\left(\frac1{N_A}+\frac1{N_D}\right)},\quad I=I_s(e^{V/nV_T}-1),\quad I_s=qAn_i^2\left(\frac{D_p}{L_pN_D}+\frac{D_n}{L_nN_A}\right) \]
+
+* Circuits
+\[ x(t)=x_\infty+(x_0-x_\infty)e^{-t/\tau},\quad Z_L=j\omega L,\quad Z_C=\frac1{j\omega C},\quad \omega_0=\frac1{\sqrt{LC}},\quad Q_{series}=\frac{\omega_0L}R,\quad S=\mathbf V\mathbf I^*=P+jQ \]
+\[ \mathcal L[\dot x]=sX-x(0^-),\quad x(\infty)=\lim_{s\to0}sX,\quad \frac{V_2}{V_1}=\frac{n_2}{n_1},\quad Z_{in}=\left(\frac{n_1}{n_2}\right)^2Z_L,\quad P_{3\phi}=\sqrt3V_LI_L\cos\varphi \]
+
+* MOSFET and CMOS (course conventions)
+\[ I_D^{sat}=\frac{K_n}2(V_{GS}-V_{TN})^2,\quad I_D^{tri}=K_n\left(V_{GS}-V_{TN}-\frac{V_{DS}}2\right)V_{DS},\quad V_{TN}=V_{TO}+\gamma\left(\sqrt{V_{SB}+2\phi_F}-\sqrt{2\phi_F}\right) \]
+\[ V_M=\frac{V_{TN}+\sqrt{K_p/K_n}(V_{DD}+V_{TP})}{1+\sqrt{K_p/K_n}},\quad R_{on}=\frac{1}{K(V_{DD}-|V_T|)},\quad t_{PHL}=0.69\cdot1.7R_{on}C,\quad t_f=2.2\cdot1.7R_{on}C \]
+\[ P_{dyn}=\alpha CV_{DD}^2f,\quad NM_H=V_{OH}-V_{IH},\quad NM_L=V_{IL}-V_{OL},\quad V_F^{DRAM}=\frac{C_SV_S+C_{BL}V_{BL}}{C_S+C_{BL}},\quad I_{leak}=C_S\frac{\Delta V}{\Delta t} \]
+
+* Power and superconducting devices
+\[ V_{BR}=\frac{\epsilon E_c^2}{2qN_D},\quad R_{on,sp}=\frac{4V_{BR}^2}{\epsilon\mu E_c^3},\quad V_o^{buck}=DV_{in},\quad V_o^{boost}=\frac{V_{in}}{1-D},\quad \Delta i_L^{buck}=\frac{(V_{in}-V_o)D}{Lf_s} \]
+\[ I=I_c\sin\varphi,\quad V=\frac{\Phi_0}{2\pi}\dot\varphi,\quad L_J=\frac{\Phi_0}{2\pi I_c\cos\varphi},\quad \beta_c=\frac{2\pi I_cR^2C}{\Phi_0},\quad \beta_L=\frac{2\pi LI_c}{\Phi_0},\quad E_{sw}\approx I_c\Phi_0 \]

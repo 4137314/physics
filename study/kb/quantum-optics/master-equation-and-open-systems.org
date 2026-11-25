@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       master-equation-and-open-systems
+:DOMAIN:   quantum-optics
+:AREA:     light-matter
+:KIND:     model
+:REQUIRES: spontaneous-emission-and-purcell-effect density-operator
+:SEE:      stimulated-emission-and-lasers qubits-and-quantum-gates
+:ALIASES:  Lindblad equation, master equation, Born-Markov approximation, optical Bloch equations, damped cavity, decoherence, quantum trajectories
+:END:
+#+title: Master equations and open quantum systems
+#+summary: Tracing out a Markovian bath gives the Lindblad equation \(\dot\rho=-\frac i\hbar[H,\rho]+\sum_k\gamma_k\left(L_k\rho L_k^\dagger-\tfrac12\{L_k^\dagger L_k,\rho\}\right)\); for a damped cavity \(L=a\), for a decaying atom \(L=\sigma_-\), giving the optical Bloch equations with \(T_1=1/\Gamma\), \(T_2=2/\Gamma\).
+
+* Model
+System + bath, \(H=H_S+H_B+H_{SB}\). Assumptions: weak coupling (Born: \(\rho_{SB}\approx\rho_S\otimes\rho_B\)), bath correlation time short (Markov), and secular (RWA) approximation. The result is the most general generator of completely positive, trace-preserving semigroups (Lindblad–Gorini–Kossakowski–Sudarshan).
+
+* Damped cavity
+\(\dot\rho=-i\omega[a^\dagger a,\rho]+\kappa(\bar n+1)\mathcal D[a]\rho+\kappa\bar n\mathcal D[a^\dagger]\rho\), with \(\mathcal D[L]\rho=L\rho L^\dagger-\tfrac12\{L^\dagger L,\rho\}\). Then \(\frac{\dd}{\dd t}\braket a=-(i\omega+\kappa/2)\braket a\) and \(\frac{\dd}{\dd t}\braket n=-\kappa(\braket n-\bar n)\): field amplitude decays at \(\kappa/2\), energy at \(\kappa\) towards thermal equilibrium. \(Q=\omega/\kappa\).
+
+* Optical Bloch equations
+Two-level atom driven at Rabi frequency \(\Omega\), detuning \(\Delta\), \(L=\sqrt\Gamma\sigma_-\). With \(\mathbf r=\Tr(\rho\boldsymbol\sigma)\):
+\[ \dot u=-\Delta v-\tfrac\Gamma2u,\qquad \dot v=\Delta u-\Omega w-\tfrac\Gamma2v,\qquad \dot w=\Omega v-\Gamma(w+1). \]
+Steady-state excited population \(\rho_{ee}=\frac{s/2}{1+s+(2\Delta/\Gamma)^2}\), saturation parameter \(s=2\Omega^2/\Gamma^2=I/I_{sat}\): power broadening and saturation of absorption.
+
+* Worked example
+Sodium D2, \(\Gamma/2\pi=9.8\) MHz, \(I_{sat}=6.3\) mW/cm\(^2\). At \(I=I_{sat}\), resonance: \(\rho_{ee}=1/4\); scattered photon rate \(\Gamma\rho_{ee}=1.5\times10^7\) s\(^{-1}\), the radiation-pressure force behind laser cooling (\(\hbar k\Gamma\rho_{ee}\approx10^5\,g\) for Na).
+
+* Engineering applications
+Qubit \(T_1/T_2\) modelling and error budgets, laser rate equations and linewidth, saturable absorbers for mode-locking, optical pumping in atomic clocks and magnetometers, quantum-trajectory simulation of photon counting.
+
+* Pitfall
+Phenomenological damping added to the Schrödinger equation (\(-i\gamma\) in \(H\)) does not conserve trace; the jump terms \(L\rho L^\dagger\) are needed to put the probability back into the ground state.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Lindbladian][Lindblad equation]]
+- [[https://en.wikipedia.org/wiki/Optical_Bloch_equations][Optical Bloch equations]]
+- [[https://qutip.org/][QuTiP: simulate open quantum systems in Python]]

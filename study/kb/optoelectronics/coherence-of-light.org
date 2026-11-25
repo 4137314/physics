@@ -1,0 +1,55 @@
+:PROPERTIES:
+:ID:       coherence-of-light
+:DOMAIN:   optoelectronics
+:AREA:     wave-optics
+:KIND:     definition
+:REQUIRES: interference-and-fabry-perot
+:SEE:      photon-statistics-and-glauber-correlations light-emitting-diodes semiconductor-laser-diodes
+:ALIASES:  temporal coherence, spatial coherence, coherence length, coherence time, linewidth, Wiener-Khinchin, van Cittert-Zernike, fringe visibility, OCT
+:END:
+#+title: Temporal and spatial coherence
+#+summary: Coherence time \(\Delta t\approx1/\Delta\nu\) and coherence length \(l_c=c\Delta t\approx\lambda^2/\Delta\lambda\) measure how long a wave stays in phase; fringe visibility in an interferometer equals \(|g^{(1)}(\tau)|\), the Fourier transform of the normalised spectrum (Wiener–Khinchin); spatial coherence across a source of angular size \(\theta\) extends over \(\sim\lambda/\theta\).
+
+* Definition
+\(g^{(1)}(\tau)=\frac{\braket{E^*(t)E(t+\tau)}}{\braket{|E|^2}}\). Wiener–Khinchin: \(S(\nu)\) and \(g^{(1)}(\tau)\) are a Fourier pair, so \(\Delta\nu\,\Delta t\sim1\). Lorentzian line: \(|g^{(1)}|=e^{-\pi\Delta\nu|\tau|}\), \(\tau_c=1/\pi\Delta\nu\).
+
+* Coherence length (derivation)
+\(\Delta\nu=c\Delta\lambda/\lambda^2\Rightarrow l_c=c/\Delta\nu=\lambda^2/\Delta\lambda\). Interference fringes are visible when the path difference \(<l_c\).
+
+| source                  | Δλ or Δν           | l_c      |
+|-------------------------+--------------------+----------|
+| white light             | ≈ 300 nm           | ≈ 1 µm   |
+| LED, 850 nm             | 40 nm              | ≈ 18 µm  |
+| Fabry–Perot laser diode | ≈ 1 nm (multimode) | ≈ 2 mm   |
+| DFB laser, 1550 nm      | 1 MHz              | ≈ 300 m  |
+| stabilised HeNe         | ≈ 1 kHz            | ≈ 300 km |
+
+* Spatial coherence
+A source of size \(s\) at distance \(R\) (angle \(\theta=s/R\)) gives coherent illumination over a transverse distance \(l_s\approx\lambda/\theta\) (van Cittert–Zernike: the coherence function is the Fourier transform of the source intensity). The Sun (\(\theta=9.3\) mrad) is spatially coherent over ~60 µm at 550 nm — Young's double slit with sunlight needs a pinhole.
+
+* Worked example
+Optical coherence tomography with an SLED at 1310 nm, \(\Delta\lambda=60\) nm: axial resolution \(\frac{2\ln2}{\pi}\frac{\lambda^2}{\Delta\lambda}=0.44\cdot28.6\) µm \(\approx12.6\) µm in air. Low coherence is the *feature* that gives depth resolution.
+
+* Picture: fringe visibility versus path difference
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={path difference / $l_c$},ylabel={visibility $|g^{(1)}|$},xmin=0,xmax=1.5,ymin=0,ymax=1.05]
+\addplot+[no marks,thick,domain=0:1.5,samples=100]{exp(-(pi*x)^2/(4*ln(2)))}; \addlegendentry{Gaussian spectrum}
+\addplot+[no marks,thick,domain=0:1.5,samples=100]{exp(-pi*x)}; \addlegendentry{Lorentzian spectrum}
+\end{axis}
+\end{tikzpicture}
+Here \(l_c=c/\Delta\nu_{1/2}\): fringes fade over about one coherence length, faster for the Lorentzian line (long tails in frequency mean a sharp peak in time).
+
+* Engineering applications
+OCT imaging, coherent optical communications (laser linewidth limits phase noise), LiDAR (FMCW needs \(l_c\) longer than twice the range), speckle (high coherence) vs speckle-free LED illumination, holography.
+
+* Exam-style exercise
+A Michelson interferometer is lit (a) by a 1550 nm LED with \(\Delta\lambda_{1/2}=50\) nm, (b) by a DFB laser of linewidth 10 MHz. Coherence lengths? For (a), the visibility at 20 µm path difference (Gaussian spectrum)? (c) Over what width is sunlight (angular diameter 0.53°, \(\bar\lambda=0.55\) µm) spatially coherent?
+** Solution
+(a) \(l_c=\frac{\lambda^2}{\Delta\lambda}=\frac{1.55^2}{0.05}=48\) µm. (b) \(l_c=c/\Delta\nu=30\) m. Visibility for (a): \(x=20/48=0.42\), \(|g|=e^{-(\pi x)^2/4\ln2}=0.54\). (c) \(\approx\lambda/\theta=0.55\) µm\(/9.25\) mrad \(=59\) µm: Young's slits in sunlight must be closer than ≈ 0.06 mm. LEDs give the short coherence used by OCT (axial resolution ≈ \(l_c/2\)).
+
+* Pitfall
+Coherence is not monochromaticity alone: a laser with a stable linewidth can still be spatially multimode (poor spatial coherence), and an LED filtered narrowly becomes temporally coherent but stays thermal in its statistics ([[id:photon-statistics-and-glauber-correlations][g2]]).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Coherence_(physics)][Coherence (physics)]]
+- [[https://en.wikipedia.org/wiki/Optical_coherence_tomography][Optical coherence tomography]]

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Physics
+GenericName=Knowledge base
+Comment=Quantum mechanics, QED, fields, photonics and electronics: exam preparation in English
+Keywords=physics;quantum;QED;electromagnetism;photonics;electronics;knowledge;study;emacs;
+Exec=env "PHYSICS_ROOT=@ROOT@" "@BIN@"
+Path=@ROOT@/study/kb
+Icon=emacs
+Terminal=false
+Categories=Education;
+StartupWMClass=emacs

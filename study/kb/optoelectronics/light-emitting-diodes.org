@@ -1,0 +1,49 @@
+:PROPERTIES:
+:ID:       light-emitting-diodes
+:DOMAIN:   optoelectronics
+:AREA:     light-sources
+:KIND:     model
+:REQUIRES: semiconductor-optical-properties pn-junction-diode-current heterojunctions-and-quantum-wells
+:SEE:      spontaneous-emission-and-purcell-effect coherence-of-light reflection-and-transmission-at-interfaces
+:ALIASES:  LED, electroluminescence, internal quantum efficiency, extraction efficiency, external quantum efficiency, wall-plug efficiency, LED linewidth, white LED, phosphor, efficiency droop, LED modulation bandwidth
+:END:
+#+title: Light-emitting diodes
+#+summary: Forward current injects minority carriers that recombine radiatively, emitting \(h\nu\approx E_g\) with linewidth \(\approx3k_BT\); output power \(P=\eta_{ext}\frac{h\nu}{q}I\), with \(\eta_{ext}=\eta_{inj}\eta_{int}\eta_{extr}\), where extraction is limited by total internal reflection (\(\approx\frac{1}{4n^2}\) per face) and modulation bandwidth by the carrier lifetime, \(f_{3dB}=\frac{\sqrt3}{2\pi\tau}\).
+
+* Model
+- *Internal QE*: \(\eta_{int}=\frac{R_{rad}}{R_{rad}+R_{nr}}=\frac{1/\tau_r}{1/\tau_r+1/\tau_{nr}}\) ([[id:generation-recombination-and-continuity][recombination]]). Double heterostructures and QWs raise carrier density in the active layer, favouring radiative \(Bnp\).
+- *Extraction*: only rays inside the escape cone \(\theta_c=\arcsin(1/n)\) leave; the cone holds a fraction \(\frac12(1-\cos\theta_c)\approx\frac{1}{4n^2}\) of isotropic emission, further reduced by Fresnel reflection \(1-\left(\frac{n-1}{n+1}\right)^2\): for GaAs (\(n=3.6\)) about \(1.9\%\times0.68\approx1.3\%\) per face. Domes, texturing, flip-chip and photonic crystals raise it to >80%.
+- *Spectrum*: emission \(\propto\sqrt{h\nu-E_g}\,e^{-(h\nu-E_g)/k_BT}\), peak at \(E_g+k_BT/2\), FWHM \(\approx1.8k_BT\)–\(3k_BT\): \(\Delta\lambda\approx\frac{\lambda^2}{hc}3k_BT\).
+
+* Derivation of the bandwidth
+Small-signal current modulation \(i(\omega)\) drives the carrier density through \(\frac{\dd n}{\dd t}=\frac{i}{qV}-\frac{n}{\tau}\): \(\frac{P(\omega)}{P(0)}=\frac{1}{\sqrt{1+(\omega\tau)^2}}\). The *optical* 3 dB bandwidth (optical power halves) is at \(\omega\tau=\sqrt3\), \(f_{3dB}=\sqrt3/2\pi\tau\); the *electrical* 3 dB bandwidth (detected electrical power \(\propto P^2\) halves) is at \(\omega\tau=1\), \(f=1/2\pi\tau\).
+
+* Worked example
+GaAs LED at 870 nm, \(I=50\) mA, \(\eta_{ext}=5\%\): \(P=\eta_{ext}\frac{h\nu}{q}I=0.05\cdot1.43\,\mathrm{V}\cdot0.05\,\mathrm{A}\approx3.6\) mW. Linewidth \(3k_BT=78\) meV → \(\Delta\lambda=\frac{0.87^2}{1.24}\cdot0.078\approx48\) nm. With \(\tau=5\) ns, \(f_{3dB}=55\) MHz: fine for remote controls and short plastic-fibre links, too slow for Gb/s.
+
+* White LEDs
+Blue InGaN LED (≈450 nm) + yellow YAG:Ce phosphor (Stokes loss ≈ 20%), or RGB chips. Luminous efficacy of white LEDs > 150 lm/W, vs 15 lm/W for incandescent. *Droop*: \(\eta_{int}\) falls at high current (Auger, carrier leakage).
+
+* Picture: emission spectrum at two temperatures
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$h\nu-E_g$ (meV)},ylabel={emission (a.u.)},xmin=0,xmax=200,ymin=0,ymax=3.6,ytick=\empty]
+\addplot+[no marks,thick,domain=0:200,samples=150]{sqrt(x)*exp(-x/25.9)}; \addlegendentry{300 K}
+\addplot+[no marks,thick,domain=0:200,samples=150]{sqrt(x)*exp(-x/30.2)}; \addlegendentry{350 K}
+\end{axis}
+\end{tikzpicture}
+Density of states \(\propto\sqrt{h\nu-E_g}\) times Boltzmann occupation: peak at \(k_BT/2\) above the gap, FWHM \(\approx1.8k_BT\) (47 meV at 300 K, 54 meV at 350 K); in a real device \(E_g\) itself also drops with temperature ([[id:led-efficiency-and-photometry][LED efficiency and temperature]]).
+
+* Engineering applications
+Solid-state lighting and displays (micro-LED), optocouplers, IR remote controls, short-reach plastic-optical-fibre links and Li-Fi, LED sources for OCT (SLEDs).
+
+* Exam-style exercise
+An InGaAsP LED emits at 1310 nm at 300 K. (a) Linewidth in nm (take \(\Delta(h\nu)=3k_BT\)). (b) At what temperature does it reach 120 nm? (c) Bare-chip extraction (\(n=3.5\), one face) and the output at 100 mA with \(\eta_{int}=0.8\).
+** Solution
+(a) \(\Delta\lambda=\frac{\lambda^2}{hc}3k_BT=\frac{1.31^2}{1.24}\cdot0.0776\) µm \(=107\) nm. (b) \(\Delta\lambda\propto T\): \(T=300\cdot120/107=336\) K. (c) Escape cone \(\frac12(1-\cos\theta_c)\), \(\theta_c=16.6^\circ\): 2.1%, times Fresnel \(1-0.31=0.69\): 1.44%. \(P=0.8\cdot0.0144\cdot0.946\) V \(\cdot0.1\) A \(=1.1\) mW: a dome or texturing is worth 10×.
+
+* Pitfall
+External quantum efficiency (photons out per electron) is not wall-plug efficiency (optical power / electrical power): the latter includes the voltage \(V>h\nu/q\) across series resistance.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Light-emitting_diode][Light-emitting diode]]
+- [[https://www.nobelprize.org/prizes/physics/2014/summary/][Nobel Prize 2014: blue LEDs]]

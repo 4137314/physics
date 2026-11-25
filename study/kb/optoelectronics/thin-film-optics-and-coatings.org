@@ -1,0 +1,64 @@
+:PROPERTIES:
+:ID:       thin-film-optics-and-coatings
+:DOMAIN:   optoelectronics
+:AREA:     wave-optics
+:KIND:     model
+:REQUIRES: interference-and-fabry-perot reflection-and-transmission-at-interfaces
+:SEE:      solar-cells single-mode-laser-diodes bragg-gratings photonic-crystals
+:ALIASES:  anti-reflection coating, AR coating, quarter-wave layer, dielectric mirror, Bragg reflector, DBR, quarter-wave stack, stop band, thin film interference, minimum reflectance, high-reflection coating, multilayer
+:END:
+#+title: Thin films: anti-reflection coatings and dielectric mirrors
+#+summary: A layer of index \(n_2\) and thickness \(d=\frac{\lambda}{4n_2}\) between \(n_1\) and \(n_3\) makes the two reflections interfere destructively, \(R_{min}=\left(\frac{n_2^2-n_1n_3}{n_2^2+n_1n_3}\right)^2\), zero for \(n_2=\sqrt{n_1n_3}\); \(N\) pairs of quarter-wave layers \(n_H,n_L\) add in phase and give \(R_N=\left(\frac{1-(n_0/n_3)(n_L/n_H)^{2N}}{1+(n_0/n_3)(n_L/n_H)^{2N}}\right)^2\) over a stop band \(\frac{\Delta\lambda}{\lambda_0}=\frac4\pi\arcsin\frac{n_H-n_L}{n_H+n_L}\).
+
+* Single layer (derivation)
+Wave A reflects at the top surface (\(r_{12}\)), wave B at the bottom (\(r_{23}\)) after a round trip of phase \(2\delta=2\cdot\frac{2\pi n_2d}{\lambda}\). Summing all multiple reflections:
+\[ r=\frac{r_{12}+r_{23}e^{-j2\delta}}{1+r_{12}r_{23}e^{-j2\delta}},\qquad R=\frac{r_{12}^2+r_{23}^2+2r_{12}r_{23}\cos2\delta}{1+r_{12}^2r_{23}^2+2r_{12}r_{23}\cos2\delta}. \]
+For \(n_1<n_2<n_3\) both \(r\) have the same sign, so the minimum is at \(2\delta=\pi\): \(d=\frac{\lambda}{4n_2}\) (or odd multiples \(m\frac{\lambda}{4n_2}\), \(m\) odd, narrower in band). Substituting gives \(R_{min}\) of the summary. For \(n_2>n_3\) the same thickness gives a *maximum*: a high-index quarter-wave layer is a weak mirror.
+
+* Picture: a MgF\(_2\) coating on glass
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$\lambda$ (nm)},ylabel={$R$ (\%)},xmin=400,xmax=800,ymin=0,ymax=5]
+\addplot+[no marks,thick,domain=400:800,samples=200]{100*(0.025491+0.002331+0.015417*cos(deg(pi*550/x)))/(1+0.0000594+0.015417*cos(deg(pi*550/x)))}; \addlegendentry{MgF$_2$, $d=\lambda_0/4n$ at 550 nm}
+\addplot+[no marks,dashed,domain=400:800]{4.258}; \addlegendentry{bare glass}
+\end{axis}
+\end{tikzpicture}
+
+* Dielectric mirror
+Alternate high and low indices, each a quarter wave thick (\(n_Hd_H=n_Ld_L=\lambda_0/4\), i.e. \(n_1d_1+n_2d_2=\lambda_0/2\)). Reflections at H→L and L→H interfaces have opposite signs, and each extra half-wave of path restores the phase: all reflections add. The reflectance approaches 1 geometrically in \((n_L/n_H)^{2N}\); the reflected band is the photonic stop gap of a 1D [[id:photonic-crystals][photonic crystal]]. The light penetrates only a few periods, which sets the effective mirror position (important in VCSELs).
+
+\begin{tikzpicture}[scale=0.9]
+\foreach \i in {0,...,4} {
+  \fill[blue!35] (\i*1.0,0) rectangle (\i*1.0+0.4,2);
+  \fill[blue!10] (\i*1.0+0.4,0) rectangle (\i*1.0+1.0,2);
+}
+\fill[gray!30] (5,0) rectangle (6,2); \node[font=\small] at (5.5,1) {$n_3$};
+\node[font=\small] at (-0.6,0.3) {$n_0$};
+\node[font=\scriptsize] at (0.2,-0.3) {$n_H$}; \node[font=\scriptsize] at (0.7,-0.3) {$n_L$};
+\draw[-{Latex},thick,red!70!black] (-1.4,1.6)--(-0.1,1.6);
+\foreach \i in {0,...,4} {\draw[-{Latex},red!70!black,opacity=0.9-0.15*\i] (\i*1.0+0.2,1.3-0.15*\i)--(-1.4,1.3-0.15*\i);}
+\node[font=\small,anchor=west] at (-1.6,2.25) {reflections in phase at $\lambda_0$};
+\end{tikzpicture}
+
+* Worked examples
+1. *AR coating on a silicon solar cell* at 900 nm, \(n_{Si}=3.5\): bare \(R=\left(\frac{2.5}{4.5}\right)^2=31\%\). Ideal \(n_2=\sqrt{3.5}=1.87\), \(d=\frac{900}{4\cdot1.87}=120\) nm. With Si\(_3\)N\(_4\) (\(n=1.9\), \(d=118\) nm): \(R_{min}=\left(\frac{3.61-3.5}{3.61+3.5}\right)^2=2.4\times10^{-4}\): the cell gains ≈ 30% more photocurrent ([[id:solar-cells][solar cells]]).
+2. *MgF\(_2\) on glass* (\(n=1.38\) on 1.52), 550 nm: \(d=100\) nm, \(R_{min}=1.26\%\) instead of 4.26% — not zero because MgF\(_2\) is not \(\sqrt{1.52}=1.23\); the residual purple tint of camera lenses is the rising \(R\) at both ends of the band.
+3. *TiO\(_2\)/SiO\(_2\) mirror on glass* (2.3/1.46, \(n_0=1\), \(n_3=1.5\)) at 1550 nm: layers 168 nm and 265 nm; \(R=93.2\%\), 98.9%, 99.81%, 99.97% for \(N=4,6,8,10\); stop band \(\frac4\pi\arcsin\frac{0.84}{3.76}=0.287\), i.e. 445 nm wide.
+4. *VCSEL mirror* GaAs/AlAs (3.59/2.97): the small contrast needs ≈ 20–25 pairs for \(R>99.9\%\), as required by a gain path of only a few tens of nm ([[id:single-mode-laser-diodes][VCSELs]]).
+
+* Thin-film colours and measurement
+A film thicker than the coherence length of the light behaves incoherently (intensities add); a film of a few hundred nm in white light shows interference colours (soap bubbles, oxide layers). The transmission spectrum of a film on a substrate oscillates between maxima and minima at \(2n_2d=m\lambda\) and \((m+\frac12)\lambda\): from two adjacent extrema \(\lambda_1,\lambda_2\), \(n_2d=\frac{\lambda_1\lambda_2}{4(\lambda_1-\lambda_2)}\) — the standard way to measure film thickness or index.
+
+* Engineering applications
+AR coatings on lenses, solar cells, laser facets and detectors; HR coatings and output couplers of lasers; DBR mirrors of VCSELs and RCLEDs; dichroic filters and DWDM thin-film filters (Fabry–Perot cavities between two stacks); edge filters and hot mirrors.
+
+* Exam-style exercise
+A GaAs laser facet (\(n=3.6\)) at 850 nm must be AR-coated. (a) Ideal index and thickness. (b) Reflectance with Al\(_2\)O\(_3\) (\(n=1.76\)). (c) To make the opposite facet a mirror with \(R>95\%\) using Si (3.5)/SiO\(_2\) (1.45) pairs, how many pairs?
+** Solution
+(a) \(n_2=\sqrt{3.6}=1.90\), \(d=850/(4\cdot1.90)=112\) nm. (b) \(R_{min}=\left(\frac{3.10-3.6}{3.10+3.6}\right)^2=0.56\%\) (bare facet: 32%). (c) Light arrives from GaAs (\(n_0=3.6\)), exit into air (\(n_3=1\)): \(x=3.6(1.45/3.5)^{2N}\); \(N=2\): \(x=0.106\), \(R=0.65\); \(N=3\): \(x=0.0182\), \(R=0.93\); \(N=4\): \(x=0.0031\), \(R=0.988\). Four pairs. The high contrast of Si/SiO\(_2\) makes mirrors very short.
+
+* Pitfall
+\(d=\lambda/4\) is the quarter wave *inside the layer*: divide by \(n_2\). And \(n_0\) in the mirror formula is the medium the light comes from, \(n_3\) the substrate behind the stack.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Anti-reflective_coating][Anti-reflective coating]]
+- [[https://www.rp-photonics.com/dielectric_mirrors.html][RP Photonics: dielectric mirrors]]

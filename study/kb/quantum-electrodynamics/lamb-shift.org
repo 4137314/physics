@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       lamb-shift
+:DOMAIN:   quantum-electrodynamics
+:AREA:     radiative-corrections
+:KIND:     example
+:REQUIRES: radiative-corrections-and-renormalization fine-structure-and-zeeman-effect
+:SEE:      spontaneous-emission-and-purcell-effect anomalous-magnetic-moment
+:ALIASES:  Lamb shift, Bethe calculation, 2s-2p splitting, Lamb-Retherford experiment, Welton picture, Bethe logarithm
+:END:
+#+title: The Lamb shift
+#+summary: The Dirac equation leaves \(2s_{1/2}\) and \(2p_{1/2}\) of hydrogen degenerate; vacuum fluctuations of the field and vacuum polarisation lift \(2s_{1/2}\) by 1057.8 MHz, dominated by \(\Delta E\approx\frac{4\alpha^5mc^2}{3\pi n^3}\ln\frac{1}{\alpha^2}\,\delta_{l0}\) (Bethe).
+
+* Welton's picture (derivation)
+Zero-point field makes the electron jitter, \(\delta\mathbf r\). Averaging the Coulomb potential: \(\braket{V(\mathbf r+\delta\mathbf r)}=V+\tfrac16\braket{\delta r^2}\nabla^2V\). With \(\nabla^2V=\frac{e^2}{\epsilon_0}\delta^3(\mathbf r)\) only s-states (\(|\psi(0)|^2=\frac{1}{\pi n^3a_0^3}\)) are shifted. Each field mode drives \(m\ddot{\delta r}=eE_\omega\); summing \(\braket{\delta r^2}\) over vacuum modes between \(\omega_{min}\sim\alpha^2mc^2/\hbar\) (atomic frequencies, below which the electron is bound) and \(\omega_{max}\sim mc^2/\hbar\) (above which it is relativistic) gives \(\braket{\delta r^2}=\frac{2\alpha}{\pi}\left(\frac\hbar{mc}\right)^2\ln\frac{1}{\alpha^2}\); with \(a_0=\hbar/mc\alpha\), hence
+\[ \Delta E_{ns}\approx\frac{4\alpha^5mc^2}{3\pi n^3}\ln\frac{1}{\alpha^2}. \]
+For \(n=2\): \(\frac{4}{3\pi\cdot8}\cdot1.06\times10^{-5}\,\mathrm{eV}\cdot9.84\approx5.5\) µeV \(\approx1.3\) GHz. Bethe's non-relativistic self-energy (1947) gives 1040 MHz with the "Bethe logarithm"; vertex, anomalous moment and vacuum polarisation (−27 MHz) complete it.
+
+* Contributions to 2s½ − 2p½ (MHz)
+| term                          | MHz    |
+|-------------------------------+--------|
+| self-energy (+ vertex)        | +1017  |
+| anomalous moment              | +68    |
+| vacuum polarisation (Uehling) | −27    |
+| total (theory, incl. higher)  | 1057.8 |
+
+* Experiment
+Lamb and Retherford (1947): metastable \(2s\) atoms (long-lived, see [[id:radiative-transitions-and-selection-rules][selection rules]]) are driven by microwaves to \(2p\), which decays quickly; loss of metastables vs frequency gives the splitting. Today the 1s–2s two-photon line is known to \(10^{-15}\) and tests QED with the proton radius as input.
+
+* Worked example
+Convert: \(h\cdot1057.8\) MHz \(=4.37\) µeV, about \(10^{-6}\) of the Lyman-α energy, and 1/10 of the \(2p\) fine-structure splitting (10.97 GHz).
+
+* Engineering applications
+Hydrogen spectroscopy determines the Rydberg constant and the proton radius (the "proton radius puzzle" with muonic hydrogen); QED level shifts are part of the error budget of optical clocks and frequency combs.
+
+* Pitfall
+The Lamb shift is not the fine structure: fine structure depends on \(j\), the Lamb shift separates states with the same \(n,j\) and different \(l\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Lamb_shift][Lamb shift]]
+- [[https://en.wikipedia.org/wiki/Proton_radius_puzzle][Proton radius puzzle]]

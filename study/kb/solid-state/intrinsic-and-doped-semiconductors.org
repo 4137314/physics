@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       intrinsic-and-doped-semiconductors
+:DOMAIN:   solid-state
+:AREA:     carriers
+:KIND:     theorem
+:REQUIRES: density-of-states-and-fermi-dirac hydrogen-atom
+:SEE:      drift-diffusion-and-einstein-relation pn-junction-electrostatics
+:ALIASES:  intrinsic carrier concentration, doping, donors, acceptors, n-type, p-type, charge neutrality, compensation, freeze-out, Fermi level position
+:END:
+#+title: Intrinsic and doped semiconductors
+#+summary: Intrinsic: \(n=p=n_i=\sqrt{N_cN_v}e^{-E_g/2k_BT}\); with fully ionised donors \(N_D\gg n_i\), \(n\simeq N_D\), \(p=n_i^2/N_D\) and \(E_c-E_F=k_BT\ln(N_c/N_D)\); in general neutrality \(n+N_A^-=p+N_D^+\) gives \(n=\frac{N_D-N_A}2+\sqrt{\left(\frac{N_D-N_A}2\right)^2+n_i^2}\).
+
+* Statement
+- *Donors* (P, As in Si): extra electron bound with a [[id:hydrogen-atom][hydrogenic]] energy \(E_d\approx13.6\frac{m^*}{m\epsilon_r^2}\) eV ≈ 45 meV: ionised at 300 K. *Acceptors* (B): bind a hole, \(E_a\approx45\) meV.
+- *Neutrality*: \(p-n+N_D^+-N_A^-=0\). With \(np=n_i^2\) this is a quadratic; its positive root is the formula in the summary.
+- *Fermi level*: \(E_F-E_i=k_BT\ln(n/n_i)\), where \(E_i\) is near mid-gap.
+
+* Temperature regimes
+| regime     | T range (Si, N_D = 10¹⁵) | n                    |
+|------------+--------------------------+----------------------|
+| freeze-out | below ≈ 100 K            | donors not ionised   |
+| extrinsic  | ≈ 100–500 K              | n ≈ N_D (flat)       |
+| intrinsic  | above ≈ 550 K            | n ≈ n_i, rising fast |
+The extrinsic plateau is the useful operating range; its upper end limits Si devices to ~150–200 °C and motivates wide-gap SiC/GaN ([[id:wide-bandgap-power-devices][wide-bandgap devices]]).
+
+* Worked example
+Si, \(N_D=10^{16}\), \(N_A=4\times10^{15}\) cm\(^{-3}\) (compensated): \(n=6\times10^{15}\), \(p=(10^{10})^2/6\times10^{15}=1.7\times10^4\) cm\(^{-3}\). \(E_F-E_i=0.0259\ln(6\times10^5)=0.345\) eV; \(E_c-E_F=0.0259\ln(2.8\times10^{19}/6\times10^{15})=0.219\) eV.
+
+* Engineering applications
+Doping profiles define wells, sources/drains and channels in CMOS, emitters in solar cells, drift regions in power devices (low \(N_D\) for high breakdown), and the resistivity of substrates (\(\rho=1/q(n\mu_n+p\mu_p)\)).
+
+* Pitfall
+Compensation: adding acceptors to an n-type sample reduces \(n\) but *increases* impurity scattering, so mobility drops — net doping and total impurities are not the same.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Doping_(semiconductor)][Doping]]

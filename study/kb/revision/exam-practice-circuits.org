@@ -1,0 +1,51 @@
+:PROPERTIES:
+:ID:       exam-practice-circuits
+:DOMAIN:   revision
+:AREA:     exam-practice
+:KIND:     example
+:REQUIRES: formula-sheet-electronics laplace-transform-and-transients power-generation-and-distribution operational-amplifier-circuits
+:SEE:      exam-practice-digital-electronics
+:ALIASES:  circuit theory exercises, Fisica 2 exercises, phasor exercises, Laplace exercises, transformer exercises
+:END:
+#+title: Exam practice: circuit theory (solved)
+#+summary: Eight circuit-theory problems with complete solutions: Thévenin, RC transients, RLC damping, phasors, AC power and power-factor correction, Fourier response, Laplace transients, transformer and three-phase losses.
+
+* Problem 1 — Thévenin
+12 V source with 4 kΩ in series, then 6 kΩ to ground; load across the 6 kΩ. Thévenin equivalent and maximum load power.
+** Solution
+\(V_{th}=12\cdot\frac{6}{10}=7.2\) V, \(R_{th}=4\parallel6=2.4\) kΩ. \(P_{max}=\frac{7.2^2}{4\cdot2400}=5.4\) mW at \(R_L=2.4\) kΩ.
+
+* Problem 2 — RC transient
+A 10 µF capacitor at 2 V is connected at \(t=0\) through 1 kΩ to a 10 V source. \(v_C(t)\), time to reach 8 V, energy dissipated in R.
+** Solution
+\(v_C=10-8e^{-t/10\text{ ms}}\). 8 V when \(e^{-t/\tau}=1/4\): \(t=\tau\ln4=13.9\) ms. Energy from source \(QV=C\Delta V\cdot V=10\mu\cdot8\cdot10=0.8\) mJ; stored increase \(\frac12C(10^2-2^2)=0.48\) mJ; dissipated 0.32 mJ \(=\frac12C(\Delta V)^2\).
+
+* Problem 3 — RLC damping
+Series RLC with \(L=10\) mH, \(C=100\) nF. R for critical damping; overshoot of the step response with R = 100 Ω.
+** Solution
+\(\zeta=\frac R2\sqrt{C/L}=\frac{R}{2}\cdot3.16\times10^{-3}\): critical at \(R=632\) Ω. With 100 Ω, \(\zeta=0.158\), overshoot \(e^{-\pi\cdot0.158/0.987}=60\%\), ringing at \(f_d=\frac{1}{2\pi\sqrt{LC}}\sqrt{1-\zeta^2}=4.97\) kHz.
+
+* Problem 4 — phasors
+\(v_s=10\cos(10^4t)\) V drives \(R=100\) Ω in series with \(L=10\) mH and \(C=1\) µF. Current and the voltage on C.
+** Solution
+\(Z=100+j(100-100)=100\) Ω: resonance. \(\mathbf I=0.1\) A; \(\mathbf V_C=\frac{\mathbf I}{j\omega C}=-j10\) V → \(v_C=10\cos(10^4t-90^\circ)\), amplitude equal to the source (\(Q=1\)).
+
+* Problem 5 — power-factor correction
+Load 5 kW, PF 0.8 lagging, 230 V 50 Hz. Capacitor for PF 1; line current before and after.
+** Solution
+\(Q=5\tan36.9^\circ=3.75\) kvar; \(C=\frac{3750}{2\pi50\cdot230^2}=226\) µF. \(I\): 27.2 A → 21.7 A.
+
+* Problem 6 — Fourier
+Square wave ±5 V, 1 kHz into an RC high-pass with \(f_c=3\) kHz. Amplitudes of the first three output harmonics.
+** Solution
+Input \(\frac{20}{\pi n}\): 6.37, 2.12, 1.27 V at 1, 3, 5 kHz. \(|H|=\frac{f/f_c}{\sqrt{1+(f/f_c)^2}}\): 0.316, 0.707, 0.857 → 2.01, 1.50, 1.09 V. The high-pass emphasises harmonics: spiky output.
+
+* Problem 7 — Laplace transient
+\(L=1\) H with \(i_L(0)=1\) A in series with \(R=2\) Ω and \(C=0.5\) F (uncharged), source-free. Find \(i(t)\).
+** Solution
+\(I(s)\left(2+s+\frac{2}{s}\right)=Li(0)=1\Rightarrow I=\frac{s}{s^2+2s+2}=\frac{(s+1)-1}{(s+1)^2+1}\) → \(i(t)=e^{-t}(\cos t-\sin t)\). Check \(i(0)=1\) ✓, \(i(\infty)=0\) ✓.
+
+* Problem 8 — transformer and transmission
+A 10 kW load at 230 V is fed through a line of 0.5 Ω total resistance. Losses with direct 230 V supply, and with a 10:1 step-up/step-down pair (2.3 kV line).
+** Solution
+Direct: \(I=43.5\) A, loss \(I^2r=946\) W (9.5%). At 2.3 kV: \(I=4.35\) A, loss 9.5 W (0.1%): 100 times less ([[id:power-generation-and-distribution][distribution]]).

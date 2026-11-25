@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       semiconductor-laser-diodes
+:DOMAIN:   optoelectronics
+:AREA:     light-sources
+:KIND:     model
+:REQUIRES: stimulated-emission-and-lasers light-emitting-diodes heterojunctions-and-quantum-wells
+:SEE:      bragg-gratings coherence-of-light fiber-dispersion-and-attenuation
+:ALIASES:  laser diode, threshold current, slope efficiency, differential quantum efficiency, Bernard-Duraffourg condition, transparency, confinement factor, DFB laser, DBR laser, VCSEL, external cavity laser, relaxation oscillation, linewidth enhancement factor, Schawlow-Townes
+:END:
+#+title: Semiconductor laser diodes
+#+summary: Gain in a forward-biased junction needs \(E_{Fn}-E_{Fp}>h\nu>E_g\) (Bernard–Duraffourg); threshold current \(I_{th}=\frac{qVN_{th}}{\tau}\) with \(N_{th}\) set by transparency plus losses through the confinement factor \(\Gamma\); above threshold \(P=\eta_d\frac{h\nu}{q}(I-I_{th})\); DFB gratings, VCSELs and external cavities select a single mode.
+
+* Model
+- *Gain*: stimulated emission exceeds absorption when the quasi-Fermi-level separation exceeds the photon energy. Near transparency \(g\approx a(N-N_{tr})\).
+- *Threshold*: \(\Gamma g_{th}=\alpha_i+\frac{1}{2L}\ln\frac1{R_1R_2}\), with \(\Gamma\) the fraction of the optical mode in the active layer ([[id:dielectric-slab-waveguide][slab waveguide]]); \(N_{th}=N_{tr}+\frac{g_{th}}{a}\); \(J_{th}=\frac{qdN_{th}}{\tau}\) (active thickness \(d\)). DH and QW structures reduce \(d\) and \(J_{th}\) by orders of magnitude.
+- *Threshold from the gain curve*: compute \(g_{th}\), read \(n_{th}\) on the measured peak-gain vs carrier-density curve, then with radiative recombination at strong injection \(\tau_r=1/Bn_{th}\): \(J_{th}=qdBn_{th}^2\), \(I_{th}=J_{th}WL\). InGaAsP at 1310 nm, \(L=100\) µm, \(R=0.33\), \(\alpha_s=20\) cm\(^{-1}\): \(g_{th}=131\) cm\(^{-1}\) → \(n_{th}\approx1.5\times10^{18}\) cm\(^{-3}\); with \(d=0.1\) µm, \(B=10^{-16}\) m³/s, \(W=10\) µm: \(J_{th}=360\) A/cm², \(I_{th}=3.6\) mA.
+- *Mirrors from the spectrum*: a measured mode width \(\delta\nu\) and the spacing \(\Delta\nu_m=c/2nL\) give \(\mathcal F=\Delta\nu_m/\delta\nu\), then \(\sqrt R=\frac{-\pi+\sqrt{\pi^2+4\mathcal F^2}}{2\mathcal F}\) from \(\mathcal F=\frac{\pi\sqrt R}{1-R}\). Cleaved facets give \(R=\left(\frac{n-1}{n+1}\right)^2\approx0.27\)–0.33; lower values need AR coatings, higher ones dielectric stacks ([[id:interference-and-fabry-perot][Bragg mirrors]]).
+- *L–I curve*: slope \(\frac{\dd P}{\dd I}=\eta_d\frac{h\nu}{q}\), \(\eta_d=\eta_i\frac{\alpha_m}{\alpha_i+\alpha_m}\).
+- *Temperature*: \(I_{th}\propto e^{T/T_0}\) (\(T_0\approx60\)–150 K): TE coolers for telecom lasers.
+
+* Single-mode lasers
+Fabry–Perot chips lase on several modes (spacing \(\lambda^2/2N_gL\)). DFB: a Bragg grating along the cavity selects \(\lambda=2n_{eff}\Lambda/m\) (quarter-wave shifted for a single mode). DBR: gratings outside the gain section (tunable). VCSEL: vertical cavity of ~1λ between Bragg mirrors, FSR so large that only one longitudinal mode fits; circular low-divergence beam, low threshold, wafer testing. External-cavity lasers: kHz linewidths.
+
+* Dynamics and linewidth
+Small-signal response has a relaxation-oscillation resonance \(f_R=\frac1{2\pi}\sqrt{\frac{aS}{\tau_{ph}}}\propto\sqrt{I-I_{th}}\): the direct-modulation bandwidth (~10–30 GHz). Linewidth: Schawlow–Townes \(\Delta\nu\propto\frac{h\nu}{P}\) times \((1+\alpha_H^2)\) with the Henry factor \(\alpha_H\approx3\)–5; the same coupling gives frequency chirp under modulation, which interacts with [[id:fiber-dispersion-and-attenuation][fibre dispersion]].
+
+* Worked example
+InGaAsP FP laser, \(L=300\) µm, \(R=0.32\), \(\alpha_i=10\) cm\(^{-1}\): mirror loss \(\frac{1}{2L}\ln\frac1{R^2}=\frac{1}{0.06}\cdot2.28=38\) cm\(^{-1}\). \(\eta_i=0.8\): \(\eta_d=0.8\cdot\frac{38}{48}=0.63\); at 1550 nm (\(h\nu/q=0.8\) V) slope \(=0.5\) W/A. At \(I=I_{th}+20\) mA: \(P=10\) mW per facet pair, i.e. ≈ 5 mW per facet.
+
+* Picture: light–current characteristic
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.6cm,axis lines=left,xlabel={$I$ (mA)},ylabel={$P_o$ (mW)},xmin=0,xmax=50,ymin=0,ymax=9.5]
+\addplot+[no marks,thick,domain=0:24,samples=20]{0.004*x}; \addlegendentry{spontaneous (LED-like)}
+\addplot+[no marks,thick,domain=24:50,samples=20]{0.096+0.35*(x-24)}; \addlegendentry{stimulated, slope 0.35 W/A}
+\draw[dashed] (axis cs:24,0)--(axis cs:24,3) node[above,font=\scriptsize]{$I_{th}$};
+\end{axis}
+\end{tikzpicture}
+Below threshold the spectrum is broad (tens of nm), above it collapses onto a few cavity modes and the slope jumps by orders of magnitude.
+
+* Engineering applications
+Telecom transmitters (DFB at 1310/1550 nm, EML), datacom VCSELs at 850 nm, pump lasers at 980 nm for [[id:optical-amplifiers][EDFAs]], LiDAR, barcode and optical storage, high-power diode bars for pumping and materials processing.
+
+* Exam-style exercise
+A GaAs DH laser (860 nm) has \(L=250\) µm, \(W=5\) µm, \(d=0.15\) µm, \(n=3.6\), \(\alpha_s=10\) cm\(^{-1}\), \(n_{th}=2\times10^{18}\) cm\(^{-3}\), \(B=2\times10^{-16}\) m³/s. (a) \(R\), \(g_{th}\). (b) \(\tau_r\), \(J_{th}\), \(I_{th}\). (c) Photon lifetime and slope efficiency \(\frac{hc^2\tau_{ph}(1-R)}{2en\lambda L}\). (d) Output at 36 mA.
+** Solution
+(a) \(R=\left(\frac{2.6}{4.6}\right)^2=0.32\); \(g_{th}=10+\frac{1}{0.05}\ln\frac{1}{0.1024}=55.6\) cm\(^{-1}\). (b) \(\tau_r=\frac{1}{Bn_{th}}=2.5\) ns; \(J_{th}=\frac{en_{th}d}{\tau_r}=1.9\times10^7\) A/m² (1.9 kA/cm²); \(I_{th}=J_{th}WL=24\) mA. (c) \(\tau_{ph}=\frac{n}{c\alpha_t}=\frac{3.6}{3\times10^8\cdot5560}=2.16\) ps; slope \(=0.35\) W/A. (d) \(P_o=0.35(36-24)=4.2\) mW.
+
+* Pitfall
+Both facets emit: the slope efficiency per facet is half of \(\eta_d h\nu/q\) for a symmetric cavity unless one facet is HR-coated.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Laser_diode][Laser diode]]
+- [[https://en.wikipedia.org/wiki/Vertical-cavity_surface-emitting_laser][VCSEL]]

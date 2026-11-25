@@ -1,0 +1,59 @@
+:PROPERTIES:
+:ID:       polarization-and-birefringence
+:DOMAIN:   optoelectronics
+:AREA:     modulators
+:KIND:     model
+:REQUIRES: plane-waves-in-media reflection-and-transmission-at-interfaces
+:SEE:      electro-optic-modulators total-internal-reflection-and-evanescent-waves fiber-dispersion-and-attenuation
+:ALIASES:  polarization, polarisation, Malus law, linear polarization, circular polarization, elliptical polarization, Jones vector, birefringence, ordinary ray, extraordinary ray, optic axis, quarter-wave plate, half-wave plate, retarder, phase retardation, optical activity, Faraday rotation, optical isolator, liquid crystal, polarizer, dichroism
+:END:
+#+title: Polarisation, birefringence and wave plates
+#+summary: Light polarised at \(\theta\) to a polariser transmits \(I=I_0\cos^2\theta\) (Malus); in a uniaxial crystal the ordinary and extraordinary waves see \(n_o\) and \(n_e(\theta)\), \(\frac{1}{n_e(\theta)^2}=\frac{\cos^2\theta}{n_o^2}+\frac{\sin^2\theta}{n_e^2}\), and acquire a relative phase \(\phi=\frac{2\pi}{\lambda}(n_e-n_o)L\): a quarter-wave plate (\(\phi=\pi/2\)) turns linear light at 45° into circular, a half-wave plate rotates linear light by \(2\alpha\).
+
+* Polarisation states
+Write the transverse field as \(\mathbf E=\left(E_{x0}\hat x+E_{y0}e^{j\delta}\hat y\right)e^{j(\omega t-kz)}\) (Jones vector \((E_{x0},E_{y0}e^{j\delta})\)). \(\delta=0,\pi\): linear; \(E_{x0}=E_{y0}\), \(\delta=\pm\pi/2\): circular; otherwise elliptical. Unpolarised light is a random mixture: an ideal polariser passes half of it.
+
+* Malus's law and polarisers
+A polariser projects the field onto its axis: \(E\cos\theta\), so \(I=I_0\cos^2\theta\). Polarisers: dichroic sheets (Polaroid, absorb one component), Brewster stacks (reflect s, transmit p), birefringent prisms (Glan–Thompson, Wollaston), wire grids.
+
+* Birefringence
+In an anisotropic crystal \(\epsilon\) is a tensor; in a uniaxial crystal (calcite, quartz, LiNbO\(_3\)) one axis (optic axis) differs. A wave with \(\mathbf E\perp\) optic axis sees \(n_o\) (ordinary); the orthogonal one sees \(n_e(\theta)\), with \(\theta\) the angle between \(\mathbf k\) and the optic axis (formula in the summary). Positive crystal \(n_e>n_o\) (quartz 1.553/1.544), negative \(n_e<n_o\) (calcite 1.486/1.658). Off-axis a single ray splits into two (double refraction).
+
+* Picture: a quarter-wave plate
+\begin{tikzpicture}[scale=0.9]
+\draw[-{Latex},thick,red!70!black] (0,0)--(0.85,0.85); \draw[-{Latex},thick,red!70!black] (0,0)--(-0.85,-0.85);
+\draw[gray] (-1.1,0)--(1.1,0) node[below,font=\scriptsize]{fast}; \draw[gray] (0,-1.1)--(0,1.1) node[above,font=\scriptsize]{slow};
+\node[font=\small] at (0,-1.5) {linear at $45^\circ$};
+\fill[blue!15] (2.2,-1.2) rectangle (3.0,1.2); \node[font=\small] at (2.6,-1.5) {$\phi=\pi/2$};
+\draw[-{Latex},thick] (1.4,0)--(2.1,0); \draw[-{Latex},thick] (3.1,0)--(3.8,0);
+\draw[thick,red!70!black,-{Latex}] (5.3,0) ++(0:0.9) arc (0:300:0.9);
+\draw[gray] (4.2,0)--(6.4,0); \draw[gray] (5.3,-1.1)--(5.3,1.1);
+\node[font=\small] at (5.3,-1.5) {circular};
+\end{tikzpicture}
+
+* Wave plates (derivation)
+Decompose the input on the fast and slow axes. After thickness \(L\) the slow component lags by \(\phi=\frac{2\pi}{\lambda}|n_e-n_o|L\). Quarter wave: \(\phi=\pi/2\); equal components (input at 45°) become \((1,e^{-j\pi/2})\): circular. Half wave: \(\phi=\pi\) flips the sign of the slow component: linear light at \(\alpha\) to the fast axis exits at \(-\alpha\), a rotation by \(2\alpha\). A zero-order plate has the smallest \(L\); multi-order plates (\(\phi=2\pi m+\pi/2\)) are thicker but very sensitive to \(\lambda\) and temperature.
+
+* Optical activity, Faraday effect and isolators
+Optically active media (quartz along its axis, sugar solutions) rotate linear polarisation by \(\rho L\), the same sense for both directions. The Faraday effect rotates by \(\theta=\mathcal VBL\) (Verdet constant \(\mathcal V\)) and is *non-reciprocal*: on the way back the rotation adds. A 45° Faraday rotator between two polarisers at 45° to each other passes light forward and blocks the reflection (rotated to 90°): the optical isolator that protects lasers from feedback.
+
+* Worked examples
+1. *Three polarisers*: unpolarised \(I_0\) through polarisers at 0°, 45°, 90°: \(I=\frac{I_0}{2}\cos^245^\circ\cos^245^\circ=I_0/8\); without the middle one, zero.
+2. *Quartz quarter-wave plate* at 633 nm (\(\Delta n=0.009\)): \(L=\frac{\lambda}{4\Delta n}=17.6\) µm (half-wave: 35.2 µm). Calcite (\(\Delta n=0.172\)) would need 0.92 µm: too thin to handle, so calcite is used for polarisers, quartz and mica for plates.
+3. *Calcite at \(\theta=30^\circ\)* from the optic axis: \(n_e(30^\circ)=\left(\frac{0.75}{1.658^2}+\frac{0.25}{1.486^2}\right)^{-1/2}=1.609\).
+4. *Faraday rotator* in TGG (\(\mathcal V\approx-134\) rad T\(^{-1}\)m\(^{-1}\) at 633 nm) with 1 T: 45° needs \(L=\frac{\pi/4}{134}=5.9\) mm.
+
+* Engineering applications
+LCD screens (twisted nematic cell between crossed polarisers rotates the light by 90° when off), 3D cinema (circular polarisation), optical isolators and circulators, polarisation-maintaining fibres (stress birefringence), [[id:electro-optic-modulators][Pockels cells]] (voltage-controlled wave plates), ellipsometry, stress analysis by photoelasticity, polarisation-mode dispersion in [[id:fiber-dispersion-and-attenuation][fibres]].
+
+* Exam-style exercise
+Linearly polarised light at 633 nm, at 30° to the fast axis, crosses a quartz plate 35.2 µm thick. (a) What is the plate? (b) Output polarisation. (c) An analyser at 90° to the input: transmitted fraction?
+** Solution
+(a) \(\phi=\frac{2\pi}{0.633}\cdot0.009\cdot35.2=\pi\): half-wave plate. (b) Linear, at \(-30^\circ\) to the fast axis, i.e. rotated by 60°. (c) Angle between output and analyser \(90^\circ-60^\circ=30^\circ\): \(I/I_0=\cos^230^\circ=0.75\).
+
+* Pitfall
+A half-wave plate rotates by *twice* the angle between the input and its axis, not by 90°; and a quarter-wave plate gives circular light only if the input is at exactly 45°, otherwise elliptical.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Waveplate][Waveplate]]
+- [[https://en.wikipedia.org/wiki/Optical_isolator][Optical isolator]]

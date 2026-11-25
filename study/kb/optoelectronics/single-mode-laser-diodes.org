@@ -1,0 +1,66 @@
+:PROPERTIES:
+:ID:       single-mode-laser-diodes
+:DOMAIN:   optoelectronics
+:AREA:     light-sources
+:KIND:     model
+:REQUIRES: semiconductor-laser-diodes thin-film-optics-and-coatings heterojunctions-and-quantum-wells
+:SEE:      bragg-gratings fiber-dispersion-and-attenuation optical-amplifiers
+:ALIASES:  DFB laser, distributed feedback, DBR laser, distributed Bragg reflector, external cavity laser, ECL, VCSEL, vertical cavity surface emitting laser, quantum well laser, laser diode efficiencies, slope efficiency, external differential quantum efficiency, power conversion efficiency, wavelength temperature coefficient, mode hopping, stripe geometry, buried heterostructure, direct modulation, chirp
+:END:
+#+title: Single-mode laser diodes: DFB, DBR, VCSEL, quantum wells and efficiencies
+#+summary: A Fabry–Perot chip lases on several longitudinal modes; a grating in the cavity (DFB) or at its ends (DBR) reflects only near \(\lambda_B=\frac{2\bar n\Lambda}{q}\), and a uniform DFB lases on the two modes \(\lambda_m=\lambda_B\pm\frac{\lambda_B^2}{2\bar nL}(m+1)\) (a quarter-wave shift picks one); a VCSEL's µm cavity has mode spacing larger than the gain width; quantum wells shift the emission by the confinement energies \(E_n=\frac{n^2h^2}{8m^*d^2}\); efficiencies: \(\eta_{EQE}=\frac{P_o/h\nu}{I/e}\), \(\eta_{EDQE}=\frac{e}{E_g}\frac{\dd P_o}{\dd I}\), \(\eta_{PCE}=\frac{P_o}{IV}\).
+
+* Lateral confinement
+Gain-guided stripe lasers inject current through a narrow contact; index-guided buried heterostructures surround the active stripe with lower-index material on all sides: lower threshold, stable single *transverse* mode, elliptical output beam (larger divergence across the thin junction). Longitudinal mode selection is the job of the gratings below.
+
+* DFB and DBR (derivation of the DFB modes)
+A corrugation of period \(\Lambda\) couples forward and backward waves when \(2\bar n\Lambda=q\lambda\). Coupled-mode theory ([[id:bragg-gratings][Bragg gratings]]) gives a stop band around \(\lambda_B\) where no mode propagates; the allowed modes sit symmetrically outside it, spaced like those of a cavity of length \(L\): \(\lambda_m=\lambda_B\pm\frac{\lambda_B^2}{2\bar nL}(m+1)\), \(m=0,1,\dots\) The two \(m=0\) modes have equal threshold; a \(\lambda/4\) phase shift in the middle of the grating (or an asymmetric facet coating) places one mode at \(\lambda_B\) with the lowest threshold: single-frequency operation with side-mode suppression > 40 dB. In a DBR laser the gratings are passive end mirrors; separate electrodes on the grating and phase sections tune the wavelength.
+
+* Picture: DFB structure and spectrum
+\begin{tikzpicture}[scale=0.95]
+\fill[gray!20] (0,0) rectangle (6,0.5); \node[font=\scriptsize] at (3,0.25) {n-cladding};
+\fill[red!25] (0,0.5) rectangle (6,0.75); \node[font=\scriptsize,anchor=west] at (6.05,0.62) {active layer};
+\draw[thick] (0,1.05) \foreach \x in {0,0.3,...,5.7} {-- (\x,1.05) -- (\x+0.15,1.25) -- (\x+0.3,1.05)};
+\fill[gray!10] (0,1.25) rectangle (6,1.7); \node[font=\scriptsize] at (3,1.47) {p-cladding with corrugation $\Lambda$};
+\draw[-{Latex},thick] (6.05,0.62)--(6.6,0.2);
+\begin{scope}[shift={(0.6,-2.1)}]
+\draw[-{Latex}] (0,0)--(5,0) node[right,font=\scriptsize]{$\lambda$};
+\draw[dashed] (2.4,0)--(2.4,1.5) node[above,font=\scriptsize]{$\lambda_B$};
+\fill[blue!10] (2.0,0) rectangle (2.8,1.3); \node[font=\scriptsize] at (2.4,-0.25) {stop band};
+\foreach \x/\y in {1.85/1.2,1.4/0.5,0.95/0.25,2.95/1.2,3.4/0.5,3.85/0.25} \draw[thick,red!70!black] (\x,0)--(\x,\y);
+\end{scope}
+\end{tikzpicture}
+
+* VCSEL and external-cavity lasers
+A VCSEL has a ≈ 1λ cavity with quantum wells between two DBR mirrors of 20–30 GaAs/AlAs pairs (\(R>99.5\%\), [[id:thin-film-optics-and-coatings][dielectric mirrors]]): the mode spacing (tens of nm) exceeds the gain width, so one longitudinal mode lases; circular, low-divergence beam; threshold below 1 mA; wafer-level testing; arrays. External-cavity lasers close the cavity with a grating outside an AR-coated chip: kHz linewidths, tens of nm of tuning.
+
+* Quantum-well lasers
+A well of thickness \(d\) quantises the motion across it: \(E_n=\frac{n^2h^2}{8m^*d^2}\) above the band edge for electrons and holes ([[id:heterojunctions-and-quantum-wells][quantum wells]]). The step-like density of states puts more carriers at the band edge: lower transparency density, lower \(J_{th}\), higher differential gain, less temperature sensitivity; the emission shifts to \(E_g+E_{1e}+E_{1h}\). Strained wells and multiple wells (MQW) refine this.
+
+* Efficiencies and temperature
+- \(\eta_{EQE}=\frac{P_o/h\nu}{I/e}\) (overall photons per electron); \(\eta_{EDQE}=\frac{e}{E_g}\frac{\dd P_o}{\dd I}\) (slope above threshold); \(\eta_{PCE}=\frac{P_o}{IV}\).
+- \(\lambda\) of a Fabry–Perot laser follows the gain peak (≈ 0.3–0.5 nm/K), jumping between modes (*mode hops*); a DFB follows \(\bar n(T)\) continuously (≈ 0.1 nm/K): telecom lasers sit on thermo-electric coolers.
+
+* Direct modulation and chirp
+Modulating the current modulates output power up to the relaxation-oscillation frequency (10–30 GHz, [[id:semiconductor-laser-diodes][laser diodes]]); the carrier density also modulates the index, so the frequency follows the current (chirp, Henry factor). Chirp broadens the spectrum and, with [[id:fiber-dispersion-and-attenuation][fibre dispersion]], limits directly modulated links at 1550 nm to tens of km at 10 Gb/s; longer links use a CW DFB and an external modulator.
+
+* Worked examples
+1. *DFB wavelength*: \(\bar n=3.5\), \(\Lambda=0.22\) µm, first order: \(\lambda_B=2\cdot3.5\cdot0.22=1.540\) µm. For \(L=400\) µm the two lowest modes are at \(\lambda_B\pm\frac{1.54^2}{2\cdot3.5\cdot400}\) µm \(=\lambda_B\pm0.85\) nm (1539.15 and 1540.85 nm).
+2. *GaAs well*, \(d=10\) nm, \(m_e^*=0.067m_0\), \(m_{hh}^*=0.50m_0\): \(E_{1e}=56\) meV, \(E_{1h}=7.5\) meV; emission at \(1.424+0.064=1.488\) eV → 833 nm instead of 871 nm; \(E_{2e}=4E_{1e}=225\) meV.
+3. *Efficiencies* of a 1310 nm DFB: \(I_{th}=10\) mA, 8 mW at 40 mA and 1.5 V: slope 0.267 W/A, \(\eta_{EDQE}=\frac{0.267}{0.946}=28\%\), \(\eta_{EQE}=\frac{8}{0.946\cdot40}=21\%\), \(\eta_{PCE}=\frac{8}{60}=13\%\).
+4. *Temperature*: over +20 K an FP laser's gain peak moves ≈ 10 nm (several mode hops); a DFB moves ≈ 2 nm, more than a 100 GHz (0.8 nm) DWDM channel: thermal control is mandatory.
+
+* Engineering applications
+DFB lasers for DWDM transmitters (1550 nm ITU grid), DBR and sampled-grating tunable lasers, VCSEL arrays at 850 nm for datacom and 940 nm for face recognition and LiDAR, external-cavity lasers for coherent communications and spectroscopy, QW and quantum-dot lasers for silicon photonics.
+
+* Exam-style exercise
+A DFB laser must emit at 1550 nm with \(\bar n=3.3\). (a) First-order grating period. (b) Second-order period (easier lithography). (c) With \(L=300\) µm, spacing of the two \(m=0\) modes of a uniform grating. (d) Why is a \(\lambda/4\) shift used?
+** Solution
+(a) \(\Lambda=\frac{\lambda}{2\bar n}=235\) nm. (b) \(q=2\): 470 nm. (c) Each is \(\frac{1.55^2}{2\cdot3.3\cdot300}\) µm \(=1.21\) nm from \(\lambda_B\): 2.43 nm apart. (d) The two modes have equal threshold, so the laser may hop between them; the \(\lambda/4\) phase shift creates a single mode at \(\lambda_B\) inside the stop band with the lowest threshold.
+
+* Pitfall
+The DFB lases *beside* the Bragg wavelength unless the grating is phase-shifted: answering "\(\lambda=\lambda_B\)" for a uniform DFB misses the stop band.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Distributed-feedback_laser][Distributed-feedback laser]]
+- [[https://en.wikipedia.org/wiki/Vertical-cavity_surface-emitting_laser][VCSEL]]

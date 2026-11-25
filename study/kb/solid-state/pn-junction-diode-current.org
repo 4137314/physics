@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       pn-junction-diode-current
+:DOMAIN:   solid-state
+:AREA:     junctions
+:KIND:     theorem
+:REQUIRES: pn-junction-electrostatics generation-recombination-and-continuity
+:SEE:      diode-circuits-and-esd-protection light-emitting-diodes solar-cells power-diodes
+:ALIASES:  Shockley diode equation, ideal diode, saturation current, law of the junction, ideality factor, diffusion capacitance, small-signal resistance, diode temperature coefficient
+:END:
+#+title: The diode current: Shockley's equation
+#+summary: Applying \(V\) raises the minority densities at the depletion edges by \(e^{qV/k_BT}\) (law of the junction); their diffusion gives \(I=I_s\left(e^{qV/nk_BT}-1\right)\), \(I_s=qAn_i^2\left(\frac{D_p}{L_pN_D}+\frac{D_n}{L_nN_A}\right)\); small-signal \(r_d=nV_T/I\), diffusion capacitance \(C_d=\tau I/nV_T\).
+
+* Derivation
+1. *Law of the junction*: quasi-Fermi levels flat across the thin depletion region, split by \(qV\): \(p_n(x_n)=p_{n0}e^{qV/k_BT}\), \(n_p(-x_p)=n_{p0}e^{qV/k_BT}\).
+2. In the neutral n side the excess holes diffuse and recombine: \(\Delta p(x)=p_{n0}(e^{qV/k_BT}-1)e^{-(x-x_n)/L_p}\) ([[id:generation-recombination-and-continuity][continuity]]).
+3. Hole current at \(x_n\): \(J_p=qD_p\frac{p_{n0}}{L_p}(e^{qV/k_BT}-1)\), with \(p_{n0}=n_i^2/N_D\). Same for electrons. Sum (no recombination in the depletion region):
+\[ I=qAn_i^2\left(\frac{D_p}{L_pN_D}+\frac{D_n}{L_nN_A}\right)\left(e^{qV/k_BT}-1\right). \]
+Short diode (\(W_n\ll L_p\)): replace \(L_p\) by \(W_n\). Recombination in the depletion region adds a term \(\propto n_ie^{qV/2k_BT}\) (ideality \(n\to2\) at low current); high injection also gives \(n\to2\).
+
+* Small-signal model
+\(g_d=\frac{\dd I}{\dd V}=\frac{I}{nV_T}\): at 1 mA, \(r_d=26\) Ω. Stored minority charge \(Q=\tau I\) gives \(C_d=\tau g_d\), which dominates in forward bias and limits switching (reverse recovery).
+
+* Temperature
+\(I_s\propto n_i^2\propto T^3e^{-E_g/k_BT}\): at constant current \(\frac{\dd V}{\dd T}\approx-\frac{E_g/q-V}{T}\approx-2\) mV/K in Si.
+
+* Worked example
+Si diode, \(A=10^{-4}\) cm², \(N_A=10^{18}\), \(N_D=10^{16}\), \(D_p=10\) cm²/s, \(L_p=10\) µm (one-sided, holes dominate): \(I_s=1.6\times10^{-19}\cdot10^{-4}\cdot10^{20}\cdot\frac{10}{10^{-3}\cdot10^{16}}=1.6\times10^{-15}\) A. For 1 mA: \(V=0.0259\ln(10^{-3}/1.6\times10^{-15})=0.70\) V.
+
+* Engineering applications
+Rectifiers, the [[id:diode-circuits-and-esd-protection][diode in circuits]] (piecewise-linear models, ESD protection), band-gap voltage references (\(V_{BE}\) + PTAT), temperature sensors, the photodiode and solar-cell equation \(I=I_s(e^{qV/k_BT}-1)-I_{ph}\) ([[id:solar-cells][solar cells]]), LED I–V ([[id:light-emitting-diodes][LEDs]]).
+
+* Pitfall
+\(I_s\) is not a constant of the diode: it changes by ~×2 every 5 K and with area; use \(V\approx0.6\)–0.7 V only as a rough rule for Si at mA currents.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Shockley_diode_equation][Shockley diode equation]]

@@ -1,0 +1,66 @@
+:PROPERTIES:
+:ID:       image-sensors
+:DOMAIN:   optoelectronics
+:AREA:     photodetectors
+:KIND:     model
+:REQUIRES: photodetectors noise-in-photodetectors
+:SEE:      photodiode-circuits-and-bandwidth semiconductor-optical-properties
+:ALIASES:  image sensor, CCD, charge coupled device, CMOS image sensor, CIS, active pixel sensor, APS, pinned photodiode, 3T pixel, 4T pixel, correlated double sampling, full well capacity, read noise, dynamic range, fill factor, microlens, Bayer filter, rolling shutter, global shutter, back-side illumination, BSI, active matrix readout, flat panel detector
+:END:
+#+title: Image sensors: CCD and CMOS
+#+summary: An image sensor integrates photo-generated charge in each pixel during the exposure (\(N_e=\eta\frac{P\,t_{exp}}{h\nu}\)); a CCD moves the charge packets pixel to pixel to one output amplifier with clocked MOS gates, a CMOS active-pixel sensor converts charge to voltage inside each pixel and reads rows through switches; performance is set by quantum efficiency, full-well capacity \(N_{sat}\), read noise \(\sigma_r\) (dynamic range \(20\log\frac{N_{sat}}{\sigma_r}\)) and photon shot noise (\(\mathrm{SNR}=\frac{N_e}{\sqrt{N_e+\sigma_r^2}}\)).
+
+* CCD: charge transfer
+Each pixel is a MOS capacitor biased into deep depletion: a potential well that collects electrons. In a three-phase CCD every pixel has three gates; raising the voltage of the next gate while lowering the current one moves the well — and its charge packet — one gate along. Rows shift into a serial register that shifts to a single charge amplifier. Charge transfer efficiency must be > 0.99999 per transfer (a 4000-column CCD makes ~12 000 transfers). Advantages: uniformity, very low noise, 100% fill factor; drawbacks: high clock voltages and power, slow serial readout, blooming and smear.
+
+* Picture: three-phase transfer
+\begin{tikzpicture}[scale=0.85]
+\foreach \y/\lab/\w in {0/{$t_1$}/1, -1.6/{$t_2$}/2} {
+  \foreach \i/\g in {0/$\phi_1$,1/$\phi_2$,2/$\phi_3$,3/$\phi_1$,4/$\phi_2$,5/$\phi_3$} \draw[fill=gray!25] (\i*1.1,\y+0.9) rectangle (\i*1.1+0.9,\y+1.15);
+  \node[font=\small,anchor=east] at (-0.2,\y+0.5) {\lab};
+}
+\draw[thick,blue!70!black] (0,0.8)--(0.0,0.8)--(0,0.15)--(0.9,0.15)--(0.9,0.8)--(6.5,0.8);
+\fill[red!50] (0.05,0.15) rectangle (0.85,0.45); \node[font=\scriptsize] at (0.45,0.6) {$Q$};
+\draw[thick,blue!70!black] (0,-0.8)--(0,-1.45)--(2.0,-1.45)--(2.0,-0.8)--(6.5,-0.8);
+\fill[red!50] (0.05,-1.45) rectangle (1.95,-1.3);
+\draw[thick,blue!70!black,dashed] (1.1,0.8)--(1.1,0.15);
+\node[font=\scriptsize,anchor=west] at (6.6,0.5) {$\phi_1$ high};
+\node[font=\scriptsize,anchor=west] at (6.6,-1.1) {$\phi_1,\phi_2$ high: charge spreads};
+\node[font=\scriptsize,anchor=west] at (2.5,-2.0) {then $\phi_1$ low: packet under $\phi_2$, one gate on};
+\end{tikzpicture}
+
+* CMOS active-pixel sensor
+Each pixel holds a pinned photodiode and 3–4 transistors: reset, transfer gate (4T), source follower (in-pixel buffer) and row select; columns share amplifiers and ADCs. Correlated double sampling (read reset level, then signal, subtract) cancels kTC and offset noise: read noise ≈ 1–2 e⁻. Advantages: low power, on-chip logic and ADCs, random access, speed; drawbacks historically fill factor (transistors take area — solved by microlenses and back-side illumination) and rolling-shutter distortion of moving objects (global-shutter pixels store charge). CMOS now dominates phones, cars and most scientific cameras; CCDs survive in niche astronomy and spectroscopy.
+
+\begin{tikzpicture}[scale=0.9,every node/.style={font=\scriptsize}]
+\draw[thick] (0,0) rectangle (1.4,1.0) node[pos=0.5,align=center] {pinned\\photodiode};
+\draw[thick] (2.0,0) rectangle (3.2,1.0) node[pos=0.5,align=center] {transfer\\gate};
+\draw[thick] (3.8,0) rectangle (5.0,1.0) node[pos=0.5,align=center] {floating\\diffusion};
+\draw[thick] (5.6,0) rectangle (6.8,1.0) node[pos=0.5,align=center] {source\\follower};
+\draw[thick] (7.4,0) rectangle (8.6,1.0) node[pos=0.5,align=center] {row\\select};
+\draw[-{Latex}] (1.4,0.5)--(2.0,0.5); \draw[-{Latex}] (3.2,0.5)--(3.8,0.5); \draw[-{Latex}] (5.0,0.5)--(5.6,0.5); \draw[-{Latex}] (6.8,0.5)--(7.4,0.5); \draw[-{Latex}] (8.6,0.5)--(9.3,0.5) node[right]{column};
+\draw[thick] (3.8,1.6) rectangle (5.0,2.2) node[pos=0.5] {reset}; \draw[-{Latex}] (4.4,1.6)--(4.4,1.0);
+\end{tikzpicture}
+
+* Figures of merit
+QE (Si: up to 90% with BSI and AR coating, falls in the blue and beyond 900 nm, [[id:semiconductor-optical-properties][absorption]]); full-well capacity \(N_{sat}\) (≈ 5000 e⁻ for 1 µm phone pixels, \(10^5\) for 10 µm pixels); read noise; dark current (doubles every ≈ 7 K: cooled sensors for astronomy); dynamic range \(20\log(N_{sat}/\sigma_r)\); colour by a Bayer mosaic (RGGB) and demosaicing. At high light the SNR is shot-noise limited, \(\sqrt{N_e}\), maximum \(\sqrt{N_{sat}}\) — larger pixels give cleaner images.
+
+* Worked examples
+1. *Signal*: 3 µm pixel (\(9\times10^{-12}\) m²), irradiance 10 mW/m² at 550 nm: \(9\times10^{-14}\) W → \(2.5\times10^5\) photons/s; QE 0.6, 10 ms exposure: \(N_e=1.5\times10^3\) e⁻; SNR \(=\sqrt{1500}=39\) (31.7 dB); a 3 e⁻ read noise changes it to 38.6.
+2. *Dynamic range*: \(N_{sat}=10^4\), \(\sigma_r=3\) e⁻: DR \(=20\log3333=70.5\) dB; best SNR \(=\sqrt{10^4}=100\) (40 dB).
+3. *Transfer efficiency*: CTE 0.99999 over 12 000 transfers keeps \(0.99999^{12000}=89\%\) of the charge of the farthest pixel; 0.9999 would keep only 30%.
+
+* Engineering applications
+Phone and automotive cameras (CMOS, HDR by multiple exposures), machine vision, astronomy (large cooled CCD and CMOS mosaics), X-ray flat-panel detectors (active-matrix TFT readout of photodiodes under a scintillator), time-of-flight depth sensors, SPAD arrays for LiDAR.
+
+* Exam-style exercise
+A CMOS sensor has 1.4 µm pixels, QE 0.7 at 530 nm, full well 6000 e⁻, read noise 2 e⁻, dark current 5 e⁻/s. (a) Dynamic range. (b) Exposure that fills the well at 0.1 W/m². (c) SNR at 1% of full well, including read and dark noise for a 30 ms exposure.
+** Solution
+(a) \(20\log(6000/2)=69.5\) dB. (b) Pixel power \(0.1\cdot1.96\times10^{-12}=1.96\times10^{-13}\) W → \(5.2\times10^5\) photons/s → \(3.7\times10^5\) e⁻/s: full in 16 ms. (c) \(N_e=60\), dark 0.15 e⁻: \(\mathrm{SNR}=\frac{60}{\sqrt{60+0.15+4}}=7.5\) (17.5 dB); shot noise of the signal still dominates.
+
+* Pitfall
+Pixel SNR is not the "dynamic range": DR compares the largest and smallest signals in one exposure, SNR the signal to its own noise; at full well the SNR (≈ 40 dB) is far below the DR (≈ 70 dB).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Active-pixel_sensor][Active-pixel sensor]]
+- [[https://en.wikipedia.org/wiki/Charge-coupled_device][Charge-coupled device]]

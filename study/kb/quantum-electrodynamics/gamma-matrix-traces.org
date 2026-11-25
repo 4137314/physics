@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       gamma-matrix-traces
+:DOMAIN:   quantum-electrodynamics
+:AREA:     relativistic-wave-equations
+:KIND:     identity
+:REQUIRES: free-dirac-solutions-and-antiparticles
+:SEE:      coulomb-scattering-and-the-mott-formula compton-scattering-and-pair-annihilation
+:ALIASES:  trace theorems, Casimir trick, spin sums, gamma matrix identities, contraction identities
+:END:
+#+title: Trace theorems for gamma matrices
+#+summary: Spin-summed squared amplitudes reduce to traces: \(\Tr1=4\), traces of an odd number of \(\gamma\)'s vanish, \(\Tr(\slashed a\slashed b)=4a\cdot b\), \(\Tr(\slashed a\slashed b\slashed c\slashed d)=4[(a\cdot b)(c\cdot d)-(a\cdot c)(b\cdot d)+(a\cdot d)(b\cdot c)]\), plus contractions such as \(\gamma^\mu\slashed a\gamma_\mu=-2\slashed a\).
+
+* Identities
+\[ \Tr(\gamma^\mu\gamma^\nu)=4g^{\mu\nu},\quad \Tr(\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma)=4(g^{\mu\nu}g^{\rho\sigma}-g^{\mu\rho}g^{\nu\sigma}+g^{\mu\sigma}g^{\nu\rho}),\quad \Tr(\gamma^5\slashed a\slashed b\slashed c\slashed d)=-4i\epsilon_{\mu\nu\rho\sigma}a^\mu b^\nu c^\rho d^\sigma. \]
+Contractions: \(\gamma^\mu\gamma_\mu=4\), \(\gamma^\mu\slashed a\gamma_\mu=-2\slashed a\), \(\gamma^\mu\slashed a\slashed b\gamma_\mu=4a\cdot b\), \(\gamma^\mu\slashed a\slashed b\slashed c\gamma_\mu=-2\slashed c\slashed b\slashed a\). Also \(\slashed a\slashed a=a^2\).
+
+* Proofs
+- Odd number: insert \(1=(\gamma^5)^2\), anticommute one \(\gamma^5\) through all factors (odd number of sign changes) and use cyclicity: \(\Tr X=-\Tr X\).
+- Two: \(\Tr(\slashed a\slashed b)=\tfrac12\Tr\{\slashed a,\slashed b\}=a\cdot b\Tr1=4a\cdot b\).
+- Four: move \(\slashed a\) to the right with \(\slashed a\slashed b=2a\cdot b-\slashed b\slashed a\) three times; cyclicity returns the original trace with a minus sign, so \(2\Tr(\slashed a\slashed b\slashed c\slashed d)=2[(a\cdot b)\Tr(\slashed c\slashed d)-(a\cdot c)\Tr(\slashed b\slashed d)+(a\cdot d)\Tr(\slashed b\slashed c)]\).
+
+* Casimir trick
+\(\sum_{s,s'}|\bar u(p',s')\Gamma u(p,s)|^2=\Tr\left[\Gamma(\slashed p+m)\bar\Gamma(\slashed p'+m)\right]\) with \(\bar\Gamma=\gamma^0\Gamma^\dagger\gamma^0\). Example: \(\Gamma=\gamma^0\): \(\Tr[\gamma^0(\slashed p+m)\gamma^0(\slashed p'+m)]=4(2EE'-p\cdot p'+m^2)\), the core of the [[id:coulomb-scattering-and-the-mott-formula][Mott formula]].
+
+* Worked example
+\(\Tr[\gamma^\mu(\slashed p+m)\gamma^\nu(\slashed p'+m)]=4[p^\mu p'^\nu+p^\nu p'^\mu-g^{\mu\nu}(p\cdot p'-m^2)]\): the lepton tensor \(L^{\mu\nu}\), reused in every process with one electron line.
+
+* Pitfall
+Mass terms survive only with an even number of remaining \(\gamma\)'s: expand \((\slashed p+m)\) products carefully and drop odd terms immediately.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Gamma_matrices#Trace_identities][Gamma matrices: trace identities]]
+- [[https://feyncalc.github.io/][FeynCalc: automatic Dirac algebra]]

@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       density-of-states-and-fermi-dirac
+:DOMAIN:   solid-state
+:AREA:     carriers
+:KIND:     theorem
+:REQUIRES: effective-mass-and-holes identical-particles-and-pauli-principle
+:SEE:      intrinsic-and-doped-semiconductors fock-states heterojunctions-and-quantum-wells
+:ALIASES:  density of states, Fermi-Dirac distribution, Fermi level, effective density of states, Boltzmann approximation, nondegenerate semiconductor, 2D density of states
+:END:
+#+title: Density of states and Fermi–Dirac statistics
+#+summary: Parabolic bands have \(g_c(E)=\frac{1}{2\pi^2}\left(\frac{2m_n^*}{\hbar^2}\right)^{3/2}\sqrt{E-E_c}\); occupation is \(f(E)=1/(1+e^{(E-E_F)/k_BT})\); integrating gives \(n=N_ce^{-(E_c-E_F)/k_BT}\), \(p=N_ve^{-(E_F-E_v)/k_BT}\) with \(N_c=2\left(\frac{2\pi m_n^*k_BT}{h^2}\right)^{3/2}\).
+
+* Density of states (derivation)
+States in a box \(L^3\) with periodic conditions: one \(\mathbf k\) per \((2\pi/L)^3\), two spins. Number with energy \(<E\): \(N=2\frac{\frac43\pi k^3}{(2\pi/L)^3}\), \(k=\sqrt{2m^*(E-E_c)}/\hbar\). Differentiate per volume:
+\[ g_{3D}(E)=\frac{1}{2\pi^2}\left(\frac{2m^*}{\hbar^2}\right)^{3/2}\sqrt{E-E_c},\qquad g_{2D}=\frac{m^*}{\pi\hbar^2}\ \text{(per subband)},\qquad g_{1D}\propto\frac{1}{\sqrt{E-E_n}}. \]
+
+* Fermi–Dirac (derivation)
+Grand-canonical ensemble for a single-particle state that holds 0 or 1 fermion (Pauli): \(\braket n=\frac{e^{-(E-\mu)/k_BT}}{1+e^{-(E-\mu)/k_BT}}=f(E)\), \(\mu=E_F\). For \(E-E_F\gg k_BT\): Boltzmann \(f\approx e^{-(E-E_F)/k_BT}\) (non-degenerate semiconductor).
+
+* Carrier densities
+\(n=\int_{E_c}^\infty g_c(E)f(E)\dd E\). In the Boltzmann limit the Gaussian integral gives
+\[ n=N_c\,e^{-(E_c-E_F)/k_BT},\qquad p=N_v\,e^{-(E_F-E_v)/k_BT},\qquad np=N_cN_ve^{-E_g/k_BT}=n_i^2. \]
+Si at 300 K: \(N_c=2.8\times10^{19}\), \(N_v=1.04\times10^{19}\) cm\(^{-3}\). The *mass-action law* \(np=n_i^2\) does not depend on \(E_F\), hence not on doping.
+
+* Picture
+\begin{tikzpicture}
+\begin{axis}[width=7cm,height=4.2cm,axis lines=left,xlabel={$(E-E_F)/k_BT$},ylabel={$f(E)$},xmin=-8,xmax=8,ymin=0,ymax=1.05]
+\addplot+[no marks,domain=-8:8,samples=100]{1/(1+exp(x))}; \addlegendentry{Fermi--Dirac}
+\addplot+[no marks,domain=1:8,samples=60]{exp(-x)}; \addlegendentry{Boltzmann}
+\end{axis}
+\end{tikzpicture}
+
+* Worked example
+Si with \(E_c-E_F=0.25\) eV at 300 K: \(n=2.8\times10^{19}e^{-9.65}=1.8\times10^{15}\) cm\(^{-3}\), \(p=n_i^2/n=5.6\times10^4\) cm\(^{-3}\). Raising \(T\) to 400 K multiplies \(n_i\) by about 300 (\((4/3)^{3/2}\cdot e^{5.4}\)): diffusion leakage (\(\propto n_i^2\)) doubles every ~5 K and generation leakage (\(\propto n_i\)) every ~10 K.
+
+* Engineering applications
+Temperature dependence of leakage and of the diode voltage (−2 mV/K, used in on-chip thermometers), quantum-well and quantum-dot lasers (step-like 2D DOS gives lower threshold, see [[id:heterojunctions-and-quantum-wells][quantum wells]]), degenerate doping in contacts and tunnel diodes.
+
+* Pitfall
+The Boltzmann formulas fail when \(E_F\) is within \(\sim3k_BT\) of a band edge (heavily doped regions, inversion layers); then use Fermi–Dirac integrals.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Fermi%E2%80%93Dirac_statistics][Fermi–Dirac statistics]]
+- [[https://en.wikipedia.org/wiki/Density_of_states][Density of states]]

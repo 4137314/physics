@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID:       exam-practice-digital-electronics
+:DOMAIN:   revision
+:AREA:     exam-practice
+:KIND:     example
+:REQUIRES: formula-sheet-electronics dram-cell sram-cell pseudo-nmos-logic latches-and-flip-flops
+:SEE:      exam-practice-circuits
+:ALIASES:  digital electronics exercises, CED exam, circuiti elettronici digitali esercizi, MOS exercises, CMOS sizing exercises
+:END:
+#+title: Exam practice: digital electronic circuits (solved)
+#+summary: Ten problems in the format of the written exam (6 points each): NMOS loads with body effect, mirrors, CMOS VTC regions and noise margins, symmetric sizing for a delay target, complex-gate sizing, pseudo-NMOS fan-in, dynamic logic frequency, power, DRAM read and leakage, SRAM read stability.
+
+* Problem 1 — saturated-load inverter with body effect
+\(K'_n=100\) µA/V², \(W/L=5\) both, \(V_{DD}=5\) V, \(V_{TO}=1\) V, \(V_I=3\) V. Find \(V_O\), \(I_D\) for \(\gamma=0\) and for \(\gamma=0.5\sqrt{\mathrm V}\), \(2\phi_F=0.6\) V.
+** Solution
+\(\gamma=0\): load saturated, switch triode: \(0.5(2-V_O/2)V_O=0.25(4-V_O)^2\Rightarrow V_O^2-6V_O+8=0\Rightarrow V_O=2\) V, \(I_D=0.5(2-1)\cdot2=1\) mA. With body effect: \(V_{TNL}=1+0.5(\sqrt{V_O+0.6}-0.775)\); solving numerically \(V_O\approx1.65\) V (\(V_{TNL}=1.36\) V), \(I_D=0.5(2-0.83)\cdot1.65\approx0.97\) mA. The load is weakened, the output lower.
+
+* Problem 2 — current mirror with saturated load (exam July 2024)
+See [[id:nmos-inverters][NMOS inverters]]: \(V_{GS1}=1.6\) V, \(I_{D2}=200\) µA, \(V_{GS3}=3.43\) V, \(V_{OUT}=1.37\) V, \(M_2\) saturated, \(P=2\) mW.
+
+* Problem 3 — CMOS VTC regions and noise margins
+Given \(V_{IL}=2.8\), \(V_{OH}=4.6\), \(V_{IH}=3.9\), \(V_{OL}=0.2\) V (\(V_{DD}=5\)): noise margins and regions at \(v_I=3.4\) V, \(v_O=2.2\) V.
+** Solution
+\(NM_H=0.7\) V, \(NM_L=2.6\) V. NMOS triode, PMOS saturated (see [[id:inverter-static-characteristics][static characteristics]]).
+
+* Problem 4 — symmetric CMOS inverter for a delay target
+\(V_{DD}=3\) V, \(V_{TN}=-V_{TP}=0.5\) V, \(K'_n=120\), \(K'_p=50\) µA/V², \(C_L=200\) fF, \(\tau_P=150\) ps. Size both devices.
+** Solution
+\(t_{PHL}=1.2R_{on}C\Rightarrow R_{on,n}=\frac{150}{1.2\cdot0.2}\) Ω \(=625\) Ω → \(K_n=\frac{1}{625\cdot2.5}=640\) µA/V² → \((W/L)_n=5.3\); \((W/L)_p=5.3\cdot\frac{120}{50}=12.8\).
+
+* Problem 5 — complex gate sizing
+\(Y=\overline{A(B+C)}\) with reference \((W/L)_n=2\), \((W/L)_p=5\).
+** Solution
+Pull-down: A in series with (B ∥ C) → worst path 2 in series: all NMOS \(4/1\). Pull-up (dual): A ∥ (B series C): A alone \(5/1\), B and C \(10/1\).
+
+* Problem 6 — pseudo-NMOS NAND fan-in (exam)
+Result: \(I_p=25.35\) µA, \((W/L)_{eq}=1/5.8\), maximum 5 inputs ([[id:pseudo-nmos-logic][pseudo-NMOS]]). Follow-up: static power with output low \(=1.8\cdot25.35\) µW \(=46\) µW.
+
+* Problem 7 — dynamic gate maximum frequency (exam)
+Result: NMOS each \(1.88/1\), \(t_r=t_{PHL}=3.74\) ns, \(f_{max}=134\) MHz ([[id:dynamic-logic-and-pass-transistors][dynamic logic]]).
+
+* Problem 8 — CMOS NAND3 vs dynamic NAND3
+All transistors equal, 20 fF drain capacitance each. Which is slower?
+** Solution
+Static NAND3: output node sees 3 PMOS drains + 1 NMOS drain = 80 fF; pull-down 3 in series (\(3R_n\)): \(t_{PHL}\propto3R_n\cdot80\) fF plus internal nodes. Dynamic NAND3: output sees 1 PMOS + 1 NMOS drain = 40 fF, but pull-down has 4 in series (3 + foot): \(4R_n\cdot40\) fF = 160 vs 240 (×\(R_n\) fF): the dynamic gate is faster and smaller (5 vs 6 transistors), at the price of clocking, charge sharing and precharge power.
+
+* Problem 9 — DRAM (exam July 2024)
+Results: \(V_{S,max}=0.8\) V, \(V_{S,min}=0.62\) V, \(I_{leak,max}=18\) pA ([[id:dram-cell][DRAM cell]]).
+
+* Problem 10 — SRAM read stability
+\(V_{DD}=1\) V, \(V_{TN}=0.35\) V. Minimum cell ratio so that the "0" node rises at most to 0.15 V during read.
+** Solution
+\(\frac{K_{PD}}{K_A}=\frac{(1-0.15-0.35)^2/2}{(1-0.35-0.075)\cdot0.15}=\frac{0.125}{0.0863}=1.45\) ([[id:sram-cell][SRAM]]).

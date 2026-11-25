@@ -1,0 +1,42 @@
+:PROPERTIES:
+:ID:       lti-systems-and-convolution
+:DOMAIN:   circuits
+:AREA:     lti-systems
+:KIND:     theorem
+:REQUIRES: kirchhoff-laws-and-network-theorems
+:SEE:      laplace-transform-and-transients fourier-series-and-transform green-functions-and-feynman-propagator
+:ALIASES:  linear time-invariant system, impulse response, step response, convolution, causality, BIBO stability, RC circuit, RL circuit, RLC circuit, time constant, damping, natural response, forced response
+:END:
+#+title: LTI systems, impulse response and first/second-order circuits
+#+summary: A linear time-invariant system is fully characterised by its impulse response: \(y(t)=\int h(\tau)x(t-\tau)\dd\tau=(h*x)(t)\); RC/RL circuits are first order (\(h=\frac1\tau e^{-t/\tau}u(t)\), \(\tau=RC\) or \(L/R\)), RLC circuits second order with \(\omega_0=1/\sqrt{LC}\) and damping \(\zeta=\frac R2\sqrt{C/L}\) (series).
+
+* Theorem
+Write \(x(t)=\int x(\tau)\delta(t-\tau)\dd\tau\). Linearity lets the response be the same integral of responses to impulses; time invariance makes the response to \(\delta(t-\tau)\) equal to \(h(t-\tau)\). Hence \(y=h*x\). Causal: \(h(t)=0\) for \(t<0\). BIBO stable iff \(\int|h|<\infty\). Exponentials are eigenfunctions: \(e^{st}\to H(s)e^{st}\), \(H(s)=\int h(t)e^{-st}\dd t\).
+
+* First-order circuits
+RC driven by \(v_s\): \(RC\dot v_C+v_C=v_s\). Step of amplitude \(V\): \(v_C(t)=V(1-e^{-t/RC})\). General rule: \(x(t)=x_\infty+(x_0-x_\infty)e^{-t/\tau}\) — find initial value, final value and \(\tau=R_{th}C\) (or \(L/R_{th}\)). 10–90% rise time \(t_r=2.2\tau\); time to 50% \(=0.69\tau\) — the factors of [[id:cmos-propagation-delay][gate delay]].
+
+* Second-order circuits
+Series RLC: \(\ddot v_C+2\zeta\omega_0\dot v_C+\omega_0^2v_C=\omega_0^2v_s\). Roots \(s=-\zeta\omega_0\pm\omega_0\sqrt{\zeta^2-1}\): overdamped (\(\zeta>1\)), critically damped (\(\zeta=1\), fastest without overshoot), underdamped (\(\zeta<1\), oscillation at \(\omega_d=\omega_0\sqrt{1-\zeta^2}\), overshoot \(e^{-\pi\zeta/\sqrt{1-\zeta^2}}\)). \(Q=1/2\zeta\).
+
+* Picture
+\begin{tikzpicture}
+\begin{axis}[width=7.5cm,height=4.3cm,axis lines=left,xlabel={$\omega_0t$},ylabel={$v_C/V$},xmin=0,xmax=12,ymin=0,ymax=1.6]
+\addplot+[no marks,domain=0:12,samples=200]{1-exp(-0.2*x)*(cos(deg(sqrt(1-0.04)*x))+0.2/sqrt(0.96)*sin(deg(sqrt(0.96)*x)))}; \addlegendentry{$\zeta=0.2$}
+\addplot+[no marks,domain=0:12,samples=200]{1-exp(-x)*(1+x)}; \addlegendentry{$\zeta=1$}
+\addplot+[no marks,domain=0:12,samples=200]{1-exp(-x/1)}; \addlegendentry{first order}
+\end{axis}
+\end{tikzpicture}
+
+* Worked example
+\(R=50\) Ω, \(L=1\) µH, \(C=1\) nF: \(\omega_0=3.16\times10^7\) rad/s (5 MHz), \(\zeta=\frac{50}{2}\sqrt{10^{-9}/10^{-6}}=0.79\): slightly underdamped, overshoot \(e^{-\pi0.79/0.61}=1.7\%\). Halving \(R\) gives \(\zeta=0.4\), overshoot 25% — ringing on a PCB power rail.
+
+* Engineering applications
+Timing circuits, debouncing, power-supply decoupling and resonance, interconnect delay (Elmore), control systems (second-order step specs), signal filtering by convolution (FIR filters in DSP).
+
+* Pitfall
+Capacitor voltage and inductor current are continuous across a switching instant (finite energy); their derivatives are not. Initial conditions must use \(v_C(0^-)\) and \(i_L(0^-)\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Linear_time-invariant_system][Linear time-invariant system]]
+- [[https://en.wikipedia.org/wiki/RLC_circuit][RLC circuit]]

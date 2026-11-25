@@ -1,0 +1,33 @@
+:PROPERTIES:
+:ID:       sram-cell
+:DOMAIN:   digital-electronics
+:AREA:     memories
+:KIND:     model
+:REQUIRES: latches-and-flip-flops
+:SEE:      dram-cell cmos-power-dissipation
+:ALIASES:  SRAM, 6T cell, static RAM, cell ratio, pull-up ratio, read stability, write ability, static noise margin, butterfly curve, bit line, word line, sense amplifier, precharge
+:END:
+#+title: The 6T SRAM cell
+#+summary: Two cross-coupled inverters store a bit; two NMOS access transistors connect the nodes to bit lines when the word line is high; reading must not flip the cell (pull-down stronger than access: cell ratio \(\beta=K_{PD}/K_{A}\gtrsim1.2\)–2) while writing must overpower the pull-up (access stronger than pull-up: \(K_A/K_{PU}\gtrsim1.5\)).
+
+* Operation
+- *Hold*: WL = 0, the latch keeps the data (static: no refresh) with only leakage power.
+- *Read*: BL and BL̄ precharged to \(V_{DD}\); WL = 1; the side storing 0 discharges its bit line through access + pull-down. The node storing 0 rises to \(\Delta V\); it must stay below the trip point of the other inverter. A sense amplifier detects ~100 mV of bit-line difference.
+- *Write*: drive BL = 0 on the side storing 1; the access transistor must pull that node below the trip point against the PMOS pull-up.
+
+* Read stability (derivation)
+During read the node at 0 (voltage \(V\)) sees access transistor saturated (\(V_{GS}=V_{DD}-V\), \(V_{DS}=V_{DD}-V\)) and pull-down in triode:
+\[ \frac{K_A}{2}(V_{DD}-V-V_{TN})^2=K_{PD}\left(V_{DD}-V_{TN}-\frac V2\right)V. \]
+Requiring \(V<V_{TN}\) (so the other inverter does not switch) gives the minimum cell ratio \(K_{PD}/K_A\).
+
+* Worked example
+\(V_{DD}=1.2\) V, \(V_{TN}=0.4\) V. To keep the read disturbance at \(V=0.1\) V the cell ratio must be \(\frac{K_{PD}}{K_A}=\frac{(1.2-0.1-0.4)^2/2}{(1.2-0.4-0.05)\cdot0.1}=\frac{0.245}{0.075}=3.3\); allowing \(V=0.3\) V (still below \(V_{TN}\)) needs only \(\frac{0.5^2/2}{0.65\cdot0.3}=0.64\). The required ratio falls quickly with the tolerated bump; real designs use \(\beta\approx1.5\)–2 to keep margin against \(V_T\) variability.
+
+* Engineering applications
+Caches and register files in every processor (most of the transistors of a modern CPU), FPGA configuration memory, SRAM-based compute-in-memory; leakage and stability at low \(V_{DD}\) limit voltage scaling.
+
+* Pitfall
+Read and write requirements conflict (strong access helps write, hurts read); variability (random \(V_T\) mismatch) makes the worst cell among billions decide the design.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Static_random-access_memory][Static random-access memory]]

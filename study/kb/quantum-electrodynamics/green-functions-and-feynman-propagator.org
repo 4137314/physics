@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       green-functions-and-feynman-propagator
+:DOMAIN:   quantum-electrodynamics
+:AREA:     scattering-theory
+:KIND:     theorem
+:REQUIRES: propagator-and-path-integral free-dirac-solutions-and-antiparticles
+:SEE:      s-matrix-and-cross-sections feynman-rules-of-qed
+:ALIASES:  Feynman propagator, electron propagator, photon propagator, i epsilon prescription, retarded Green's function, Stueckelberg-Feynman boundary conditions
+:END:
+#+title: Green's functions and the Feynman propagator
+#+summary: The Feynman propagator solves \((i\slashed\partial-m)S_F(x-y)=\delta^4(x-y)\) with the boundary condition that positive energies propagate forward and negative energies backward in time: \(S_F(p)=\frac{\slashed p+m}{p^2-m^2+i\epsilon}\); for photons \(D_F^{\mu\nu}(q)=\frac{-g^{\mu\nu}}{q^2+i\epsilon}\) in Feynman gauge.
+
+* Non-relativistic warm-up
+\(G^+(x,t;x',t')=-i\theta(t-t')\bra xe^{-iH(t-t')}\ket{x'}\) satisfies \((i\partial_t-H)G^+=\delta\delta\) and propagates the wave forward (Huygens). In energy space \(G^+(E)=\frac{1}{E-H+i\epsilon}\): the \(+i\epsilon\) picks retarded (causal) behaviour. Iterating \(\psi=\phi+\int G^+V\psi\) gives the Born series of [[id:scattering-and-born-approximation][scattering theory]].
+
+* Relativistic propagator (derivation)
+Fourier transform: \(S_F(x)=\int\frac{\dd^4p}{(2\pi)^4}e^{-ip\cdot x}\frac{\slashed p+m}{p^2-m^2+i\epsilon}\). Poles at \(p^0=\pm(E_p-i\epsilon)\). For \(t>0\) close the \(p^0\) contour below: only the positive-energy pole, giving \(-i\sum_s u\bar u\,e^{-ip\cdot x}/2E\); for \(t<0\) close above: negative energies, \(+i\sum v\bar v\,e^{+ip\cdot x}/2E\). Hence
+\[ S_F(x'-x)=-i\theta(t'-t)\sum_{E>0}\psi_E(x')\bar\psi_E(x)+i\theta(t-t')\sum_{E<0}\psi_E(x')\bar\psi_E(x): \]
+electrons forward, positrons (negative energy backward) — Feynman's boundary conditions.
+
+* Photon propagator
+\(\Box A^\mu=j^\mu\) in Lorenz gauge: \(D_F^{\mu\nu}(q)=\frac{-g^{\mu\nu}}{q^2+i\epsilon}\). Other gauges add terms \(\propto q^\mu q^\nu\) that drop out of physical amplitudes by current conservation (\(q_\mu j^\mu=0\)).
+
+* Worked example
+Static limit: exchange of a photon between two charges, \(q^0=0\): \(\frac{e^2}{\mathbf q^2}\). Its 3D Fourier transform is \(\frac{e^2}{4\pi r}\) — the Coulomb potential emerges from the propagator. A massive exchange \(\frac{1}{\mathbf q^2+\mu^2}\) gives the Yukawa potential \(e^{-\mu r}/r\) (range \(1/\mu\)).
+
+* Engineering applications
+Green's functions are the universal tool of linear response: impedance and transfer functions in [[id:laplace-transform-and-transients][circuits]], the dyadic Green's function of antennas, non-equilibrium Green's functions (NEGF) for nanoscale transistor simulation.
+
+* Pitfall
+The \(i\epsilon\) is not a technicality: choosing \(-i\epsilon\) gives the advanced propagator and violates causality; choosing the retarded one for both poles loses antiparticles.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Propagator][Propagator]]
+- [[https://en.wikipedia.org/wiki/Green%27s_function][Green's function]]

@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       dirac-equation
+:DOMAIN:   quantum-electrodynamics
+:AREA:     relativistic-wave-equations
+:KIND:     theorem
+:REQUIRES: klein-gordon-equation angular-momentum-algebra
+:SEE:      fine-structure-and-zeeman-effect group-representations-and-spin anomalous-magnetic-moment
+:ALIASES:  Dirac equation, gamma matrices, Clifford algebra, Dirac current, spinor, g=2, Pauli equation, Dirac representation, Foldy-Wouthuysen
+:END:
+#+title: The Dirac equation
+#+summary: Linearising \(E^2=p^2+m^2\) requires \(4\times4\) matrices with \(\{\gamma^\mu,\gamma^\nu\}=2g^{\mu\nu}\): \((i\gamma^\mu\partial_\mu-m)\psi=0\); its current \(\bar\psi\gamma^\mu\psi\) has positive density, spin ½ appears automatically, and the non-relativistic limit gives the Pauli equation with \(g=2\).
+
+* Derivation
+Seek \(i\partial_t\psi=(\boldsymbol\alpha\cdot\mathbf p+\beta m)\psi\) whose square is KG: requires \(\alpha_i^2=\beta^2=1\), \(\{\alpha_i,\alpha_j\}=2\delta_{ij}\), \(\{\alpha_i,\beta\}=0\). Smallest solution: \(4\times4\). With \(\gamma^0=\beta\), \(\gamma^i=\beta\alpha_i\):
+\[ (i\gamma^\mu\partial_\mu-m)\psi=0,\qquad \{\gamma^\mu,\gamma^\nu\}=2g^{\mu\nu}. \]
+Dirac representation \(\gamma^0=\begin{pmatrix}1&0\\0&-1\end{pmatrix}\), \(\gamma^i=\begin{pmatrix}0&\sigma_i\\-\sigma_i&0\end{pmatrix}\). Notation \(\slashed{a}=\gamma^\mu a_\mu\), \(\bar\psi=\psi^\dagger\gamma^0\), \(\gamma^5=i\gamma^0\gamma^1\gamma^2\gamma^3\).
+
+* Current and covariance
+\(j^\mu=\bar\psi\gamma^\mu\psi\), \(\partial_\mu j^\mu=0\), \(j^0=\psi^\dagger\psi\ge0\). Under a Lorentz transformation \(\psi'(x')=S(\Lambda)\psi(x)\) with \(S=e^{-\frac i4\sigma_{\mu\nu}\omega^{\mu\nu}}\), \(\sigma_{\mu\nu}=\frac i2[\gamma_\mu,\gamma_\nu]\): a rotation by \(2\pi\) gives \(S=-1\) (spinor).
+
+* Non-relativistic limit and g = 2
+With \(\pi=\mathbf p-e\mathbf A\) and \(\psi=e^{-imt}(\varphi,\chi)\): \(\chi\approx\frac{\boldsymbol\sigma\cdot\boldsymbol\pi}{2m}\varphi\), and using \((\boldsymbol\sigma\cdot\boldsymbol\pi)^2=\boldsymbol\pi^2-e\boldsymbol\sigma\cdot\mathbf B\):
+\[ i\partial_t\varphi=\left[\frac{\boldsymbol\pi^2}{2m}-\frac{e}{2m}\,2\,\mathbf S\cdot\mathbf B+e\phi\right]\varphi: \]
+the Pauli equation with \(g=2\). The next order (Foldy–Wouthuysen) yields spin–orbit with the Thomas factor and the Darwin term: the [[id:fine-structure-and-zeeman-effect][fine structure]].
+
+* Coulomb problem
+Exact levels \(E_{nj}=m\left[1+\frac{(Z\alpha)^2}{\left(n-j-\frac12+\sqrt{(j+\frac12)^2-(Z\alpha)^2}\right)^2}\right]^{-1/2}\), degenerate in \(l\) at fixed \(j\). For \(Z\alpha>1\) the \(1s_{1/2}\) solution breaks down: [[id:strong-field-qed-and-pair-creation][strong-field QED]].
+
+* Worked example
+Free electron at rest: \(\gamma^0m\psi=m\psi\) gives 2 positive-energy (upper) and 2 negative-energy (lower) components — spin up/down for particle and antiparticle. Hydrogen \(1s\): \(E=m\sqrt{1-\alpha^2}\approx m-\frac{m\alpha^2}2-\frac{m\alpha^4}8\): \(-13.6\) eV and a \(-0.18\) meV relativistic shift.
+
+* Engineering applications
+Spin–orbit coupling in semiconductors (Rashba/Dresselhaus effects for spintronics), relativistic corrections to heavy-atom chemistry (gold's colour, lead–acid battery voltage), Dirac-like electrons in graphene (massless 2D Dirac equation with \(v_F\approx c/300\)).
+
+* Pitfall
+The Dirac "wave function" cannot be a one-particle state at high energy (Zitterbewegung, Klein paradox): negative-energy solutions are reinterpreted as positrons.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Dirac_equation][Dirac equation]]
+- [[https://en.wikipedia.org/wiki/Gamma_matrices][Gamma matrices]]

@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       switching-converters
+:DOMAIN:   power-electronics
+:AREA:     converters
+:KIND:     method
+:REQUIRES: power-mosfets-and-igbts lti-systems-and-convolution
+:SEE:      transformer wide-bandgap-power-devices power-diodes
+:ALIASES:  buck converter, boost converter, duty cycle, volt-second balance, charge balance, inductor ripple, output ripple, continuous conduction mode, switching losses, conduction losses, efficiency, PWM, inverter, half bridge
+:END:
+#+title: Switching converters: buck, boost and losses
+#+summary: A switch, a diode (or second switch) and an LC filter convert DC voltages with ideal efficiency 1: in steady state inductor volt-second balance gives \(V_o=DV_{in}\) (buck) and \(V_o=\frac{V_{in}}{1-D}\) (boost); ripple \(\Delta i_L=\frac{(V_{in}-V_o)D}{Lf_s}\) (buck); losses split into conduction (\(I^2R\)), switching (\(\tfrac12VI(t_r+t_f)f_s\)) and reverse recovery.
+
+* Method (volt-second balance)
+Steady state: average inductor voltage over a period is zero (otherwise \(i_L\) would grow without bound); average capacitor current is zero.
+- *Buck*: switch on \((V_{in}-V_o)DT\); off \(-V_o(1-D)T\) → \(V_o=DV_{in}\).
+- *Boost*: on \(V_{in}DT\); off \((V_{in}-V_o)(1-D)T\) → \(V_o=V_{in}/(1-D)\).
+Continuous conduction if \(I_{load}>\Delta i_L/2\). Output ripple (buck) \(\Delta v=\frac{\Delta i_L}{8Cf_s}\).
+
+* Picture
+\begin{tikzpicture}[scale=0.85, transform shape]
+\draw (0,0) to[V, l=$V_{in}$] (0,2) to[nos, l=$S$] (2,2) to[L, l=$L$] (4,2) -- (5,2) to[R, l=$R$] (5,0) -- (0,0);
+\draw (2,0) to[D] (2,2); \draw (4,2) to[C, l_=$C$] (4,0);
+\end{tikzpicture}
+Buck converter: switch, freewheeling diode, LC filter.
+
+* Worked example
+Buck 12 V → 3.3 V, 10 A, \(f_s=500\) kHz: \(D=0.275\); choose \(\Delta i_L=3\) A → \(L=\frac{(12-3.3)\cdot0.275}{3\cdot5\times10^5}=1.6\) µH; \(C\) for 10 mV ripple: \(\frac{3}{8\cdot0.01\cdot5\times10^5}=75\) µF. Losses with a 5 mΩ switch and 10 ns edges: conduction \(I^2RD=100\cdot0.005\cdot0.275=0.14\) W; switching \(\tfrac12\cdot12\cdot10\cdot20\text{ ns}\cdot5\times10^5=0.6\) W — switching dominates, hence GaN at high \(f_s\).
+
+* Engineering applications
+CPU/GPU voltage regulators (multiphase bucks), PFC boost stages, battery chargers, LED drivers, isolated converters (flyback/forward with a [[id:transformer][transformer]]), motor inverters (three half-bridges with PWM).
+
+* Pitfall
+Ideal formulas ignore the diode drop and resistances: at low \(V_o\) a diode loses \(V_F(1-D)I\) (≈ 0.4·0.725·10 ≈ 3 W in the example) — synchronous rectification with a MOSFET is essential.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Buck_converter][Buck converter]]
+- [[https://en.wikipedia.org/wiki/Boost_converter][Boost converter]]

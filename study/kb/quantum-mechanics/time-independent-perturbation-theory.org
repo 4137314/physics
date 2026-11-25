@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       time-independent-perturbation-theory
+:DOMAIN:   quantum-mechanics
+:AREA:     approximation-methods
+:KIND:     method
+:REQUIRES: observables-and-spectral-decomposition quantum-harmonic-oscillator
+:SEE:      fine-structure-and-zeeman-effect variational-method
+:ALIASES:  Rayleigh-Schrodinger perturbation theory, degenerate perturbation theory, second-order energy, Stark effect, level repulsion
+:END:
+#+title: Time-independent perturbation theory
+#+summary: For \(H=H_0+\lambda V\), \(E_n=E_n^{(0)}+V_{nn}+\sum_{k\neq n}\frac{|V_{kn}|^2}{E_n^{(0)}-E_k^{(0)}}+\dots\) and \(\ket n=\ket{n^0}+\sum_{k\neq n}\frac{V_{kn}}{E_n^{(0)}-E_k^{(0)}}\ket{k^0}\); with degeneracy, first diagonalise \(V\) inside the degenerate subspace.
+
+* Method (non-degenerate)
+Expand \(\ket n=\ket{n^0}+\lambda\ket{n^1}+\dots\), \(E_n=E^{(0)}_n+\lambda\Delta^{(1)}+\lambda^2\Delta^{(2)}\); impose \((H_0+\lambda V)\ket n=E_n\ket n\) order by order, with \(\braket{n^0|n}=1\).
+- Order 1, project on \(\bra{n^0}\): \(\Delta^{(1)}=V_{nn}=\bra{n^0}V\ket{n^0}\).
+- Order 1, project on \(\bra{k^0}\): \(\braket{k^0|n^1}=\frac{V_{kn}}{E_n^0-E_k^0}\).
+- Order 2: \(\Delta^{(2)}=\sum_{k\neq n}\frac{|V_{kn}|^2}{E^0_n-E^0_k}\).
+Validity: \(|V_{kn}|\ll|E^0_n-E^0_k|\). The ground-state second-order shift is always negative: levels repel.
+
+* Degenerate case
+If \(E^0\) is \(g\)-fold degenerate, the denominators vanish. Diagonalise the \(g\times g\) matrix \(\bra{m^0}V\ket{m'^0}\) in the degenerate subspace: its eigenvalues are the first-order shifts and its eigenvectors the correct zeroth-order states.
+
+* Worked example
+Two-level system \(H=\begin{pmatrix}E_1&\Delta\\\Delta&E_2\end{pmatrix}\): exact \(E_\pm=\frac{E_1+E_2}2\pm\sqrt{\left(\frac{E_1-E_2}{2}\right)^2+\Delta^2}\). Expanding for \(\Delta\ll|E_1-E_2|\): \(E_1-\Delta^2/(E_2-E_1)\), the second-order formula. At \(E_1=E_2\) (degenerate): \(E\pm\Delta\), the degenerate-theory result — an *avoided crossing*.
+
+* Quadratic Stark effect
+Ground state of hydrogen in \(\mathbf E=E\hat z\), \(V=eEz\): first order vanishes by parity; second order \(\Delta=-\tfrac12\alpha_pE^2\) with polarisability \(\alpha_p=\frac92\cdot4\pi\epsilon_0a_0^3\). The \(n=2\) level is degenerate: \(2s\) and \(2p_0\) mix and split linearly, \(\pm3eEa_0\).
+
+* Engineering applications
+Quantum-confined Stark effect in quantum-well electro-absorption modulators (fast optical modulators for telecom); band-structure \(\mathbf k\cdot\mathbf p\) theory giving effective masses ([[id:effective-mass-and-holes][effective mass]]); dispersive qubit read-out (second-order shift \(g^2/\Delta\)).
+
+* Pitfall
+Using non-degenerate formulas on degenerate levels gives infinities or wrong states; always check degeneracy first.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Perturbation_theory_(quantum_mechanics)][Perturbation theory (quantum mechanics)]]

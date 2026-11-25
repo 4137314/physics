@@ -1,0 +1,36 @@
+:PROPERTIES:
+:ID:       four-vectors-and-lorentz-transformations
+:DOMAIN:   quantum-electrodynamics
+:AREA:     relativistic-wave-equations
+:KIND:     definition
+:REQUIRES: quantum-electrodynamics
+:SEE:      maxwell-equations group-representations-and-spin
+:ALIASES:  Minkowski metric, natural units, four-momentum, Lorentz boost, Mandelstam variables, covariant notation, invariant mass
+:END:
+#+title: Four-vectors, natural units and Mandelstam variables
+#+summary: With metric \(g=\mathrm{diag}(1,-1,-1,-1)\) and \(\hbar=c=1\), \(x^\mu=(t,\mathbf x)\), \(p^\mu=(E,\mathbf p)\), \(p^2=E^2-\mathbf p^2=m^2\), \(\partial_\mu=(\partial_t,\nabla)\), \(p_\mu\to i\partial_\mu\); for \(2\to2\) processes \(s=(p_1+p_2)^2\), \(t=(p_1-p_3)^2\), \(u=(p_1-p_4)^2\) with \(s+t+u=\sum m_i^2\).
+
+* Definitions
+- Contravariant \(a^\mu\), covariant \(a_\mu=g_{\mu\nu}a^\nu\); scalar product \(a\cdot b=a^0b^0-\mathbf a\cdot\mathbf b\), invariant under \(\Lambda\) with \(\Lambda^Tg\Lambda=g\).
+- Boost along \(x\): \(t'=\gamma(t-\beta x)\), \(x'=\gamma(x-\beta t)\), \(\gamma=1/\sqrt{1-\beta^2}\).
+- Electromagnetism: \(A^\mu=(\phi,\mathbf A)\), \(F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu\), \(\partial_\mu F^{\mu\nu}=j^\nu\) (Heaviside–Lorentz units, \(\alpha=e^2/4\pi\)), Lorenz gauge \(\partial_\mu A^\mu=0\).
+- Natural units: \(\hbar c=197.327\) MeV fm, \(m_ec^2=0.511\) MeV, \(1\,\mathrm{GeV}^{-2}=0.3894\) mb.
+
+* Mandelstam variables
+For \(p_1+p_2\to p_3+p_4\): \(s\) = squared CM energy, \(t\) = squared momentum transfer (\(\le0\) in elastic scattering), \(u\) crossed. In the CM frame for massless particles: \(t=-\frac s2(1-\cos\theta)\), \(u=-\frac s2(1+\cos\theta)\).
+
+* Derivation: threshold energy
+Fixed-target production of \(e^+e^-\) by a photon on an electron, \(\gamma e\to e\,e^+e^-\): invariance of \(s\): \(s=(E_\gamma+m)^2-E_\gamma^2=m^2+2mE_\gamma\ge(3m)^2\Rightarrow E_\gamma\ge4m=2.04\) MeV. On a nucleus of mass \(M\gg m\) the threshold is \(\approx2m=1.022\) MeV.
+
+* Worked example
+Compton kinematics from invariants: \(k+p=k'+p'\Rightarrow(p+k-k')^2=m^2\Rightarrow m(\omega-\omega')=\omega\omega'(1-\cos\theta)\), i.e. \(\lambda'-\lambda=\frac{h}{mc}(1-\cos\theta)\), Compton wavelength 2.43 pm.
+
+* Engineering applications
+Collider energy budgets, relativistic Doppler in GPS and in radar, inverse-Compton X-ray sources, kinematics of PET (511 keV back-to-back photons).
+
+* Pitfall
+Sign conventions: Greiner and Bjorken–Drell use \((+,-,-,-)\); some texts use \((-,+,+,+)\), which flips the sign of \(p^2\) and of \(t\). Always state the metric.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Mandelstam_variables][Mandelstam variables]]
+- [[https://en.wikipedia.org/wiki/Four-vector][Four-vector]]

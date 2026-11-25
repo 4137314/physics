@@ -1,0 +1,74 @@
+:PROPERTIES:
+:ID:       fiber-optic-sensors
+:DOMAIN:   optoelectronics
+:AREA:     fibers
+:KIND:     model
+:REQUIRES: fiber-dispersion-and-attenuation interference-and-fabry-perot fiber-couplers
+:SEE:      bragg-gratings fiber-scattering-and-otdr thin-film-optics-and-coatings
+:ALIASES:  fiber Bragg grating sensor, FBG sensor, strain sensor, temperature sensor, photoelastic coefficient, Fabry-Perot fiber sensor, fiber optic gyroscope, FOG, Sagnac effect, ring laser gyroscope, rotation sensor, optical filter, Bragg wavelength
+:END:
+#+title: Fibre-optic sensors: Bragg gratings, Fabry–Perot sensors and gyroscopes
+#+summary: A fibre Bragg grating reflects \(\lambda_B=2\bar n\Lambda\) with peak reflectance \(\tanh^2(\kappa L)\), \(\kappa=\pi\Delta n/\lambda_B\); strain and temperature shift it, \(\frac{\delta\lambda_B}{\lambda_B}=(1-p_e)\epsilon+(\alpha_\Lambda+\xi)\delta T\) (≈ 1.2 pm/µε and ≈ 11 pm/K at 1550 nm); a fibre gyroscope measures rotation through the Sagnac phase \(\Delta\phi=\frac{4\pi LR}{\lambda c}\Omega\) between counter-propagating beams in a coil.
+
+* Fibre Bragg grating
+UV interference writes a periodic index change \(\Delta n\) with period \(\Lambda\) into a germanium-doped core. Each period reflects weakly; at \(\lambda_B=2\bar n\Lambda\) (first order) all reflections are in phase — the fibre version of a [[id:thin-film-optics-and-coatings][dielectric mirror]] ([[id:bragg-gratings][coupled-mode theory]]). Peak reflectance \(R=\tanh^2\kappa L\); bandwidth between the first zeros \(\Delta\lambda_0=\frac{\lambda_B^2}{\pi\bar nL}\sqrt{(\kappa L)^2+\pi^2}\): weak gratings (\(\kappa L\ll\pi\)) are narrow, \(\approx\lambda_B^2/\bar nL\); strong ones saturate at \(\approx\lambda_B^2\kappa/\pi\bar n\).
+
+* Picture: grating, reflected and transmitted spectra
+\begin{tikzpicture}[scale=0.95]
+\fill[gray!15] (0,0) rectangle (4.5,0.8);
+\foreach \x in {1.2,1.4,...,3.3} \fill[blue!40] (\x,0.2) rectangle (\x+0.08,0.6);
+\draw[-{Latex},thick] (-1.2,0.4)--(0,0.4) node[pos=0,left,font=\scriptsize]{broadband};
+\draw[-{Latex},thick] (4.5,0.4)--(5.6,0.4);
+\node[font=\scriptsize] at (2.3,1.05) {period $\Lambda$};
+\begin{scope}[shift={(-1.9,-2.2)}]
+\draw[-{Latex}] (0,0)--(2.6,0) node[right,font=\scriptsize]{$\lambda$}; \draw[thick,red!70!black] (0,0.05)--(1.05,0.05)--(1.15,1.2)--(1.45,1.2)--(1.55,0.05)--(2.5,0.05);
+\node[font=\scriptsize] at (1.3,1.45) {reflected};
+\end{scope}
+\begin{scope}[shift={(5.0,-2.2)}]
+\draw[-{Latex}] (0,0)--(2.6,0) node[right,font=\scriptsize]{$\lambda$}; \draw[thick,blue!70!black] (0,1.2)--(1.05,1.2)--(1.15,0.05)--(1.45,0.05)--(1.55,1.2)--(2.5,1.2);
+\node[font=\scriptsize] at (1.3,1.45) {transmitted};
+\end{scope}
+\draw[-{Latex},dashed] (0,0.2)--(-0.6,-0.8);
+\draw[-{Latex},dashed] (5.2,0.2)--(6.2,-0.8);
+\end{tikzpicture}
+
+* Sensing with FBGs
+Strain stretches \(\Lambda\) and lowers \(\bar n\) through the photoelastic effect: \(\frac{\delta\lambda_B}{\lambda_B}=(1-p_e)\epsilon\), \(p_e\approx0.22\) in silica. Temperature acts through thermal expansion \(\alpha_\Lambda\approx0.55\times10^{-6}\)/K and the thermo-optic coefficient \(\xi\approx6.7\times10^{-6}\)/K. Many gratings at different \(\lambda_B\) on one fibre are read by one broadband source and a spectrometer (wavelength multiplexing): quasi-distributed sensing of bridges, wings, pipelines. Because strain and temperature both shift \(\lambda_B\), an unstrained reference grating compensates temperature.
+
+* Fabry–Perot sensors and optical filters
+Two reflectors in or at the end of a fibre form a [[id:interference-and-fabry-perot][Fabry–Perot]] cavity whose fringe position measures the gap: pressure diaphragms, displacement, temperature. Tunable FP filters (piezo-driven gap) and thin-film filters select DWDM channels; their performance is described by FSR, finesse, insertion loss and adjacent-channel isolation.
+
+* Sagnac effect and gyroscopes (derivation)
+Light travels around a loop of radius \(R\) in both directions while the loop rotates at \(\Omega\). The co-rotating beam must travel further to reach the moving start point: the time difference is \(\Delta t=\frac{4A\Omega}{c^2}\) per turn (\(A=\pi R^2\)), independent of the refractive index. For a coil of \(N\) turns, length \(L=2\pi RN\): \(\Delta\phi=\omega\Delta t=\frac{8\pi NA\Omega}{\lambda c}=\frac{4\pi LR}{\lambda c}\Omega\). A fibre-optic gyroscope (FOG) splits light in a 3 dB [[id:fiber-couplers][coupler]] into the two ends of the coil and measures the interference; a ring laser gyro instead measures the beat between two counter-propagating laser modes, \(\Delta\nu=\frac{4A}{\lambda P}\Omega\) (perimeter \(P\)), and suffers lock-in at low rates.
+
+\begin{tikzpicture}[scale=0.9]
+\draw[thick] (3,0) circle (1.1); \draw[thick] (3,0) circle (1.0);
+\draw[-{Latex},red!70!black] (3,0) ++(200:1.35) arc (200:330:1.35);
+\draw[-{Latex},blue!70!black] (3,0) ++(-20:1.55) arc (-20:-150:1.55);
+\node[font=\scriptsize] at (3,0) {coil $L$, $R$};
+\draw[-{Latex}] (3,1.5) arc (90:40:0.6); \node[font=\small] at (3.6,1.6) {$\Omega$};
+\draw[thick] (0,0) rectangle (0.6,0.4); \node[font=\scriptsize,below] at (0.3,0) {source};
+\draw[thick] (0.6,0.2)--(1.3,0.2); \draw[thick,fill=gray!30] (1.3,-0.1) rectangle (1.8,0.5); \node[font=\scriptsize,above] at (1.55,0.5) {3 dB};
+\draw[thick] (1.8,0.35)--(2.1,0.6); \draw[thick] (1.8,0.05)--(2.1,-0.6);
+\draw[thick] (1.3,0.05)--(0.8,-0.6) node[below,font=\scriptsize]{detector};
+\end{tikzpicture}
+
+* Worked examples
+1. *Design*: \(\bar n=1.447\), \(\lambda_B=1550\) nm → \(\Lambda=536\) nm. With \(\Delta n=10^{-4}\), \(L=10\) mm: \(\kappa=203\) m\(^{-1}\), \(\kappa L=2.03\), \(R=93\%\), \(\Delta\lambda_0=0.20\) nm.
+2. *Sensitivities* at 1550 nm: \(0.78\cdot1550\) nm \(\cdot10^{-6}=1.21\) pm/µε; \((0.55+6.7)\times10^{-6}\cdot1550\) nm \(=11.2\) pm/K. A 0.6 nm shift at constant temperature means 496 µε (0.05% strain).
+3. *FOG*: 1 km coil, \(R=5\) cm, 1550 nm, Earth rotation \(7.29\times10^{-5}\) rad/s: \(\Delta\phi=\frac{4\pi\cdot1000\cdot0.05\cdot7.29\times10^{-5}}{1.55\times10^{-6}\cdot3\times10^8}=9.9\times10^{-5}\) rad. Navigation-grade FOGs resolve ≈ 0.01°/h, i.e. sub-µrad phases: hence long coils, low-coherence sources (suppress backscatter interference) and phase modulation readout.
+
+* Engineering applications
+Structural health monitoring with FBG arrays, temperature in power transformers and oil wells, medical pressure catheters (FP tips), inertial navigation in aircraft, ships and satellites (FOG, RLG), FBG filters and dispersion compensators in telecom, fibre-laser mirrors.
+
+* Exam-style exercise
+An FBG at 1550 nm is bonded to a steel beam. The reflected peak moves from 1550.000 to 1550.950 nm while the temperature rises by 20 K. A second, free grating measures only temperature. (a) Shift due to temperature. (b) Strain. (c) Stress in the steel (\(E=200\) GPa).
+** Solution
+(a) \(20\cdot11.2=224\) pm. (b) Mechanical shift \(950-224=726\) pm → \(\epsilon=726/1.21=600\) µε. (c) \(\sigma=E\epsilon=200\times10^9\cdot6\times10^{-4}=120\) MPa.
+
+* Pitfall
+The Sagnac phase does not depend on the fibre index (it is a relativistic time difference), but the FBG shift does: \(\lambda_B=2\bar n\Lambda\) uses the *effective* index of the core mode.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Fiber_Bragg_grating][Fiber Bragg grating]]
+- [[https://en.wikipedia.org/wiki/Fibre-optic_gyroscope][Fibre-optic gyroscope]]

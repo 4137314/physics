@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID:       ac-power-and-power-factor
+:DOMAIN:   circuits
+:AREA:     ac-circuits
+:KIND:     definition
+:REQUIRES: impedance-and-ac-circuit-analysis
+:SEE:      poynting-theorem power-generation-and-distribution
+:ALIASES:  active power, reactive power, apparent power, complex power, power factor, power factor correction, instantaneous power, VAR, power triangle
+:END:
+#+title: AC power and power factor
+#+summary: With rms phasors, complex power \(S=\mathbf V\mathbf I^*=P+jQ\): active power \(P=V_{rms}I_{rms}\cos\varphi\) (W) does work, reactive power \(Q=V_{rms}I_{rms}\sin\varphi\) (var) shuttles energy in and out of L and C, apparent power \(|S|\) (VA) sizes the equipment; power factor \(\cos\varphi\) is corrected by adding the opposite reactance.
+
+* Definition and derivation
+\(p(t)=v(t)i(t)=V_mI_m\cos(\omega t)\cos(\omega t-\varphi)=\frac{V_mI_m}{2}[\cos\varphi+\cos(2\omega t-\varphi)]\). Average \(P=\frac{V_mI_m}2\cos\varphi=V_{rms}I_{rms}\cos\varphi\). Complex power conserves around a network (Tellegen): \(\sum S_k=0\).
+| element | P   | Q        |
+|---------+-----+----------|
+| R       | I²R | 0        |
+| L       | 0   | +I²ωL    |
+| C       | 0   | −I²/(ωC) |
+
+* Power-factor correction
+Load \(P\) at angle \(\varphi_1\); target \(\varphi_2\): capacitor reactive power \(Q_C=P(\tan\varphi_1-\tan\varphi_2)\), \(C=\frac{Q_C}{\omega V_{rms}^2}\). Benefit: lower line current \(I=P/(V\cos\varphi)\), hence lower losses \(I^2r\) ([[id:power-generation-and-distribution][distribution]]).
+
+* Worked example
+Motor 10 kW at PF 0.7 lagging on 230 V, 50 Hz: \(I=10000/(230\cdot0.7)=62\) A, \(Q=10\tan45.6^\circ=10.2\) kvar. Correct to 0.95: \(Q_C=10(1.02-0.329)=6.9\) kvar, \(C=\frac{6900}{2\pi50\cdot230^2}=415\) µF; new current 45.8 A — line losses drop by 45%.
+
+* Engineering applications
+Industrial PF correction (utilities charge for reactive energy), active PFC in switch-mode supplies (EU harmonic limits), inverter sizing in VA, reactive-power control for grid voltage support.
+
+* Pitfall
+PF also includes harmonic distortion: a rectifier load with in-phase but distorted current has PF < 1 even with \(\varphi=0\) (distortion factor).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/AC_power][AC power]]
+- [[https://en.wikipedia.org/wiki/Power_factor][Power factor]]

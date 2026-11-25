@@ -1,0 +1,40 @@
+:PROPERTIES:
+:ID:       compton-scattering-and-pair-annihilation
+:DOMAIN:   quantum-electrodynamics
+:AREA:     qed-processes
+:KIND:     example
+:REQUIRES: feynman-rules-of-qed gamma-matrix-traces
+:SEE:      moller-and-bhabha-scattering four-vectors-and-lorentz-transformations
+:ALIASES:  Compton scattering, Klein-Nishina formula, Thomson cross section, pair annihilation, two-photon annihilation, bremsstrahlung, pair production, photon attenuation
+:END:
+#+title: Compton scattering (Klein–Nishina) and pair annihilation
+#+summary: Two diagrams (s- and u-channel electron exchange) give, for an electron at rest, \(\frac{\dd\sigma}{\dd\Omega}=\frac{\alpha^2}{2m^2}\left(\frac{\omega'}{\omega}\right)^2\left(\frac{\omega'}\omega+\frac\omega{\omega'}-\sin^2\theta\right)\), reducing to Thomson \(\sigma_T=\frac{8\pi}3r_e^2\) at low energy; crossing gives \(e^+e^-\to\gamma\gamma\), which at rest yields two 511 keV photons.
+
+* Derivation outline
+1. \(i\mathcal M=-ie^2\epsilon'^*_\mu\epsilon_\nu\bar u(p')\left[\gamma^\mu\frac{\slashed p+\slashed k+m}{s-m^2}\gamma^\nu+\gamma^\nu\frac{\slashed p-\slashed k'+m}{u-m^2}\gamma^\mu\right]u(p)\).
+2. Gauge invariance: replacing \(\epsilon\to k\) gives zero, so \(\sum\epsilon\epsilon^*\to-g\) is allowed.
+3. Traces (eight gammas, simplified with contraction identities) give
+\[ \tfrac14\sum|\mathcal M|^2=2e^4\left[\frac{p\cdot k'}{p\cdot k}+\frac{p\cdot k}{p\cdot k'}+2m^2\left(\frac1{p\cdot k}-\frac1{p\cdot k'}\right)+m^4\left(\frac1{p\cdot k}-\frac1{p\cdot k'}\right)^2\right]. \]
+4. Lab frame: \(p\cdot k=m\omega\), \(p\cdot k'=m\omega'\), \(\omega'=\frac{\omega}{1+(\omega/m)(1-\cos\theta)}\); phase space gives the Klein–Nishina formula above.
+
+* Limits
+- \(\omega\ll m\): \(\omega'\approx\omega\), \(\frac{\dd\sigma}{\dd\Omega}=\frac{r_e^2}2(1+\cos^2\theta)\), \(\sigma_T=0.665\) b (classical Thomson, \(r_e=2.82\) fm).
+- \(\omega\gg m\): \(\sigma\approx\frac{\pi r_e^2m}{\omega}\left(\ln\frac{2\omega}m+\frac12\right)\), forward peaked.
+
+* Pair annihilation
+Crossing \(k\to-k_1\), \(p'\to-p_2\): \(e^+e^-\to\gamma\gamma\). At rest (Dirac): \(\sigma v=\pi r_e^2c\); para-positronium decays to 2γ in 125 ps, ortho-positronium (triplet, C-odd) needs 3γ and lives 142 ns.
+
+* Worked example
+Cs-137 gamma (662 keV) scattered at 90°: \(\omega'=\frac{662}{1+662/511}=289\) keV, electron gets 373 keV; the Compton edge (180°) is at \(662-\frac{662}{1+2\cdot1.295}=478\) keV — the feature seen in every scintillator spectrum.
+
+* Engineering applications
+- *PET*: \(e^+e^-\to\gamma\gamma\) back-to-back 511 keV photons localise the tracer.
+- *Radiation shielding and dosimetry*: Compton dominates photon attenuation in tissue from ~30 keV to ~25 MeV; above, pair production (\(\gamma\to e^+e^-\) near nuclei) and bremsstrahlung dominate.
+- *Inverse Compton sources* (tunable X-rays from laser–electron collisions), Compton cameras.
+
+* Pitfall
+Thomson scattering is energy-independent; Klein–Nishina falls with energy because of recoil and spin: do not use \(\sigma_T\) for MeV photons.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Klein%E2%80%93Nishina_formula][Klein–Nishina formula]]
+- [[https://physics.nist.gov/PhysRefData/Xcom/html/xcom1.html][NIST XCOM photon cross sections]]

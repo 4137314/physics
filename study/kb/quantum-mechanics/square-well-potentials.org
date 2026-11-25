@@ -1,0 +1,44 @@
+:PROPERTIES:
+:ID:       square-well-potentials
+:DOMAIN:   quantum-mechanics
+:AREA:     one-dimensional-systems
+:KIND:     example
+:REQUIRES: schrodinger-equation-and-time-evolution
+:SEE:      tunnelling-and-wkb heterojunctions-and-quantum-wells bloch-theorem-and-energy-bands
+:ALIASES:  particle in a box, infinite square well, finite square well, bound states, quantum well, quantum confinement
+:END:
+#+title: Square wells: particle in a box and finite well
+#+summary: In an infinite well of width \(L\), \(E_n=\frac{n^2\pi^2\hbar^2}{2mL^2}\) and \(\psi_n=\sqrt{2/L}\sin(n\pi x/L)\); a finite well of depth \(V_0\) always has at least one bound state, with even and odd states found from \(k\tan(ka/2)=\kappa\) and \(-k\cot(ka/2)=\kappa\).
+
+* Infinite well
+\(V=0\) for \(0<x<L\), \(\infty\) elsewhere. Inside, \(\psi''=-k^2\psi\) with \(k^2=2mE/\hbar^2\); boundary conditions \(\psi(0)=\psi(L)=0\) give \(kL=n\pi\):
+\[ E_n=\frac{\hbar^2\pi^2n^2}{2mL^2},\qquad \psi_n(x)=\sqrt{\frac2L}\sin\frac{n\pi x}{L},\quad n=1,2,\dots \]
+\(n-1\) nodes; ground energy \(>0\) (zero-point energy, consistent with the uncertainty relation).
+
+* Finite well
+\(V=-V_0\) for \(|x|<a/2\). Bound states \(-V_0<E<0\). Inside: \(k=\sqrt{2m(E+V_0)}/\hbar\); outside: decaying \(e^{-\kappa|x|}\), \(\kappa=\sqrt{-2mE}/\hbar\). Continuity of \(\psi\) and \(\psi'\) at \(x=a/2\):
+\[ \text{even: } \kappa=k\tan\frac{ka}{2},\qquad \text{odd: } \kappa=-k\cot\frac{ka}{2},\qquad k^2+\kappa^2=\frac{2mV_0}{\hbar^2}\equiv k_0^2. \]
+Graphically, with \(u=ka/2\), \(v=\kappa a/2\): intersections of \(v=u\tan u\) (or \(-u\cot u\)) with the circle \(u^2+v^2=R^2\), \(R=k_0a/2\). Number of bound states \(=\lceil 2R/\pi\rceil\): at least one, however shallow.
+
+* Picture
+\begin{tikzpicture}
+\begin{axis}[width=7cm,height=5cm,axis lines=left,xlabel={$u=ka/2$},ylabel={$v=\kappa a/2$},xmin=0,xmax=5,ymin=0,ymax=5]
+\addplot+[no marks,domain=0:1.45,samples=60]{x*tan(deg(x))}; \addlegendentry{even}
+\addplot+[no marks,domain=1.6:3.1,samples=60]{-x*cot(deg(x))}; \addlegendentry{odd}
+\addplot+[no marks,domain=0:4,samples=100]{sqrt(16-x^2)}; \addlegendentry{$R=4$}
+\addplot+[no marks,domain=3.15:4.6,samples=60]{x*tan(deg(x))};
+\end{axis}
+\end{tikzpicture}
+
+* Worked example
+GaAs quantum well in AlGaAs, width 10 nm, \(m^*=0.067m_e\), treated as infinite: \(E_1=\hbar^2\pi^2/(2m^*L^2)=0.376/0.067\cdot 0.01\) eV \(\approx56\) meV. The optical transition shifts from the bulk gap 1.424 eV to \(\approx1.424+0.056+E_{1h}\): confinement tunes the laser wavelength ([[id:heterojunctions-and-quantum-wells][quantum-well lasers]]).
+
+* Engineering applications
+Quantum-well lasers and LEDs, quantum-cascade lasers, HEMT channels, quantum dots (colour set by size in QLED displays), the 2DEG of silicon MOSFET inversion layers.
+
+* Pitfall
+In a finite well the wave function leaks into the barrier (\(e^{-\kappa|x|}\)): the effective width is larger, so energies are *lower* than in the infinite-well estimate.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Particle_in_a_box][Particle in a box]]
+- [[https://en.wikipedia.org/wiki/Finite_potential_well][Finite potential well]]

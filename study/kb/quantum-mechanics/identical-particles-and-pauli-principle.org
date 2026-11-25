@@ -1,0 +1,32 @@
+:PROPERTIES:
+:ID:       identical-particles-and-pauli-principle
+:DOMAIN:   quantum-mechanics
+:AREA:     many-particles
+:KIND:     theorem
+:REQUIRES: addition-of-angular-momenta
+:SEE:      density-of-states-and-fermi-dirac fock-states beam-splitter-and-hong-ou-mandel
+:ALIASES:  bosons, fermions, Pauli exclusion principle, symmetrization postulate, Slater determinant, exchange interaction, spin-statistics theorem
+:END:
+#+title: Identical particles, bosons, fermions and Pauli's principle
+#+summary: States of identical particles are symmetric (bosons, integer spin) or antisymmetric (fermions, half-integer spin) under exchange; antisymmetry gives Pauli exclusion and Slater determinants, and through the exchange term the spin-dependent energies that build the periodic table, magnetism and metals.
+
+* Statement
+The exchange operator \(P_{12}\) commutes with every observable of identical particles; physical states are eigenstates with eigenvalue \(+1\) (bosons) or \(-1\) (fermions). Spin–statistics (proved in relativistic QFT): integer spin ↔ bosons, half-integer ↔ fermions.
+
+* Consequences
+- Two fermions in one-particle states \(a,b\): \(\psi=\tfrac1{\sqrt2}[\phi_a(1)\phi_b(2)-\phi_b(1)\phi_a(2)]\), zero if \(a=b\): *Pauli exclusion*. For \(N\) fermions, a Slater determinant \(\det[\phi_i(j)]/\sqrt{N!}\).
+- Spatial and spin parts: for two electrons, triplet spin (symmetric) × antisymmetric space, or singlet × symmetric space.
+- *Exchange energy*: for a repulsion \(V\), \(\braket V=J\mp K\), with direct \(J\) and exchange \(K=\int\phi_a^*(1)\phi_b^*(2)V\phi_b(1)\phi_a(2)\). The triplet (antisymmetric space) keeps electrons apart and has lower repulsion: Hund's rule, ferromagnetism.
+
+* Worked example
+Helium excited states \(1s2s\): para (singlet) and ortho (triplet) helium differ by \(2K\approx0.8\) eV although the Hamiltonian contains no spin: the energy difference is a purely statistical effect, equivalent to the effective spin Hamiltonian \(-\tfrac12(1+4\mathbf S_1\cdot\mathbf S_2/\hbar^2)K\).
+
+* Engineering applications
+Pauli exclusion fills bands up to the Fermi energy ([[id:density-of-states-and-fermi-dirac][Fermi–Dirac statistics]]): it makes metals conduct, insulators insulate and white dwarfs stable. Bosonic bunching underlies stimulated emission (lasers), Bose–Einstein condensates and [[id:beam-splitter-and-hong-ou-mandel][Hong–Ou–Mandel]] interference; Cooper pairs behave as bosons ([[id:superconductivity-and-flux-quantization][superconductivity]]).
+
+* Pitfall
+Pauli forbids two fermions in the same *complete* one-particle state (orbital and spin): two electrons share an orbital with opposite spins.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Identical_particles][Identical particles]]
+- [[https://en.wikipedia.org/wiki/Pauli_exclusion_principle][Pauli exclusion principle]]

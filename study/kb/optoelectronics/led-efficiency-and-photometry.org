@@ -1,0 +1,59 @@
+:PROPERTIES:
+:ID:       led-efficiency-and-photometry
+:DOMAIN:   optoelectronics
+:AREA:     light-sources
+:KIND:     model
+:REQUIRES: light-emitting-diodes
+:SEE:      pn-junction-diode-current heterojunctions-and-quantum-wells optical-fibers
+:ALIASES:  LED efficiency, power conversion efficiency, wall plug efficiency, external quantum efficiency, luminous efficacy, luminous flux, lumen, candela, eye sensitivity, V(lambda), photopic, brightness, LED I-V characteristic, LED drive circuit, series resistor, LED turn-on voltage, Planck constant from LEDs, surface emitting LED, edge emitting LED, ELED, SLED, LED fiber coupling, LED temperature dependence
+:END:
+#+title: LED efficiencies, photometry and driving
+#+summary: An LED is rated by external quantum efficiency \(\eta_{EQE}=\frac{P_o/h\nu}{I/e}\), power-conversion (wall-plug) efficiency \(\eta_{PCE}=\frac{P_o}{IV}\) and, for lighting, luminous efficacy \(\frac{\Phi_v}{IV}\) with \(\Phi_v=683\,V(\lambda)\,P_o\) lm (\(V\) = eye sensitivity, 1 at 555 nm); it turns on near \(qV\approx h\nu\), is driven by a current set by a series resistor or a current source, and couples into a fibre only a fraction \(\approx\mathrm{NA}^2\) of its Lambertian emission.
+
+* Efficiencies
+- Internal QE \(\eta_{IQE}\) (radiative fraction), extraction \(\eta_{extr}\) (escape cone, Fresnel), injection \(\eta_{inj}\): \(\eta_{EQE}=\eta_{inj}\eta_{IQE}\eta_{extr}\) ([[id:light-emitting-diodes][LED physics]]).
+- \(\eta_{PCE}=\eta_{EQE}\frac{h\nu}{qV}\): the drive voltage exceeds \(h\nu/q\) because of series resistance and heterojunction offsets.
+- *Photometry*: the eye weighs power by \(V(\lambda)\) (photopic curve, peak 683 lm/W at 555 nm). Luminous flux \(\Phi_v=683\int V(\lambda)P(\lambda)\dd\lambda\); luminous efficacy of the source = flux per electrical watt. Luminous intensity (candela) is flux per steradian; LED "brightness" in datasheets is usually mcd on axis.
+
+* Picture: eye sensitivity and an LED drive circuit
+\begin{tikzpicture}
+\begin{axis}[width=7.8cm,height=4.4cm,axis lines=left,xlabel={$\lambda$ (nm)},ylabel={$V(\lambda)$},xmin=380,xmax=760,ymin=0,ymax=1.1]
+\addplot+[no marks,thick,domain=380:760,samples=150]{1.019*exp(-285.4*(x/1000-0.559)^2)}; \addlegendentry{photopic $V(\lambda)$}
+\addplot+[only marks,mark=*] coordinates {(450,0.034) (525,0.733) (630,0.242)}; \addlegendentry{blue, green, red LEDs}
+\end{axis}
+\end{tikzpicture}
+
+\begin{circuitikz}
+\draw (0,0) to[V, l=$V_S$] (0,2.5) to[R, l=$R$] (3,2.5) to[led, l=LED] (3,0) -- (0,0);
+\draw (3,2.5) to[short,-o] (4,2.5) node[right]{$V_F$};
+\end{circuitikz}
+
+* I–V characteristic and the turn-on voltage
+\(I=I_0(e^{qV/\eta k_BT}-1)\) with an ideality factor between 1 (diffusion) and 2 (recombination in the depletion region), plus series resistance at high current ([[id:pn-junction-diode-current][diode current]]). Extrapolating the linear high-current part to \(I=0\) gives \(U_c\), with \(qU_c\approx h\nu\approx E_g\): measuring \(U_c\) for LEDs of different colours gives Planck's constant from \(h\approx\frac{qU_c\lambda}{c}\).
+
+* Temperature dependence
+\(E_g\) falls with \(T\) (GaAs Varshni: \(E_g=1.519-\frac{5.4\times10^{-4}T^2}{T+204}\) eV): the emission peak \(E_g+\frac{k_BT}{2}\) red-shifts (≈ 0.25 nm/K in GaAs: 864 nm at 300 K, 877 nm at 350 K), the width \(\approx3k_BT\) grows and \(\eta_{IQE}\) drops (more non-radiative recombination, carrier leakage): output falls ≈ 0.5–1%/K. Heat sinking is part of LED design.
+
+* LED types for fibres
+Surface-emitting (SLED, Burrus type: well etched to bring the fibre close to a small active area) and edge-emitting (ELED: light guided in the active layer, narrower beam, ≈ 5× more power into a fibre, used with single-mode fibre over short links). A Lambertian source smaller than the core couples \(\eta\approx\mathrm{NA}^2\) of its power: 4% for NA = 0.2. Pigtailed LEDs come with the fibre already aligned. Superluminescent diodes (amplified spontaneous emission, broad spectrum, high power) are the bridge to lasers.
+
+* Worked examples
+1. *Red LED*, 650 nm, \(I=20\) mA, \(V=2.0\) V, \(P_o=5\) mW: photons \(5\times10^{-3}/3.06\times10^{-19}=1.6\times10^{16}\) s\(^{-1}\), electrons \(1.25\times10^{17}\) s\(^{-1}\): \(\eta_{EQE}=13\%\); \(\eta_{PCE}=12.5\%\); \(\Phi_v=683\cdot0.096\cdot5\times10^{-3}=0.33\) lm; efficacy 8 lm/W.
+2. *Blue power LED*, 450 nm, 350 mA at 3.0 V, 450 mW: \(\eta_{EQE}=47\%\), \(\eta_{PCE}=43\%\). A green LED of the same optical power would look 20× brighter (\(V=0.73\) vs 0.034).
+3. *Series resistor*: 5 V supply, \(V_F=2.0\) V at 20 mA: \(R=\frac{5-2}{0.02}=150\) Ω, dissipating 60 mW, more than the LED emits.
+4. *Planck from LEDs*: red 630 nm at \(U_c=1.95\) V, green 525 nm at 2.35 V, blue 470 nm at 2.62 V → \(h=6.56\), 6.59, \(6.58\times10^{-34}\) J s (within 1% of the true value).
+
+* Engineering applications
+Solid-state lighting (efficacy > 150 lm/W), displays and backlights, indicator LEDs, optocouplers, plastic-optical-fibre links (red LEDs at 650 nm), IR remote controls, LED drivers (constant-current, PWM dimming to avoid colour shift).
+
+* Exam-style exercise
+A 870 nm GaAs LED with \(\eta_{EQE}=4\%\) is driven at 50 mA and 1.6 V, and butt-coupled to a step-index fibre with NA = 0.25. (a) Emitted power. (b) PCE. (c) Power in the fibre. (d) Emission peak and width at 300 K.
+** Solution
+(a) \(P_o=0.04\cdot\frac{1.24}{0.87}\cdot0.05=2.85\) mW. (b) \(2.85/80=3.6\%\). (c) \(\mathrm{NA}^2=0.0625\) → 0.18 mW (−7.5 dBm); with Fresnel loss at the chip surface already included in \(\eta_{EQE}\). (d) \(E_g+k_BT/2=1.42+0.013=1.433\) eV → 865 nm; \(\Delta\lambda\approx\frac{\lambda^2}{hc}3k_BT=48\) nm.
+
+* Pitfall
+Efficacy (lm per *electrical* W) and luminous efficiency of radiation (lm per *optical* W, max 683) are different numbers; and \(V(\lambda)\) collapses quickly at the ends of the spectrum, so deep-red and deep-blue LEDs look dim at equal power.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Luminous_efficiency_function][Luminous efficiency function]]
+- [[https://en.wikipedia.org/wiki/Light-emitting_diode#Efficiency_and_operational_parameters][LED efficiency]]

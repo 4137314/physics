@@ -1,0 +1,43 @@
+:PROPERTIES:
+:ID:       pn-junction-electrostatics
+:DOMAIN:   solid-state
+:AREA:     junctions
+:KIND:     theorem
+:REQUIRES: intrinsic-and-doped-semiconductors electrostatics-and-gauss-law drift-diffusion-and-einstein-relation
+:SEE:      pn-junction-diode-current mosfet-capacitances-and-scaling photodetectors
+:ALIASES:  pn junction, built-in potential, depletion region, space charge region, depletion approximation, junction capacitance, abrupt junction, breakdown voltage, avalanche, Zener
+:END:
+#+title: The pn junction: built-in potential, depletion and capacitance
+#+summary: Diffusion of majority carriers leaves a depletion region of ionised dopants; equilibrium (flat \(E_F\)) gives \(V_{bi}=\frac{k_BT}q\ln\frac{N_AN_D}{n_i^2}\); in the depletion approximation \(W=\sqrt{\frac{2\epsilon(V_{bi}-V)}{q}\left(\frac1{N_A}+\frac1{N_D}\right)}\), \(E_{max}=\frac{2(V_{bi}-V)}W\), and the junction is a voltage-dependent capacitor \(C_j=\epsilon A/W\).
+
+* Derivation
+1. *Built-in potential*: far from the junction \(E_c-E_F\) is fixed by doping on each side; flat \(E_F\) forces a band bending \(qV_{bi}=k_BT\ln\frac{N_AN_D}{n_i^2}\).
+2. *Depletion approximation*: \(\rho=-qN_A\) for \(-x_p<x<0\), \(+qN_D\) for \(0<x<x_n\), zero elsewhere; neutrality \(N_Ax_p=N_Dx_n\).
+3. Poisson \(\frac{\dd E}{\dd x}=\rho/\epsilon\): triangular field, peak \(E_{max}=\frac{qN_Dx_n}{\epsilon}\).
+4. Potential drop = area of the triangle: \(V_{bi}-V=\frac12E_{max}W\). Solving gives \(W\) above. One-sided junction (\(N_A\gg N_D\)): \(W\approx\sqrt{2\epsilon(V_{bi}-V)/qN_D}\), almost all in the lightly doped side.
+
+* Picture
+\begin{tikzpicture}[font=\small]
+\draw[->] (-3,0) -- (3,0) node[right]{$x$};
+\fill[kbcyan!30] (-1,0) rectangle (0,-0.8); \fill[kbmagenta!30] (0,0) rectangle (2,0.4);
+\node at (-0.5,-1.1) {$-qN_A$}; \node at (1,0.7) {$+qN_D$};
+\draw[thick,kbamber] (-1,0) -- (0,-1.6) -- (2,0); \node[kbamber] at (0.6,-1.4) {$E(x)$};
+\node at (-2,0.3) {p}; \node at (2.6,0.3) {n};
+\end{tikzpicture}
+Charge (shaded) and field (triangle) in an abrupt junction with \(N_A>N_D\).
+
+* Capacitance and breakdown
+\(C_j=\frac{\epsilon A}{W}=\frac{C_{j0}}{\sqrt{1-V/V_{bi}}}\): \(1/C^2\) vs \(V\) is a line whose slope gives the doping (C–V profiling); varactors exploit it. Breakdown: *avalanche* when \(E_{max}\approx E_{crit}\) (~3×10\(^5\) V/cm in Si), so \(V_{BR}\approx\frac{\epsilon E_{crit}^2}{2qN_D}\) — low doping for high voltage; *Zener* (band-to-band tunnelling) for heavy doping, \(V_{BR}<5\) V.
+
+* Worked example
+Si, \(N_A=10^{18}\), \(N_D=10^{16}\) cm\(^{-3}\): \(V_{bi}=0.0259\ln(10^{34}/10^{20})=0.835\) V. At \(V=-5\) V: \(W=\sqrt{2\cdot1.04\times10^{-12}\cdot5.835/(1.6\times10^{-19}\cdot10^{16})}=0.87\) µm, \(E_{max}=1.3\times10^5\) V/cm, \(C_j=\epsilon/W=12\) nF/cm². \(V_{BR}\approx\frac{1.04\times10^{-12}\cdot(3\times10^5)^2}{2\cdot1.6\times10^{-19}\cdot10^{16}}\approx29\) V.
+
+* Engineering applications
+Varactor tuning in VCOs, junction capacitance as parasitic load in CMOS (drain diffusions) and in [[id:photodetectors][photodiodes]] (RC bandwidth), ESD clamps and Zener references, depletion-mode silicon modulators ([[id:silicon-modulators][plasma dispersion]]), drift-region design of [[id:power-mosfets-and-igbts][power devices]].
+
+* Pitfall
+\(V\) is the *applied forward* voltage: reverse bias is \(V<0\), which widens \(W\). Forgetting the sign makes \(W\) imaginary for \(V>V_{bi}\) — the depletion approximation breaks down under strong forward bias.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/P%E2%80%93n_junction][p–n junction]]
+- [[https://www.pveducation.org/pvcdrom/pn-junctions/formation-of-a-pn-junction][PVEducation: formation of a pn junction]]

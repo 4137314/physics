@@ -1,0 +1,42 @@
+:PROPERTIES:
+:ID:       spin-precession-and-rabi-oscillations
+:DOMAIN:   quantum-mechanics
+:AREA:     dynamics
+:KIND:     example
+:REQUIRES: heisenberg-picture-and-ehrenfest-theorem stern-gerlach-experiment
+:SEE:      jaynes-cummings-model qubits-and-quantum-gates density-operator
+:ALIASES:  Larmor precession, Rabi formula, magnetic resonance, NMR, MRI, rotating frame, two-level system
+:END:
+#+title: Spin precession and Rabi oscillations
+#+summary: A spin in a static field precesses at the Larmor frequency \(\omega_0=|g|eB/2m\); adding a transverse field rotating at \(\omega\) produces the Rabi formula \(P_{\downarrow}(t)=\frac{\Omega^2}{\Omega^2+\Delta^2}\sin^2\!\left(\tfrac12\sqrt{\Omega^2+\Delta^2}\,t\right)\), the basis of NMR, MRI and qubit control.
+
+* Precession
+\(H=-\boldsymbol\mu\cdot\mathbf B=\omega_0S_z\) with \(\omega_0=|e|B/m_e\) for the electron (\(g=2\)). Heisenberg equations: \(\dot S_x=-\omega_0S_y\), \(\dot S_y=\omega_0S_x\): the expectation \(\braket{\mathbf S}\) rotates about \(\hat z\) at \(\omega_0\). Equivalently \(U(t)=e^{-i\omega_0tS_z/\hbar}\) is a rotation by \(\phi=\omega_0t\). A rotation by \(2\pi\) multiplies a spinor by \(-1\) (verified by neutron interferometry).
+
+* Rabi problem
+\(H=\tfrac{\hbar\omega_0}{2}\sigma_z+\hbar\Omega\left(\cos\omega t\,\sigma_x+\sin\omega t\,\sigma_y\right)/2\) (rotating field). Go to the frame rotating at \(\omega\): \(\ket{\tilde\psi}=e^{i\omega t\sigma_z/2}\ket\psi\). The Hamiltonian becomes time independent:
+\[ \tilde H=\frac\hbar2\left(\Delta\,\sigma_z+\Omega\,\sigma_x\right),\qquad \Delta=\omega_0-\omega. \]
+This is precession about an effective field tilted by \(\tan\theta=\Omega/\Delta\) at frequency \(\Omega_R=\sqrt{\Omega^2+\Delta^2}\). Starting from \(\ket\uparrow\):
+\[ P_{\uparrow\to\downarrow}(t)=\frac{\Omega^2}{\Omega^2+\Delta^2}\sin^2\frac{\Omega_Rt}{2}. \]
+On resonance (\(\Delta=0\)) the spin flips completely after the "\(\pi\) pulse" \(t=\pi/\Omega\).
+
+* Picture
+\begin{tikzpicture}
+\begin{axis}[width=7.5cm,height=4.2cm,axis lines=left,xlabel={$\Omega t$},ylabel={$P_{\downarrow}$},ymin=0,ymax=1.1,xmin=0,xmax=12.6]
+\addplot+[no marks,domain=0:12.6,samples=200]{sin(deg(x/2))^2}; \addlegendentry{$\Delta=0$}
+\addplot+[no marks,domain=0:12.6,samples=200]{1/(1+1)*sin(deg(sqrt(2)*x/2))^2}; \addlegendentry{$\Delta=\Omega$}
+\end{axis}
+\end{tikzpicture}
+
+* Worked example
+MRI at \(B_0=1.5\) T on protons (\(\gamma/2\pi=42.58\) MHz/T): \(f_0=63.9\) MHz. With an RF field \(B_1=10\) µT, \(\Omega=\gamma B_1=2\pi\cdot426\) Hz, so the \(\pi/2\) pulse lasts \(t=\pi/2\Omega=0.59\) ms. A gradient \(G=10\) mT/m shifts \(f_0\) by 426 Hz per mm: frequency encodes position.
+
+* Engineering applications
+NMR spectroscopy and MRI; atomic clocks (Ramsey interrogation); single-qubit gates in superconducting, ion and spin qubits ([[id:qubits-and-quantum-gates][qubits]]); ESR. The same mathematics describes the optical two-level atom ([[id:jaynes-cummings-model][Jaynes–Cummings]]).
+
+* Pitfall
+A linearly polarised field \(2\Omega\cos\omega t\,\sigma_x\) is the sum of two counter-rotating fields; only the co-rotating one is resonant. Dropping the other is the rotating-wave approximation, valid for \(\Omega\ll\omega_0\).
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Rabi_cycle][Rabi cycle]]
+- [[https://en.wikipedia.org/wiki/Larmor_precession][Larmor precession]]

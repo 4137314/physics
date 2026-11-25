@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       latches-and-flip-flops
+:DOMAIN:   digital-electronics
+:AREA:     sequential
+:KIND:     method
+:REQUIRES: cmos-inverter dynamic-logic-and-pass-transistors
+:SEE:      sram-cell
+:ALIASES:  bistable, SR latch, D latch, master-slave flip-flop, edge-triggered, setup time, hold time, clock-to-Q, metastability, transmission gate latch, C2MOS, Schmitt trigger
+:END:
+#+title: Latches and flip-flops
+#+summary: Two cross-coupled inverters form a bistable element with two stable points and one metastable point; adding transmission gates gives a level-sensitive D latch, and two latches on opposite clock phases make an edge-triggered master–slave flip-flop, characterised by setup, hold and clock-to-Q times and by metastability when the timing is violated.
+
+* Bistability
+Loop gain of two inverters: stable states where the cascaded VTC crosses \(v_O=v_I\) with slope < 1 (the rails); the middle crossing (slope > 1) is metastable. A node starting at \(V_M+\delta\) diverges as \(\delta\,e^{t/\tau}\), \(\tau\approx C/g_m\).
+
+* Circuits
+- *SR latch*: cross-coupled NOR (or NAND); S=R=1 forbidden (NOR).
+- *D latch* (transmission gates): CLK = 1 transparent (D → Q), CLK = 0 the feedback loop closes and holds.
+- *Master–slave D flip-flop*: master transparent while CLK = 0, slave while CLK = 1 → Q changes only at the rising edge.
+- *Dynamic (C2MOS) flip-flops*: store on capacitance, fewer transistors, need minimum clock frequency.
+
+* Timing
+\(t_{setup}\): D stable before the edge; \(t_{hold}\): after; \(t_{CQ}\): edge to output. Clock period constraint \(T\ge t_{CQ}+t_{logic,max}+t_{setup}+t_{skew}\); hold constraint \(t_{CQ}+t_{logic,min}\ge t_{hold}+t_{skew}\).
+Metastability MTBF \(=\frac{e^{t_r/\tau}}{T_0f_{clk}f_{data}}\): synchronisers of two flip-flops give extra resolution time \(t_r\).
+
+* Worked example
+\(t_{CQ}=60\) ps, \(t_{setup}=40\) ps, skew 20 ps, logic 700 ps: \(T\ge820\) ps, \(f_{max}=1.22\) GHz. Synchroniser with \(\tau=20\) ps, \(T_0=50\) ps, \(f_{clk}=1\) GHz, \(f_{data}=100\) MHz, \(t_r=900\) ps: MTBF \(=\frac{e^{45}}{5\times10^{-11}\cdot10^{17}}\approx7\times10^{12}\) s — safe.
+
+* Engineering applications
+Pipeline registers, state machines, clock-domain crossing synchronisers, scan chains for test, SRAM cells (a latch with access transistors).
+
+* Pitfall
+A latch is not a flip-flop: in a latch-based pipeline data can race through consecutive transparent stages; two-phase non-overlapping clocks or flip-flops are required.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Flip-flop_(electronics)][Flip-flop (electronics)]]
+- [[https://en.wikipedia.org/wiki/Metastability_(electronics)][Metastability]]

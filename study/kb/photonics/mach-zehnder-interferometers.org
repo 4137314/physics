@@ -1,0 +1,29 @@
+:PROPERTIES:
+:ID:       mach-zehnder-interferometers
+:DOMAIN:   photonics
+:AREA:     silicon-photonics
+:KIND:     theorem
+:REQUIRES: directional-couplers interference-and-fabry-perot
+:SEE:      electro-optic-modulators silicon-modulators ring-resonators
+:ALIASES:  Mach-Zehnder interferometer, MZI, unbalanced MZI, free spectral range, thermo-optic phase shifter, optical switch, wavelength filter, MZI mesh
+:END:
+#+title: Mach–Zehnder interferometers on chip
+#+summary: Split, delay by \(\Delta L\), recombine: \(T=\cos^2\!\left(\frac{\beta_1L_1-\beta_2L_2}{2}\right)\) for ideal 3 dB splitters; an unbalanced MZI is a periodic filter with \(\mathrm{FSR}=\frac{\lambda^2}{n_g\Delta L}\); a phase shifter in one arm makes a switch or modulator, and meshes of MZIs implement any unitary matrix.
+
+* Derivation
+Input field \(E_0\) → two arms \(E_0/\sqrt2\) each → phases \(\phi_i=\beta L_i\) and losses \(e^{-\alpha L_i/2}\) → combiner: \(E_{out}=\frac{E_0}2\left(e^{-j\phi_1}+e^{-j\phi_2}\right)\), so \(\frac{I}{I_0}=\cos^2\frac{\Delta\phi}{2}=\frac12(1+\cos\Delta\phi)\). For an unbalanced MZI, \(\Delta\phi=\beta\Delta L\); neighbouring peaks differ by \(\Delta\beta\Delta L=2\pi\): \(\frac{\dd\beta}{\dd\lambda}=-\frac{2\pi n_g}{\lambda^2}\Rightarrow\mathrm{FSR}=\frac{\lambda^2}{n_g\Delta L}\).
+
+* Phase shifters
+Thermo-optic: \(\dd n/\dd T=1.8\times10^{-4}\) K\(^{-1}\) in Si; \(\pi\) shift needs \(\Delta T\,L=\lambda/(2\,\dd n/\dd T)=4.3\) K·mm (≈ 20 mW heaters, µs speed). Carrier-based for GHz ([[id:silicon-modulators][silicon modulators]]).
+
+* Worked example
+Demultiplex two channels 0.8 nm apart (100 GHz grid) at 1550 nm: need FSR = 1.6 nm → \(\Delta L=\frac{1.55^2}{4.2\cdot1.6\times10^{-3}}\) µm \(=357\) µm. Extinction ratio is limited by splitter imbalance: \(\mathrm{ER}=\left(\frac{1+r}{1-r}\right)^2\) with \(r\) the amplitude ratio; a 52:48 split gives ER ≈ 34 dB.
+
+* Engineering applications
+Modulators (Si, LiNbO\(_3\)), optical switches and routers, wavelength (de)multiplexers and interleavers, sensors (one arm exposed), programmable photonics and optical neural networks (Reck/Clements MZI meshes), quantum photonic circuits.
+
+* Pitfall
+Path imbalance converts laser phase noise into intensity noise when \(\Delta L\) is comparable to the coherence length ([[id:coherence-of-light][coherence]]); use balanced MZIs for modulators.
+
+* Explore
+- [[https://en.wikipedia.org/wiki/Mach%E2%80%93Zehnder_interferometer][Mach–Zehnder interferometer]]
